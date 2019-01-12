@@ -1,6 +1,6 @@
 package com.init;
 
-import com.items.item.InfinityGauntlet;
+import com.common.items.InfinityGauntlet;
 import net.minecraft.item.*;
 
 import java.util.ArrayList;
