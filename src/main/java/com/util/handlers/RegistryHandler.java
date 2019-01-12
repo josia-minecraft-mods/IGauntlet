@@ -1,5 +1,6 @@
 package com.util.handlers;
 
+import com.init.ModEntities;
 import com.init.ModItems;
 import com.util.IHasModel;
 import net.minecraft.item.Item;
@@ -36,7 +37,9 @@ public class RegistryHandler
 
     public static void initRegistries()
     {
+        SoundsHandler.registerSounds();
     }
+
 
     public static void postInitRegistries()
     {

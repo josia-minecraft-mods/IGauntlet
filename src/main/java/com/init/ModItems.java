@@ -13,6 +13,5 @@ public class ModItems
     //Items
     public static final Item INFINITY_GAUNTLET = new InfinityGauntlet("infinity_gauntlet");
 
-
 }
 

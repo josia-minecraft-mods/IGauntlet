@@ -1,0 +1,13 @@
+{
+  "gauntlethum": {
+    "category": "master",
+    "subtitle": "gauntlet",
+    "sounds": [
+      {
+        "name": "infinity:gauntlethum",
+        "stream": false
+      }
+    ]
+  }
+}
+

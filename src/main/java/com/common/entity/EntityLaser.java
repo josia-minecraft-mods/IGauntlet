@@ -2,11 +2,8 @@ package com.common.entity;
 
 
 import io.netty.buffer.ByteBuf;
-import net.minecraft.block.BlockTNT;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
-import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.RayTraceResult;
@@ -19,6 +16,8 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
 
     public float damage;
     private DamageSource source;
+    public Vec3d color;
+
 
     public EntityLaser(World worldIn) {
         super(worldIn);
@@ -27,6 +26,7 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
     public EntityLaser(World worldIn, EntityLivingBase throwerIn, float damage, DamageSource source, Vec3d color) {
         super(worldIn, throwerIn);
         this.damage = damage;
+        this.color = color;
         this.source = source;
     }
 
@@ -38,19 +38,16 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
 
         if (result.typeOfHit == RayTraceResult.Type.ENTITY) {
             if (result.entityHit == this.thrower) return;
-            result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), damage);
+            result.entityHit.performHurtAnimation();
+            result.entityHit.attackEntityFrom(DamageSource.OUT_OF_WORLD, 100);
         } else if (result.typeOfHit == RayTraceResult.Type.BLOCK) {
-            IBlockState block = world.getBlockState(result.getBlockPos());
-
-            if (block.getBlock() == Blocks.TNT) {
-                BlockTNT tnt = (BlockTNT) block;
-                tnt.explode(world, result.getBlockPos(), block, getThrower());
-            }
+            this.setDead();
         }
 
         if (!this.world.isRemote)
             this.setDead();
     }
+
     @Override
     protected float getGravityVelocity() {
         return 0.00001F;
@@ -65,7 +62,25 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
     }
 
     @Override
+    public void writeEntityToNBT(NBTTagCompound compound) {
+        super.writeEntityToNBT(compound);
+        compound.setFloat("Damage", damage);
+        compound.setDouble("Color_R", color.x);
+        compound.setDouble("Color_G", color.y);
+        compound.setDouble("Color_B", color.z);
+    }
+
+    @Override
+    public void readEntityFromNBT(NBTTagCompound compound) {
+        super.readEntityFromNBT(compound);
+        this.damage = compound.getFloat("Damage");
+        this.color = new Vec3d(compound.getDouble("Color_R"), compound.getDouble("Color_G"), compound.getDouble("Color_B"));
+    }
+
+    @Override
     public void readSpawnData(ByteBuf additionalData) {
         this.readEntityFromNBT(ByteBufUtils.readTag(additionalData));
     }
+
+
 }

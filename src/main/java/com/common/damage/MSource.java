@@ -1,5 +1,6 @@
 package com.common.damage;
 
+import com.util.Reference;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.text.ITextComponent;
@@ -12,7 +13,7 @@ public class MSource extends DamageSource {
 
     public MSource(String name, boolean blockable) {
         super(name);
-        this.message = "damagesrc.tardis." + name;
+        this.message = "damagesrc."+ Reference.MODID+"." + name;
         this.blockable = blockable;
     }
 
