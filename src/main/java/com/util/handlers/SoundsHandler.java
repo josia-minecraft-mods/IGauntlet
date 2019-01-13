@@ -8,11 +8,12 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 public class SoundsHandler
 {
 
-    public static SoundEvent GAUNTLET_HUM;
+    public static SoundEvent GAUNTLET_HUM,SNAP;
 
     public static void registerSounds()
     {
         GAUNTLET_HUM = registerSound("gauntlethum");
+        SNAP = registerSound("snap");
     }
 
     private  static SoundEvent registerSound(String name)

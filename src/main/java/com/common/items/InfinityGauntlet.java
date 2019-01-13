@@ -92,11 +92,15 @@ public class InfinityGauntlet extends Item implements IHasModel {
     public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
         if ((entityLiving instanceof EntityPlayer)) {
             EntityPlayer playerIn = (EntityPlayer) entityLiving;
+
+            playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
+
             if (!playerIn.world.isRemote && playerIn.isSneaking()) {
                 for (Entity targetentity : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(25.0D, 25.0D, 25.0D))) {
                     targetentity.attackEntityFrom(DamageSource.OUT_OF_WORLD, 100);
                 }
-               EnumHand hand = playerIn.getActiveHand(); playerIn.setActiveHand(hand);
+                EnumHand hand = playerIn.getActiveHand();
+                playerIn.setActiveHand(hand);
             }
         }
         return super.onEntitySwing(entityLiving, stack);

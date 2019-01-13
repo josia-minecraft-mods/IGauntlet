@@ -1,16 +1,16 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
+  "modid": "infinity",
+  "name": "IGauntlet Mod",
   "description": "Example placeholder mod.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["rootheworld,Josia50"],
+  "credits": "Code thanks to Josia50 , Models thanks to rootheworld",
   "logoFile": "",
   "screenshots": [],
-  "dependencies": []
+  "dependencies": [Forge 1.12.2]
 }
 ]

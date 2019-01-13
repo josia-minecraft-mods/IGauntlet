@@ -8,6 +8,16 @@
         "stream": false
       }
     ]
+  },
+  "snap": {
+    "category": "master",
+    "subtitle": "snap",
+    "sounds": [
+      {
+        "name": "infinity:snap",
+        "stream": false
+      }
+    ]
   }
 }
 

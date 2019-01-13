@@ -44,8 +44,12 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
             this.setDead();
         }
 
-        if(result.entityHit.ticksExisted == 300) {
-            this.setDead();
+        if(this.ticksExisted == 100) {
+            setDead();
+        }
+
+        if(this.height >= 250) {
+            setDead();
         }
 
         if (!this.world.isRemote)
@@ -54,7 +58,7 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
 
     @Override
     protected float getGravityVelocity() {
-        return 0.00001F;
+        return 0.00000F;
     }
 
 
