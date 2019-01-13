@@ -1,11 +1,15 @@
 package com.common.entity;
 
 
+import com.init.ModBlocks;
 import io.netty.buffer.ByteBuf;
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -39,23 +43,31 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
 
         if (result.typeOfHit == RayTraceResult.Type.ENTITY) {
             if (result.entityHit == this.thrower) return;
+
             result.entityHit.performHurtAnimation();
+            Block blk = ModBlocks.ASH_PILE;
+            BlockPos pos0 = new BlockPos(result.entityHit.posX,result.entityHit.posY, result.entityHit.posZ);
+            IBlockState state0 = blk.getDefaultState();
+            world.setBlockState(pos0, state0);
             result.entityHit.attackEntityFrom(DamageSource.OUT_OF_WORLD, 100);
+
         } else if (result.typeOfHit == RayTraceResult.Type.BLOCK) {
             this.setDead();
         }
 
         if(this.ticksExisted == 80) {
-            this.setDead();
+            setDead();
         }
 
         if (!this.world.isRemote)
             this.setDead();
     }
 
+
+
     @Override
     protected float getGravityVelocity() {
-        return 0.00001F;
+        return 0.00000F;
     }
 
 

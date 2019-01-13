@@ -1,12 +1,16 @@
 package com.common.items;
 
 import com.Main;
+import com.init.ModBlocks;
 import com.util.MSource;
 import com.common.entity.EntityLaser;
 import com.init.ModItems;
 import com.tabs.InfinityTabs;
 import com.util.IHasModel;
+import com.util.ModConfig;
 import com.util.handlers.SoundsHandler;
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -93,10 +97,15 @@ public class InfinityGauntlet extends Item implements IHasModel {
         if ((entityLiving instanceof EntityPlayer)) {
             EntityPlayer playerIn = (EntityPlayer) entityLiving;
 
-            playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
+            if (playerIn.isSneaking() && ModConfig.Gauntlet.Snap)
+                playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
 
-            if (!playerIn.world.isRemote && playerIn.isSneaking()) {
+            if (!playerIn.world.isRemote && playerIn.isSneaking() && ModConfig.Gauntlet.Snap) {
                 for (Entity targetentity : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(25.0D, 25.0D, 25.0D))) {
+                    Block blk = ModBlocks.ASH_PILE;
+                    BlockPos pos0 = new BlockPos(targetentity.posX, targetentity.posY, targetentity.posZ);
+                    IBlockState state0 = blk.getDefaultState();
+                    entityLiving.world.setBlockState(pos0, state0);
                     targetentity.attackEntityFrom(DamageSource.OUT_OF_WORLD, 100);
                 }
                 EnumHand hand = playerIn.getActiveHand();
@@ -111,7 +120,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
         super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
 
-        if (!worldIn.isRemote) {
+        if (!worldIn.isRemote && (isSelected)) {
             EntityPlayerMP player = (EntityPlayerMP) entityIn;
             if (stack.getItem() == ModItems.INFINITY_GAUNTLET) {
                 if (player.getActivePotionEffect(MobEffects.INSTANT_HEALTH) == null) {
@@ -133,8 +142,8 @@ public class InfinityGauntlet extends Item implements IHasModel {
         if (!worldIn.isRemote && !entityplayer.isSneaking()) {
             Vec3d v3 = entityplayer.getLook(1);
 
-            EntityLaser laser = new EntityLaser(worldIn, entityplayer, 8, new MSource("ray"), new Vec3d(230, 230, 250));
-            laser.shoot(v3.x, v3.y, v3.z, 1.6F, (float) (14 - worldIn.getDifficulty().getDifficultyId() * 4));
+            EntityLaser laser = new EntityLaser(worldIn, entityplayer, 8, new MSource("ray"), new Vec3d(0, 25, 116));
+            laser.shoot(v3.x, v3.y, v3.z, 1.5F, (float) (10 - worldIn.getDifficulty().getDifficultyId() * 4));
             worldIn.spawnEntity(laser);
         }
         if (worldIn.isRemote && !entityplayer.isSneaking()) {
