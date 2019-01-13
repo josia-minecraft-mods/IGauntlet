@@ -1,37 +1,27 @@
 package com.common.items;
 
 import com.Main;
-import com.common.damage.DamageSources;
-import com.common.damage.MSource;
+import com.util.MSource;
 import com.common.entity.EntityLaser;
 import com.init.ModItems;
 import com.tabs.InfinityTabs;
 import com.util.IHasModel;
 import com.util.handlers.SoundsHandler;
-import net.minecraft.client.audio.SoundHandler;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.entity.projectile.EntityArrow;
-import net.minecraft.entity.projectile.EntitySmallFireball;
-import net.minecraft.init.Enchantments;
-import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.event.ForgeEventFactory;
 
 public class InfinityGauntlet extends Item implements IHasModel {
 
@@ -139,7 +129,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
         if (!worldIn.isRemote && !entityplayer.isSneaking()) {
             Vec3d v3 = entityplayer.getLook(1);
 
-            EntityLaser laser = new EntityLaser(worldIn, entityplayer, 8, new MSource("ray"), new Vec3d(0, 1, 0));
+            EntityLaser laser = new EntityLaser(worldIn, entityplayer, 8, new MSource("ray"), new Vec3d(230, 230, 250));
             laser.shoot(v3.x, v3.y, v3.z, 1.6F, (float) (14 - worldIn.getDifficulty().getDifficultyId() * 4));
             worldIn.spawnEntity(laser);
         }

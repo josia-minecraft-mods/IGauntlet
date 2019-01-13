@@ -10,8 +10,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 
-public class RenderLaser extends Render<EntityLaser>
-{
+public class RenderLaser extends Render<EntityLaser> {
     public RenderLaser(RenderManager renderManager) {
         super(renderManager);
     }

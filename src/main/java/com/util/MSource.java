@@ -1,4 +1,4 @@
-package com.common.damage;
+package com.util;
 
 import com.util.Reference;
 import net.minecraft.entity.EntityLivingBase;
