@@ -44,6 +44,10 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
             this.setDead();
         }
 
+        if(result.entityHit.ticksExisted == 300) {
+            this.setDead();
+        }
+
         if (!this.world.isRemote)
             this.setDead();
     }
@@ -81,6 +85,4 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
     public void readSpawnData(ByteBuf additionalData) {
         this.readEntityFromNBT(ByteBufUtils.readTag(additionalData));
     }
-
-
 }
