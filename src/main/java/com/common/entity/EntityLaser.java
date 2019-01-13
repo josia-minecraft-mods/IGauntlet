@@ -33,6 +33,7 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
 
     @Override
     protected void onImpact(RayTraceResult result) {
+
         if (result == null || isDead)
             return;
 
@@ -44,12 +45,8 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
             this.setDead();
         }
 
-        if(this.ticksExisted == 100) {
-            setDead();
-        }
-
-        if(this.height >= 250) {
-            setDead();
+        if(this.ticksExisted == 80) {
+            this.setDead();
         }
 
         if (!this.world.isRemote)
@@ -58,7 +55,7 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
 
     @Override
     protected float getGravityVelocity() {
-        return 0.00000F;
+        return 0.00001F;
     }
 
 

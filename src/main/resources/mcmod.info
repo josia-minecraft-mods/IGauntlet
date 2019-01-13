@@ -1,16 +1,16 @@
 [
-{
-  "modid": "infinity",
-  "name": "IGauntlet Mod",
-  "description": "Example placeholder mod.",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
-  "url": "",
-  "updateUrl": "",
-  "authorList": ["rootheworld,Josia50"],
-  "credits": "Code thanks to Josia50 , Models thanks to rootheworld",
-  "logoFile": "",
-  "screenshots": [],
-  "dependencies": [Forge 1.12.2]
-}
+  {
+    "modid": "infinity",
+    "name": "IGauntlet Mod",
+    "description": "Example placeholder mod.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": ["rootheworld,Josia50"],
+    "credits": "Code thanks to Josia50 , Models thanks to rootheworld",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": ["Forge 1.12.2"]
+  }
 ]
