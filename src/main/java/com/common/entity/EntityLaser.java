@@ -96,7 +96,7 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
 
     @Override
     public void onEntityUpdate() {
-        if(this.ticksExisted == 80) {
+        if(this.ticksExisted == 400) {
             this.setDead();
         }
     }
