@@ -37,6 +37,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
         setRegistryName(name);
         setCreativeTab(InfinityTabs.infinityTabs);
         setMaxStackSize(1);
+        setMaxDamage(4500);
 
         ModItems.ITEMS.add(this);
     }
@@ -104,6 +105,9 @@ public class InfinityGauntlet extends Item implements IHasModel {
                     IBlockState state0 = blk.getDefaultState();
                     entityLiving.world.setBlockState(pos0, state0);
                     targetentity.attackEntityFrom(DamageSource.OUT_OF_WORLD, 100);
+                    if(!playerIn.capabilities.isCreativeMode) {
+                       stack.setItemDamage(stack.getItemDamage() + 1);
+                    }
                 }
 
                 EnumHand hand = playerIn.getActiveHand();
@@ -143,6 +147,10 @@ public class InfinityGauntlet extends Item implements IHasModel {
             EntityLaser laser = new EntityLaser(worldIn, entityplayer, 8, new MSource("ray"), new Vec3d(1, 0, 5));
             laser.shoot(v3.x, v3.y, v3.z, 1.5F, (float) (0 - worldIn.getDifficulty().getDifficultyId() * 0));
             worldIn.spawnEntity(laser);
+            
+            if(!entityplayer.capabilities.isCreativeMode) {
+                stack.setItemDamage(stack.getItemDamage() + 1);
+            }
         }
         if (worldIn.isRemote && !entityplayer.isSneaking() && entityplayer.getHeldItemOffhand().getItem() != ModItems.INFINITY_GAUNTLET) {
             entityplayer.playSound(SoundsHandler.GAUNTLET_HUM, 1, 1);

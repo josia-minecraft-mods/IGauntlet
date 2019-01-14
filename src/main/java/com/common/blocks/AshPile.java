@@ -30,6 +30,7 @@ public class AshPile extends BlockFalling implements IHasModel {
         setSoundType(SoundType.SAND);
         setHardness(0.0F);
         setResistance(0.1F);
+        setLightOpacity(1);
         setCreativeTab(InfinityTabs.infinityTabs);
 
         ModBlocks.BLOCKS.add(this);
