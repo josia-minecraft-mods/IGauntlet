@@ -1,5 +1,6 @@
-package com.util;
+package com.config;
 
+import com.util.Reference;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
@@ -19,8 +20,10 @@ public class ModConfig {
         @Config.Comment("Shift + left Click to kill Entities in range")
         public boolean Snap = true;
 
-        @Config.Comment( "The range around you that using 'snap' will be killed.")
+        @Config.Comment("The range around you that using 'snap' will be killed.")
+        @Config.RangeInt(min = 5, max = 100)
         public int ExtensionRange = 25;
+
 
     }
 
