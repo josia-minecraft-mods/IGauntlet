@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 
 public class AshPile extends BlockBase {
 
-    public static final AxisAlignedBB DUST_AABB = new AxisAlignedBB(0.3125,0,0.3125,0.6875,0.1875 / 2,0.6875);
+    public static final AxisAlignedBB DUST_AABB = new AxisAlignedBB(0.296875,0,0.296875,0.6900,0.1875 / 2,0.6900);
 
     public AshPile(String name, Material material)
     {
