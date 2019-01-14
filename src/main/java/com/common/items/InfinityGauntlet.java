@@ -8,16 +8,18 @@ import com.common.entity.EntityLaser;
 import com.init.ModItems;
 import com.tabs.InfinityTabs;
 import com.util.IHasModel;
-import com.util.ModConfig;
+import com.config.ModConfig;
 import com.util.handlers.SoundsHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.entity.player.PlayerCapabilities;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
@@ -41,6 +43,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
 
         ModItems.ITEMS.add(this);
     }
+
 
     public EnumAction getItemUseAction(ItemStack stack) {
         return EnumAction.BOW;
@@ -85,8 +88,9 @@ public class InfinityGauntlet extends Item implements IHasModel {
         playerIn.setActiveHand(handIn);
         if (playerIn.getHeldItemOffhand().getItem() == ModItems.INFINITY_GAUNTLET) {
             Minecraft.getMinecraft().displayGuiScreen(new GuiGauntlet());
-            playerIn.sendStatusMessage(new TextComponentString("GUI"), false);
+            playerIn.sendStatusMessage(new TextComponentString("GUI"), true);
         }
+
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
 
@@ -94,8 +98,8 @@ public class InfinityGauntlet extends Item implements IHasModel {
     public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
         if ((entityLiving instanceof EntityPlayer)) {
             EntityPlayer playerIn = (EntityPlayer) entityLiving;
-
             int extensionrange = ModConfig.Gauntlet.ExtensionRange;
+
 
             if (playerIn.isSneaking() && ModConfig.Gauntlet.Snap)
                 playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
