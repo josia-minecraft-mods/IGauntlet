@@ -147,7 +147,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
             Vec3d v3 = entityplayer.getLook(1);
 
             EntityLaser laser = new EntityLaser(worldIn, entityplayer, 8, new MSource("ray"), new Vec3d(1, 0, 5));
-            laser.shoot(v3.x, v3.y, v3.z, 1.5F, (float) (1 - worldIn.getDifficulty().getDifficultyId() * 1));
+            laser.shoot(v3.x, v3.y, v3.z, 1.5F, (float) (0 - worldIn.getDifficulty().getDifficultyId() * 0));
             worldIn.spawnEntity(laser);
         }
         if (worldIn.isRemote && !entityplayer.isSneaking()) {
