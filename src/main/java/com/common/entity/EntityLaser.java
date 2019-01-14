@@ -38,7 +38,7 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
     @Override
     protected void onImpact(RayTraceResult result) {
 
-        if (result == null || isDead)
+        if (result == null || isDead || world.isRemote)
             return;
 
         if (result.typeOfHit == RayTraceResult.Type.ENTITY) {
@@ -53,10 +53,6 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
 
         } else if (result.typeOfHit == RayTraceResult.Type.BLOCK) {
             this.setDead();
-        }
-
-        if (this.ticksExisted == 80) {
-            setDead();
         }
 
         if (!this.world.isRemote)
@@ -96,5 +92,12 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
     @Override
     public void readSpawnData(ByteBuf additionalData) {
         this.readEntityFromNBT(ByteBufUtils.readTag(additionalData));
+    }
+
+    @Override
+    public void onEntityUpdate() {
+        if(this.ticksExisted == 80) {
+            this.setDead();
+        }
     }
 }

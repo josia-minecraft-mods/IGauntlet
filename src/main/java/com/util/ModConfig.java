@@ -19,6 +19,9 @@ public class ModConfig {
         @Config.Comment("Shift + left Click to kill Entities in range")
         public boolean Snap = true;
 
+        @Config.Comment( "The range around you that using 'snap' will be killed.")
+        public int ExtensionRange = 25;
+
     }
 
     @Mod.EventBusSubscriber(modid = Reference.MODID)

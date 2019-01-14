@@ -95,18 +95,20 @@ public class InfinityGauntlet extends Item implements IHasModel {
         if ((entityLiving instanceof EntityPlayer)) {
             EntityPlayer playerIn = (EntityPlayer) entityLiving;
 
+            int extensionrange = ModConfig.Gauntlet.ExtensionRange;
+
             if (playerIn.isSneaking() && ModConfig.Gauntlet.Snap)
                 playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
 
             if (!playerIn.world.isRemote && playerIn.isSneaking() && ModConfig.Gauntlet.Snap) {
-                for (Entity targetentity : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(25.0D, 25.0D, 25.0D))) {
+                for (Entity targetentity : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extensionrange, extensionrange, extensionrange))) {
                     Block blk = ModBlocks.ASH_PILE;
                     BlockPos pos0 = new BlockPos(targetentity.posX, targetentity.posY, targetentity.posZ);
                     IBlockState state0 = blk.getDefaultState();
                     entityLiving.world.setBlockState(pos0, state0);
                     targetentity.attackEntityFrom(DamageSource.OUT_OF_WORLD, 100);
-                    if(!playerIn.capabilities.isCreativeMode) {
-                       stack.setItemDamage(stack.getItemDamage() + 1);
+                    if (!playerIn.capabilities.isCreativeMode) {
+                        stack.setItemDamage(stack.getItemDamage() + 1);
                     }
                 }
 
@@ -147,8 +149,8 @@ public class InfinityGauntlet extends Item implements IHasModel {
             EntityLaser laser = new EntityLaser(worldIn, entityplayer, 8, new MSource("ray"), new Vec3d(1, 0, 5));
             laser.shoot(v3.x, v3.y, v3.z, 1.5F, (float) (0 - worldIn.getDifficulty().getDifficultyId() * 0));
             worldIn.spawnEntity(laser);
-            
-            if(!entityplayer.capabilities.isCreativeMode) {
+
+            if (!entityplayer.capabilities.isCreativeMode) {
                 stack.setItemDamage(stack.getItemDamage() + 1);
             }
         }
