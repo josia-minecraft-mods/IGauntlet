@@ -13,7 +13,7 @@ public class MSource extends DamageSource {
 
     public MSource(String name, boolean blockable) {
         super(name);
-        this.message = "damagesrc."+ Reference.MODID+"." + name;
+        this.message = "damagesrc." + Reference.MODID + "." + name;
         this.blockable = blockable;
     }
 

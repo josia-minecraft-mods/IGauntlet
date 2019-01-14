@@ -14,5 +14,4 @@ public class ModBlocks {
 
     public static final Block ASH_PILE = new AshPile("ash_pile", Material.SAND);
 
-
 }

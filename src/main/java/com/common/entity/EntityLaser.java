@@ -46,7 +46,7 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
 
             result.entityHit.performHurtAnimation();
             Block blk = ModBlocks.ASH_PILE;
-            BlockPos pos0 = new BlockPos(result.entityHit.posX,result.entityHit.posY, result.entityHit.posZ);
+            BlockPos pos0 = new BlockPos(result.entityHit.posX, result.entityHit.posY, result.entityHit.posZ);
             IBlockState state0 = blk.getDefaultState();
             world.setBlockState(pos0, state0);
             result.entityHit.attackEntityFrom(DamageSource.OUT_OF_WORLD, 100);
@@ -55,14 +55,13 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
             this.setDead();
         }
 
-        if(this.ticksExisted == 80) {
+        if (this.ticksExisted == 80) {
             setDead();
         }
 
         if (!this.world.isRemote)
             this.setDead();
     }
-
 
 
     @Override

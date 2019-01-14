@@ -10,5 +10,5 @@ public interface IProxy {
 
     void init(FMLInitializationEvent e);
 
-    void registerItemRenderer(Item item , int meta, String id);
+    void registerItemRenderer(Item item, int meta, String id);
 }
