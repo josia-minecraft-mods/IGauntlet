@@ -1,6 +1,7 @@
 package com.common.items;
 
 import com.Main;
+import com.client.gui.GuiGauntlet;
 import com.init.ModBlocks;
 import com.util.MSource;
 import com.common.entity.EntityLaser;
@@ -11,6 +12,7 @@ import com.util.ModConfig;
 import com.util.handlers.SoundsHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -26,6 +28,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
 
 public class InfinityGauntlet extends Item implements IHasModel {
 
@@ -57,6 +60,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
     public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
         return false;
     }
+
 
     @Override
     public boolean isFull3D() {
