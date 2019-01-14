@@ -11,15 +11,13 @@ import java.io.IOException;
 
 public class GuiGauntlet extends GuiScreen {
 
-    public BlockPos pos = BlockPos.ORIGIN;
 
     static final int GUI_WIDTH = 256;
     static final int GUI_HEIGHT = 256;
 
     public static final ResourceLocation TEXTURE = new ResourceLocation(Reference.MODID, "textures/gui/gui_gauntlet.png");
 
-    public GuiGauntlet(BlockPos pos) {
-        this.pos = pos;
+    public GuiGauntlet() {
     }
 
     @Override

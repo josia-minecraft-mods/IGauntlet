@@ -26,13 +26,11 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.common.MinecraftForge;
 
 public class InfinityGauntlet extends Item implements IHasModel {
-
-    private static final String TPMOB = "8285731f-56a3-4636-95b6-d9b02c55b9f7";
 
     public InfinityGauntlet(String name) {
         setUnlocalizedName(name);
@@ -74,15 +72,6 @@ public class InfinityGauntlet extends Item implements IHasModel {
 
     @Override
     public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity) {
-        if (player.world.isRemote) {
-            player.playSound(SoundsHandler.GAUNTLET_HUM, 1, 1);
-        } else {
-            if (!entity.getUniqueID().equals(TPMOB)) {
-                entity.setDead();
-            } else {
-                entity.setPosition(player.posX, 0, player.posZ);
-            }
-        }
         return super.onLeftClickEntity(stack, player, entity);
     }
 
@@ -93,6 +82,10 @@ public class InfinityGauntlet extends Item implements IHasModel {
 
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
         playerIn.setActiveHand(handIn);
+        if (playerIn.getHeldItemOffhand().getItem() == ModItems.INFINITY_GAUNTLET) {
+            Minecraft.getMinecraft().displayGuiScreen(new GuiGauntlet());
+            playerIn.sendStatusMessage(new TextComponentString("GUI"), false);
+        }
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
 
@@ -112,6 +105,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
                     entityLiving.world.setBlockState(pos0, state0);
                     targetentity.attackEntityFrom(DamageSource.OUT_OF_WORLD, 100);
                 }
+
                 EnumHand hand = playerIn.getActiveHand();
                 playerIn.setActiveHand(hand);
             }
@@ -143,14 +137,14 @@ public class InfinityGauntlet extends Item implements IHasModel {
     public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
         EntityPlayer entityplayer = (EntityPlayer) entityLiving;
 
-        if (!worldIn.isRemote && !entityplayer.isSneaking()) {
+        if (!worldIn.isRemote && !entityplayer.isSneaking() && entityplayer.getHeldItemOffhand().getItem() != ModItems.INFINITY_GAUNTLET) {
             Vec3d v3 = entityplayer.getLook(1);
 
             EntityLaser laser = new EntityLaser(worldIn, entityplayer, 8, new MSource("ray"), new Vec3d(1, 0, 5));
             laser.shoot(v3.x, v3.y, v3.z, 1.5F, (float) (0 - worldIn.getDifficulty().getDifficultyId() * 0));
             worldIn.spawnEntity(laser);
         }
-        if (worldIn.isRemote && !entityplayer.isSneaking()) {
+        if (worldIn.isRemote && !entityplayer.isSneaking() && entityplayer.getHeldItemOffhand().getItem() != ModItems.INFINITY_GAUNTLET) {
             entityplayer.playSound(SoundsHandler.GAUNTLET_HUM, 1, 1);
         }
         super.onPlayerStoppedUsing(stack, worldIn, entityLiving, timeLeft);
