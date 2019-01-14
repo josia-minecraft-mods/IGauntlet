@@ -25,6 +25,11 @@ public class AshPile extends BlockBase {
     }
 
     @Override
+    public boolean isNormalCube(IBlockState state, IBlockAccess world, BlockPos pos) {
+        return false;
+    }
+
+    @Override
     public boolean isFullBlock(IBlockState state) {
         return false;
     }
@@ -36,6 +41,12 @@ public class AshPile extends BlockBase {
 
     @Override
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+        return DUST_AABB;
+    }
+
+    @Nullable
+    @Override
+    public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
         return DUST_AABB;
     }
 }
