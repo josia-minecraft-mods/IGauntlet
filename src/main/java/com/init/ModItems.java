@@ -1,12 +1,7 @@
 package com.init;
-
-import com.common.items.mindstone;
-import com.common.items.realitystone;
-import com.common.items.timestone;
-import com.common.items.spacestone;
-import com.common.items.powerstone;
-import com.common.items.soulstone;
-import com.common.items.InfinityGauntlet;
+;
+import com.common.items.*;
+import com.common.items.stones.*;
 import net.minecraft.item.*;
 
 import java.util.ArrayList;
@@ -18,17 +13,17 @@ public class ModItems {
     //Items
     public static final Item INFINITY_GAUNTLET = new InfinityGauntlet("infinity_gauntlet");
 
-    public static final Item MINDSTONE = new mindstone("mind_stone");
+    public static final Item MINDSTONE = new MindStone("mind_stone");
 
-    public static final Item REALITYSTONE = new realitystone("reality_stone");
+    public static final Item REALITYSTONE = new RealityStone("reality_stone");
 
-    public static final Item TIMESTONE = new timestone("time_stone");
+    public static final Item TIMESTONE = new TimeStone("time_stone");
 
-    public static final Item SPACESTONE = new spacestone("space_stone");
+    public static final Item SPACESTONE = new SpaceStone("space_stone");
 
-    public static final Item POWERSTONE = new powerstone("power_stone");
+    public static final Item POWERSTONE = new PowerStone("power_stone");
 
-    public static final Item SOULSTONE = new soulstone("soul_stone");
+    public static final Item SOULSTONE = new SoulStone("soul_stone");
 
 }
 

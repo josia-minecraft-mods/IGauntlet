@@ -1,4 +1,4 @@
-package com.common.items;
+package com.common.items.stones;
 
 import com.Main;
 import net.minecraft.item.Item;
@@ -8,20 +8,20 @@ import com.init.ModItems;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 
-public class soulstone extends Item implements IHasModel {
+public class MindStone extends Item implements IHasModel {
 
-    public soulstone (String name) {
+    public MindStone(String name) {
         setUnlocalizedName(name);
         setRegistryName(name);
         setCreativeTab(InfinityTabs.infinityTabs);
-        setMaxStackSize(64);
-        setMaxDamage(5);
+        setMaxStackSize(1);
+        setMaxDamage(4500);
 
         ModItems.ITEMS.add(this);
     }
 
     public String getItemStackDisplayName(ItemStack stack) {
-        return TextFormatting.BOLD + "Soul Stone";
+        return TextFormatting.BOLD + "Mind Stone";
     }
 
     @Override

@@ -74,6 +74,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
         return super.setFull3D();
     }
 
+
     @Override
     public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity) {
         return super.onLeftClickEntity(stack, player, entity);
@@ -90,14 +91,15 @@ public class InfinityGauntlet extends Item implements IHasModel {
             Minecraft.getMinecraft().displayGuiScreen(new GuiGauntlet());
             playerIn.sendStatusMessage(new TextComponentString("GUI"), true);
         }
-
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
+
 
     @Override
     public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
         if ((entityLiving instanceof EntityPlayer)) {
             EntityPlayer playerIn = (EntityPlayer) entityLiving;
+
             int extensionrange = ModConfig.Gauntlet.ExtensionRange;
 
 
@@ -163,6 +165,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
         }
         super.onPlayerStoppedUsing(stack, worldIn, entityLiving, timeLeft);
     }
+
 
     @Override
     public void registerModels() {

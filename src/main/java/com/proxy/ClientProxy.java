@@ -1,19 +1,10 @@
 package com.proxy;
 
-import com.common.items.InfinityGauntlet;
-import com.common.items.mindstone;
-import com.common.items.realitystone;
-import com.common.items.timestone;
-import com.common.items.spacestone;
-import com.common.items.powerstone;
-import com.common.items.soulstone;
 import com.init.ModEntities;
 import com.util.handlers.RenderHandler;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
