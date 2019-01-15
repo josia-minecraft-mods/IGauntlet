@@ -24,6 +24,10 @@ public class ModConfig {
         @Config.RangeInt(min = 5, max = 100)
         public int ExtensionRange = 25;
 
+        @Config.Comment("Cooldown in seconds for snap")
+        @Config.RangeInt(min = 5, max = 100)
+        public int SnapCooldown = 25;
+
 
     }
 

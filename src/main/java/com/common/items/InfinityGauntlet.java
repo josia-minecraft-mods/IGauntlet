@@ -44,6 +44,9 @@ public class InfinityGauntlet extends Item implements IHasModel {
         ModItems.ITEMS.add(this);
     }
 
+    int SLOWDOWN = ModConfig.Gauntlet.SnapCooldown * 20;
+    int SLOWTIMER = 0;
+
 
     public EnumAction getItemUseAction(ItemStack stack) {
         return EnumAction.BOW;
@@ -106,7 +109,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
             if (playerIn.isSneaking() && ModConfig.Gauntlet.Snap)
                 playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
 
-            if (!playerIn.world.isRemote && playerIn.isSneaking() && ModConfig.Gauntlet.Snap) {
+            if (!playerIn.world.isRemote && playerIn.isSneaking() && ModConfig.Gauntlet.Snap && SLOWDOWN == SLOWTIMER) {
                 for (Entity targetentity : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extensionrange, extensionrange, extensionrange))) {
                     Block blk = ModBlocks.ASH_PILE;
                     BlockPos pos0 = new BlockPos(targetentity.posX, targetentity.posY, targetentity.posZ);
@@ -130,6 +133,8 @@ public class InfinityGauntlet extends Item implements IHasModel {
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
         super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
 
+
+
         if (!worldIn.isRemote && (isSelected)) {
             EntityPlayerMP player = (EntityPlayerMP) entityIn;
             if (stack.getItem() == ModItems.INFINITY_GAUNTLET) {
@@ -138,6 +143,9 @@ public class InfinityGauntlet extends Item implements IHasModel {
                 }
             }
         }
+        SLOWTIMER++;
+
+
     }
 
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
