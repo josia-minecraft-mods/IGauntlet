@@ -31,7 +31,6 @@ public class AshPile extends BlockFalling implements IHasModel {
         setHardness(0.0F);
         setResistance(0.1F);
         setLightOpacity(1);
-        setCreativeTab(InfinityTabs.infinityTabs);
 
         ModBlocks.BLOCKS.add(this);
         ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));

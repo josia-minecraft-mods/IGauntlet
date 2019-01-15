@@ -1,6 +1,9 @@
 //Items
 item.infinity_gauntlet.name=Infinity Gauntlet
 
+//Items
+item.mindstone.name=Mind Stone
+
 // Tab
 itemGroup.infinityitems=Infinity Tab
 

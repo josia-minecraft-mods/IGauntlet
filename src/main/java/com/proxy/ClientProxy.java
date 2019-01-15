@@ -1,6 +1,12 @@
 package com.proxy;
 
 import com.common.items.InfinityGauntlet;
+import com.common.items.mindstone;
+import com.common.items.realitystone;
+import com.common.items.timestone;
+import com.common.items.spacestone;
+import com.common.items.powerstone;
+import com.common.items.soulstone;
 import com.init.ModEntities;
 import com.util.handlers.RenderHandler;
 import net.minecraft.client.Minecraft;
