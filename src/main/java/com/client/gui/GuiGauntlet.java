@@ -18,9 +18,7 @@ public class GuiGauntlet extends GuiScreen {
     static final int GUI_WIDTH = 256;
     static final int GUI_HEIGHT = 256;
 
-    GuiButton button1;
-
-    final int BUTTON1 = 0;
+    GuiButton button1; GuiButton button2; GuiButton button3; GuiButton button4; GuiButton button5; GuiButton button6;
 
     public static final ResourceLocation TEXTURE = new ResourceLocation(Reference.MODID, "textures/gui/gui_gauntlet.png");
 
@@ -51,6 +49,11 @@ public class GuiGauntlet extends GuiScreen {
         buttonList.clear();
 
         buttonList.add(button1 = new GuiButton(0, 400, 150,50,60, ""));
+       // buttonList.add(button2 = new GuiButton(1, 400, 150,50,60, ""));
+       // buttonList.add(button3 = new GuiButton(2, 400, 150,50,60, ""));
+       // buttonList.add(button4 = new GuiButton(3, 400, 150,50,60, ""));
+       // buttonList.add(button5 = new GuiButton(4, 400, 150,50,60, ""));
+       // buttonList.add(button6 = new GuiButton(5, 400, 150,50,60, ""));
 
 
         super.initGui();
@@ -74,7 +77,22 @@ public class GuiGauntlet extends GuiScreen {
         switch (button.id) {
 
             case 0:
-               STONE = 3;
+               STONE = 1;
+
+            case 1:
+                STONE = 2;
+
+            case 2:
+                STONE = 3;
+
+            case 3:
+                STONE = 4;
+
+            case 4:
+                STONE = 5;
+
+            case 5:
+                STONE = 6;
         }
 
         Minecraft.getMinecraft().displayGuiScreen(null);
