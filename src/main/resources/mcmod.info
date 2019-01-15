@@ -4,7 +4,7 @@
     "name": "IGauntlet Mod",
     "description": " Control Reality, Space, Power, Time and Mind all in minecraft! ",
     "version": "${version}",
-    "mcversion": "${mcversion}",
+    "mcversion": "1.12.2",
     "url": " https://discord.gg/nGgnDxW ",
     "updateUrl": "",
     "authorList": ["rootheworld,Josia50"],
