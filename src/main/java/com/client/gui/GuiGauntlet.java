@@ -72,7 +72,6 @@ public class GuiGauntlet extends GuiScreen {
 
             case 0:
                STONE = 1;
-               sendChatMessage("Clicked Soul Stone");
         }
 
         Minecraft.getMinecraft().displayGuiScreen(null);
