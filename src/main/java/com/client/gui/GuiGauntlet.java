@@ -49,7 +49,10 @@ public class GuiGauntlet extends GuiScreen {
     public void initGui()
     {
         buttonList.clear();
+
         buttonList.add(button1 = new GuiButton(0, 400, 150,50,60, ""));
+
+
         super.initGui();
     }
 
@@ -71,7 +74,7 @@ public class GuiGauntlet extends GuiScreen {
         switch (button.id) {
 
             case 0:
-               STONE = 1;
+               STONE = 3;
         }
 
         Minecraft.getMinecraft().displayGuiScreen(null);
