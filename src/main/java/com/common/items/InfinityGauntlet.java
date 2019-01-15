@@ -27,7 +27,6 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
@@ -44,8 +43,6 @@ public class InfinityGauntlet extends Item implements IHasModel {
         ModItems.ITEMS.add(this);
     }
 
-
-    int SLOWDOWN = ModConfig.Gauntlet.SnapCooldown * 20;
     int REALITY = 1; int MIND = 2; int POWER = 3; int SPACE = 4; int SOUL = 5; int TIME = 6;
 
 
@@ -77,10 +74,6 @@ public class InfinityGauntlet extends Item implements IHasModel {
         return super.setFull3D();
     }
 
-    @Override
-    public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity) {
-        return super.onLeftClickEntity(stack, player, entity);
-    }
 
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
@@ -92,17 +85,41 @@ public class InfinityGauntlet extends Item implements IHasModel {
 
         if (playerIn.getHeldItemOffhand().getItem() == ModItems.INFINITY_GAUNTLET) {
             Minecraft.getMinecraft().displayGuiScreen(new GuiGauntlet());
-            playerIn.sendStatusMessage(new TextComponentString("GUI"), true);
         }
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
 
+    @Override
+    public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
+        EntityPlayer entityplayer = (EntityPlayer) entityLiving;
+        NBTTagCompound nbt = stack.getTagCompound();
+        int current = nbt.getInteger("currentstone");
+
+        if (current == POWER) {
+            if (!worldIn.isRemote && !entityplayer.isSneaking() && entityplayer.getHeldItemOffhand().getItem() != ModItems.INFINITY_GAUNTLET) {
+                Vec3d v3 = entityplayer.getLook(1);
+
+                EntityLaser laser = new EntityLaser(worldIn, entityplayer, 8, new MSource("ray"), new Vec3d(1, 0, 5));
+                laser.shoot(v3.x, v3.y, v3.z, 1.5F, (float) (0 - worldIn.getDifficulty().getDifficultyId() * 0));
+                worldIn.spawnEntity(laser);
+
+                if (!entityplayer.capabilities.isCreativeMode) {
+                    stack.setItemDamage(stack.getItemDamage() + 1);
+                }
+            }
+            if (worldIn.isRemote && !entityplayer.isSneaking() && entityplayer.getHeldItemOffhand().getItem() != ModItems.INFINITY_GAUNTLET) {
+                entityplayer.playSound(SoundsHandler.GAUNTLET_HUM, 1, 1);
+            }
+        }
+
+        super.onPlayerStoppedUsing(stack, worldIn, entityLiving, timeLeft);
+    }
 
     @Override
     public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
         if ((entityLiving instanceof EntityPlayer)) {
-            EntityPlayer playerIn = (EntityPlayer) entityLiving;
 
+            EntityPlayer playerIn = (EntityPlayer) entityLiving;
             int extensionrange = ModConfig.Gauntlet.ExtensionRange;
             NBTTagCompound nbt = stack.getTagCompound();
             int current = nbt.getInteger("currentstone");
@@ -112,19 +129,19 @@ public class InfinityGauntlet extends Item implements IHasModel {
                     playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
                 }
 
-            if (!playerIn.world.isRemote && playerIn.isSneaking() && ModConfig.Gauntlet.Snap) {
-                for (Entity targetentity : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extensionrange, extensionrange, extensionrange))) {
-                    Block blk = ModBlocks.ASH_PILE;
-                    BlockPos pos0 = new BlockPos(targetentity.posX, targetentity.posY, targetentity.posZ);
-                    IBlockState state0 = blk.getDefaultState();
-                    entityLiving.world.setBlockState(pos0, state0);
-                    targetentity.attackEntityFrom(DamageSource.OUT_OF_WORLD, 100);
-                    if (!playerIn.capabilities.isCreativeMode) {
-                        stack.setItemDamage(stack.getItemDamage() + 1);
+                if (!playerIn.world.isRemote && playerIn.isSneaking() && ModConfig.Gauntlet.Snap) {
+                    for (Entity targetentity : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extensionrange, extensionrange, extensionrange))) {
+                        Block blk = ModBlocks.ASH_PILE;
+                        BlockPos pos0 = new BlockPos(targetentity.posX, targetentity.posY, targetentity.posZ);
+                        IBlockState state0 = blk.getDefaultState();
+                        entityLiving.world.setBlockState(pos0, state0);
+                        targetentity.attackEntityFrom(DamageSource.OUT_OF_WORLD, 100);
+                        if (!playerIn.capabilities.isCreativeMode) {
+                            stack.setItemDamage(stack.getItemDamage() + 1);
+                        }
                     }
                 }
             }
-        }
 
             EnumHand hand = playerIn.getActiveHand();
             playerIn.setActiveHand(hand);
@@ -132,6 +149,14 @@ public class InfinityGauntlet extends Item implements IHasModel {
         return super.onEntitySwing(entityLiving, stack);
     }
 
+    @Override
+    public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity) {
+        return super.onLeftClickEntity(stack, player, entity);
+    }
+
+    public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
+        return super.onItemUseFinish(stack, worldIn, entityLiving);
+    }
 
     @Override
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
@@ -180,38 +205,6 @@ public class InfinityGauntlet extends Item implements IHasModel {
             stack.setTagCompound(nbt);
         }
     }
-
-    public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
-        return super.onItemUseFinish(stack, worldIn, entityLiving);
-    }
-
-
-    @Override
-    public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-        EntityPlayer entityplayer = (EntityPlayer) entityLiving;
-        NBTTagCompound nbt = stack.getTagCompound();
-        int current = nbt.getInteger("currentstone");
-
-        if (current == POWER) {
-            if (!worldIn.isRemote && !entityplayer.isSneaking() && entityplayer.getHeldItemOffhand().getItem() != ModItems.INFINITY_GAUNTLET) {
-                Vec3d v3 = entityplayer.getLook(1);
-
-                EntityLaser laser = new EntityLaser(worldIn, entityplayer, 8, new MSource("ray"), new Vec3d(1, 0, 5));
-                laser.shoot(v3.x, v3.y, v3.z, 1.5F, (float) (0 - worldIn.getDifficulty().getDifficultyId() * 0));
-                worldIn.spawnEntity(laser);
-
-                if (!entityplayer.capabilities.isCreativeMode) {
-                    stack.setItemDamage(stack.getItemDamage() + 1);
-                }
-            }
-        if (worldIn.isRemote && !entityplayer.isSneaking() && entityplayer.getHeldItemOffhand().getItem() != ModItems.INFINITY_GAUNTLET) {
-            entityplayer.playSound(SoundsHandler.GAUNTLET_HUM, 1, 1);
-        }
-    }
-
-        super.onPlayerStoppedUsing(stack, worldIn, entityLiving, timeLeft);
-    }
-
 
 
     @Override
