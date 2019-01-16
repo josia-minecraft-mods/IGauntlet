@@ -120,7 +120,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
         if ((entityLiving instanceof EntityPlayer)) {
 
             EntityPlayer playerIn = (EntityPlayer) entityLiving;
-            int extensionrange = ModConfig.Gauntlet.ExtensionRange;
+            int extend = ModConfig.Gauntlet.ExtensionRange;
             NBTTagCompound nbt = stack.getTagCompound();
             int current = nbt.getInteger("currentstone");
 
@@ -130,7 +130,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
                 }
 
                 if (!playerIn.world.isRemote && playerIn.isSneaking() && ModConfig.Gauntlet.Snap) {
-                    for (Entity targetentity : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extensionrange, extensionrange, extensionrange))) {
+                    for (Entity targetentity : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extend, extend, extend))) {
                         Block blk = ModBlocks.ASH_PILE;
                         BlockPos pos0 = new BlockPos(targetentity.posX, targetentity.posY, targetentity.posZ);
                         IBlockState state0 = blk.getDefaultState();
