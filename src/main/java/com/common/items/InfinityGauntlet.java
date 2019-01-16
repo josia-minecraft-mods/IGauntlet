@@ -43,7 +43,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
         ModItems.ITEMS.add(this);
     }
 
-    int REALITY = 1; int MIND = 2; int POWER = 3; int SPACE = 4; int SOUL = 5; int TIME = 6;
+    int MIND = 1; int TIME = 2; int SOUL = 3; int SPACE = 4; int REALITY = 5; int POWER = 6;
 
 
     public EnumAction getItemUseAction(ItemStack stack) {
@@ -83,7 +83,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
         playerIn.setActiveHand(handIn);
 
-        if (playerIn.getHeldItemOffhand().getItem() == ModItems.INFINITY_GAUNTLET) {
+        if (worldIn.isRemote && playerIn.getHeldItemOffhand().getItem() == ModItems.INFINITY_GAUNTLET) {
             Minecraft.getMinecraft().displayGuiScreen(new GuiGauntlet());
         }
         return super.onItemRightClick(worldIn, playerIn, handIn);
@@ -178,29 +178,28 @@ public class InfinityGauntlet extends Item implements IHasModel {
                 nbt = new NBTTagCompound();
             }
 
-            if(GuiGauntlet.STONE == REALITY) {
-                nbt.setInteger("currentstone", 1);
+            if (GuiGauntlet.STONE == MIND) {
+                nbt.setInteger("currentstone", MIND);
             }
 
-            if(GuiGauntlet.STONE == MIND) {
-                nbt.setInteger("currentstone", 2);
-
+            if (GuiGauntlet.STONE == TIME) {
+                nbt.setInteger("currentstone", TIME);
             }
 
-            if(GuiGauntlet.STONE == POWER) {
-                nbt.setInteger("currentstone", 3);
+            if (GuiGauntlet.STONE == SOUL) {
+                nbt.setInteger("currentstone", SOUL);
             }
 
-            if(GuiGauntlet.STONE == SPACE) {
-                nbt.setInteger("currentstone", 4);
+            if (GuiGauntlet.STONE == SPACE) {
+                nbt.setInteger("currentstone", SPACE);
             }
 
-            if(GuiGauntlet.STONE == SOUL) {
-                nbt.setInteger("currentstone", 5);
+            if (GuiGauntlet.STONE == REALITY) {
+                nbt.setInteger("currentstone", REALITY);
             }
 
-            if(GuiGauntlet.STONE == TIME) {
-                nbt.setInteger("currentstone", 6);
+            if (GuiGauntlet.STONE == POWER) {
+                nbt.setInteger("currentstone", POWER);
             }
             stack.setTagCompound(nbt);
         }
