@@ -11,7 +11,6 @@ import net.minecraft.util.text.TextFormatting;
 public class MindStone extends Item implements IHasModel {
 
     public MindStone(String name) {
-        setUnlocalizedName(name);
         setRegistryName(name);
         setCreativeTab(InfinityTabs.infinityTabs);
         setMaxStackSize(1);

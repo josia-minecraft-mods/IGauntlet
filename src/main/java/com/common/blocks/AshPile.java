@@ -29,7 +29,6 @@ public class AshPile extends BlockFalling implements IHasModel {
     public AshPile(String name, Material material)
     {
         super(material);
-        setUnlocalizedName(name);
         setRegistryName(name);
         setSoundType(SoundType.SAND);
         setHardness(0.0F);
@@ -75,4 +74,6 @@ public class AshPile extends BlockFalling implements IHasModel {
     {
         Main.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
     }
+
+
 }
