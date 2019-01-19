@@ -35,7 +35,6 @@ import net.minecraft.world.World;
 public class InfinityGauntlet extends Item implements IHasModel {
 
     public InfinityGauntlet(String name) {
-        setUnlocalizedName(name);
         setRegistryName(name);
         setCreativeTab(InfinityTabs.infinityTabs);
         setMaxStackSize(1);
@@ -84,7 +83,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
         playerIn.setActiveHand(handIn);
 
-        if (worldIn.isRemote && playerIn.getHeldItemOffhand().getItem() == ModItems.INFINITY_GAUNTLET) {
+        if (!worldIn.isRemote && playerIn.getHeldItemOffhand().getItem() == ModItems.INFINITY_GAUNTLET) {
             Minecraft.getMinecraft().displayGuiScreen(new GuiGauntlet());
         }
         return super.onItemRightClick(worldIn, playerIn, handIn);
@@ -101,7 +100,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
                 Vec3d v3 = entityplayer.getLook(1);
 
                 EntityLaser laser = new EntityLaser(worldIn, entityplayer, 8, new MSource("ray"), new Vec3d(1, 0, 5));
-                laser.shoot(v3.x, v3.y, v3.z, 1.5F, (float) (0 - worldIn.getDifficulty().getDifficultyId() * 0));
+                laser.shoot(v3.x, v3.y, v3.z, 1.5F, (float) (0 - worldIn.getDifficulty().getId() * 0));
                 worldIn.spawnEntity(laser);
 
                 if (!entityplayer.capabilities.isCreativeMode) {
@@ -175,7 +174,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
 
             NBTTagCompound nbt = stack.getTagCompound();
 
-        if (worldIn.isRemote && stack.getItem() instanceof InfinityGauntlet) {
+        if (!worldIn.isRemote && stack.getItem() instanceof InfinityGauntlet) {
             if (nbt == null) {
                 nbt = new NBTTagCompound();
             }

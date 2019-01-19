@@ -11,7 +11,6 @@ import net.minecraft.util.text.TextFormatting;
 public class SoulStone extends Item implements IHasModel {
 
     public SoulStone(String name) {
-        setUnlocalizedName(name);
         setRegistryName(name);
         setCreativeTab(InfinityTabs.infinityTabs);
         setMaxStackSize(1);

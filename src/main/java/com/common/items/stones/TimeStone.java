@@ -11,7 +11,6 @@ import net.minecraft.util.text.TextFormatting;
 public class TimeStone extends Item implements IHasModel {
 
     public TimeStone(String name) {
-        setUnlocalizedName(name);
         setRegistryName(name);
         setCreativeTab(InfinityTabs.infinityTabs);
         setMaxStackSize(1);
