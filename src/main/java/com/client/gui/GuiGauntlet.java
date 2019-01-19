@@ -1,13 +1,11 @@
 package com.client.gui;
 
-import com.common.items.InfinityGauntlet;
 import com.config.ModConfig;
 import com.util.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 
 import java.io.IOException;
@@ -68,13 +66,21 @@ public class GuiGauntlet extends GuiScreen {
     public void initGui() {
         buttonList.clear();
 
-            buttonList.add(button1 = new ButtonStones(0, (width/2) - 100, 150, " Mind"));
-            buttonList.add(button2 = new ButtonStones(1, 510, 150, "Time"));
+        if(ModConfig.Gauntlet.GUITEXT) {
+            buttonList.add(button1 = new ButtonStones(0, (width / 2) - 80, (height / 2) - 105, " Mind"));
+            buttonList.add(button2 = new ButtonStones(1, (width / 2) + 30, (height / 2) - 105, "Time"));
             buttonList.add(button3 = new ButtonStones(2, 532, 245, "Soul"));
             buttonList.add(button4 = new ButtonStones(3, 455, 307, "Space"));
             buttonList.add(button5 = new ButtonStones(4, 380, 245, "Reality"));
             buttonList.add(button6 = new ButtonStones(5, 455, 213, " Power"));
-
+        }else{
+            buttonList.add(button1 = new ButtonStones(0, (width / 2) - 80, (height / 2) - 105, ""));
+            buttonList.add(button2 = new ButtonStones(1, (width / 2) + 30, (height / 2) - 105, ""));
+            buttonList.add(button3 = new ButtonStones(2, 532, 245, ""));
+            buttonList.add(button4 = new ButtonStones(3, 455, 307, ""));
+            buttonList.add(button5 = new ButtonStones(4, 380, 245, ""));
+            buttonList.add(button6 = new ButtonStones(5, 455, 213, ""));
+        }
         super.initGui();
     }
 

@@ -1,6 +1,7 @@
 package com.common.entity;
 
 
+import com.common.damage.IDamageSource;
 import com.init.ModBlocks;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
@@ -49,7 +50,7 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
             BlockPos pos0 = new BlockPos(result.entityHit.posX, result.entityHit.posY, result.entityHit.posZ);
             IBlockState state0 = blk.getDefaultState();
             world.setBlockState(pos0, state0);
-            result.entityHit.attackEntityFrom(DamageSource.OUT_OF_WORLD, 100);
+            result.entityHit.attackEntityFrom(IDamageSource.LASER, 100);
 
         } else if (result.typeOfHit == RayTraceResult.Type.BLOCK) {
             this.setDead();

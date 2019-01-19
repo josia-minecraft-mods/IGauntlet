@@ -13,3 +13,5 @@ tile.ash_pile.name=Ash Pile
 //Entity
 entity.ray.name = Laser
 
+//DeathSource
+damagesource.igauntlet.laser=a Laser!

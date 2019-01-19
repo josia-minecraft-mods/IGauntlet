@@ -2,6 +2,7 @@ package com.common.items;
 
 import com.Main;
 import com.client.gui.GuiGauntlet;
+import com.common.damage.IDamageSource;
 import com.common.entity.EntityLaser;
 import com.init.ModBlocks;
 import com.init.ModItems;
@@ -134,8 +135,8 @@ public class InfinityGauntlet extends Item implements IHasModel {
                         Block blk = ModBlocks.ASH_PILE;
                         BlockPos pos0 = new BlockPos(targetentity.posX, targetentity.posY, targetentity.posZ);
                         IBlockState state0 = blk.getDefaultState();
-                        entityLiving.world.setBlockState(pos0, state0);
-                        targetentity.attackEntityFrom(DamageSource.OUT_OF_WORLD, 100);
+                        targetentity.world.setBlockState(pos0, state0);
+                        targetentity.attackEntityFrom(IDamageSource.SNAP, 100);
                         if (!playerIn.capabilities.isCreativeMode) {
                             stack.setItemDamage(stack.getItemDamage() + 1);
                         }
@@ -161,11 +162,10 @@ public class InfinityGauntlet extends Item implements IHasModel {
     @Override
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
         super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
-        NBTTagCompound nbt = stack.getTagCompound();
+
 
         if (!worldIn.isRemote && (isSelected)) {
             EntityPlayerMP player = (EntityPlayerMP) entityIn;
-
             if (stack.getItem() == ModItems.INFINITY_GAUNTLET) {
                 if (player.getActivePotionEffect(MobEffects.INSTANT_HEALTH) == null) {
                     player.addPotionEffect(new PotionEffect(MobEffects.INSTANT_HEALTH, 50, 3));
@@ -173,7 +173,9 @@ public class InfinityGauntlet extends Item implements IHasModel {
             }
         }
 
-        if (!worldIn.isRemote) {
+            NBTTagCompound nbt = stack.getTagCompound();
+
+        if (worldIn.isRemote && stack.getItem() instanceof InfinityGauntlet) {
             if (nbt == null) {
                 nbt = new NBTTagCompound();
             }

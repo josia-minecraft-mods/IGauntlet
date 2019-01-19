@@ -29,6 +29,9 @@ public class ModConfig {
         public int SnapCooldown = 25;
 
 
+        @Config.Comment("Enable Text on Gantlet GUI")
+        public boolean GUITEXT = true;
+
     }
 
     @Mod.EventBusSubscriber(modid = Reference.MODID)
