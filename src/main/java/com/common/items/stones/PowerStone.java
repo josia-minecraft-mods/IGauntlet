@@ -1,6 +1,6 @@
 package com.common.items.stones;
 
-import com.Main;
+import com.Infinity;
 import net.minecraft.item.Item;
 import com.tabs.InfinityTabs;
 import com.util.IHasModel;
@@ -11,6 +11,7 @@ import net.minecraft.util.text.TextFormatting;
 public class PowerStone extends Item implements IHasModel {
 
     public PowerStone(String name) {
+        setTranslationKey(name);
         setRegistryName(name);
         setCreativeTab(InfinityTabs.infinityTabs);
         setMaxStackSize(1);
@@ -25,6 +26,6 @@ public class PowerStone extends Item implements IHasModel {
 
     @Override
     public void registerModels() {
-        Main.proxy.registerItemRenderer(this, 0, "inventory");
+        Infinity.proxy.registerItemRenderer(this, 0, "inventory");
     }
 }

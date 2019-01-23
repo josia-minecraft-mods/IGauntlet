@@ -1,5 +1,6 @@
 package com;
 
+import com.network.NetworkHandler;
 import com.proxy.IProxy;
 import com.util.Reference;
 import com.util.handlers.RegistryHandler;
@@ -13,19 +14,19 @@ import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import org.apache.logging.log4j.Logger;
 
 @Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION)
-public class Main {
+public class Infinity {
 
     @Mod.Instance
-    public static Main instance;
+    public static Infinity instance;
 
     @SidedProxy(clientSide = Reference.CLIENTPROXY, serverSide = Reference.COMMONPROXY)
     public static IProxy proxy;
-    public static SimpleNetworkWrapper NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.MODID);
     public static Logger logger;
 
     @Mod.EventHandler
     public static void PreInit(FMLPreInitializationEvent event) {
         proxy.preInit(event);
+        NetworkHandler.init();
         RegistryHandler.preInitRegistries(event);
     }
 
@@ -36,7 +37,6 @@ public class Main {
 
     @Mod.EventHandler
     public static void PostInit(FMLPostInitializationEvent event) {
-
     }
 }
 

@@ -1,6 +1,6 @@
 package com.init;
 
-import com.Main;
+import com.Infinity;
 import com.common.entity.EntityLaser;
 import com.util.Reference;
 import net.minecraft.entity.projectile.EntityThrowable;
@@ -15,6 +15,6 @@ public class ModEntities {
     }
 
     public static void registerProjectiles(Class<? extends EntityThrowable> entityClass, String name) {
-        EntityRegistry.registerModEntity(new ResourceLocation(Reference.MODID, name), entityClass, name, ++id, Main.instance, 64, 5, true);
+        EntityRegistry.registerModEntity(new ResourceLocation(Reference.MODID, name), entityClass, name, ++id, Infinity.instance, 64, 5, true);
     }
 }

@@ -14,16 +14,19 @@ public class ModItems {
     public static final Item INFINITY_GAUNTLET = new InfinityGauntlet("infinity_gauntlet");
 
     public static final Item MINDSTONE = new MindStone("mind_stone");
-
     public static final Item REALITYSTONE = new RealityStone("reality_stone");
-
     public static final Item TIMESTONE = new TimeStone("time_stone");
-
     public static final Item SPACESTONE = new SpaceStone("space_stone");
-
     public static final Item POWERSTONE = new PowerStone("power_stone");
-
     public static final Item SOULSTONE = new SoulStone("soul_stone");
+
+    public static final Item GREENSTONE = new ItemBase("stone_green");
+    public static final Item REDSTONE = new ItemBase("stone_red");
+    public static final Item BLUESTONE = new ItemBase("stone_blue");
+    public static final Item ORANGESTONE = new ItemBase("stone_orange");
+    public static final Item YELLOWSTONE = new ItemBase("stone_yellow");
+
+
 
 }
 

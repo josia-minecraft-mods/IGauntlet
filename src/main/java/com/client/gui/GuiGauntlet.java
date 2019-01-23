@@ -1,11 +1,14 @@
 package com.client.gui;
 
 import com.config.ModConfig;
+import com.network.MessageStone;
+import com.network.NetworkHandler;
 import com.util.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 
 import java.io.IOException;
@@ -24,6 +27,8 @@ public class GuiGauntlet extends GuiScreen {
     GuiButton button6;
 
     public static final ResourceLocation TEXTURE = new ResourceLocation(Reference.MODID, "textures/gui/gui_gauntlet.png");
+    private EntityPlayer player = Minecraft.getMinecraft().player;
+
 
     public GuiGauntlet() {
 
@@ -96,16 +101,18 @@ public class GuiGauntlet extends GuiScreen {
     public static int STONE = 0;
 
 
+
     @Override
     protected void actionPerformed(GuiButton button) throws IOException {
 
-        String NO = "Not Added Yet";
+        String NO = "This function hasn't been added yet to the game Func; " + button.id;
 
         switch (button.id) {
 
             case 0:
                 STONE = 1;
                 sendChatMessage(NO);
+
                 break;
 
             case 1:
@@ -132,7 +139,6 @@ public class GuiGauntlet extends GuiScreen {
                 STONE = 6;
                 break;
         }
-
         Minecraft.getMinecraft().displayGuiScreen(null);
 
         super.actionPerformed(button);

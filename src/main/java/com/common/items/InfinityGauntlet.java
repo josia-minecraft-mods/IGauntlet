@@ -1,6 +1,6 @@
 package com.common.items;
 
-import com.Main;
+import com.Infinity;
 import com.client.gui.GuiGauntlet;
 import com.common.damage.IDamageSource;
 import com.common.entity.EntityLaser;
@@ -30,20 +30,30 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
 
 
 public class InfinityGauntlet extends Item implements IHasModel {
 
     public InfinityGauntlet(String name) {
+        setTranslationKey(name);
         setRegistryName(name);
-        setCreativeTab(InfinityTabs.infinityTabs);
         setMaxStackSize(1);
         setMaxDamage(4500);
 
         ModItems.ITEMS.add(this);
     }
 
-    int MIND = 1; int TIME = 2; int SOUL = 3; int SPACE = 4; int REALITY = 5; int POWER = 6;
+    int MIND = 1;
+    int TIME = 2;
+    int SOUL = 3;
+    int SPACE = 4;
+    int REALITY = 5;
+    int POWER = 6;
 
 
     public EnumAction getItemUseAction(ItemStack stack) {
@@ -83,17 +93,24 @@ public class InfinityGauntlet extends Item implements IHasModel {
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
         playerIn.setActiveHand(handIn);
 
-        if (!worldIn.isRemote && playerIn.getHeldItemOffhand().getItem() == ModItems.INFINITY_GAUNTLET) {
-            Minecraft.getMinecraft().displayGuiScreen(new GuiGauntlet());
+        if (worldIn.isRemote && playerIn.getHeldItemOffhand().getItem() == ModItems.INFINITY_GAUNTLET) {
+            OpenInfinityGui();
         }
+
         return super.onItemRightClick(worldIn, playerIn, handIn);
+    }
+
+    //@SideOnly(Side.CLIENT)
+    public void OpenInfinityGui() {
+        Minecraft.getMinecraft().displayGuiScreen(new GuiGauntlet());
     }
 
     @Override
     public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
         EntityPlayer entityplayer = (EntityPlayer) entityLiving;
         NBTTagCompound nbt = stack.getTagCompound();
-        int current = nbt.getInteger("currentstone");
+       // int current = entityplayer.getEntityData().getInteger("selectedstone");
+        int current = entityplayer.getHeldItem(entityplayer.getActiveHand()).getTagCompound().getInteger("currentstone");
 
         if (current == POWER) {
             if (!worldIn.isRemote && !entityplayer.isSneaking() && entityplayer.getHeldItemOffhand().getItem() != ModItems.INFINITY_GAUNTLET) {
@@ -122,7 +139,8 @@ public class InfinityGauntlet extends Item implements IHasModel {
             EntityPlayer playerIn = (EntityPlayer) entityLiving;
             int extend = ModConfig.Gauntlet.ExtensionRange;
             NBTTagCompound nbt = stack.getTagCompound();
-            int current = nbt.getInteger("currentstone");
+        //    int current = playerIn.getEntityData().getInteger("selectedstone");
+            int current = stack.getTagCompound().getInteger("currentstone");
 
             if (current == POWER) {
                 if (playerIn.isSneaking() && ModConfig.Gauntlet.Snap) {
@@ -172,14 +190,17 @@ public class InfinityGauntlet extends Item implements IHasModel {
             }
         }
 
-            NBTTagCompound nbt = stack.getTagCompound();
+        NBTTagCompound nbt = stack.getTagCompound();
 
         if (!worldIn.isRemote && stack.getItem() instanceof InfinityGauntlet) {
             if (nbt == null) {
                 nbt = new NBTTagCompound();
+                stack.setTagCompound(nbt);
             }
 
-            if (GuiGauntlet.STONE == MIND) {
+        }
+           if (GuiGauntlet.STONE == MIND) {
+
                 nbt.setInteger("currentstone", MIND);
             }
 
@@ -204,11 +225,12 @@ public class InfinityGauntlet extends Item implements IHasModel {
             }
             stack.setTagCompound(nbt);
         }
-    }
+
+
 
 
     @Override
     public void registerModels() {
-        Main.proxy.registerItemRenderer(this, 0, "inventory");
+        Infinity.proxy.registerItemRenderer(this, 0, "inventory");
     }
 }

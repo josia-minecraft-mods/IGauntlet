@@ -20,4 +20,6 @@ public class CommonProxy implements IProxy {
     public void registerItemRenderer(Item item, int meta, String id) {
 
     }
+
+
 }

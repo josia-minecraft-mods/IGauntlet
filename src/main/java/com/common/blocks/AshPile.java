@@ -1,24 +1,19 @@
 package com.common.blocks;
 
 
-import com.Main;
+import com.Infinity;
 import com.init.ModBlocks;
 import com.init.ModItems;
-import com.tabs.InfinityTabs;
 import com.util.IHasModel;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
@@ -29,6 +24,7 @@ public class AshPile extends BlockFalling implements IHasModel {
     public AshPile(String name, Material material)
     {
         super(material);
+        setTranslationKey(name);
         setRegistryName(name);
         setSoundType(SoundType.SAND);
         setHardness(0.0F);
@@ -72,7 +68,7 @@ public class AshPile extends BlockFalling implements IHasModel {
     @Override
     public void registerModels()
     {
-        Main.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
+        Infinity.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
     }
 
 
