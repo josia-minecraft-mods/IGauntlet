@@ -74,17 +74,17 @@ public class GuiGauntlet extends GuiScreen {
         if(ModConfig.Gauntlet.GUITEXT) {
             buttonList.add(button1 = new ButtonStones(0, (width / 2) - 80, (height / 2) - 105, " Mind"));
             buttonList.add(button2 = new ButtonStones(1, (width / 2) + 30, (height / 2) - 105, "Time"));
-            buttonList.add(button3 = new ButtonStones(2, 532, 245, "Soul"));
-            buttonList.add(button4 = new ButtonStones(3, 455, 307, "Space"));
-            buttonList.add(button5 = new ButtonStones(4, 380, 245, "Reality"));
-            buttonList.add(button6 = new ButtonStones(5, 455, 213, " Power"));
+            buttonList.add(button3 = new ButtonStones(2, (width / 2) - 100, (height / 2) - 10, "Soul"));
+            buttonList.add(button4 = new ButtonStones(3, (width / 2) - 25, (height / 2) + 50, "Space"));
+            buttonList.add(button5 = new ButtonStones(4, (width / 2) + 50, (height / 2) - 10, "Reality"));
+            buttonList.add(button6 = new ButtonStones(5, (width / 2) - 25, (height / 2) - 40, " Power"));
         }else{
             buttonList.add(button1 = new ButtonStones(0, (width / 2) - 80, (height / 2) - 105, ""));
             buttonList.add(button2 = new ButtonStones(1, (width / 2) + 30, (height / 2) - 105, ""));
-            buttonList.add(button3 = new ButtonStones(2, 532, 245, ""));
-            buttonList.add(button4 = new ButtonStones(3, 455, 307, ""));
-            buttonList.add(button5 = new ButtonStones(4, 380, 245, ""));
-            buttonList.add(button6 = new ButtonStones(5, 455, 213, ""));
+            buttonList.add(button3 = new ButtonStones(2, (width / 2) - 100, (height / 2) - 10, ""));
+            buttonList.add(button4 = new ButtonStones(3, (width / 2) - 25, (height / 2) + 50, ""));
+            buttonList.add(button5 = new ButtonStones(4, (width / 2) + 50, (height / 2) - 10, ""));
+            buttonList.add(button6 = new ButtonStones(5, (width / 2) - 25, (height / 2) - 40, ""));
         }
         super.initGui();
     }
@@ -105,14 +105,13 @@ public class GuiGauntlet extends GuiScreen {
     @Override
     protected void actionPerformed(GuiButton button) throws IOException {
 
-        String NO = "This function hasn't been added yet to the game Func; " + button.id;
+        String NO = "This function isn't  in the game yet F: " + button.id;
 
         switch (button.id) {
 
             case 0:
                 STONE = 1;
                 sendChatMessage(NO);
-
                 break;
 
             case 1:
