@@ -9,7 +9,7 @@
     "updateUrl": "",
     "authorList": ["rootheworld,Josia50"],
     "credits": "Code thanks to Josia50 , Models thanks to rootheworld",
-    "logoFile": "",
+    "logoFile": "gauntlet.png",
     "screenshots": [],
     "dependencies": ["Forge 1.12.2"]
   }
