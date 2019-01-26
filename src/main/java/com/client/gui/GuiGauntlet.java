@@ -103,8 +103,6 @@ public class GuiGauntlet extends GuiScreen {
     @Override
     protected void actionPerformed(GuiButton button) throws IOException {
 
-        String NO = "This function isn't  in the game yet F: " + button.id;
-
         switch (button.id) {
 
             case 1:
