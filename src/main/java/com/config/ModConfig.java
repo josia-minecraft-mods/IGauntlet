@@ -18,17 +18,20 @@ public class ModConfig {
     public static class Gauntlet {
 
         @Config.Comment("Shift + left Click to kill Entities in range")
+        @Config.LangKey("infinity.config.snap")
         public boolean Snap = true;
 
         @Config.Comment("The range around you that using 'snap' will be killed.")
+        @Config.LangKey("infinity.config.extensionrange")
         @Config.RangeInt(min = 5, max = 100)
         public int ExtensionRange = 25;
 
         @Config.Comment("Cooldown in seconds for snap")
+        @Config.LangKey("infinity.config.cooldown")
         @Config.RangeInt(min = 5, max = 100)
         public int SnapCooldown = 25;
 
-
+        @Config.LangKey("infinity.config.guitext")
         @Config.Comment("Enable Text on Gantlet GUI")
         public boolean GUITEXT = true;
 

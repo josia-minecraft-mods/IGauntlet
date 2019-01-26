@@ -30,11 +30,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nullable;
 
 
 public class InfinityGauntlet extends Item implements IHasModel {
@@ -44,6 +41,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
         setRegistryName(name);
         setMaxStackSize(1);
         setMaxDamage(4500);
+        setCreativeTab(InfinityTabs.infinityTabs);
 
         ModItems.ITEMS.add(this);
     }
@@ -100,7 +98,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
 
-    //@SideOnly(Side.CLIENT)
+    @SideOnly(Side.CLIENT)
     public void OpenInfinityGui() {
         Minecraft.getMinecraft().displayGuiScreen(new GuiGauntlet());
     }
@@ -109,8 +107,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
     public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
         EntityPlayer entityplayer = (EntityPlayer) entityLiving;
         NBTTagCompound nbt = stack.getTagCompound();
-       // int current = entityplayer.getEntityData().getInteger("selectedstone");
-        int current = entityplayer.getHeldItem(entityplayer.getActiveHand()).getTagCompound().getInteger("currentstone");
+        int current = nbt.getInteger("currentstone");
 
         if (current == POWER) {
             if (!worldIn.isRemote && !entityplayer.isSneaking() && entityplayer.getHeldItemOffhand().getItem() != ModItems.INFINITY_GAUNTLET) {
@@ -139,7 +136,6 @@ public class InfinityGauntlet extends Item implements IHasModel {
             EntityPlayer playerIn = (EntityPlayer) entityLiving;
             int extend = ModConfig.Gauntlet.ExtensionRange;
             NBTTagCompound nbt = stack.getTagCompound();
-        //    int current = playerIn.getEntityData().getInteger("selectedstone");
             int current = stack.getTagCompound().getInteger("currentstone");
 
             if (current == POWER) {
@@ -197,9 +193,8 @@ public class InfinityGauntlet extends Item implements IHasModel {
                 nbt = new NBTTagCompound();
                 stack.setTagCompound(nbt);
             }
-
         }
-           if (GuiGauntlet.STONE == MIND) {
+           /*if (GuiGauntlet.STONE == MIND) {
 
                 nbt.setInteger("currentstone", MIND);
             }
@@ -223,7 +218,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
             if (GuiGauntlet.STONE == POWER) {
                 nbt.setInteger("currentstone", POWER);
             }
-            stack.setTagCompound(nbt);
+            stack.setTagCompound(nbt);*/
         }
 
 

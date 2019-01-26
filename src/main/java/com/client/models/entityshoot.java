@@ -1,4 +1,4 @@
-package com.common.models;
+package com.client.models;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelBox;
