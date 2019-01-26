@@ -124,12 +124,6 @@ public class InfinityGauntlet extends Item implements IHasModel {
         Minecraft.getMinecraft().displayGuiScreen(new GuiGauntlet());
     }
 
-    public void SetActiveHand() {
-       EntityPlayer playerIn = Minecraft.getMinecraft().player;
-            playerIn.setActiveHand(EnumHand.MAIN_HAND);
-            System.out.println("DOne it");
-        }
-
     @Override
     public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
 
