@@ -73,7 +73,7 @@ public class GuiGauntlet extends GuiScreen {
             buttonList.add(button2 = new ButtonStones(2, (width / 2) + 30, (height / 2) - 105, "Space"));
             buttonList.add(button3 = new ButtonStones(3, (width / 2) - 100, (height / 2) - 10, "Soul"));
             buttonList.add(button4 = new ButtonStones(4, (width / 2) - 25, (height / 2) + 50, "Time"));
-            buttonList.add(button5 = new ButtonStones(5, (width / 2) + 50, (height / 2) - 10, "Power"));
+            buttonList.add(button5 = new ButtonStones(5, (width / 2) + 50, (height / 2) - 10, " Power"));
             buttonList.add(button6 = new ButtonStones(6, (width / 2) - 25, (height / 2) - 40, " Mind"));
         }else{
             buttonList.add(button1 = new ButtonStones(1, (width / 2) - 80, (height / 2) - 105, ""));
@@ -128,11 +128,11 @@ public class GuiGauntlet extends GuiScreen {
 
             case 5:
                 STONE = 5;
-                sendChatMessage(NO);
                 break;
 
             case 6:
                 STONE = 6;
+                sendChatMessage(NO);
                 break;
         }
         NetworkHandler.NETWORK.sendToServer(new MessageStone(STONE));
