@@ -3,12 +3,14 @@ item.infinity_gauntlet.name=Infinity Gauntlet
 
 //Items
 item.mindstone.name=Mind Stone
+item.uru_ingot.name=Uru Ingot
 
 // Tab
 itemGroup.infinityitems=Infinity Tab
 
 //Blocks
 tile.ash_pile.name=Ash Pile
+tile.uru_ore.name= Uru Ore
 
 //Entity
 entity.ray.name = Laser

@@ -21,7 +21,7 @@ public class AshPile extends BlockFalling implements IHasModel {
 
     public static final AxisAlignedBB DUST_AABB = new AxisAlignedBB(0.296875,0,0.296875,0.6900,0.1875 / 2,0.6900);
 
-    public AshPile(String name, Material material)
+    public AshPile(String name, Material material, boolean tab)
     {
         super(material);
         setTranslationKey(name);
