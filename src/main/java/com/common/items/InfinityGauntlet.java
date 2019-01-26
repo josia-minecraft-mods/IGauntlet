@@ -9,7 +9,6 @@ import com.init.ModItems;
 import com.tabs.InfinityTabs;
 import com.util.IHasModel;
 import com.config.ModConfig;
-import com.util.MSource;
 import com.util.handlers.SoundsHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -96,44 +95,48 @@ public class InfinityGauntlet extends Item implements IHasModel {
             OpenInfinityGui();
         }
 
+        ItemStack stack = playerIn.getActiveItemStack();
+        int current = stack.getTagCompound().getInteger("currentstone");
+
+        if (current == POWER) {
+            if (!worldIn.isRemote && !playerIn.isSneaking() && playerIn.getHeldItemOffhand().getItem() != ModItems.INFINITY_GAUNTLET) {
+                Vec3d v3 = playerIn.getLook(1);
+                EntityLaser laser = new EntityLaser(worldIn, playerIn, 100, IDamageSource.LASER, new Vec3d(1, 0, 5));
+                laser.shoot(v3.x, v3.y, v3.z, 1.5F, (float) (0 - worldIn.getDifficulty().getId() * 0));
+                worldIn.spawnEntity(laser);
+
+                if (!playerIn.capabilities.isCreativeMode) {
+                    stack.setItemDamage(stack.getItemDamage() + 1);
+                }
+
+            }
+            if (worldIn.isRemote && !playerIn.isSneaking() && playerIn.getHeldItemOffhand().getItem() != ModItems.INFINITY_GAUNTLET) {
+                playerIn.playSound(SoundsHandler.GAUNTLET_HUM, 1, 1);
+            }
+        }
+
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
+
 
     @SideOnly(Side.CLIENT)
     public void OpenInfinityGui() {
         Minecraft.getMinecraft().displayGuiScreen(new GuiGauntlet());
     }
 
-    @Override
-    public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-        EntityPlayer entityplayer = (EntityPlayer) entityLiving;
-        int current = stack.getTagCompound().getInteger("currentstone");
-
-        if (current == POWER) {
-            if (!entityplayer.isSneaking() && entityplayer.getHeldItemOffhand().getItem() != ModItems.INFINITY_GAUNTLET) {
-                Vec3d v3 = entityplayer.getLook(1);
-                EntityLaser laser = new EntityLaser(worldIn, entityplayer, 100, IDamageSource.LASER, new Vec3d(1, 0, 5));
-                laser.shoot(v3.x, v3.y, v3.z, 1.5F, (float) (0 - worldIn.getDifficulty().getId() * 0));
-                worldIn.spawnEntity(laser);
-
-                if (!entityplayer.capabilities.isCreativeMode) {
-                    stack.setItemDamage(stack.getItemDamage() + 1);
-                }
-
-            }
-            if (worldIn.isRemote && !entityplayer.isSneaking() && entityplayer.getHeldItemOffhand().getItem() != ModItems.INFINITY_GAUNTLET) {
-                entityplayer.playSound(SoundsHandler.GAUNTLET_HUM, 1, 1);
-            }
+    public void SetActiveHand() {
+       EntityPlayer playerIn = Minecraft.getMinecraft().player;
+            playerIn.setActiveHand(EnumHand.MAIN_HAND);
+            System.out.println("DOne it");
         }
-
-        super.onPlayerStoppedUsing(stack, worldIn, entityLiving, timeLeft);
-    }
 
     @Override
     public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
+
         if ((entityLiving instanceof EntityPlayer)) {
 
             EntityPlayer playerIn = (EntityPlayer) entityLiving;
+            playerIn.setActiveHand(EnumHand.MAIN_HAND);
             int extend = ModConfig.Gauntlet.ExtensionRange;
             NBTTagCompound nbt = stack.getTagCompound();
             int current = nbt.getInteger("currentstone");
@@ -175,6 +178,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
     @Override
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
         super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
+        EntityPlayer playerIn = (EntityPlayer) entityIn;
 
 
         if (!worldIn.isRemote && (isSelected)) {
@@ -185,40 +189,19 @@ public class InfinityGauntlet extends Item implements IHasModel {
                 }
             }
         }
-
         NBTTagCompound nbt = stack.getTagCompound();
 
         if (!worldIn.isRemote && stack.getItem() instanceof InfinityGauntlet) {
             if (nbt == null) {
                 nbt = new NBTTagCompound();
                 stack.setTagCompound(nbt);
+
             }
         }
-           /*if (GuiGauntlet.STONE == MIND) {
 
-                nbt.setInteger("currentstone", MIND);
-            }
+        if (!worldIn.isRemote) {
 
-            if (GuiGauntlet.STONE == TIME) {
-                nbt.setInteger("currentstone", TIME);
-            }
-
-            if (GuiGauntlet.STONE == SOUL) {
-                nbt.setInteger("currentstone", SOUL);
-            }
-
-            if (GuiGauntlet.STONE == SPACE) {
-                nbt.setInteger("currentstone", SPACE);
-            }
-
-            if (GuiGauntlet.STONE == REALITY) {
-                nbt.setInteger("currentstone", REALITY);
-            }
-
-            if (GuiGauntlet.STONE == POWER) {
-                nbt.setInteger("currentstone", POWER);
-            }
-            stack.setTagCompound(nbt);*/
+        }
     }
 
 
