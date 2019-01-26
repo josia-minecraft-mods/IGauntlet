@@ -106,20 +106,20 @@ public class InfinityGauntlet extends Item implements IHasModel {
     @Override
     public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
         EntityPlayer entityplayer = (EntityPlayer) entityLiving;
-        NBTTagCompound nbt = stack.getTagCompound();
-        int current = nbt.getInteger("currentstone");
+        int current = stack.getTagCompound().getInteger("currentstone");
 
         if (current == POWER) {
-            if (!worldIn.isRemote && !entityplayer.isSneaking() && entityplayer.getHeldItemOffhand().getItem() != ModItems.INFINITY_GAUNTLET) {
+            if (!entityplayer.isSneaking() && entityplayer.getHeldItemOffhand().getItem() != ModItems.INFINITY_GAUNTLET) {
                 Vec3d v3 = entityplayer.getLook(1);
-
-                EntityLaser laser = new EntityLaser(worldIn, entityplayer, 8, new MSource("ray"), new Vec3d(1, 0, 5));
+                EntityLaser laser = new EntityLaser(worldIn, entityplayer, 100, IDamageSource.LASER, new Vec3d(1, 0, 5));
+                if(worldIn.isRemote) {
                 laser.shoot(v3.x, v3.y, v3.z, 1.5F, (float) (0 - worldIn.getDifficulty().getId() * 0));
                 worldIn.spawnEntity(laser);
 
                 if (!entityplayer.capabilities.isCreativeMode) {
                     stack.setItemDamage(stack.getItemDamage() + 1);
                 }
+            }
             }
             if (worldIn.isRemote && !entityplayer.isSneaking() && entityplayer.getHeldItemOffhand().getItem() != ModItems.INFINITY_GAUNTLET) {
                 entityplayer.playSound(SoundsHandler.GAUNTLET_HUM, 1, 1);
@@ -136,7 +136,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
             EntityPlayer playerIn = (EntityPlayer) entityLiving;
             int extend = ModConfig.Gauntlet.ExtensionRange;
             NBTTagCompound nbt = stack.getTagCompound();
-            int current = stack.getTagCompound().getInteger("currentstone");
+            int current = nbt.getInteger("currentstone");
 
             if (current == POWER) {
                 if (playerIn.isSneaking() && ModConfig.Gauntlet.Snap) {
@@ -160,7 +160,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
             EnumHand hand = playerIn.getActiveHand();
             playerIn.setActiveHand(hand);
         }
-        return super.onEntitySwing(entityLiving, stack);
+        return super.onEntitySwing(entityLiving,stack);
     }
 
     @Override

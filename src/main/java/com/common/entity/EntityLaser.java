@@ -12,6 +12,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.RayTraceResult.Type;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
@@ -35,30 +36,27 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
         this.source = source;
     }
 
-
     @Override
     protected void onImpact(RayTraceResult result) {
 
-        if (result == null || isDead || world.isRemote)
-            return;
+            if (result == null || isDead)
+                return;
 
-        if (result.typeOfHit == RayTraceResult.Type.ENTITY) {
-            if (result.entityHit == this.thrower) return;
+            if (result.typeOfHit == Type.ENTITY) {
+                if (result.entityHit == this.thrower) return;
+                Block blk = ModBlocks.ASH_PILE;
+                BlockPos pos0 = new BlockPos(result.entityHit.posX, result.entityHit.posY, result.entityHit.posZ);
+                IBlockState state0 = blk.getDefaultState();
+                world.setBlockState(pos0, state0);
+                result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), damage);
 
-            result.entityHit.performHurtAnimation();
-            Block blk = ModBlocks.ASH_PILE;
-            BlockPos pos0 = new BlockPos(result.entityHit.posX, result.entityHit.posY, result.entityHit.posZ);
-            IBlockState state0 = blk.getDefaultState();
-            world.setBlockState(pos0, state0);
-            result.entityHit.attackEntityFrom(IDamageSource.LASER, 100);
+            } else if (result.typeOfHit == RayTraceResult.Type.BLOCK) {
+                this.setDead();
+            }
 
-        } else if (result.typeOfHit == RayTraceResult.Type.BLOCK) {
-            this.setDead();
+            if (!this.world.isRemote)
+                this.setDead();
         }
-
-        if (!this.world.isRemote)
-            this.setDead();
-    }
 
 
     @Override

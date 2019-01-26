@@ -1,4 +1,4 @@
-package com.common.entity.render;
+package com.client.render;
 
 import com.common.entity.EntityLaser;
 import com.util.handlers.helpers.Util;
