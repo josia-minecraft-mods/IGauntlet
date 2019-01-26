@@ -1,6 +1,7 @@
 package com.client.gui;
 
 import com.config.ModConfig;
+import com.network.packets.MessageNotAdded;
 import com.network.packets.MessageStone;
 import com.network.NetworkHandler;
 import com.util.Reference;
@@ -108,22 +109,18 @@ public class GuiGauntlet extends GuiScreen {
 
             case 1:
                 STONE = 1;
-                sendChatMessage(NO);
                 break;
 
             case 2:
                 STONE = 2;
-                sendChatMessage(NO);
                 break;
 
             case 3:
                 STONE = 3;
-                sendChatMessage(NO);
                 break;
 
             case 4:
                 STONE = 4;
-                sendChatMessage(NO);
                 break;
 
             case 5:
@@ -132,9 +129,13 @@ public class GuiGauntlet extends GuiScreen {
 
             case 6:
                 STONE = 6;
-                sendChatMessage(NO);
                 break;
         }
+
+        if(button.id == 1 || button.id == 2 || button.id == 3 || button.id == 4 || button.id == 6) {
+            NetworkHandler.NETWORK.sendToServer(new MessageNotAdded(STONE, button.id));
+        }
+
         NetworkHandler.NETWORK.sendToServer(new MessageStone(STONE));
         Minecraft.getMinecraft().displayGuiScreen(null);
         super.actionPerformed(button);
