@@ -46,12 +46,13 @@ public class InfinityGauntlet extends Item implements IHasModel {
         ModItems.ITEMS.add(this);
     }
 
-    int MIND = 1;
-    int TIME = 2;
+
+    int REALITY = 1;
+    int SPACE = 2;
     int SOUL = 3;
-    int SPACE = 4;
-    int REALITY = 5;
-    int POWER = 6;
+    int TIME = 4;
+    int POWER = 5;
+    int MIND = 6;
 
 
     public EnumAction getItemUseAction(ItemStack stack) {
@@ -159,7 +160,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
             EnumHand hand = playerIn.getActiveHand();
             playerIn.setActiveHand(hand);
         }
-        return super.onEntitySwing(entityLiving,stack);
+        return super.onEntitySwing(entityLiving, stack);
     }
 
     @Override
@@ -218,9 +219,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
                 nbt.setInteger("currentstone", POWER);
             }
             stack.setTagCompound(nbt);*/
-        }
-
-
+    }
 
 
     @Override

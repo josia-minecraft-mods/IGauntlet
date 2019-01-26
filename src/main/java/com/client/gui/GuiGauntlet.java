@@ -18,6 +18,8 @@ public class GuiGauntlet extends GuiScreen {
     static final int GUI_WIDTH = 256;
     static final int GUI_HEIGHT = 256;
 
+
+
     GuiButton button1;
     GuiButton button2;
     GuiButton button3;
@@ -67,12 +69,12 @@ public class GuiGauntlet extends GuiScreen {
         buttonList.clear();
 
         if(ModConfig.Gauntlet.GUITEXT) {
-            buttonList.add(button1 = new ButtonStones(1, (width / 2) - 80, (height / 2) - 105, " Mind"));
-            buttonList.add(button2 = new ButtonStones(2, (width / 2) + 30, (height / 2) - 105, "Time"));
+            buttonList.add(button1 = new ButtonStones(1, (width / 2) - 80, (height / 2) - 105, " Reality"));
+            buttonList.add(button2 = new ButtonStones(2, (width / 2) + 30, (height / 2) - 105, "Space"));
             buttonList.add(button3 = new ButtonStones(3, (width / 2) - 100, (height / 2) - 10, "Soul"));
-            buttonList.add(button4 = new ButtonStones(4, (width / 2) - 25, (height / 2) + 50, "Space"));
-            buttonList.add(button5 = new ButtonStones(5, (width / 2) + 50, (height / 2) - 10, "Reality"));
-            buttonList.add(button6 = new ButtonStones(6, (width / 2) - 25, (height / 2) - 40, " Power"));
+            buttonList.add(button4 = new ButtonStones(4, (width / 2) - 25, (height / 2) + 50, "Time"));
+            buttonList.add(button5 = new ButtonStones(5, (width / 2) + 50, (height / 2) - 10, "Power"));
+            buttonList.add(button6 = new ButtonStones(6, (width / 2) - 25, (height / 2) - 40, " Mind"));
         }else{
             buttonList.add(button1 = new ButtonStones(1, (width / 2) - 80, (height / 2) - 105, ""));
             buttonList.add(button2 = new ButtonStones(2, (width / 2) + 30, (height / 2) - 105, ""));
