@@ -139,7 +139,7 @@ public class GuiGauntlet extends GuiScreen {
                 break;
         }
 
-        if(button.id == REALITY || button.id == SPACE || button.id == SOUL || button.id == MIND) {
+        if(button.id == REALITY || button.id == SPACE || button.id == SOUL || button.id == MIND || button.id == TIME) {
             NetworkHandler.NETWORK.sendToServer(new MessageNotAdded(STONE, button.id));
         }
 

@@ -15,25 +15,22 @@ import net.minecraft.world.World;
 
 public class GemTime {
 
-    public static void ReviveAsh(RayTraceResult result, World worldIn, EntityPlayer player) {
-        if (result.typeOfHit == RayTraceResult.Type.BLOCK) {
-            IBlockState block = worldIn.getBlockState(result.getBlockPos());
+    public static void ReviveAsh(BlockPos pos, World worldIn, EntityPlayer player) {
+            IBlockState block = worldIn.getBlockState(pos);
 
             if (block.getBlock() instanceof AshPile) {
-                BlockPos pos0 = result.getBlockPos();
                 Block blk = Blocks.AIR;
                 IBlockState state0 = blk.getDefaultState();
-                SummonCreature(worldIn, player, result, pos0);
-                worldIn.setBlockState(pos0, state0);
+                SummonCreature(worldIn, player, pos);
+                worldIn.setBlockState(pos, state0);
             }
         }
-    }
 
-    public static void SummonCreature(World worldIn, EntityPlayer player, RayTraceResult result, BlockPos pos) {
+    public static void SummonCreature(World worldIn, EntityPlayer player, BlockPos pos) {
         TileEntity ash_te = worldIn.getTileEntity(pos);
         if (ash_te != null && ash_te instanceof TileAshPile) {
             EntityCreeper creeper = new EntityCreeper(worldIn);
-            creeper.setPosition(result.getBlockPos().getX(), result.getBlockPos().getY(), result.getBlockPos().getZ());
+            creeper.setPosition(pos.getX(), pos.getY(), pos.getZ());
             worldIn.spawnEntity(creeper);
         }
     }

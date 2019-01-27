@@ -83,21 +83,11 @@ public class InfinityGauntlet extends Item implements IHasModel {
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 
-        if (!worldIn.isRemote) {
+
             ItemStack stack = player.getHeldItem(hand);
             int current = stack.getTagCompound().getInteger("currentstone");
 
-            if (current == TIME) {
-                RayTraceResult result = this.rayTrace(worldIn, player, true);
 
-                if (result == null) {
-                    return EnumActionResult.FAIL;
-                }
-
-                GemTime.ReviveAsh(result, worldIn, player);
-                return EnumActionResult.PASS;
-            }
-        }
 
         return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
     }
@@ -145,7 +135,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
             }
 
             if (current == TIME) {
-                if (!playerIn.world.isRemote && playerIn.isSneaking() && ModConfig.Gauntlet.Snap) {
+                if (playerIn.world.isRemote && playerIn.isSneaking()) {
                     playerIn.sendMessage(new TextComponentString("This is the first initialization, No function has been added to this yet!"));
                 }
             }

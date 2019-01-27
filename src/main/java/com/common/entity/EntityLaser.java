@@ -1,8 +1,5 @@
 package com.common.entity;
 
-
-import com.common.damage.IDamageSource;
-import com.common.items.InfinityGauntlet;
 import com.common.items.gems.GemPower;
 import com.init.ModBlocks;
 import io.netty.buffer.ByteBuf;
