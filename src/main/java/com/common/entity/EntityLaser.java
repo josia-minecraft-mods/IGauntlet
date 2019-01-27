@@ -2,6 +2,7 @@ package com.common.entity;
 
 
 import com.common.damage.IDamageSource;
+import com.common.items.InfinityGauntlet;
 import com.init.ModBlocks;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
@@ -45,6 +46,8 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
 
         if (result.typeOfHit == Type.ENTITY) {
             if (result.entityHit == this.thrower) return;
+            int entity = result.entityHit.getEntityId();
+
             if(result.entityHit instanceof EntityPlayer) {
                 if(!((EntityPlayer) result.entityHit).capabilities.isCreativeMode) {
                     Block blk = ModBlocks.ASH_PILE;
@@ -57,6 +60,7 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
                 BlockPos pos0 = new BlockPos(result.entityHit.posX, result.entityHit.posY, result.entityHit.posZ);
                 IBlockState state0 = blk.getDefaultState();
                 world.setBlockState(pos0, state0);
+                InfinityGauntlet.WriteAsh(pos0, world, entity);
             }
             result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), damage);
 

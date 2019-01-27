@@ -43,6 +43,7 @@ public class RegistryHandler {
     }
 
     public static void preInitRegistries(FMLPreInitializationEvent event) {
+        TileRegister.PreInit();
     }
 
     public static void initRegistries(FMLInitializationEvent event) {

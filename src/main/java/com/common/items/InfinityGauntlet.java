@@ -4,6 +4,7 @@ import com.Infinity;
 import com.client.gui.GuiGauntlet;
 import com.common.damage.IDamageSource;
 import com.common.entity.EntityLaser;
+import com.common.tileentity.TileAshPile;
 import com.init.ModBlocks;
 import com.init.ModItems;
 import com.tabs.InfinityTabs;
@@ -25,9 +26,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -134,6 +137,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
         if ((entityLiving instanceof EntityPlayer)) {
 
             EntityPlayer playerIn = (EntityPlayer) entityLiving;
+            playerIn.setActiveHand(EnumHand.MAIN_HAND);
             int extend = ModConfig.Gauntlet.ExtensionRange;
             NBTTagCompound nbt = stack.getTagCompound();
             int current = nbt.getInteger("currentstone");
@@ -145,11 +149,15 @@ public class InfinityGauntlet extends Item implements IHasModel {
 
                 if (!playerIn.world.isRemote && playerIn.isSneaking() && ModConfig.Gauntlet.Snap) {
                     for (Entity targetentity : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extend, extend, extend))) {
+                        int entity = targetentity.getEntityId();
+
                         Block blk = ModBlocks.ASH_PILE;
                         BlockPos pos0 = new BlockPos(targetentity.posX, targetentity.posY, targetentity.posZ);
                         IBlockState state0 = blk.getDefaultState();
                         targetentity.world.setBlockState(pos0, state0);
+                        WriteAsh(pos0, playerIn.world, entity);
                         targetentity.attackEntityFrom(IDamageSource.SNAP, 100);
+
                         if (!playerIn.capabilities.isCreativeMode) {
                             stack.setItemDamage(stack.getItemDamage() + 1);
                         }
@@ -162,6 +170,16 @@ public class InfinityGauntlet extends Item implements IHasModel {
         }
         return super.onEntitySwing(entityLiving, stack);
     }
+
+    public static void WriteAsh(BlockPos pos, World world ,int entity) {
+        TileEntity ash_te = world.getTileEntity(pos);
+        if(ash_te != null && ash_te instanceof TileAshPile) {
+            TileAshPile ash_te_f = (TileAshPile) ash_te;
+            ash_te_f.setEntity(entity);
+        }
+    }
+
+
 
     @Override
     public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity) {
