@@ -2,6 +2,7 @@ package com.common.items;
 
 import com.Infinity;
 import com.client.gui.GuiGauntlet;
+import com.common.blocks.AshPile;
 import com.common.damage.IDamageSource;
 import com.common.entity.EntityLaser;
 import com.common.tileentity.TileAshPile;
@@ -10,16 +11,19 @@ import com.init.ModItems;
 import com.tabs.InfinityTabs;
 import com.util.IHasModel;
 import com.config.ModConfig;
-import com.util.MSource;
 import com.util.handlers.SoundsHandler;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockTNT;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
@@ -91,7 +95,44 @@ public class InfinityGauntlet extends Item implements IHasModel {
 
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+
+        if (!worldIn.isRemote) {
+            ItemStack stack = player.getHeldItem(hand);
+            int current = stack.getTagCompound().getInteger("currentstone");
+
+            if (current == TIME) {
+                RayTraceResult result = this.rayTrace(worldIn, player, true);
+
+                if (result == null) {
+                    return EnumActionResult.FAIL;
+                }
+
+                if(result.typeOfHit == RayTraceResult.Type.BLOCK) {
+                    IBlockState block = worldIn.getBlockState(result.getBlockPos());
+
+                    if(block.getBlock() instanceof AshPile) {
+                        BlockPos pos0 = result.getBlockPos();
+                        Block blk = Blocks.AIR;
+                        IBlockState state0 = blk.getDefaultState();
+                        SummonCreature(worldIn, player, result, pos0);
+                        worldIn.setBlockState(pos0, state0);
+                    }
+                    return EnumActionResult.PASS;
+                }
+            }
+        }
+
         return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
+    }
+
+    public void SummonCreature(World worldIn,EntityPlayer player, RayTraceResult result, BlockPos pos) {
+        TileEntity ash_te = worldIn.getTileEntity(pos);
+        if (ash_te != null && ash_te instanceof TileAshPile) {
+            EntityCreeper creeper = new EntityCreeper(worldIn);
+            creeper.setPosition(result.getBlockPos().getX(), result.getBlockPos().getY(), result.getBlockPos().getZ());
+            worldIn.spawnEntity(creeper);
+        }
+
     }
 
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
@@ -100,7 +141,6 @@ public class InfinityGauntlet extends Item implements IHasModel {
         if (worldIn.isRemote && playerIn.getHeldItemOffhand().getItem() == ModItems.INFINITY_GAUNTLET) {
             OpenInfinityGui();
         }
-
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
 
@@ -118,7 +158,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
             if (!entityplayer.isSneaking() && entityplayer.getHeldItemOffhand().getItem() != ModItems.INFINITY_GAUNTLET) {
                 Vec3d v3 = entityplayer.getLook(1);
                 EntityLaser laser = new EntityLaser(worldIn, entityplayer, 100, IDamageSource.LASER, new Vec3d(1, 0, 5));
-                laser.shoot(v3.x, v3.y, v3.z, 1.5F, (float) (0 - worldIn.getDifficulty().getId() * 0));
+                laser.shoot(v3.x, v3.y, v3.z, 1.5F, (float) 0);
                 worldIn.spawnEntity(laser);
 
                 if (!entityplayer.capabilities.isCreativeMode) {
@@ -186,6 +226,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
             ash_te_f.setEntity(entity);
         }
     }
+
 
 
     @Override
