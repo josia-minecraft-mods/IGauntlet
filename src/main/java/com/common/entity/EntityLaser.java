@@ -95,7 +95,8 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
 
     @Override
     public void onEntityUpdate() {
-        if(this.ticksExisted == 400) {
+        double moving = new Vec3d(posX, posY, posZ).distanceTo(new Vec3d(prevPosX, prevPosY, prevPosZ));
+        if(this.ticksExisted == 400 || moving < 0.01) {
             this.setDead();
         }
     }
