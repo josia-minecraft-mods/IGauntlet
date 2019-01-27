@@ -6,9 +6,7 @@ import com.init.ModBlocks;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
@@ -40,34 +38,25 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
 
     @Override
     protected void onImpact(RayTraceResult result) {
-        EntityPlayer player = Minecraft.getMinecraft().player;
 
-            if (result == null || isDead)
-                return;
+        if (result == null || isDead)
+            return;
 
-            if (result.typeOfHit == Type.ENTITY) {
-                if (result.entityHit == this.thrower) return;
-                result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), damage);
-                if(result.entityHit instanceof EntityPlayer) {
+        if (result.typeOfHit == Type.ENTITY) {
+            if (result.entityHit == this.thrower) return;
+            Block blk = ModBlocks.ASH_PILE;
+            BlockPos pos0 = new BlockPos(result.entityHit.posX, result.entityHit.posY, result.entityHit.posZ);
+            IBlockState state0 = blk.getDefaultState();
+            world.setBlockState(pos0, state0);
+            result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), damage);
 
-                    if (player.capabilities.isCreativeMode) return;
-                        Block blk = ModBlocks.ASH_PILE;
-                        BlockPos pos0 = new BlockPos(result.entityHit.posX, result.entityHit.posY, result.entityHit.posZ);
-                        IBlockState state0 = blk.getDefaultState();
-                        world.setBlockState(pos0, state0);
-                }else{
-                    Block blk = ModBlocks.ASH_PILE;
-                    BlockPos pos0 = new BlockPos(result.entityHit.posX, result.entityHit.posY, result.entityHit.posZ);
-                    IBlockState state0 = blk.getDefaultState();
-                    world.setBlockState(pos0, state0);
-                }
-            } else if (result.typeOfHit == RayTraceResult.Type.BLOCK) {
-                this.setDead();
-            }
-
-            if (!this.world.isRemote)
-                this.setDead();
+        } else if (result.typeOfHit == RayTraceResult.Type.BLOCK) {
+            this.setDead();
         }
+
+        if (!this.world.isRemote)
+            this.setDead();
+    }
 
 
     @Override
