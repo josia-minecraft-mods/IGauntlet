@@ -3,6 +3,7 @@ package com.common.entity;
 
 import com.common.damage.IDamageSource;
 import com.common.items.InfinityGauntlet;
+import com.common.items.gems.GemPower;
 import com.init.ModBlocks;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
@@ -48,19 +49,19 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
             if (result.entityHit == this.thrower) return;
             int entity = result.entityHit.getEntityId();
 
-            if(result.entityHit instanceof EntityPlayer) {
-                if(!((EntityPlayer) result.entityHit).capabilities.isCreativeMode) {
+            if (result.entityHit instanceof EntityPlayer) {
+                if (!((EntityPlayer) result.entityHit).capabilities.isCreativeMode) {
                     Block blk = ModBlocks.ASH_PILE;
                     BlockPos pos0 = new BlockPos(result.entityHit.posX, result.entityHit.posY, result.entityHit.posZ);
                     IBlockState state0 = blk.getDefaultState();
                     world.setBlockState(pos0, state0);
                 }
-            }else {
+            } else {
                 Block blk = ModBlocks.ASH_PILE;
                 BlockPos pos0 = new BlockPos(result.entityHit.posX, result.entityHit.posY, result.entityHit.posZ);
                 IBlockState state0 = blk.getDefaultState();
                 world.setBlockState(pos0, state0);
-                InfinityGauntlet.WriteAsh(pos0, world, entity);
+                GemPower.WriteAsh(pos0, world, entity);
             }
             result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), damage);
 
@@ -110,7 +111,7 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
     @Override
     public void onEntityUpdate() {
         double movingspeed = new Vec3d(posX, posY, posZ).distanceTo(new Vec3d(prevPosX, prevPosY, prevPosZ));
-        if(this.ticksExisted == 400 || movingspeed < 0.01) {
+        if (this.ticksExisted == 400 || movingspeed < 0.01) {
             this.setDead();
         }
     }
