@@ -29,12 +29,14 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
 
 
 public class InfinityGauntlet extends Item implements IHasModel {
@@ -165,20 +167,25 @@ public class InfinityGauntlet extends Item implements IHasModel {
                 }
             }
 
+            if (current == TIME) {
+                if (!playerIn.world.isRemote && playerIn.isSneaking() && ModConfig.Gauntlet.Snap) {
+                    playerIn.sendMessage(new TextComponentString("This is the first initialization, No function has been added to this yet!"));
+                }
+            }
+
             EnumHand hand = playerIn.getActiveHand();
             playerIn.setActiveHand(hand);
         }
         return super.onEntitySwing(entityLiving, stack);
     }
 
-    public static void WriteAsh(BlockPos pos, World world ,int entity) {
+    public static void WriteAsh(BlockPos pos, World world, int entity) {
         TileEntity ash_te = world.getTileEntity(pos);
-        if(ash_te != null && ash_te instanceof TileAshPile) {
+        if (ash_te != null && ash_te instanceof TileAshPile) {
             TileAshPile ash_te_f = (TileAshPile) ash_te;
             ash_te_f.setEntity(entity);
         }
     }
-
 
 
     @Override
