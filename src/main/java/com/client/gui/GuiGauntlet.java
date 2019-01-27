@@ -28,6 +28,8 @@ public class GuiGauntlet extends GuiScreen {
     GuiButton button5;
     GuiButton button6;
 
+
+
     public static final ResourceLocation TEXTURE = new ResourceLocation(Reference.MODID, "textures/gui/gui_gauntlet.png");
 
     public GuiGauntlet() {}
@@ -65,24 +67,31 @@ public class GuiGauntlet extends GuiScreen {
 
     }
 
+    public static int REALITY = 1;
+    public static int SPACE = 2;
+    public static int SOUL = 3;
+    public static int TIME = 4;
+    public static int POWER = 5;
+    public static int MIND = 6;
+
     @Override
     public void initGui() {
         buttonList.clear();
 
         if(ModConfig.Gauntlet.GUITEXT) {
-            buttonList.add(button1 = new ButtonStones(1, (width / 2) - 80, (height / 2) - 105, " Reality"));
-            buttonList.add(button2 = new ButtonStones(2, (width / 2) + 30, (height / 2) - 105, "Space"));
-            buttonList.add(button3 = new ButtonStones(3, (width / 2) - 100, (height / 2) - 10, "Soul"));
-            buttonList.add(button4 = new ButtonStones(4, (width / 2) - 25, (height / 2) + 50, "Time"));
-            buttonList.add(button5 = new ButtonStones(5, (width / 2) + 50, (height / 2) - 10, " Power"));
-            buttonList.add(button6 = new ButtonStones(6, (width / 2) - 25, (height / 2) - 40, " Mind"));
+            buttonList.add(button1 = new ButtonStones(TIME, (width / 2) - 80, (height / 2) - 105, " Time"));
+            buttonList.add(button2 = new ButtonStones(SOUL, (width / 2) + 30, (height / 2) - 105, "Soul"));
+            buttonList.add(button3 = new ButtonStones(REALITY, (width / 2) - 100, (height / 2) - 10, "Reality"));
+            buttonList.add(button4 = new ButtonStones(SPACE, (width / 2) - 25, (height / 2) + 50, "Space"));
+            buttonList.add(button5 = new ButtonStones(POWER, (width / 2) + 50, (height / 2) - 10, " Power"));
+            buttonList.add(button6 = new ButtonStones(MIND, (width / 2) - 25, (height / 2) - 40, " Mind"));
         }else{
-            buttonList.add(button1 = new ButtonStones(1, (width / 2) - 80, (height / 2) - 105, ""));
-            buttonList.add(button2 = new ButtonStones(2, (width / 2) + 30, (height / 2) - 105, ""));
-            buttonList.add(button3 = new ButtonStones(3, (width / 2) - 100, (height / 2) - 10, ""));
-            buttonList.add(button4 = new ButtonStones(4, (width / 2) - 25, (height / 2) + 50, ""));
-            buttonList.add(button5 = new ButtonStones(5, (width / 2) + 50, (height / 2) - 10, ""));
-            buttonList.add(button6 = new ButtonStones(6, (width / 2) - 25, (height / 2) - 40, ""));
+            buttonList.add(button1 = new ButtonStones(TIME, (width / 2) - 80, (height / 2) - 105, ""));
+            buttonList.add(button2 = new ButtonStones(SOUL, (width / 2) + 30, (height / 2) - 105, ""));
+            buttonList.add(button3 = new ButtonStones(REALITY, (width / 2) - 100, (height / 2) - 10, ""));
+            buttonList.add(button4 = new ButtonStones(SPACE, (width / 2) - 25, (height / 2) + 50, ""));
+            buttonList.add(button5 = new ButtonStones(POWER, (width / 2) + 50, (height / 2) - 10, ""));
+            buttonList.add(button6 = new ButtonStones(MIND, (width / 2) - 25, (height / 2) - 40, ""));
         }
         super.initGui();
     }
@@ -106,31 +115,31 @@ public class GuiGauntlet extends GuiScreen {
         switch (button.id) {
 
             case 1:
-                STONE = 1;
+                STONE = REALITY;
                 break;
 
             case 2:
-                STONE = 2;
+                STONE = SPACE;
                 break;
 
             case 3:
-                STONE = 3;
+                STONE = SOUL;
                 break;
 
             case 4:
-                STONE = 4;
+                STONE = TIME;
                 break;
 
             case 5:
-                STONE = 5;
+                STONE = POWER;
                 break;
 
             case 6:
-                STONE = 6;
+                STONE = MIND;
                 break;
         }
 
-        if(button.id == 1 || button.id == 2 || button.id == 3 || button.id == 4 || button.id == 6) {
+        if(button.id == REALITY || button.id == SPACE || button.id == SOUL || button.id == TIME || button.id == MIND) {
             NetworkHandler.NETWORK.sendToServer(new MessageNotAdded(STONE, button.id));
         }
 
