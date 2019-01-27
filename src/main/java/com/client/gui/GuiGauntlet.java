@@ -81,9 +81,9 @@ public class GuiGauntlet extends GuiScreen {
         if(ModConfig.Gauntlet.GUITEXT) {
             buttonList.add(button1 = new ButtonStones(TIME, (width / 2) - 80, (height / 2) - 105, " Time"));
             buttonList.add(button2 = new ButtonStones(SOUL, (width / 2) + 30, (height / 2) - 105, "Soul"));
-            buttonList.add(button3 = new ButtonStones(REALITY, (width / 2) - 100, (height / 2) - 10, "Reality"));
+            buttonList.add(button3 = new ButtonStones(POWER, (width / 2) - 100, (height / 2) - 10, "Power"));
             buttonList.add(button4 = new ButtonStones(SPACE, (width / 2) - 25, (height / 2) + 50, "Space"));
-            buttonList.add(button5 = new ButtonStones(POWER, (width / 2) + 50, (height / 2) - 10, " Power"));
+            buttonList.add(button5 = new ButtonStones(REALITY, (width / 2) + 50, (height / 2) - 10, " Reality"));
             buttonList.add(button6 = new ButtonStones(MIND, (width / 2) - 25, (height / 2) - 40, " Mind"));
         }else{
             buttonList.add(button1 = new ButtonStones(TIME, (width / 2) - 80, (height / 2) - 105, ""));

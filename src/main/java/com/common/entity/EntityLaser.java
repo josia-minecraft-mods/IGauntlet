@@ -21,7 +21,7 @@ import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
 
 public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpawnData {
 
-    private float damage;
+    public float damage;
     private DamageSource source;
     public Vec3d color;
 
