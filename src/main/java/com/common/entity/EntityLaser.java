@@ -7,6 +7,7 @@ import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
@@ -20,7 +21,7 @@ import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
 
 public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpawnData {
 
-    public float damage;
+    private float damage;
     private DamageSource source;
     public Vec3d color;
 
@@ -39,15 +40,24 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
     @Override
     protected void onImpact(RayTraceResult result) {
 
-        if (result == null || isDead)
+        if (result == null || isDead || world.isRemote)
             return;
 
         if (result.typeOfHit == Type.ENTITY) {
             if (result.entityHit == this.thrower) return;
-            Block blk = ModBlocks.ASH_PILE;
-            BlockPos pos0 = new BlockPos(result.entityHit.posX, result.entityHit.posY, result.entityHit.posZ);
-            IBlockState state0 = blk.getDefaultState();
-            world.setBlockState(pos0, state0);
+            if(result.entityHit instanceof EntityPlayer) {
+                if(!((EntityPlayer) result.entityHit).capabilities.isCreativeMode) {
+                    Block blk = ModBlocks.ASH_PILE;
+                    BlockPos pos0 = new BlockPos(result.entityHit.posX, result.entityHit.posY, result.entityHit.posZ);
+                    IBlockState state0 = blk.getDefaultState();
+                    world.setBlockState(pos0, state0);
+                }
+            }else {
+                Block blk = ModBlocks.ASH_PILE;
+                BlockPos pos0 = new BlockPos(result.entityHit.posX, result.entityHit.posY, result.entityHit.posZ);
+                IBlockState state0 = blk.getDefaultState();
+                world.setBlockState(pos0, state0);
+            }
             result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), damage);
 
         } else if (result.typeOfHit == RayTraceResult.Type.BLOCK) {
@@ -95,8 +105,8 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
 
     @Override
     public void onEntityUpdate() {
-        double moving = new Vec3d(posX, posY, posZ).distanceTo(new Vec3d(prevPosX, prevPosY, prevPosZ));
-        if(this.ticksExisted == 400 || moving < 0.01) {
+        double movingspeed = new Vec3d(posX, posY, posZ).distanceTo(new Vec3d(prevPosX, prevPosY, prevPosZ));
+        if(this.ticksExisted == 400 || movingspeed < 0.01) {
             this.setDead();
         }
     }
