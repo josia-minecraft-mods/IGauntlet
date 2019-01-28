@@ -88,13 +88,4 @@ public class AshPile extends BlockFalling implements IHasModel, ITileEntityProvi
         return new TileAshPile();
     }
 
-    @Override
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        TileEntity teash = worldIn.getTileEntity(pos);
-        if(teash != null && teash instanceof TileAshPile && !worldIn.isRemote) {
-            TileAshPile teasht = (TileAshPile) teash;
-            // playerIn.sendMessage(new TextComponentString("ID:" + teasht.getEntity()));
-        }
-        return true;
-    }
 }
