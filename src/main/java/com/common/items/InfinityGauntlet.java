@@ -4,6 +4,7 @@ import com.Infinity;
 import com.client.gui.GuiGauntlet;
 import com.client.gui.GuiSpace;
 import com.common.items.gems.GemPower;
+import com.common.items.gems.GemSpace;
 import com.common.items.gems.GemTime;
 import com.init.ModItems;
 import com.tabs.InfinityTabs;
@@ -88,9 +89,6 @@ public class InfinityGauntlet extends Item implements IHasModel {
             ItemStack stack = player.getHeldItem(hand);
             int current = stack.getTagCompound().getInteger("currentstone");
 
-            if(worldIn.isRemote && current == SPACE) {
-                OpenSpaceGui();
-            }
 
         return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
     }
@@ -98,9 +96,16 @@ public class InfinityGauntlet extends Item implements IHasModel {
 
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
         playerIn.setActiveHand(handIn);
+        ItemStack stack = playerIn.getActiveItemStack();
+
+        int current = stack.getTagCompound().getInteger("currentstone");
 
         if (worldIn.isRemote && playerIn.getHeldItemOffhand().getItem() == ModItems.INFINITY_GAUNTLET) {
             OpenInfinityGui();
+        }
+
+        if(worldIn.isRemote && current == SPACE) {
+            GemSpace.OpenSpaceGui(playerIn);
         }
 
 
@@ -113,10 +118,6 @@ public class InfinityGauntlet extends Item implements IHasModel {
         Minecraft.getMinecraft().displayGuiScreen(new GuiGauntlet());
     }
 
-    @SideOnly(Side.CLIENT)
-    public void OpenSpaceGui() {
-        Minecraft.getMinecraft().displayGuiScreen(new GuiSpace());
-    }
 
     @Override
     public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
