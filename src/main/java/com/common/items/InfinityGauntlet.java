@@ -2,6 +2,7 @@ package com.common.items;
 
 import com.Infinity;
 import com.client.gui.GuiGauntlet;
+import com.client.gui.GuiSpace;
 import com.common.items.gems.GemPower;
 import com.common.items.gems.GemTime;
 import com.init.ModItems;
@@ -87,7 +88,9 @@ public class InfinityGauntlet extends Item implements IHasModel {
             ItemStack stack = player.getHeldItem(hand);
             int current = stack.getTagCompound().getInteger("currentstone");
 
-
+            if(worldIn.isRemote && current == SPACE) {
+                OpenSpaceGui();
+            }
 
         return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
     }
@@ -100,12 +103,19 @@ public class InfinityGauntlet extends Item implements IHasModel {
             OpenInfinityGui();
         }
 
+
+
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
 
     @SideOnly(Side.CLIENT)
     public void OpenInfinityGui() {
         Minecraft.getMinecraft().displayGuiScreen(new GuiGauntlet());
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void OpenSpaceGui() {
+        Minecraft.getMinecraft().displayGuiScreen(new GuiSpace());
     }
 
     @Override

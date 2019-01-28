@@ -39,7 +39,7 @@ public class MessageNotAdded implements IMessage {
         public IMessage onMessage(MessageNotAdded message, MessageContext ctx) {
             ctx.getServerHandler().player.getServerWorld().addScheduledTask(() -> {
                 EntityPlayer player = ctx.getServerHandler().player;
-                player.sendStatusMessage(new TextComponentString("This stone hasn't been added yet! Stone ; " + button), true);
+                player.sendStatusMessage(new TextComponentString("This stone hasn't been added yet! Stone : " + button), true);
             });
             return null;
         }
