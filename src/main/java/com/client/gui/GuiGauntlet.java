@@ -105,8 +105,8 @@ public class GuiGauntlet extends GuiScreen {
         super.drawScreen(mouseX, mouseY, partialTicks);
     }
 
-    public static int STONE = 0;
 
+    public static int STONE = 0;
 
 
     @Override
