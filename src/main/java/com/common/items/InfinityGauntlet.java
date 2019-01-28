@@ -2,10 +2,8 @@ package com.common.items;
 
 import com.Infinity;
 import com.client.gui.GuiGauntlet;
-import com.client.gui.GuiSpace;
 import com.common.items.gems.GemPower;
 import com.common.items.gems.GemSpace;
-import com.common.items.gems.GemTime;
 import com.init.ModItems;
 import com.tabs.InfinityTabs;
 import com.util.IHasModel;
@@ -23,7 +21,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
