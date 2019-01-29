@@ -1,9 +1,10 @@
-//Items
+//Main
 item.infinity_gauntlet.name=Infinity Gauntlet
 
 //Items
 item.mindstone.name=Mind Stone
 item.uru_ingot.name=Uru Ingot
+item.dwarf_hammer.name=Dwarf Hammer
 
 // Tab
 itemGroup.infinityitems=Infinity Tab
