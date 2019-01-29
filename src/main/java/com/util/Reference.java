@@ -2,7 +2,7 @@ package com.util;
 
 public class Reference {
     public static final String NAME = "Infinity Mod";
-    public static final String VERSION = "2.5";
+    public static final String VERSION = "2.6";
     public static final String MODID = "infinity";
 
     public static final String CLIENTPROXY = "com.proxy.ClientProxy";
