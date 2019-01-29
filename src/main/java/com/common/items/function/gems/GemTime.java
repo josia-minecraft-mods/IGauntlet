@@ -1,4 +1,4 @@
-package com.common.items.gems;
+package com.common.items.function.gems;
 
 import com.common.blocks.AshPile;
 import com.common.tileentity.TileAshPile;
@@ -8,9 +8,7 @@ import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
 public class GemTime {

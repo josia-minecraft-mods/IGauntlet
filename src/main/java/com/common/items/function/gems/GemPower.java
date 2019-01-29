@@ -1,4 +1,4 @@
-package com.common.items.gems;
+package com.common.items.function.gems;
 
 import com.common.damage.IDamageSource;
 import com.common.entity.EntityLaser;
@@ -12,7 +12,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.SoundCategory;

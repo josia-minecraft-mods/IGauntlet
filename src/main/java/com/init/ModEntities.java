@@ -8,6 +8,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 public class ModEntities {
+
     public static int id = 0;
 
     public static void registerEntities() {

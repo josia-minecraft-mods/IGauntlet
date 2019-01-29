@@ -2,8 +2,8 @@ package com.common.items;
 
 import com.Infinity;
 import com.client.gui.GuiGauntlet;
-import com.common.items.gems.GemPower;
-import com.common.items.gems.GemSpace;
+import com.common.items.function.gems.GemPower;
+import com.common.items.function.gems.GemSpace;
 import com.init.ModItems;
 import com.tabs.InfinityTabs;
 import com.util.IHasModel;

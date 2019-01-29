@@ -1,4 +1,4 @@
-package com.common.items.gems;
+package com.common.items.function.gems;
 
 import com.client.gui.GuiSpace;
 import com.init.ModItems;

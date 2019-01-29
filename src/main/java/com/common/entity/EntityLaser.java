@@ -1,6 +1,6 @@
 package com.common.entity;
 
-import com.common.items.gems.GemPower;
+import com.common.items.function.gems.GemPower;
 import com.init.ModBlocks;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
