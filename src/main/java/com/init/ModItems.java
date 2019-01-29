@@ -2,6 +2,7 @@ package com.init;
 ;
 import com.common.items.*;
 import com.common.items.stones.*;
+import com.common.items.tools.Dwarfhammer;
 import net.minecraft.item.*;
 
 import java.util.ArrayList;
@@ -29,6 +30,9 @@ public class ModItems {
     public static final Item BLUESTONE = new ItemBase("stone_blue", false);
     public static final Item ORANGESTONE = new ItemBase("stone_orange", false);
     public static final Item YELLOWSTONE = new ItemBase("stone_yellow", false);
+
+    //Tools
+    public static final Item DWARFHAMMER = new Dwarfhammer("dwarf_hammer");
 
 
 

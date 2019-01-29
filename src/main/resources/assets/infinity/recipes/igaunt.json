@@ -1,0 +1,58 @@
+{
+  "type": "minecraft:crafting_shaped",
+
+  "pattern":
+          [
+            "BRO",
+            "PUY",
+            "GUH"
+          ],
+  "key":
+  {
+    "G":
+    {
+      "item": "infinity:time_stone"
+    },
+
+    "P":
+    {
+      "item": "infinity:power_stone"
+    },
+
+    "B":
+    {
+      "item": "infinity:space_stone"
+    },
+
+    "R":
+    {
+      "item": "infinity:reality_stone"
+    },
+
+    "O":
+    {
+      "item": "infinity:soul_stone"
+    },
+
+    "Y":
+    {
+      "item": "infinity:mind_stone"
+    },
+
+    "U":
+    {
+      "item": "infinity:uru_ingot"
+    },
+
+    "H":
+    {
+      "item": "infinity:dwarf_hammer"
+    }
+  },
+
+  "result":
+  {
+    "item": "infinity:infinity_gauntlet",
+    "count": 1
+  }
+}
