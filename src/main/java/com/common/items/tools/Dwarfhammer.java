@@ -20,9 +20,6 @@ public class Dwarfhammer extends Item implements IHasModel {
         ModItems.ITEMS.add(this);
     }
 
-    public String getItemStackDisplayName(ItemStack stack) {
-        return TextFormatting.BOLD + "Dwarf Hammer";
-    }
 
     @Override
     public void registerModels() {
