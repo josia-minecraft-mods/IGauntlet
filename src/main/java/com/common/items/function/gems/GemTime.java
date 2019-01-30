@@ -37,17 +37,22 @@ public class GemTime {
 
     public static boolean freeze = false;
 
-    public static boolean IsFreezeNow() {
-         return freeze = !freeze;
+    public static void IsFreezeNow() {
+         freeze = !freeze;
     }
+
+    public static boolean GetFreeze() {
+        return freeze;
+    }
+
+
 
     public static void FreezeTime(EntityPlayer player, World world, int extensionrange) {
         for(Entity entity : player.world.getEntitiesWithinAABB(EntityLiving.class, player.getEntityBoundingBox().grow(extensionrange, extensionrange, extensionrange))) {
-            if (IsFreezeNow()) {
+            if (GetFreeze()) {
                 entity.setVelocity(0, 0, 0);
                 entity.velocityChanged = true;
                 entity.extinguish();
-                System.out.println(IsFreezeNow() + " + TIME");
             } else {
                 entity.setVelocity(1, 1, 1);
                 entity.velocityChanged = true;
