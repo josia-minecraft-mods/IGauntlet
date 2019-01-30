@@ -1,26 +1,35 @@
 package com.common.blocks;
 
 import com.Infinity;
+import com.common.tileentity.TileTesseract;
 import com.init.ModBlocks;
 import com.init.ModItems;
 import com.tabs.InfinityTabs;
 import com.util.IHasModel;
 import net.minecraft.block.Block;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 
-public class Tesseract extends Block implements IHasModel {
+import javax.annotation.Nullable;
 
-    public static final AxisAlignedBB TESS_AABB = new AxisAlignedBB(0.34375,0,0.34375,0.65625,0.3125,0.65625);
+public class Tesseract extends Block implements IHasModel, ITileEntityProvider {
 
-    public Tesseract(String name, Material material, boolean tab)
-    {
+    public static final AxisAlignedBB TESS_AABB = new AxisAlignedBB(0.34375, 0, 0.34375, 0.65625, 0.3125, 0.65625);
+
+    public Tesseract(String name, Material material, boolean tab) {
         super(material);
         setTranslationKey(name);
         setRegistryName(name);
@@ -29,7 +38,7 @@ public class Tesseract extends Block implements IHasModel {
         setResistance(0.1F);
         setLightOpacity(1);
 
-        if(tab)
+        if (tab)
             setCreativeTab(InfinityTabs.infinityTabs);
 
         ModBlocks.BLOCKS.add(this);
@@ -52,13 +61,39 @@ public class Tesseract extends Block implements IHasModel {
     }
 
     @Override
-    public void registerModels()
-    {
+    public void registerModels() {
         Infinity.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
     }
 
     @Override
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
         return TESS_AABB;
+    }
+
+    @Override
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        if (!worldIn.isRemote) {
+            ItemStack stack = playerIn.getHeldItemMainhand();
+            TileEntity te = worldIn.getTileEntity(pos);
+            if (te instanceof TileTesseract) {
+                TileTesseract tess = (TileTesseract) te;
+                if (stack.getItem() != null) {
+                    if (stack.getItem() == ModItems.SPACESTONE) {
+                        if (tess.AddStone()) {
+                            stack.setCount(0);
+                            return true;
+                        }
+                    }
+                }
+                tess.RemoveStone();
+            }
+        }
+        return true;
+    }
+
+    @Nullable
+    @Override
+    public TileEntity createNewTileEntity(World worldIn, int meta) {
+        return new TileTesseract();
     }
 }

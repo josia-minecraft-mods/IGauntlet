@@ -34,8 +34,6 @@ public class ModItems {
     //Tools
     public static final Item DWARFHAMMER = new Dwarfhammer("dwarf_hammer");
 
-
-
 }
 
 
