@@ -35,7 +35,7 @@ public class GemTime {
         }
     }
 
-    public static boolean freeze = true;
+    public static boolean freeze = false;
 
     public static boolean IsFreezeNow() {
          return freeze = !freeze;
@@ -47,10 +47,11 @@ public class GemTime {
                 entity.setVelocity(0, 0, 0);
                 entity.velocityChanged = true;
                 entity.extinguish();
+                System.out.println(IsFreezeNow() + " + TIME");
             } else {
+                entity.setVelocity(1, 1, 1);
                 entity.velocityChanged = false;
             }
         }
-        System.out.println(IsFreezeNow() + " + TIME");
      }
 }
