@@ -11,10 +11,11 @@ itemGroup.infinityitems=Infinity Tab
 
 //Blocks
 tile.ash_pile.name=Ash Pile
-tile.uru_ore.name= Uru Ore
+tile.uru_ore.name=Uru Ore
+tile.tesseract.name=Tesseract
 
 //Entity
-entity.ray.name = Laser
+entity.ray.name =Laser
 
 //DeathSource
 damagesource.igauntlet.laser=a Laser!
