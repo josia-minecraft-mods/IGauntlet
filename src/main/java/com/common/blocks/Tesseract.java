@@ -85,7 +85,7 @@ public class Tesseract extends Block implements IHasModel, ITileEntityProvider {
                         }
                     }
                 }
-                tess.RemoveStone();
+                tess.RemoveStone(playerIn);
             }
         }
         return true;

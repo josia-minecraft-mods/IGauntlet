@@ -1,8 +1,12 @@
 package com.common.tileentity;
 
+import com.init.ModItems;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.client.gui.ForgeGuiFactory;
 
 public class TileTesseract extends TileEntity {
 
@@ -16,9 +20,10 @@ public class TileTesseract extends TileEntity {
         return false;
     }
 
-    public void RemoveStone() {
+    public void RemoveStone(EntityPlayer player) {
         if(stone == 1) {
-            world.spawnEntity(new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5));
+           // world.spawnEntity(new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5));
+            player.addItemStackToInventory(new ItemStack(ModItems.SPACESTONE));
             stone = 0;
         }
     }
