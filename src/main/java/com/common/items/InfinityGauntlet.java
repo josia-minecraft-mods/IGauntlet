@@ -100,9 +100,6 @@ public class InfinityGauntlet extends Item implements IHasModel {
             OpenInfinityGui();
         }
 
-        if (current == TIME) {
-            GemTime.IsFreezeNow();
-        }
 
         if (worldIn.isRemote && current == SPACE) {
             GemSpace.OpenSpaceGui(playerIn);
@@ -173,10 +170,6 @@ public class InfinityGauntlet extends Item implements IHasModel {
         EntityPlayer playerIn = (EntityPlayer) entityIn;
         NBTTagCompound nbt = stack.getTagCompound();
         int current = stack.getTagCompound().getInteger("currentstone");
-
-        if (current == TIME) {
-            GemTime.FreezeTime(playerIn, worldIn, ModConfig.Gauntlet.ExtensionRange);
-        }
 
         if (!worldIn.isRemote && (isSelected)) {
             EntityPlayer player = (EntityPlayer) entityIn;

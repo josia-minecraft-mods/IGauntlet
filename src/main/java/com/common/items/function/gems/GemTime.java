@@ -37,7 +37,7 @@ public class GemTime {
 
     public static boolean freeze = false;
 
-    public static void IsFreezeNow() {
+    public static void FreezeNow() {
          freeze = !freeze;
     }
 
@@ -45,16 +45,16 @@ public class GemTime {
         return freeze;
     }
 
-
-
     public static void FreezeTime(EntityPlayer player, World world, int extensionrange) {
         for(Entity entity : player.world.getEntitiesWithinAABB(EntityLiving.class, player.getEntityBoundingBox().grow(extensionrange, extensionrange, extensionrange))) {
+
             if (GetFreeze()) {
                 entity.setVelocity(0, 0, 0);
+                entity.getEntityData().setInteger("NoAI", 1);
                 entity.velocityChanged = true;
                 entity.extinguish();
-            } else {
-                entity.velocityChanged = true;
+            }else{
+                entity.getEntityData().setInteger("NoAI", 0);
             }
         }
      }
