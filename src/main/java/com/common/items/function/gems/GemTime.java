@@ -50,7 +50,7 @@ public class GemTime {
                 System.out.println(IsFreezeNow() + " + TIME");
             } else {
                 entity.setVelocity(1, 1, 1);
-                entity.velocityChanged = false;
+                entity.velocityChanged = true;
             }
         }
      }
