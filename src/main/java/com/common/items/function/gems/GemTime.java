@@ -4,6 +4,8 @@ import com.common.blocks.AshPile;
 import com.common.tileentity.TileAshPile;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -33,5 +35,22 @@ public class GemTime {
         }
     }
 
+    public static boolean freeze = true;
 
+    public static boolean IsFreezeNow() {
+         return freeze = !freeze;
+    }
+
+    public static void FreezeTime(EntityPlayer player, World world, int extensionrange) {
+        for(Entity entity : player.world.getEntitiesWithinAABB(EntityLiving.class, player.getEntityBoundingBox().grow(extensionrange, extensionrange, extensionrange))) {
+            if (IsFreezeNow()) {
+                entity.setVelocity(0, 0, 0);
+                entity.velocityChanged = true;
+                entity.extinguish();
+            } else {
+                entity.velocityChanged = false;
+            }
+        }
+        System.out.println(IsFreezeNow() + " + TIME");
+     }
 }

@@ -4,6 +4,7 @@ import com.Infinity;
 import com.client.gui.GuiGauntlet;
 import com.common.items.function.gems.GemPower;
 import com.common.items.function.gems.GemSpace;
+import com.common.items.function.gems.GemTime;
 import com.init.ModItems;
 import com.tabs.InfinityTabs;
 import com.util.IHasModel;
@@ -26,7 +27,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
 
 
 public class InfinityGauntlet extends Item implements IHasModel {
@@ -83,9 +83,8 @@ public class InfinityGauntlet extends Item implements IHasModel {
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 
 
-            ItemStack stack = player.getHeldItem(hand);
-            int current = stack.getTagCompound().getInteger("currentstone");
-
+        ItemStack stack = player.getHeldItem(hand);
+        int current = stack.getTagCompound().getInteger("currentstone");
 
         return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
     }
@@ -101,10 +100,14 @@ public class InfinityGauntlet extends Item implements IHasModel {
             OpenInfinityGui();
         }
 
-        if(worldIn.isRemote && current == SPACE) {
-            GemSpace.OpenSpaceGui(playerIn);
+        if (current == TIME) {
+            GemTime.IsFreezeNow();
+            GemTime.FreezeTime(playerIn, worldIn, ModConfig.Gauntlet.ExtensionRange);
         }
 
+        if (worldIn.isRemote && current == SPACE) {
+            GemSpace.OpenSpaceGui(playerIn);
+        }
 
 
         return super.onItemRightClick(worldIn, playerIn, handIn);
@@ -168,18 +171,17 @@ public class InfinityGauntlet extends Item implements IHasModel {
     @Override
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
         super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
+        NBTTagCompound nbt = stack.getTagCompound();
 
 
         if (!worldIn.isRemote && (isSelected)) {
-            EntityPlayerMP player = (EntityPlayerMP) entityIn;
+            EntityPlayer player = (EntityPlayer) entityIn;
             if (stack.getItem() == ModItems.INFINITY_GAUNTLET) {
                 if (player.getActivePotionEffect(MobEffects.INSTANT_HEALTH) == null) {
                     player.addPotionEffect(new PotionEffect(MobEffects.INSTANT_HEALTH, 50, 3));
                 }
             }
         }
-
-        NBTTagCompound nbt = stack.getTagCompound();
 
         if (!worldIn.isRemote && stack.getItem() instanceof InfinityGauntlet) {
             if (nbt == null) {
