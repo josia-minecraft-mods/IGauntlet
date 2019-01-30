@@ -54,7 +54,6 @@ public class GemTime {
                 entity.velocityChanged = true;
                 entity.extinguish();
             } else {
-                entity.setVelocity(1, 1, 1);
                 entity.velocityChanged = true;
             }
         }
