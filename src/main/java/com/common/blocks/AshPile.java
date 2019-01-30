@@ -5,6 +5,7 @@ import com.Infinity;
 import com.common.tileentity.TileAshPile;
 import com.init.ModBlocks;
 import com.init.ModItems;
+import com.tabs.InfinityTabs;
 import com.util.IHasModel;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.ITileEntityProvider;
@@ -34,6 +35,9 @@ public class AshPile extends BlockFalling implements IHasModel, ITileEntityProvi
         setHardness(0.0F);
         setResistance(0.1F);
         setLightOpacity(1);
+
+        if(tab)
+            setCreativeTab(InfinityTabs.infinityTabs);
 
         ModBlocks.BLOCKS.add(this);
         ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
