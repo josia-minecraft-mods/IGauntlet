@@ -88,7 +88,7 @@ public class Tesseract extends Block implements IHasModel, ITileEntityProvider {
                         if (tess.AddStone()) {
                             stack.setCount(0);
                             return true;
-                            setLightLevel(float);
+                            setLightLevel(0.5F);
                         }
                     }
                 }
