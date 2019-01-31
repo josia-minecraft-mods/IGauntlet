@@ -3,6 +3,7 @@ package com;
 import com.init.ModRecipes;
 import com.network.NetworkHandler;
 import com.proxy.IProxy;
+import com.util.ModLog;
 import com.util.Reference;
 import com.util.handlers.RegistryHandler;
 import com.world.ModWorldGen;
@@ -26,6 +27,7 @@ public class Infinity {
 
     @Mod.EventHandler
     public static void PreInit(FMLPreInitializationEvent event) {
+        ModLog.Log("Pre-Init");
         proxy.preInit(event);
         GameRegistry.registerWorldGenerator(new ModWorldGen(), 3);
         NetworkHandler.init();
@@ -34,12 +36,14 @@ public class Infinity {
 
     @Mod.EventHandler
     public static void Init(FMLInitializationEvent event) {
+        ModLog.Log("Init");
         ModRecipes.init();
         RegistryHandler.initRegistries(event);
     }
 
     @Mod.EventHandler
     public static void PostInit(FMLPostInitializationEvent event) {
+        ModLog.Log("Post-Init");
     }
 }
 

@@ -25,6 +25,10 @@ public class TileTesseract extends TileEntity {
         }
     }
 
+    public int GetStone() {
+        return this.stone;
+    }
+
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
@@ -37,4 +41,7 @@ public class TileTesseract extends TileEntity {
         super.readFromNBT(compound);
         this.stone = compound.getInteger("stone");
     }
+
+
+
 }
