@@ -46,7 +46,6 @@ public class SpaceStone extends Item implements IHasModel {
                 timeout++;
             }
                 if (timeout > maxtimeout) {
-                    if (player.prevPosX != player.posX || player.prevPosZ != player.posZ) {
                         timeout = 0;
                         int max = ModConfig.Gauntlet.MaximumTeleportRange;
                         int min = ModConfig.Gauntlet.MinimumTeleportRange;
@@ -56,7 +55,7 @@ public class SpaceStone extends Item implements IHasModel {
                         player.setLocationAndAngles(pos2.getX(), pos2.getY(), pos2.getZ(), 1, 1);
                     }
                 }
-            }
+
 
     public String getItemStackDisplayName(ItemStack stack) {
         return TextFormatting.BOLD + "Space Stone";
