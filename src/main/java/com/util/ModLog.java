@@ -2,7 +2,7 @@ package com.util;
 
 public class ModLog {
 
-    public static void Log(String text) {
+    public static void Log(Object text) {
         System.out.println("["+Reference.MODID+"] "+ text);
     }
 
