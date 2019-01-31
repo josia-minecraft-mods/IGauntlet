@@ -130,6 +130,7 @@ public class Tesseract extends Block implements IHasModel, ITileEntityProvider {
                 int data = nbt.getInteger("BlockEntityTag");
                 if (data == 1) {
                     tess.AddStone();
+                    setLightLevel(float);
                 }
             }
         }
