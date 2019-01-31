@@ -167,9 +167,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
     @Override
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
         super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
-        EntityPlayer playerIn = (EntityPlayer) entityIn;
         NBTTagCompound nbt = stack.getTagCompound();
-        int current = stack.getTagCompound().getInteger("currentstone");
 
         if (!worldIn.isRemote && (isSelected)) {
             EntityPlayer player = (EntityPlayer) entityIn;

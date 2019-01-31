@@ -1,13 +1,10 @@
 package com.common.tileentity;
 
 import com.init.ModItems;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.client.gui.ForgeGuiFactory;
-
 public class TileTesseract extends TileEntity {
 
     private int stone = 0;
