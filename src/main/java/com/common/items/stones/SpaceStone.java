@@ -46,13 +46,15 @@ public class SpaceStone extends Item implements IHasModel {
                 timeout++;
             }
                 if (timeout > maxtimeout) {
-                    timeout = 0;
-                    int max = ModConfig.Gauntlet.MaximumTeleportRange;
-                    int min = ModConfig.Gauntlet.MinimumTeleportRange;
-                    int random = (int) (Math.random() * max + min);
-                    BlockPos pos1 = new BlockPos(random, random, random);
-                    BlockPos pos2 = worldIn.getTopSolidOrLiquidBlock(pos1);
-                    player.setLocationAndAngles(pos2.getX(), pos2.getY(), pos2.getZ(), 1, 1);
+                    if (player.prevPosX != player.posX || player.prevPosZ != player.posZ) {
+                        timeout = 0;
+                        int max = ModConfig.Gauntlet.MaximumTeleportRange;
+                        int min = ModConfig.Gauntlet.MinimumTeleportRange;
+                        int random = (int) (Math.random() * max + min);
+                        BlockPos pos1 = new BlockPos(random, random, random);
+                        BlockPos pos2 = worldIn.getTopSolidOrLiquidBlock(pos1);
+                        player.setLocationAndAngles(pos2.getX(), pos2.getY(), pos2.getZ(), 1, 1);
+                    }
                 }
             }
 
