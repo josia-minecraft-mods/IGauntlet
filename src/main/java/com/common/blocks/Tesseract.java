@@ -93,6 +93,7 @@ public class Tesseract extends Block implements IHasModel, ITileEntityProvider {
                     }
                 }
                 tess.RemoveStone(playerIn);
+                setLightLevel(0F);
             }
         }
         return true;
@@ -135,8 +136,6 @@ public class Tesseract extends Block implements IHasModel, ITileEntityProvider {
             }
         }
     }
-
-
 
     @Nullable
     @Override
