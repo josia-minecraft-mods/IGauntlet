@@ -2,9 +2,7 @@ package com.proxy;
 
 import com.init.ModEntities;
 import com.util.handlers.RenderHandler;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -24,7 +22,6 @@ public class ClientProxy implements IProxy {
 
     @Override
     public void init(FMLInitializationEvent e) {
-
     }
 
     @Override
