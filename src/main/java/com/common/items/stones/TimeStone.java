@@ -20,10 +20,6 @@ public class TimeStone extends Item implements IHasModel {
         ModItems.ITEMS.add(this);
     }
 
-    public String getItemStackDisplayName(ItemStack stack) {
-        return TextFormatting.BOLD + "Time Stone";
-    }
-
     @Override
     public void registerModels() {
         Infinity.proxy.registerItemRenderer(this, 0, "inventory");

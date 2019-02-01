@@ -20,9 +20,7 @@ public class PowerStone extends Item implements IHasModel {
         ModItems.ITEMS.add(this);
     }
 
-    public String getItemStackDisplayName(ItemStack stack) {
-        return TextFormatting.BOLD + "Power Stone";
-    }
+
 
     @Override
     public void registerModels() {

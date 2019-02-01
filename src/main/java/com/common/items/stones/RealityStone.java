@@ -20,9 +20,6 @@ public class RealityStone extends Item implements IHasModel {
         ModItems.ITEMS.add(this);
     }
 
-    public String getItemStackDisplayName(ItemStack stack) {
-        return TextFormatting.BOLD + "Reality Stone";
-    }
 
     @Override
     public void registerModels() {

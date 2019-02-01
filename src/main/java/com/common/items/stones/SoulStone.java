@@ -20,9 +20,6 @@ public class SoulStone extends Item implements IHasModel {
         ModItems.ITEMS.add(this);
     }
 
-    public String getItemStackDisplayName(ItemStack stack) {
-        return TextFormatting.BOLD + "Soul Stone";
-    }
 
     @Override
     public void registerModels() {

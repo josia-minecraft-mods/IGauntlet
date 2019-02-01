@@ -2,7 +2,12 @@
 item.infinity_gauntlet.name=Infinity Gauntlet
 
 //Items
-item.mindstone.name=Mind Stone
+item.mind_stone.name=Mind Stone
+item.space_stone.name=Space Stone
+item.time_stone.name=Time Stone
+item.reality_stone.name=Reality Stone
+item.power_stone.name=Power Stone
+item.soul_stone.name=Soul Stone
 item.uru_ingot.name=Uru Ingot
 item.dwarf_hammer.name=Dwarf Hammer
 

@@ -38,28 +38,24 @@ public class SpaceStone extends Item implements IHasModel {
         super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
 
 
+        EntityPlayer player = (EntityPlayer) entityIn;
 
-            EntityPlayer player = (EntityPlayer) entityIn;
-
-            int maxtimeout = 20 * 20;
-            if (isSelected) {
-                timeout++;
-            }
-                if (timeout > maxtimeout) {
-                        timeout = 0;
-                        int max = ModConfig.Gauntlet.MaximumTeleportRange;
-                        int min = ModConfig.Gauntlet.MinimumTeleportRange;
-                        int random = (int) (Math.random() * max + min);
-                        BlockPos pos1 = new BlockPos(random, random, random);
-                        BlockPos pos2 = worldIn.getTopSolidOrLiquidBlock(pos1);
-                        player.setLocationAndAngles(pos2.getX(), pos2.getY(), pos2.getZ(), 1, 1);
-                    }
-                }
-
-
-    public String getItemStackDisplayName(ItemStack stack) {
-        return TextFormatting.BOLD + "Space Stone";
+        int maxtimeout = 20 * 20;
+        if (isSelected) {
+            timeout++;
+        }
+        if (timeout > maxtimeout) {
+            timeout = 0;
+            int max = ModConfig.Gauntlet.MaximumTeleportRange;
+            int min = ModConfig.Gauntlet.MinimumTeleportRange;
+            int random = (int) (Math.random() * max + min);
+            BlockPos pos1 = new BlockPos(random, random, random);
+            BlockPos pos2 = worldIn.getTopSolidOrLiquidBlock(pos1);
+            player.setLocationAndAngles(pos2.getX(), pos2.getY(), pos2.getZ(), 1, 1);
+        }
     }
+
+
 
     @Override
     public void registerModels() {
