@@ -38,7 +38,7 @@ public class ModConfig {
 
         @Config.Comment("Maximum Telport range when holding sotne")
         @Config.LangKey("infinity.config.rangeteleportmaximum")
-        @Config.RangeInt(min = 5, max = 500)
+        @Config.RangeInt(min = 5, max = 100)
         public int MaximumTeleportRange = 100;
 
 

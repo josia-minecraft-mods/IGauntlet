@@ -87,13 +87,12 @@ public class Tesseract extends Block implements IHasModel, ITileEntityProvider {
                     if (stack.getItem() == ModItems.SPACESTONE) {
                         if (tess.AddStone()) {
                             stack.setCount(0);
-                            return true;
                             setLightLevel(0.5F);
+                            return true;
                         }
                     }
                 }
                 tess.RemoveStone(playerIn);
-                setLightLevel(0F);
             }
         }
         return true;
@@ -136,6 +135,8 @@ public class Tesseract extends Block implements IHasModel, ITileEntityProvider {
             }
         }
     }
+
+
 
     @Nullable
     @Override
