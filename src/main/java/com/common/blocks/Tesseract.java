@@ -45,7 +45,7 @@ public class Tesseract extends Block implements IHasModel, ITileEntityProvider {
         setLightOpacity(1);
 
         if (tab)
-            setCreativeTab(InfinityTabs.infinityTabs);
+      setCreativeTab(InfinityTabs.infinityTabs);
 
         ModBlocks.BLOCKS.add(this);
         ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
@@ -87,13 +87,14 @@ public class Tesseract extends Block implements IHasModel, ITileEntityProvider {
                     if (stack.getItem() == ModItems.SPACESTONE) {
                         if (tess.AddStone()) {
                             stack.setCount(0);
-                            return true;
-                            setLightLevel(1.0F);
+setLightLevel(1.0F);
+                        
+return true;
+                         
                         }
                     }
                 }
                 tess.RemoveStone(playerIn);
-                setLightLevel(0F);
             }
         }
         return true;
