@@ -2,9 +2,7 @@ package com.common.items.stones;
 
 import com.Infinity;
 import com.config.ModConfig;
-import com.util.ModLog;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import com.tabs.InfinityTabs;
@@ -12,11 +10,8 @@ import com.util.IHasModel;
 import com.init.ModItems;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
-import net.minecraftforge.common.config.Config;
-
-import java.util.Random;
 
 public class SpaceStone extends Item implements IHasModel {
 
@@ -52,6 +47,11 @@ public class SpaceStone extends Item implements IHasModel {
             BlockPos pos1 = new BlockPos(random, random, random);
             BlockPos pos2 = worldIn.getTopSolidOrLiquidBlock(pos1);
             player.setLocationAndAngles(pos2.getX(), pos2.getY(), pos2.getZ(), 1, 1);
+            player.sendStatusMessage(new TextComponentTranslation("stones.space.randomtp"), true);
+        }
+
+        if(timeout == maxtimeout / 2) {
+            player.sendStatusMessage(new TextComponentTranslation("stones.space.donthold"), true);
         }
     }
 

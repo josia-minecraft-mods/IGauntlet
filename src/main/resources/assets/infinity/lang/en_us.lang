@@ -24,3 +24,8 @@ entity.ray.name =Laser
 
 //DeathSource
 damagesource.igauntlet.laser=a Laser!
+
+//Messages
+stones.space.randomtp=You have drifted!
+stones.space.donthold=Don't hold it for too long!
+
