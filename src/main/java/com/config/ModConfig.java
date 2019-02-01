@@ -31,6 +31,18 @@ public class ModConfig {
         @Config.RangeInt(min = 5, max = 100)
         public int SnapCooldown = 25;
 
+        @Config.Comment("Minimum Telport range when holding sotne")
+        @Config.LangKey("infinity.config.rangeteleportminimum")
+        @Config.RangeInt(min = 5, max = 50)
+        public int MinimumTeleportRange = 30;
+
+        @Config.Comment("Maximum Telport range when holding sotne")
+        @Config.LangKey("infinity.config.rangeteleportmaximum")
+        @Config.RangeInt(min = 5, max = 500)
+        public int MaximumTeleportRange = 100;
+
+
+
         @Config.LangKey("infinity.config.guitext")
         @Config.Comment("Enable Text on Gantlet GUI")
         public boolean GUITEXT = true;

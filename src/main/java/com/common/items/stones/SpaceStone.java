@@ -1,12 +1,22 @@
 package com.common.items.stones;
 
 import com.Infinity;
+import com.config.ModConfig;
+import com.util.ModLog;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import com.tabs.InfinityTabs;
 import com.util.IHasModel;
 import com.init.ModItems;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
+import net.minecraftforge.common.config.Config;
+
+import java.util.Random;
 
 public class SpaceStone extends Item implements IHasModel {
 
@@ -19,6 +29,33 @@ public class SpaceStone extends Item implements IHasModel {
 
         ModItems.ITEMS.add(this);
     }
+
+
+    int timeout = 0;
+
+    @Override
+    public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+        super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
+
+
+
+            EntityPlayer player = (EntityPlayer) entityIn;
+
+            int maxtimeout = 20 * 20;
+            if (isSelected) {
+                timeout++;
+            }
+                if (timeout > maxtimeout) {
+                        timeout = 0;
+                        int max = ModConfig.Gauntlet.MaximumTeleportRange;
+                        int min = ModConfig.Gauntlet.MinimumTeleportRange;
+                        int random = (int) (Math.random() * max + min);
+                        BlockPos pos1 = new BlockPos(random, random, random);
+                        BlockPos pos2 = worldIn.getTopSolidOrLiquidBlock(pos1);
+                        player.setLocationAndAngles(pos2.getX(), pos2.getY(), pos2.getZ(), 1, 1);
+                    }
+                }
+
 
     public String getItemStackDisplayName(ItemStack stack) {
         return TextFormatting.BOLD + "Space Stone";
