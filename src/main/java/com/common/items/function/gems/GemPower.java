@@ -23,11 +23,12 @@ import net.minecraft.world.World;
 public class GemPower {
 
     public static void Snap(EntityPlayer playerIn, ItemStack stack, int extend) {
-        if (playerIn.isSneaking() && ModConfig.Gauntlet.Power.Snap) {
+        boolean CanSnap = ModConfig.Gauntlet.PowerStone.Snap;
+        if (playerIn.isSneaking() && CanSnap) {
             playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
         }
 
-        if (!playerIn.world.isRemote && playerIn.isSneaking() && ModConfig.Gauntlet.Power.Snap) {
+        if (!playerIn.world.isRemote && playerIn.isSneaking() && CanSnap) {
             for (Entity targetentity : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extend, extend, extend))) {
                 int entity = targetentity.getEntityId();
 

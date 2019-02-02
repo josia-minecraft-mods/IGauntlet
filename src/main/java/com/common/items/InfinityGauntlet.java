@@ -133,7 +133,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
 
             EntityPlayer playerIn = (EntityPlayer) entityLiving;
             playerIn.setActiveHand(EnumHand.MAIN_HAND);
-            int extend = ModConfig.Gauntlet.Power.ExtensionRange;
+            int extend = ModConfig.Gauntlet.PowerStone.ExtensionRange;
             NBTTagCompound nbt = stack.getTagCompound();
             int current = nbt.getInteger("currentstone");
 

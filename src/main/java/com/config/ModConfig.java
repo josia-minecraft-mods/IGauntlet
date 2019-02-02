@@ -18,12 +18,12 @@ public class ModConfig {
 
     public static class Gauntlet {
 
-        public  final TimeStone Time = new TimeStone();
-        public  final SoulStone Soul = new SoulStone();
-        public  final RealityStone Reality = new RealityStone();
-        public  final SpaceStone Space = new SpaceStone();
-        public  final PowerStone Power = new PowerStone();
-        public  final MindStone Mind = new MindStone();
+        public final TimeStone TimeStone = new TimeStone();
+        public final SoulStone SoulStone = new SoulStone();
+        public final RealityStone RealityStone = new RealityStone();
+        public final SpaceStone SpaceStone = new SpaceStone();
+        public final PowerStone PowerStone = new PowerStone();
+        public final MindStone MindStone = new MindStone();
 
         public static class TimeStone {
         }
