@@ -8,7 +8,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import com.igauntlet.tabs.InfinityTabs;
-import com.igauntlet.util.IHasModel;
+import com.igauntlet.util.handlers.helpers.IHasModel;
 import com.igauntlet.init.ModItems;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;

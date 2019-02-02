@@ -3,7 +3,7 @@ package com.igauntlet.common.items.stones;
 import com.igauntlet.Infinity;
 import net.minecraft.item.Item;
 import com.igauntlet.tabs.InfinityTabs;
-import com.igauntlet.util.IHasModel;
+import com.igauntlet.util.handlers.helpers.IHasModel;
 import com.igauntlet.init.ModItems;
 
 public class MindStone extends Item implements IHasModel {

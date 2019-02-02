@@ -3,7 +3,7 @@ package com.igauntlet.common.items;
 import com.igauntlet.Infinity;
 import com.igauntlet.init.ModItems;
 import com.igauntlet.tabs.InfinityTabs;
-import com.igauntlet.util.IHasModel;
+import com.igauntlet.util.handlers.helpers.IHasModel;
 import net.minecraft.item.Item;
 
 public class ItemBase extends Item implements IHasModel {
