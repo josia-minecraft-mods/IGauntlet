@@ -13,6 +13,11 @@ itemGroup.infinityitems=Infinity Tab
 tile.ash_pile.name=Ash Pile
 tile.uru_ore.name=Uru Ore
 tile.tesseract.name=Tesseract
+tile.dwarf_stone.name=Dwarven Stone
+tile.dwarf_dirt.name=Dwarven Dirt
+tile.dwarf_cobble.name=Dwarven Cobblestone
+tile.dwarf_wood.name=Dwarven Planks
+tile.forge.name=Dwarven Forge
 
 //Entity
 entity.ray.name =Laser
