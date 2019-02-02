@@ -38,6 +38,7 @@ public class Tesseract extends Block implements IHasModel, ITileEntityProvider {
         setSoundType(SoundType.METAL);
         setHardness(0.0F);
         setResistance(0.1F);
+        setLightLevel(0.5F);
         setLightOpacity(1);
 
         if (tab)
@@ -83,7 +84,6 @@ public class Tesseract extends Block implements IHasModel, ITileEntityProvider {
                     if (stack.getItem() == ModItems.SPACESTONE) {
                         if (tess.AddStone()) {
                             stack.setCount(0);
-                            setLightLevel(0.5F);
                             return true;
                         }
                     }
