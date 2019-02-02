@@ -2,7 +2,7 @@ package com.igauntlet.util;
 
 public class Reference {
     public static final String NAME = "Infinity Mod";
-    public static final String VERSION = "@VERSION";
+    public static final String VERSION = "2.8";
     public static final String MODID = "igauntlet";
 
     public static final String CLIENTPROXY = "com.igauntlet.proxy.ClientProxy";
