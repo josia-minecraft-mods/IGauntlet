@@ -9,8 +9,8 @@ buildscript {
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-version = "2.7"
-group = "com" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+version = "2.8"
+group = "com.igauntlet" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "IGauntlet-1.12.2"
 
 sourceCompatibility = targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
@@ -21,9 +21,7 @@ compileJava {
 minecraft {
     version = "1.12.2-14.23.5.2768"
     runDir = "run"
-
-
-    // mappings = "snapshot_20171003"
+    
     mappings = "stable_39"
 }
 

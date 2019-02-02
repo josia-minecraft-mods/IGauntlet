@@ -29,3 +29,11 @@ damagesource.igauntlet.laser=a Laser!
 stones.space.drifted=You have drifted!
 stones.space.donthold=Don't hold it for too long!
 
+//Config
+igauntlet.config.drift_timeout=Drift Timeout
+igauntlet.config.rangeteleportminimum=Minimum Drift Range
+igauntlet.config.rangeteleportmaximum=Maximum Drift Range
+igauntlet.config.extensionrange=Extension Range
+igauntlet.config.cooldown=Cooldown
+igauntlet.config.snap=Snap
+
