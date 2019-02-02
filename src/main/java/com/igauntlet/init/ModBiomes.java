@@ -21,7 +21,6 @@ public class ModBiomes {
         BiomeDictionary.addTypes(biome, types);
         BiomeManager.addBiome(biomeType, new BiomeEntry(biome, 10));
 
-        BiomeManager.addSpawnBiome(biome);
         return biome;
     }
 }

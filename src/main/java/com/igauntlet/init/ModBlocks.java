@@ -4,11 +4,11 @@ package com.igauntlet.init;
 import com.igauntlet.common.blocks.AshPile;
 import com.igauntlet.common.blocks.Tesseract;
 import com.igauntlet.common.blocks.UruOre;
-import com.common.blocks.DwarfCobble;
-import com.common.blocks.DwarfDirt;
-import com.common.blocks.DwarfStone;
-import com.common.blocks.DwarfWood;
-import com.common.blocks.Forge;
+import com.igauntlet.common.blocks.DwarfCobble;
+import com.igauntlet.common.blocks.DwarfDirt;
+import com.igauntlet.common.blocks.DwarfStone;
+import com.igauntlet.common.blocks.DwarfWood;
+import com.igauntlet.common.blocks.Forge;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 

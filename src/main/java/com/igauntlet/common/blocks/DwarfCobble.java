@@ -1,4 +1,5 @@
-package com.common.blocks;
+package com.igauntlet.common.blocks;
+
 
 import com.igauntlet.Infinity;
 import com.igauntlet.init.ModBlocks;
@@ -11,9 +12,9 @@ import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 
-public class Forge extends Block implements IHasModel {
+public class DwarfCobble extends Block implements IHasModel {
 
-    public Forge(String name, Material material, boolean tab) {
+    public DwarfCobble(String name, Material material, boolean tab) {
         super(material);
         setTranslationKey(name);
         setRegistryName(name);

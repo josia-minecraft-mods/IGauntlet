@@ -14,6 +14,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class ModConfig {
 
     public static final Gauntlet Gauntlet = new Gauntlet();
+    public static final Dimensions Dimensions = new Dimensions();
 
 
     public static class Gauntlet {
@@ -75,6 +76,14 @@ public class ModConfig {
         public boolean GuiText = true;
 
     }
+
+    public static class Dimensions {
+        @Config.LangKey("igauntlet.config.dwarfid")
+        @Config.Comment("Change the id for the Dwarf Dimension")
+        public int DwarfDimensionID = 20;
+    }
+
+
 
 
     @Mod.EventBusSubscriber(modid = Reference.MODID)

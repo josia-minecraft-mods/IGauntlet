@@ -36,7 +36,7 @@ public class ModWorldGen implements IWorldGenerator {
                 break;
 
             case 2:
-                runGenerator(uru_ore, world, random, chunkX, chunkZ, 20, 0, 30);
+                runGenerator(uru_ore, world, random, chunkX, chunkZ, 20, 20, 60);
                 break;
         }
     }

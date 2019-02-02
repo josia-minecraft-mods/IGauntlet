@@ -26,4 +26,8 @@ public class WorldProviderDwarf extends WorldProvider {
         return biomeP;
     }
 
+    @Override
+    public boolean canRespawnHere() {
+        return false;
+    }
 }

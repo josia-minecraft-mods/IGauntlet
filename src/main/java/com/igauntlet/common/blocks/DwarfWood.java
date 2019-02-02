@@ -1,4 +1,4 @@
-package com.common.blocks;
+package com.igauntlet.common.blocks;
 
 import com.igauntlet.Infinity;
 import com.igauntlet.init.ModBlocks;
