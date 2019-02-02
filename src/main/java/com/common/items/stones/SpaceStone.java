@@ -2,6 +2,8 @@ package com.common.items.stones;
 
 import com.Infinity;
 import com.config.ModConfig;
+import com.network.NetworkHandler;
+import com.network.packets.MessageSpaceDrift;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -34,27 +36,34 @@ public class SpaceStone extends Item implements IHasModel {
 
 
         EntityPlayer player = (EntityPlayer) entityIn;
+        int maxtimeout = ModConfig.spaceStone.SpaceDriftTimeout * 20;
 
-        int maxtimeout = 20 * 20;
-        if (isSelected) {
-            timeout++;
-        }
-        if (timeout > maxtimeout) {
-            timeout = 0;
-            int max = ModConfig.Gauntlet.MaximumTeleportRange;
-            int min = ModConfig.Gauntlet.MinimumTeleportRange;
-            int random = (int) (Math.random() * max + min);
-            BlockPos pos1 = new BlockPos(random, random, random);
-            BlockPos pos2 = worldIn.getTopSolidOrLiquidBlock(pos1);
-            player.setLocationAndAngles(pos2.getX(), pos2.getY(), pos2.getZ(), 1, 1);
-            player.sendStatusMessage(new TextComponentTranslation("stones.space.randomtp"), true);
-        }
+        if (worldIn.isRemote) {
+            if (isSelected) {
+                timeout++;
 
-        if(timeout == maxtimeout / 2) {
-            player.sendStatusMessage(new TextComponentTranslation("stones.space.donthold"), true);
+
+                if (timeout == 50) {
+                    player.sendStatusMessage(new TextComponentTranslation("stones.space.donthold"), true);
+                }
+
+                if (timeout == maxtimeout) {
+                    player.sendStatusMessage(new TextComponentTranslation("stones.space.drifted"), true);
+                }
+
+            }
+
+            if (timeout > maxtimeout) {
+                timeout = 0;
+                int max = ModConfig.spaceStone.MaximumDriftRange;
+                int min = ModConfig.spaceStone.MinimumDriftRange;
+                int random = (int) (Math.random() * max + min);
+                BlockPos pos1 = new BlockPos(random, random, random);
+                BlockPos pos2 = worldIn.getTopSolidOrLiquidBlock(pos1);
+                NetworkHandler.NETWORK.sendToServer(new MessageSpaceDrift(pos2, player.getEntityId()));
+            }
         }
     }
-
 
 
     @Override

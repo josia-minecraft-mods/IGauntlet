@@ -1,9 +1,6 @@
 package com.network;
 
-import com.network.packets.MessageNoCoords;
-import com.network.packets.MessageNotAdded;
-import com.network.packets.MessageSpace;
-import com.network.packets.MessageStone;
+import com.network.packets.*;
 import com.util.Reference;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
@@ -18,5 +15,6 @@ public class NetworkHandler {
         NETWORK.registerMessage(MessageNotAdded.Handler.class, MessageNotAdded.class, 2, Side.SERVER);
         NETWORK.registerMessage(MessageSpace.Handler.class, MessageSpace.class, 3, Side.SERVER);
         NETWORK.registerMessage(MessageNoCoords.Handler.class, MessageNoCoords.class, 4, Side.SERVER);
+        NETWORK.registerMessage(MessageSpaceDrift.Handler.class, MessageSpaceDrift.class, 5, Side.SERVER);
     }
 }

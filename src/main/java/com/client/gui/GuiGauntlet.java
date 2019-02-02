@@ -78,7 +78,7 @@ public class GuiGauntlet extends GuiScreen {
     public void initGui() {
         buttonList.clear();
 
-        if(ModConfig.Gauntlet.GUITEXT) {
+        if(ModConfig.Gauntlet.GuiText) {
             buttonList.add(button1 = new ButtonStones(TIME, (width / 2) - 80, (height / 2) - 105, " Time"));
             buttonList.add(button2 = new ButtonStones(SOUL, (width / 2) + 30, (height / 2) - 105, "Soul"));
             buttonList.add(button3 = new ButtonStones(POWER, (width / 2) - 100, (height / 2) - 10, "Power"));

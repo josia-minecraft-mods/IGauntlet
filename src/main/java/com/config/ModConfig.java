@@ -9,45 +9,73 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 
 @Config(modid = Reference.MODID)
-@Config.LangKey("infinity.config.title")
+@Config.LangKey("igauntlet.config.title")
 
 public class ModConfig {
 
     public static final Gauntlet Gauntlet = new Gauntlet();
+    public static final ModConfig.Gauntlet.TimeStone timeStone = new Gauntlet.TimeStone();
+    public static final ModConfig.Gauntlet.SoulStone soulStone = new Gauntlet.SoulStone();
+    public static final ModConfig.Gauntlet.RealityStone realityStone = new Gauntlet.RealityStone();
+    public static final ModConfig.Gauntlet.SpaceStone spaceStone = new Gauntlet.SpaceStone();
+    public static final ModConfig.Gauntlet.PowerStone powerStone = new Gauntlet.PowerStone();
+    public static final ModConfig.Gauntlet.MindStone mindStone = new Gauntlet.MindStone();
+
 
     public static class Gauntlet {
 
-        @Config.Comment("Shift + left Click to kill Entities in range")
-        @Config.LangKey("infinity.config.snap")
-        public boolean Snap = true;
 
-        @Config.Comment("The range around you that using 'snap' will be killed.")
-        @Config.LangKey("infinity.config.extensionrange")
-        @Config.RangeInt(min = 5, max = 100)
-        public int ExtensionRange = 25;
+        public static class TimeStone {
+        }
 
-        @Config.Comment("Cooldown in seconds for snap")
-        @Config.LangKey("infinity.config.cooldown")
-        @Config.RangeInt(min = 5, max = 100)
-        public int SnapCooldown = 25;
+        public static class SoulStone {
+        }
 
-        @Config.Comment("Minimum Telport range when holding sotne")
-        @Config.LangKey("infinity.config.rangeteleportminimum")
-        @Config.RangeInt(min = 5, max = 50)
-        public int MinimumTeleportRange = 30;
+        public static class RealityStone {
+        }
 
-        @Config.Comment("Maximum Telport range when holding sotne")
-        @Config.LangKey("infinity.config.rangeteleportmaximum")
-        @Config.RangeInt(min = 5, max = 100)
-        public int MaximumTeleportRange = 100;
+        public static class SpaceStone {
+            @Config.Comment("How long should it take before you drift? (Seconds)")
+            @Config.LangKey("igauntlet.config.drift_timeout")
+            public int SpaceDriftTimeout = 40;
 
+            @Config.Comment("Minimum Telport range when holding sotne")
+            @Config.LangKey("igauntlet.config.rangeteleportminimum")
+            @Config.RangeInt(min = 5, max = 50)
+            public int MinimumDriftRange = 30;
 
+            @Config.Comment("Maximum Telport range when holding sotne")
+            @Config.LangKey("igauntlet.config.rangeteleportmaximum")
+            @Config.RangeInt(min = 5, max = 100)
+            public int MaximumDriftRange = 100;
+        }
 
-        @Config.LangKey("infinity.config.guitext")
+        public static class PowerStone {
+            @Config.Comment("Shift + left Click to kill Entities in range")
+            @Config.LangKey("igauntlet.config.snap")
+            public boolean Snap = true;
+
+            @Config.Comment("The range around you that using 'snap' will be killed.")
+            @Config.LangKey("igauntlet.config.extensionrange")
+            @Config.RangeInt(min = 5, max = 100)
+            public int ExtensionRange = 25;
+
+            @Config.Comment("Cooldown in seconds for snap (Seconds)")
+            @Config.LangKey("igauntlet.config.cooldown")
+            @Config.RangeInt(min = 5, max = 100)
+            public int SnapCooldown = 25;
+        }
+
+        public static class MindStone {
+
+        }
+
+        @Config.LangKey("igauntlet.config.guitext")
         @Config.Comment("Enable Text on Gantlet GUI")
-        public boolean GUITEXT = true;
+        public boolean GuiText = true;
 
     }
+
 
     @Mod.EventBusSubscriber(modid = Reference.MODID)
     private static class EventHandler {

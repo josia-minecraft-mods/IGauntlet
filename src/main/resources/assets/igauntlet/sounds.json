@@ -1,0 +1,23 @@
+{
+  "gauntlethum": {
+    "category": "master",
+    "subtitle": "gauntlet",
+    "sounds": [
+      {
+        "name": "igauntlet:gauntlethum",
+        "stream": false
+      }
+    ]
+  },
+  "snap": {
+    "category": "master",
+    "subtitle": "snap",
+    "sounds": [
+      {
+        "name": "igauntlet:snap",
+        "stream": false
+      }
+    ]
+  }
+}
+
