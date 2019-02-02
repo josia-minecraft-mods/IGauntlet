@@ -14,16 +14,16 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class ModConfig {
 
     public static final Gauntlet Gauntlet = new Gauntlet();
-    public static final ModConfig.Gauntlet.TimeStone timeStone = new Gauntlet.TimeStone();
-    public static final ModConfig.Gauntlet.SoulStone soulStone = new Gauntlet.SoulStone();
-    public static final ModConfig.Gauntlet.RealityStone realityStone = new Gauntlet.RealityStone();
-    public static final ModConfig.Gauntlet.SpaceStone spaceStone = new Gauntlet.SpaceStone();
-    public static final ModConfig.Gauntlet.PowerStone powerStone = new Gauntlet.PowerStone();
-    public static final ModConfig.Gauntlet.MindStone mindStone = new Gauntlet.MindStone();
 
 
     public static class Gauntlet {
 
+        public  final TimeStone Time = new TimeStone();
+        public  final SoulStone Soul = new SoulStone();
+        public  final RealityStone Reality = new RealityStone();
+        public  final SpaceStone Space = new SpaceStone();
+        public  final PowerStone Power = new PowerStone();
+        public  final MindStone Mind = new MindStone();
 
         public static class TimeStone {
         }

@@ -36,7 +36,7 @@ public class SpaceStone extends Item implements IHasModel {
 
 
         EntityPlayer player = (EntityPlayer) entityIn;
-        int maxtimeout = ModConfig.spaceStone.SpaceDriftTimeout * 20;
+        int maxtimeout = ModConfig.Gauntlet.Space.SpaceDriftTimeout * 20;
 
         if (worldIn.isRemote) {
             if (isSelected) {
@@ -55,8 +55,8 @@ public class SpaceStone extends Item implements IHasModel {
 
             if (timeout > maxtimeout) {
                 timeout = 0;
-                int max = ModConfig.spaceStone.MaximumDriftRange;
-                int min = ModConfig.spaceStone.MinimumDriftRange;
+                int max = ModConfig.Gauntlet.Space.MaximumDriftRange;
+                int min = ModConfig.Gauntlet.Space.MinimumDriftRange;
                 int random = (int) (Math.random() * max + min);
                 BlockPos pos1 = new BlockPos(random, random, random);
                 BlockPos pos2 = worldIn.getTopSolidOrLiquidBlock(pos1);
