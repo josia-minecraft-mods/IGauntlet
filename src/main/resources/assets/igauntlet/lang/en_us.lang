@@ -1,7 +1,7 @@
 //Main
 item.infinity_gauntlet.name=Infinity Gauntlet
 
-//Items
+ //Items
 item.mind_stone.name=Mind Stone
 item.space_stone.name=Space Stone
 item.time_stone.name=Time Stone
@@ -11,29 +11,33 @@ item.soul_stone.name=Soul Stone
 item.uru_ingot.name=Uru Ingot
 item.dwarf_hammer.name=Dwarf Hammer
 
-// Tab
+ // Tab
 itemGroup.infinityitems=Infinity Tab
 
-//Blocks
+ //Blocks
 tile.ash_pile.name=Ash Pile
 tile.uru_ore.name=Uru Ore
 tile.tesseract.name=Tesseract
+tile.dwarf_stone.name=Dwarven Stone
+tile.dwarf_dirt.name=Dwarven Dirt
+tile.dwarf_cobble.name=Dwarven Cobblestone
+tile.dwarf_wood.name=Dwarven Planks
+tile.forge.name=Dwarven Forge
 
-//Entity
+ //Entity
 entity.ray.name =Laser
 
-//DeathSource
+ //DeathSource
 damagesource.igauntlet.laser=a Laser!
 
-//Messages
+ //Messages
 stones.space.drifted=You have drifted!
 stones.space.donthold=Don't hold it for too long!
 
-//Config
+ //Config
 igauntlet.config.drift_timeout=Drift Timeout
 igauntlet.config.rangeteleportminimum=Minimum Drift Range
 igauntlet.config.rangeteleportmaximum=Maximum Drift Range
 igauntlet.config.extensionrange=Extension Range
 igauntlet.config.cooldown=Cooldown
 igauntlet.config.snap=Snap
-
