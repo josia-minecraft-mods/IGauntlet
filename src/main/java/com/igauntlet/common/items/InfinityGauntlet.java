@@ -139,13 +139,6 @@ public class InfinityGauntlet extends Item implements IHasModel {
                 GemPower.Snap(playerIn, stack, extend);
             }
 
-            if (current == TIME) {
-                if (playerIn.world.isRemote && playerIn.isSneaking()) {
-                    playerIn.sendMessage(new TextComponentString("This is the first initialization, No function has been added to this yet!"));
-                }
-            }
-
-
             EnumHand hand = playerIn.getActiveHand();
             playerIn.setActiveHand(hand);
         }
