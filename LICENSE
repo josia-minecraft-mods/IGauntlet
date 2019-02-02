@@ -13,7 +13,6 @@ User: Anybody that interacts with the software in one of the following ways:
 - decompile
 - recompile or compile
 - modify
-- distribute
 
 Mod: The mod code designated by the present license, in source form, binary
 form, as obtained standalone, as part of a wider distribution or resulting from
@@ -57,31 +56,3 @@ The user has the rights to derive code from this mod, that is to say to
 write code that extends or instanciate the mod classes or interfaces, refer to
 its objects, or calls its functions. This code is known as "derived" code, and
 can be licensed under a license different from this mod.
-
-6. Distribution of original or modified copy rights
----------------------------------------------------
-
-Is subject to distribution rights this entire mod in its various forms. This
-include:
-- original binary or source forms of this mod files
-- modified versions of these binaries or source files, as well as binaries
-resulting from source modifications
-- patch to its source or binary files
-- any copy of a portion of its binary source files
-
-The user is allowed to redistribute this mod partially, in totality, or
-included in a distribution.
-
-When distributing binary files, the user must provide means to obtain its
-entire set of sources or modified sources at no costs.
-
-All distributions of this mod must remain licensed under the MMPL.
-
-All dependencies that this mod have on other mods or classes must be licensed
-under conditions comparable to this version of MMPL, with the exception of the
-Minecraft code and the mod loading framework (e.g. ModLoader, ModLoaderMP or
-Bukkit).
-
-Modified version of binaries and sources, as well as files containing sections
-copied from this mod, should be distributed under the terms of the present
-license.
