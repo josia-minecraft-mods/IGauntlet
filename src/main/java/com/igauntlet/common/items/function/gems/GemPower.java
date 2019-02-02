@@ -37,7 +37,7 @@ public class GemPower {
                 IBlockState state0 = blk.getDefaultState();
                 targetentity.world.setBlockState(pos0, state0);
                 WriteAsh(pos0, playerIn.world, entity);
-                targetentity.attackEntityFrom(IDamageSource.SNAP, 100);
+                targetentity.attackEntityFrom(IDamageSource.SNAP, 1000);
 
                 if (!playerIn.capabilities.isCreativeMode) {
                     stack.setItemDamage(stack.getItemDamage() + 1);
@@ -52,10 +52,6 @@ public class GemPower {
             EntityLaser laser = new EntityLaser(worldIn, entityplayer, 100, IDamageSource.LASER, new Vec3d(1, 0, 5));
             laser.shoot(v3.x, v3.y, v3.z, 1.5F, (float) 0);
             worldIn.spawnEntity(laser);
-
-            if (!entityplayer.capabilities.isCreativeMode) {
-                stack.setItemDamage(stack.getItemDamage() + 1);
-            }
 
         }
         if (worldIn.isRemote && !entityplayer.isSneaking() && entityplayer.getHeldItemOffhand().getItem() != ModItems.INFINITY_GAUNTLET) {

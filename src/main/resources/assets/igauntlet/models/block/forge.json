@@ -1,6 +1,8 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "igauntlet:blocks/forge"
+    "all": "",
+    "top": "igauntlet:blocks/forge",
+    "side": "igauntlet:blocks/forge_side"
   }
 }

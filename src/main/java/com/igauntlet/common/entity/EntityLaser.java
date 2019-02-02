@@ -46,19 +46,22 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
             if (result.entityHit == this.thrower) return;
             int entity = result.entityHit.getEntityId();
 
+
             if (result.entityHit instanceof EntityPlayer) {
                 if (!((EntityPlayer) result.entityHit).capabilities.isCreativeMode) {
+                        Block blk = ModBlocks.ASH_PILE;
+                        BlockPos pos0 = new BlockPos(result.entityHit.posX, result.entityHit.posY, result.entityHit.posZ);
+                        IBlockState state0 = blk.getDefaultState();
+                        world.setBlockState(pos0, state0);
+
+                }
+            } else {
+                if(result.entityHit.getIsInvulnerable()) return;
                     Block blk = ModBlocks.ASH_PILE;
                     BlockPos pos0 = new BlockPos(result.entityHit.posX, result.entityHit.posY, result.entityHit.posZ);
                     IBlockState state0 = blk.getDefaultState();
                     world.setBlockState(pos0, state0);
-                }
-            } else {
-                Block blk = ModBlocks.ASH_PILE;
-                BlockPos pos0 = new BlockPos(result.entityHit.posX, result.entityHit.posY, result.entityHit.posZ);
-                IBlockState state0 = blk.getDefaultState();
-                world.setBlockState(pos0, state0);
-                GemPower.WriteAsh(pos0, world, entity);
+                    GemPower.WriteAsh(pos0, world, entity);
             }
             result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), damage);
 
