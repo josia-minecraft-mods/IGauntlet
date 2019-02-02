@@ -36,5 +36,46 @@
 			"name": "group",
 			"children": [0, 1]
 		}
-	]
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [-89, 180, 0],
+			"translation": [-0.5, -1, 2.5],
+			"scale": [0.725, 0.675, 0.775]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [-89, 180, 0],
+			"translation": [-0.5, -1, 2.5],
+			"scale": [0.725, 0.675, 0.775]
+		},
+		"firstperson_righthand": {
+			"rotation": [-51, 180, -29],
+			"translation": [5.5, 0, 0],
+			"scale": [0.525, 0.475, 0.575]
+		},
+		"firstperson_lefthand": {
+			"rotation": [-51, 180, -29],
+			"translation": [5.5, 0, 0],
+			"scale": [0.525, 0.475, 0.575]
+		},
+		"ground": {
+			"translation": [0, 8.5, 0],
+			"scale": [1.45, 1.45, 1.45]
+		},
+		"gui": {
+			"rotation": [0, 180, 0],
+			"translation": [0, -3.5, 0],
+			"scale": [0.55, 0.55, 0.55]
+		},
+		"head": {
+			"rotation": [0, 1, 0],
+			"translation": [0.5, 32, -1.5],
+			"scale": [1.375, 1.375, 1.375]
+		},
+		"fixed": {
+			"rotation": [0, 0, -52],
+			"translation": [0.5, -3.5, -2.5],
+			"scale": [1.15, 1.15, 1.15]
+		}
+	}
 }
