@@ -11,6 +11,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import org.apache.logging.log4j.Logger;
 
@@ -27,7 +28,7 @@ public class Infinity {
     @Mod.EventHandler
     public static void PreInit(FMLPreInitializationEvent event) {
         proxy.preInit(event);
-        GameRegistry.registerWorldGenerator(new ModWorldGen(), 3);
+        RegistryHandler.OtherRegistries();
         NetworkHandler.init();
         RegistryHandler.preInitRegistries(event);
     }
@@ -40,6 +41,12 @@ public class Infinity {
 
     @Mod.EventHandler
     public static void PostInit(FMLPostInitializationEvent event) {
+    }
+
+    @Mod.EventHandler
+    public static void serverInit(FMLServerStartingEvent event)
+    {
+        RegistryHandler.serverRegistries(event);
     }
 }
 
