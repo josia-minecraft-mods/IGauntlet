@@ -1,5 +1,7 @@
 {
   "variants": {
-    "normal": { "model": "igauntlet:ash_pile" }
+    "normal": {
+      "model": "igauntlet:ash_pile"
+    }
   }
 }
