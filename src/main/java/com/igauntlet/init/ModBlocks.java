@@ -1,14 +1,7 @@
 package com.igauntlet.init;
 
 
-import com.igauntlet.common.blocks.AshPile;
-import com.igauntlet.common.blocks.Tesseract;
-import com.igauntlet.common.blocks.UruOre;
-import com.igauntlet.common.blocks.DwarfCobble;
-import com.igauntlet.common.blocks.DwarfDirt;
-import com.igauntlet.common.blocks.DwarfStone;
-import com.igauntlet.common.blocks.DwarfWood;
-import com.igauntlet.common.blocks.Forge;
+import com.igauntlet.common.blocks.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
@@ -27,6 +20,7 @@ public class ModBlocks {
     public static final Block DWARF_COBBLE = new DwarfCobble("dwarf_cobble", Material.GROUND, true);
     public static final Block DWARF_WOOD = new DwarfWood("dwarf_wood", Material.WOOD, true);
     public static final Block FORGE = new Forge("forge", Material.ANVIL, true);
+    public static final Block MANIPULATOR = new Manipulator("manipulator", Material.IRON, true);
     
 
 }

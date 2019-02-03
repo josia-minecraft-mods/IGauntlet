@@ -12,7 +12,7 @@ item.uru_ingot.name=Uru Ingot
 item.dwarf_hammer.name=Dwarf Hammer
 
  // Tab
-itemGroup.infinityitems=Infinity Tab
+itemGroup.infinityitems=IGauntlet Tab
 
  //Blocks
 tile.ash_pile.name=Ash Pile
@@ -23,6 +23,7 @@ tile.dwarf_dirt.name=Dwarven Dirt
 tile.dwarf_cobble.name=Dwarven Cobblestone
 tile.dwarf_wood.name=Dwarven Planks
 tile.forge.name=Dwarven Forge
+tile.manipulator.name=Manipulator
 
  //Entity
 entity.ray.name =Laser
