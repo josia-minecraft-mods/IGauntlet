@@ -23,6 +23,8 @@ public class GuiSpace extends GuiScreen {
     public GuiTextField yCoord;
     public GuiTextField zCoord;
     private GuiButton warp;
+    private GuiButton coord;
+    private GuiButton dimensions;
 
     static final int GUI_WIDTH = 256;
     static final int GUI_HEIGHT = 256;
@@ -46,6 +48,11 @@ public class GuiSpace extends GuiScreen {
             NetworkHandler.NETWORK.sendToServer(new MessageSpace(tpPos, mc.player.getEntityId()));
             Minecraft.getMinecraft().displayGuiScreen(null);
         }
+
+        if(button == this.dimensions) {
+            Minecraft.getMinecraft().displayGuiScreen(null);
+        }
+
         super.actionPerformed(button);
     }
 
@@ -79,20 +86,25 @@ public class GuiSpace extends GuiScreen {
     public void initGui() {
         int x = width / 2 - 15;
         int y = height / 2 - 15;
-        String enterButton = "Warp";
+        String warpButton = "Warp";
+        String dimension = "Dimension";
 
         int yOffset = fr.FONT_HEIGHT + 3;
 
-        xCoord = new GuiTextField(0, fr, x - 10, y, 60, fr.FONT_HEIGHT);
-        yCoord = new GuiTextField(1, fr, x - 10, y + yOffset, 60, fr.FONT_HEIGHT);
-        zCoord = new GuiTextField(2, fr, x - 10, y + yOffset * 2 + 1, 60, fr.FONT_HEIGHT);
-        warp = new GuiButton(3, x + 10, y + yOffset * 3, enterButton);
+        xCoord = new GuiTextField(0, fr, x - 40, y * 1 + 10, 100, fr.FONT_HEIGHT);
+        yCoord = new GuiTextField(1, fr, x - 40, y + yOffset * 2, 100, fr.FONT_HEIGHT);
+        zCoord = new GuiTextField(2, fr, x - 40, y + yOffset * 3 + 1, 100, fr.FONT_HEIGHT);
+        warp = new GuiButton(3, x + 11, y + yOffset * 9, warpButton);
+        dimensions = new GuiButton(4, x + 11, y + yOffset - 108, dimension);
         warp.x -= warp.width / 2;
+        dimensions.x -= dimensions.width / 2;
         xCoord.setFocused(true);
 
         this.buttonList.clear();
         this.addButton(warp);
+        this.addButton(dimensions);
     }
+
 
     @Override
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {

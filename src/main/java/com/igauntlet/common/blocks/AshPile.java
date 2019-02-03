@@ -1,15 +1,12 @@
 package com.igauntlet.common.blocks;
 
-
 import com.igauntlet.Infinity;
 import com.igauntlet.common.tileentity.TileAshPile;
 import com.igauntlet.init.ModBlocks;
 import com.igauntlet.init.ModItems;
 import com.igauntlet.tabs.InfinityTabs;
 import com.igauntlet.util.handlers.helpers.IHasModel;
-import net.minecraft.block.BlockFalling;
-import net.minecraft.block.ITileEntityProvider;
-import net.minecraft.block.SoundType;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
@@ -24,10 +21,11 @@ import javax.annotation.Nullable;
 
 public class AshPile extends BlockFalling implements IHasModel, ITileEntityProvider {
 
-    public static final AxisAlignedBB DUST_AABB = new AxisAlignedBB(0.296875,0,0.296875,0.6900,0.1875 / 2,0.6900);
 
-    public AshPile(String name, Material material, boolean tab)
-    {
+    public static final AxisAlignedBB DUST_AABB = new AxisAlignedBB(0.296875, 0, 0.296875, 0.6900, 0.1875 / 2, 0.6900);
+
+
+    public AshPile(String name, Material material, boolean tab) {
         super(material);
         setTranslationKey(name);
         setRegistryName(name);
@@ -36,12 +34,13 @@ public class AshPile extends BlockFalling implements IHasModel, ITileEntityProvi
         setResistance(0.1F);
         setLightOpacity(1);
 
-        if(tab)
+        if (tab)
             setCreativeTab(InfinityTabs.infinityTabs);
 
         ModBlocks.BLOCKS.add(this);
         ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
     }
+
 
     @Override
     public boolean isNormalCube(IBlockState state, IBlockAccess world, BlockPos pos) {
@@ -65,7 +64,6 @@ public class AshPile extends BlockFalling implements IHasModel, ITileEntityProvi
     }
 
 
-
     @Nullable
     @Override
     public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
@@ -74,8 +72,7 @@ public class AshPile extends BlockFalling implements IHasModel, ITileEntityProvi
 
 
     @Override
-    public void registerModels()
-    {
+    public void registerModels() {
         Infinity.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
     }
 
@@ -85,5 +82,4 @@ public class AshPile extends BlockFalling implements IHasModel, ITileEntityProvi
     public TileEntity createNewTileEntity(World world, int data) {
         return new TileAshPile();
     }
-
 }

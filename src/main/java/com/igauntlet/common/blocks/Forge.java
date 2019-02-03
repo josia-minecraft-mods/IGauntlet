@@ -28,17 +28,15 @@ public class Forge extends Block implements IHasModel {
         setHardness(15.0F);
         setResistance(15.0F);
 
-        if(tab)
-        setCreativeTab(InfinityTabs.infinityTabs);
+        if (tab)
+            setCreativeTab(InfinityTabs.infinityTabs);
 
         ModBlocks.BLOCKS.add(this);
         ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
     }
 
-    public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn)
-    {
-        if (!entityIn.isImmuneToFire() && entityIn instanceof EntityLivingBase && !EnchantmentHelper.hasFrostWalkerEnchantment((EntityLivingBase)entityIn))
-        {
+    public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
+        if (!entityIn.isImmuneToFire() && entityIn instanceof EntityLivingBase && !EnchantmentHelper.hasFrostWalkerEnchantment((EntityLivingBase) entityIn)) {
             entityIn.attackEntityFrom(DamageSource.HOT_FLOOR, 1.0F);
         }
 
@@ -46,8 +44,7 @@ public class Forge extends Block implements IHasModel {
     }
 
     @Override
-    public void registerModels()
-    {
+    public void registerModels() {
         Infinity.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
     }
 
