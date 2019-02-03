@@ -66,7 +66,6 @@ public class GuiSpace extends GuiScreen {
             }
             return i;
         } else {
-            NetworkHandler.NETWORK.sendToServer(new MessageNoCoords(true));
 
             switch (type) {
                 case X:
