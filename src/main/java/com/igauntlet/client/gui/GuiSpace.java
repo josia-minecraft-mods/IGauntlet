@@ -82,6 +82,38 @@ public class GuiSpace extends GuiScreen {
 
     }
 
+    public class SmallButton extends GuiButton {
+
+        int BUTTON_WIDTH = 50;
+        int BUTTON_HEIGHT = 60;
+
+        public SmallButton(int buttonId, int x, int y, String buttonText) {
+            super(buttonId, x, y, buttonText);
+        }
+
+        @Override
+        public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
+            this.width = BUTTON_WIDTH;
+            this.height = BUTTON_HEIGHT;
+            FontRenderer fontrenderer = mc.fontRenderer;
+            mc.getTextureManager().bindTexture(BUTTON_TEXTURES);
+            this.hovered = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
+            int i = this.getHoverState(this.hovered);
+
+            int j = 14737632;
+
+            if (packedFGColour != 0) {
+                j = packedFGColour;
+            } else if (!this.enabled) {
+                j = 10526880;
+            } else if (this.hovered) {
+                j = 16777120;
+            }
+            this.drawCenteredString(fontrenderer, this.displayString, this.x + this.width / 2, this.y + (this.height - 8) / 2, j);
+        }
+
+    }
+
     @Override
     public void initGui() {
         int x = width / 2 - 15;
@@ -95,7 +127,7 @@ public class GuiSpace extends GuiScreen {
         yCoord = new GuiTextField(1, fr, x - 40, y + yOffset * 2, 100, fr.FONT_HEIGHT);
         zCoord = new GuiTextField(2, fr, x - 40, y + yOffset * 3 + 1, 100, fr.FONT_HEIGHT);
         warp = new GuiButton(3, x + 11, y + yOffset * 9, warpButton);
-        dimensions = new GuiButton(4, x + 11, y + yOffset - 108, dimension);
+        dimensions = new GuiButton(4, x + 66, y + yOffset - 109,65,21, dimension);
         warp.x -= warp.width / 2;
         dimensions.x -= dimensions.width / 2;
         xCoord.setFocused(true);
