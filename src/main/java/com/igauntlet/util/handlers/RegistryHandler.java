@@ -67,11 +67,9 @@ public class RegistryHandler {
         ModBiomes.registerBiomes();
     }
 
-    public static void serverRegistries(FMLServerStartingEvent event)
-    {
+    public static void serverRegistries(FMLServerStartingEvent event) {
         event.registerServerCommand(new DimensionTeleport());
     }
-
 
 
 }
