@@ -1,7 +1,22 @@
 {
   "parent": "block/cube_all",
   "textures": {
+    "particle": "igauntlet:blocks/forge",
+    "bottom": "igauntlet:blocks/forge_side",
     "top": "igauntlet:blocks/forge",
     "side": "igauntlet:blocks/forge_side"
-  }
+  },
+  "elements": [
+    { "from": [ 0, 0, 0 ],
+      "to": [ 16, 16, 16 ],
+      "faces": {
+        "down":  { "texture": "#bottom", "cullface": "down" },
+        "up":    { "texture": "#top" },
+        "north": { "texture": "#side" },
+        "south": { "texture": "#side" },
+        "west":  { "texture": "#side" },
+        "east":  { "texture": "#side" }
+      }
+    }
+  ]
 }
