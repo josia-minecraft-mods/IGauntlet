@@ -3,6 +3,7 @@ package com.igauntlet.init;
 import com.igauntlet.common.items.*;
 import com.igauntlet.common.items.stones.*;
 import com.igauntlet.common.items.tools.Dwarfhammer;
+import com.igauntlet.util.handlers.SoundsHandler;
 import net.minecraft.item.*;
 
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ public class ModItems {
 
     //Items
     public static final Item INFINITY_GAUNTLET = new InfinityGauntlet("infinity_gauntlet");
-    public static final Item MIXTAPE = new MixTape("awesome_mix");
+    public static final Item MIXTAPE = new MixTape("awesome_mix", SoundsHandler.SNAP);
 
     //Ingots
     public static final Item URU_INGOT = new ItemBase("uru_ingot", true);

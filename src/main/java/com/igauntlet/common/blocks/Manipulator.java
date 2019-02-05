@@ -29,13 +29,14 @@ public class Manipulator extends Block implements IHasModel {
         setSoundType(SoundType.STONE);
         setHarvestLevel("pickaxe", 2);
         setHardness(15.0F);
+
         setResistance(15.0F);
 
         if(tab)
             setCreativeTab(InfinityTabs.infinityTabs);
 
         ModBlocks.BLOCKS.add(this);
-        ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
+        ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()).setMaxStackSize(1));
     }
 
     @Override
