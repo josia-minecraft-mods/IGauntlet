@@ -1,10 +1,13 @@
 package com.igauntlet.common.items;
 
 import com.igauntlet.Infinity;
+import com.igauntlet.client.util.ModKeyBinds;
 import com.igauntlet.client.gui.GuiGauntlet;
 import com.igauntlet.common.items.function.gems.GemPower;
 import com.igauntlet.common.items.function.gems.GemSpace;
 import com.igauntlet.init.ModItems;
+import com.igauntlet.network.NetworkHandler;
+import com.igauntlet.network.packets.MessageSnap;
 import com.igauntlet.tabs.InfinityTabs;
 import com.igauntlet.util.handlers.helpers.IHasModel;
 import com.igauntlet.config.ModConfig;
@@ -134,9 +137,6 @@ public class InfinityGauntlet extends Item implements IHasModel {
             NBTTagCompound nbt = stack.getTagCompound();
             int current = nbt.getInteger("currentstone");
 
-            if (current == POWER) {
-                GemPower.Snap(playerIn, stack, extend);
-            }
 
             EnumHand hand = playerIn.getActiveHand();
             playerIn.setActiveHand(hand);

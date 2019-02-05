@@ -1,5 +1,6 @@
 package com.igauntlet.proxy;
 
+import com.igauntlet.client.util.ModKeyBinds;
 import com.igauntlet.init.ModEntities;
 import com.igauntlet.util.handlers.RenderHandler;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -22,6 +23,7 @@ public class ClientProxy implements IProxy {
 
     @Override
     public void init(FMLInitializationEvent e) {
+        ModKeyBinds.init();
     }
 
     @Override

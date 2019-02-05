@@ -2,6 +2,7 @@ package com.igauntlet;
 
 import com.igauntlet.init.ModRecipes;
 import com.igauntlet.network.NetworkHandler;
+import com.igauntlet.proxy.ClientProxy;
 import com.igauntlet.proxy.IProxy;
 import com.igauntlet.util.Reference;
 import com.igauntlet.util.handlers.RegistryHandler;
@@ -34,6 +35,7 @@ public class Infinity {
     @Mod.EventHandler
     public static void Init(FMLInitializationEvent event) {
         ModRecipes.init();
+        proxy.init(event);
         RegistryHandler.initRegistries(event);
     }
 
