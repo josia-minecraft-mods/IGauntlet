@@ -49,23 +49,26 @@ public class MessageSnap implements IMessage {
             ctx.getServerHandler().player.getServerWorld().addScheduledTask(() -> {
                 EntityPlayerMP playerIn = ctx.getServerHandler().player;
                 ItemStack stack = playerIn.getActiveItemStack();
-                int extend = ModConfig.Gauntlet.PowerStone.ExtensionRange;
+                boolean CanSnap = ModConfig.Gauntlet.Snap;
+                int extend = ModConfig.Gauntlet.ExtensionRange;
                 NBTTagCompound nbt = stack.getTagCompound();
 
+                if (CanSnap) {
 
-                if (!(playerIn.getHeldItemMainhand().getItem() == ModItems.INFINITY_GAUNTLET)) return;
-                for (Entity targetentity : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extend, extend, extend))) {
-                    int entity = targetentity.getEntityId();
+                    if (!(playerIn.getHeldItemMainhand().getItem() == ModItems.INFINITY_GAUNTLET)) return;
+                    for (Entity targetentity : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extend, extend, extend))) {
+                        int entity = targetentity.getEntityId();
 
-                    if (!targetentity.getIsInvulnerable()) {
-                        Block blk = ModBlocks.ASH_PILE;
-                        BlockPos pos0 = new BlockPos(targetentity.posX, targetentity.posY, targetentity.posZ);
-                        IBlockState state0 = blk.getDefaultState();
-                        targetentity.world.setBlockState(pos0, state0);
-                        WriteAsh(pos0, playerIn.world, entity);
-                        targetentity.attackEntityFrom(IDamageSource.SNAP, 1000);
+                        if (!targetentity.getIsInvulnerable()) {
+                            Block blk = ModBlocks.ASH_PILE;
+                            BlockPos pos0 = new BlockPos(targetentity.posX, targetentity.posY, targetentity.posZ);
+                            IBlockState state0 = blk.getDefaultState();
+                            targetentity.world.setBlockState(pos0, state0);
+                            WriteAsh(pos0, playerIn.world, entity);
+                            targetentity.attackEntityFrom(IDamageSource.SNAP, 1000);
+                        }
+                        playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
                     }
-                    playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
                 }
             });
             return null;

@@ -1,16 +1,13 @@
 package com.igauntlet.common.items;
 
 import com.igauntlet.Infinity;
-import com.igauntlet.client.util.ModKeyBinds;
 import com.igauntlet.client.gui.GuiGauntlet;
 import com.igauntlet.common.items.function.gems.GemPower;
 import com.igauntlet.common.items.function.gems.GemSpace;
+import com.igauntlet.config.ModConfig;
 import com.igauntlet.init.ModItems;
-import com.igauntlet.network.NetworkHandler;
-import com.igauntlet.network.packets.MessageSnap;
 import com.igauntlet.tabs.InfinityTabs;
 import com.igauntlet.util.handlers.helpers.IHasModel;
-import com.igauntlet.config.ModConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -21,7 +18,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -133,7 +133,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
 
             EntityPlayer playerIn = (EntityPlayer) entityLiving;
             playerIn.setActiveHand(EnumHand.MAIN_HAND);
-            int extend = ModConfig.Gauntlet.PowerStone.ExtensionRange;
+            int extend = ModConfig.Gauntlet.ExtensionRange;
             NBTTagCompound nbt = stack.getTagCompound();
             int current = nbt.getInteger("currentstone");
 

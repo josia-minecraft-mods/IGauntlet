@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.nbt.NBTTagCompound;
@@ -54,13 +55,16 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
                     BlockPos pos0 = new BlockPos(result.entityHit.posX, result.entityHit.posY, result.entityHit.posZ);
                     IBlockState state0 = blk.getDefaultState();
                     world.setBlockState(pos0, state0);
-
                 }
-
-
             } else {
                 if (result.entityHit instanceof EntityLiving) {
                     if (result.entityHit.getIsInvulnerable()) return;
+
+                    if (result.entityHit instanceof EntityEnderman) {
+                        result.entityHit.setDead();
+                    }
+
+
                     Block blk = ModBlocks.ASH_PILE;
                     BlockPos pos0 = new BlockPos(result.entityHit.posX, result.entityHit.posY, result.entityHit.posZ);
                     IBlockState state0 = blk.getDefaultState();

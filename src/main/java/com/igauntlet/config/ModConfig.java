@@ -52,19 +52,6 @@ public class ModConfig {
         }
 
         public static class PowerStone {
-            @Config.Comment("Shift + left Click to kill Entities in range")
-            @Config.LangKey("igauntlet.config.snap")
-            public boolean Snap = true;
-
-            @Config.Comment("The range around you that using 'snap' will be killed.")
-            @Config.LangKey("igauntlet.config.extensionrange")
-            @Config.RangeInt(min = 5, max = 100)
-            public int ExtensionRange = 25;
-
-            @Config.Comment("Cooldown in seconds for snap (Seconds)")
-            @Config.LangKey("igauntlet.config.cooldown")
-            @Config.RangeInt(min = 5, max = 100)
-            public int SnapCooldown = 25;
         }
 
         public static class MindStone {
@@ -75,6 +62,19 @@ public class ModConfig {
         @Config.Comment("Enable Text on Gantlet GUI")
         public boolean GuiText = true;
 
+        @Config.Comment("Shift + left Click to kill Entities in range")
+        @Config.LangKey("igauntlet.config.snap")
+        public boolean Snap = true;
+
+        @Config.Comment("The range around you that using 'snap' will be killed.")
+        @Config.LangKey("igauntlet.config.extensionrange")
+        @Config.RangeInt(min = 5, max = 100)
+        public int ExtensionRange = 25;
+
+        @Config.Comment("Cooldown in seconds for snap (Seconds)")
+        @Config.LangKey("igauntlet.config.cooldown")
+        @Config.RangeInt(min = 5, max = 100)
+        public int SnapCooldown = 25;
     }
 
     public static class Dimensions {

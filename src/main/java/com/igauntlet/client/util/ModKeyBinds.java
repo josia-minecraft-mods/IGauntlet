@@ -2,7 +2,6 @@ package com.igauntlet.client.util;
 
 import com.igauntlet.network.NetworkHandler;
 import com.igauntlet.network.packets.MessageSnap;
-import com.igauntlet.util.ModUtil;
 import com.igauntlet.util.Reference;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.client.event.InputUpdateEvent;
@@ -27,7 +26,6 @@ public class ModKeyBinds {
 
         if (ModKeyBinds.SNAP.isPressed()) {
             NetworkHandler.NETWORK.sendToServer(new MessageSnap());
-            ModUtil.Log("It does something...");
         }
     }
 }

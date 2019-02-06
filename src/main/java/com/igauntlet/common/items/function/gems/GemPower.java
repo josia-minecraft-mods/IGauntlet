@@ -23,10 +23,11 @@ import net.minecraft.world.World;
 
 public class GemPower {
 
+    // Not in use , Current is a Packet
     public static void Snap(EntityPlayer playerIn, ItemStack stack, int extend) {
         NBTTagCompound nbt = stack.getTagCompound();
 
-        boolean CanSnap = ModConfig.Gauntlet.PowerStone.Snap;
+        boolean CanSnap = ModConfig.Gauntlet.Snap;
         if (playerIn.isSneaking() && CanSnap) {
             playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
         }
