@@ -1,7 +1,7 @@
-//Main
-item.infinity_gauntlet.name=Infinity Gauntlet
+
 
  //Items
+item.infinity_gauntlet.name=Infinity Gauntlet
 item.mind_stone.name=Mind Stone
 item.space_stone.name=Space Stone
 item.time_stone.name=Time Stone
@@ -10,6 +10,10 @@ item.power_stone.name=Power Stone
 item.soul_stone.name=Soul Stone
 item.uru_ingot.name=Uru Ingot
 item.dwarf_hammer.name=Dwarf Hammer
+item.awesome_mix.name=Awesome Mix
+
+//Records
+item.record.awesome_mix.desc=Awesome Mix
 
  // Tab
 itemGroup.infinityitems=IGauntlet Tab
@@ -26,7 +30,7 @@ tile.forge.name=Dwarven Forge
 tile.manipulator.name=Manipulator
 
  //Entity
-entity.ray.name =Laser
+entity.ray.name=Laser
 
  //DeathSource
 damagesource.igauntlet.laser=a Laser!
@@ -42,3 +46,6 @@ igauntlet.config.rangeteleportmaximum=Maximum Drift Range
 igauntlet.config.extensionrange=Extension Range
 igauntlet.config.cooldown=Cooldown
 igauntlet.config.snap=Snap
+
+//KeyBinds
+igauntlet.keybinds.snap=Snap
