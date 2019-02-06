@@ -137,6 +137,9 @@ public class InfinityGauntlet extends Item implements IHasModel {
             NBTTagCompound nbt = stack.getTagCompound();
             int current = nbt.getInteger("currentstone");
 
+            if(current == POWER) {
+                NetworkHandler.NETWORK.sendToServer(new MessageSnap(playerIn, stack, ModConfig.Gauntlet.PowerStone.ExtensionRange));
+            }
 
             EnumHand hand = playerIn.getActiveHand();
             playerIn.setActiveHand(hand);
