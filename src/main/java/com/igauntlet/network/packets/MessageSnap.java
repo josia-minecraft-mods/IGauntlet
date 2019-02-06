@@ -1,7 +1,6 @@
 package com.igauntlet.network.packets;
 
 import com.igauntlet.common.damage.IDamageSource;
-import com.igauntlet.common.items.InfinityGauntlet;
 import com.igauntlet.config.ModConfig;
 import com.igauntlet.init.ModBlocks;
 import com.igauntlet.init.ModItems;
@@ -54,18 +53,20 @@ public class MessageSnap implements IMessage {
                 NBTTagCompound nbt = stack.getTagCompound();
 
 
+                if(!(playerIn.getHeldItemMainhand().getItem() == ModItems.INFINITY_GAUNTLET)) return;
                 for (Entity targetentity : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extend, extend, extend))) {
                     int entity = targetentity.getEntityId();
 
-                    Block blk = ModBlocks.ASH_PILE;
-                    BlockPos pos0 = new BlockPos(targetentity.posX, targetentity.posY, targetentity.posZ);
-                    IBlockState state0 = blk.getDefaultState();
-                    targetentity.world.setBlockState(pos0, state0);
-                    WriteAsh(pos0, playerIn.world, entity);
-                    targetentity.attackEntityFrom(IDamageSource.SNAP, 1000);
+                    if (!targetentity.getIsInvulnerable()) {
+                        Block blk = ModBlocks.ASH_PILE;
+                        BlockPos pos0 = new BlockPos(targetentity.posX, targetentity.posY, targetentity.posZ);
+                        IBlockState state0 = blk.getDefaultState();
+                        targetentity.world.setBlockState(pos0, state0);
+                        WriteAsh(pos0, playerIn.world, entity);
+                        targetentity.attackEntityFrom(IDamageSource.SNAP, 1000);
+                    }
+                    playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
                 }
-                playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
-
             });
             return null;
         }
