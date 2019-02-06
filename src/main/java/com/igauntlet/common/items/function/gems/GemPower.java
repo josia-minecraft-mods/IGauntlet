@@ -13,6 +13,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
@@ -23,12 +24,14 @@ import net.minecraft.world.World;
 public class GemPower {
 
     public static void Snap(EntityPlayer playerIn, ItemStack stack, int extend) {
+        NBTTagCompound nbt = stack.getTagCompound();
+
         boolean CanSnap = ModConfig.Gauntlet.PowerStone.Snap;
         if (playerIn.isSneaking() && CanSnap) {
             playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
         }
 
-        if (!playerIn.world.isRemote && playerIn.isSneaking() && CanSnap) {
+        if (playerIn.isSneaking() && CanSnap) {
             for (Entity targetentity : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extend, extend, extend))) {
                 int entity = targetentity.getEntityId();
 
@@ -43,6 +46,8 @@ public class GemPower {
                     stack.setItemDamage(stack.getItemDamage() + 1);
                 }
             }
+            nbt.setBoolean("snapnow", false);
+            stack.writeToNBT(nbt);
         }
     }
 

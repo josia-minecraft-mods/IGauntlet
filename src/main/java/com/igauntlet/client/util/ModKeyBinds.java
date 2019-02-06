@@ -27,11 +27,9 @@ public class ModKeyBinds {
 
     @SubscribeEvent
     public static void onClientTick(InputUpdateEvent e) {
-        EntityPlayer player = Minecraft.getMinecraft().player;
-        int range = ModConfig.Gauntlet.PowerStone.ExtensionRange;
 
         if (ModKeyBinds.SNAP.isPressed()) {
-            NetworkHandler.NETWORK.sendToServer(new MessageSnap(player, player.getActiveItemStack(), range));
+            NetworkHandler.NETWORK.sendToServer(new MessageSnap());
             ModUtil.Log("It does something...");
         }
     }

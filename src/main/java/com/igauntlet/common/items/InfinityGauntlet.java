@@ -137,9 +137,6 @@ public class InfinityGauntlet extends Item implements IHasModel {
             NBTTagCompound nbt = stack.getTagCompound();
             int current = nbt.getInteger("currentstone");
 
-            if(current == POWER) {
-                NetworkHandler.NETWORK.sendToServer(new MessageSnap(playerIn, stack, ModConfig.Gauntlet.PowerStone.ExtensionRange));
-            }
 
             EnumHand hand = playerIn.getActiveHand();
             playerIn.setActiveHand(hand);
@@ -162,19 +159,20 @@ public class InfinityGauntlet extends Item implements IHasModel {
         super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
         NBTTagCompound nbt = stack.getTagCompound();
 
+
         if (!worldIn.isRemote && (isSelected)) {
             EntityPlayer player = (EntityPlayer) entityIn;
             if (stack.getItem() == ModItems.INFINITY_GAUNTLET) {
                 if (player.getActivePotionEffect(MobEffects.INSTANT_HEALTH) == null) {
                     player.addPotionEffect(new PotionEffect(MobEffects.INSTANT_HEALTH, 50, 3));
                 }
-            }
-        }
 
-        if (!worldIn.isRemote && stack.getItem() instanceof InfinityGauntlet) {
-            if (nbt == null) {
-                nbt = new NBTTagCompound();
-                stack.setTagCompound(nbt);
+                if (!worldIn.isRemote && stack.getItem() instanceof InfinityGauntlet) {
+                    if (nbt == null) {
+                        nbt = new NBTTagCompound();
+                        stack.setTagCompound(nbt);
+                    }
+                }
             }
         }
     }

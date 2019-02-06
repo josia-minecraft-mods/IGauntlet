@@ -1,7 +1,7 @@
 package com.igauntlet.util;
 
 public class Reference {
-    public static final String NAME = "Infinity Mod";
+    public static final String NAME = "IGauntlet Mod";
     public static final String VERSION = "2.9";
     public static final String MODID = "igauntlet";
 
