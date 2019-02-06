@@ -18,7 +18,7 @@ public class MessageStone implements IMessage {
     }
 
     public MessageStone(int stone) {
-       this.stone = stone;
+        this.stone = stone;
     }
 
     public void fromBytes(ByteBuf buf) {

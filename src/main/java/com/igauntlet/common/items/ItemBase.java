@@ -12,8 +12,8 @@ public class ItemBase extends Item implements IHasModel {
         setTranslationKey(name);
         setRegistryName(name);
 
-        if(tab)
-        setCreativeTab(InfinityTabs.infinityTabs);
+        if (tab)
+            setCreativeTab(InfinityTabs.infinityTabs);
 
         ModItems.ITEMS.add(this);
     }

@@ -1,4 +1,5 @@
 package com.igauntlet.init;
+
 ;
 import com.igauntlet.common.items.*;
 import com.igauntlet.common.items.stones.*;

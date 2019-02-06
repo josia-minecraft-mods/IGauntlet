@@ -1,13 +1,10 @@
 package com.igauntlet.client.util;
 
-import com.igauntlet.config.ModConfig;
 import com.igauntlet.network.NetworkHandler;
 import com.igauntlet.network.packets.MessageSnap;
 import com.igauntlet.util.ModUtil;
 import com.igauntlet.util.Reference;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.client.event.InputUpdateEvent;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
@@ -33,5 +30,4 @@ public class ModKeyBinds {
             ModUtil.Log("It does something...");
         }
     }
-
 }

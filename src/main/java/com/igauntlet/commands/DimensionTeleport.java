@@ -18,55 +18,46 @@ public class DimensionTeleport extends CommandBase {
     private final List<String> aliases = Lists.newArrayList(Reference.MODID, "TP", "tp", "tpdim", "tpdimension", "teleport");
 
     @Override
-    public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException
-    {
-        if(args.length < 1) return;
+    public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
+        if (args.length < 1) return;
 
         String s = args[0];
         int dimension;
 
-        try
-        {
+        try {
             dimension = Integer.parseInt(s);
-        } catch(NumberFormatException e)
-        {
+        } catch (NumberFormatException e) {
             sender.sendMessage(new TextComponentString(TextFormatting.RED + "Dimension not found"));
             return;
         }
 
-        if(sender instanceof EntityPlayer)
-        {
-            Util.teleportToDimension((EntityPlayer)sender, dimension, 0, 100, 0);
+        if (sender instanceof EntityPlayer) {
+            Util.teleportToDimension((EntityPlayer) sender, dimension, 0, 100, 0);
         }
     }
 
     @Override
-    public String getName()
-    {
+    public String getName() {
         return "tpdimension";
     }
 
     @Override
-    public String getUsage(ICommandSender sender)
-    {
+    public String getUsage(ICommandSender sender) {
         return "tpdimension <id>";
     }
 
     @Override
-    public List<String> getAliases()
-    {
+    public List<String> getAliases() {
         return aliases;
     }
 
     @Override
-    public boolean checkPermission(MinecraftServer server, ICommandSender sender)
-    {
+    public boolean checkPermission(MinecraftServer server, ICommandSender sender) {
         return true;
     }
 
     @Override
-    public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, BlockPos targetPos)
-    {
+    public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, BlockPos targetPos) {
         return Collections.emptyList();
     }
 }

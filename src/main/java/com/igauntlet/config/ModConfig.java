@@ -84,8 +84,6 @@ public class ModConfig {
     }
 
 
-
-
     @Mod.EventBusSubscriber(modid = Reference.MODID)
     private static class EventHandler {
 

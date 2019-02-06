@@ -16,7 +16,6 @@ import net.minecraft.util.math.BlockPos;
 import java.io.IOException;
 
 
-
 public class GuiSpace extends GuiScreen {
 
     public GuiTextField xCoord;
@@ -49,7 +48,7 @@ public class GuiSpace extends GuiScreen {
             Minecraft.getMinecraft().displayGuiScreen(null);
         }
 
-        if(button == this.dimensions) {
+        if (button == this.dimensions) {
             Minecraft.getMinecraft().displayGuiScreen(null);
         }
 
@@ -126,7 +125,7 @@ public class GuiSpace extends GuiScreen {
         yCoord = new GuiTextField(1, fr, x - 40, y + yOffset * 2, 100, fr.FONT_HEIGHT);
         zCoord = new GuiTextField(2, fr, x - 40, y + yOffset * 3 + 1, 100, fr.FONT_HEIGHT);
         warp = new GuiButton(3, x + 11, y + yOffset * 9, warpButton);
-        dimensions = new GuiButton(4, x + 66, y + yOffset - 109,65,21, dimension);
+        dimensions = new GuiButton(4, x + 66, y + yOffset - 109, 65, 21, dimension);
         warp.x -= warp.width / 2;
         dimensions.x -= dimensions.width / 2;
         xCoord.setFocused(true);

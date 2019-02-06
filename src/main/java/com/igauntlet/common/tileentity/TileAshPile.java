@@ -8,19 +8,25 @@ public class TileAshPile extends TileEntity {
 
     private int entity;
 
-    public void setEntity(int entity) { this.entity = entity; this.markDirty(); }
-    public int getEntity() { return this.entity; }
+    public void setEntity(int entity) {
+        this.entity = entity;
+        this.markDirty();
+    }
+
+    public int getEntity() {
+        return this.entity;
+    }
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
-        if(nbt == null) nbt = new NBTTagCompound();
+        if (nbt == null) nbt = new NBTTagCompound();
         nbt.setInteger("entity", this.entity);
         return super.writeToNBT(nbt);
     }
 
     @Override
     public void readFromNBT(NBTTagCompound nbt) {
-        if(nbt != null && nbt.hasKey("entity"))
+        if (nbt != null && nbt.hasKey("entity"))
             this.entity = nbt.getInteger("entity");
 
         super.readFromNBT(nbt);

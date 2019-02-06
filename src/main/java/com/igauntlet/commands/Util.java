@@ -12,8 +12,7 @@ public class Util extends Teleporter {
     private final WorldServer world;
     private double x, y, z;
 
-    public Util(WorldServer world, double x, double y, double z)
-    {
+    public Util(WorldServer world, double x, double y, double z) {
         super(world);
         this.world = world;
         this.x = x;
@@ -23,8 +22,7 @@ public class Util extends Teleporter {
 
 
     @Override
-    public void placeInPortal(Entity entity, float rotationYaw)
-    {
+    public void placeInPortal(Entity entity, float rotationYaw) {
         this.world.getBlockState(new BlockPos((int) this.x, (int) this.y, (int) this.z));
         entity.setPosition(this.x, this.y, this.z);
         entity.motionX = 0.0f;
@@ -32,17 +30,15 @@ public class Util extends Teleporter {
         entity.motionZ = 0.0f;
     }
 
-    public static void teleportToDimension(EntityPlayer player, int dimension, double x, double y, double z)
-    {
+    public static void teleportToDimension(EntityPlayer player, int dimension, double x, double y, double z) {
         int oldDimension = player.getEntityWorld().provider.getDimension();
         EntityPlayerMP entityPlayerMP = (EntityPlayerMP) player;
         MinecraftServer server = player.getEntityWorld().getMinecraftServer();
         WorldServer worldServer = server.getWorld(dimension);
         player.addExperienceLevel(0);
 
-        if (worldServer == null || worldServer.getMinecraftServer() == null)
-        {
-            throw new IllegalArgumentException("Dimension: "+dimension+" doesn't exist!");
+        if (worldServer == null || worldServer.getMinecraftServer() == null) {
+            throw new IllegalArgumentException("Dimension: " + dimension + " doesn't exist!");
         }
 
         worldServer.getMinecraftServer().getPlayerList().transferPlayerToDimension(entityPlayerMP, dimension, new Util(worldServer, x, y, z));

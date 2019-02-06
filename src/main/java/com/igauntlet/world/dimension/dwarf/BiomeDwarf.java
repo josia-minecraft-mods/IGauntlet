@@ -10,8 +10,7 @@ import java.util.Random;
 
 public class BiomeDwarf extends Biome {
 
-    public BiomeDwarf()
-    {
+    public BiomeDwarf() {
         super(new BiomeProperties("Dwarf").setHeightVariation(0.00F).setBaseHeight(2F).setRainDisabled().setTemperature(0.4F));
         this.topBlock = ModBlocks.DWARF_STONE.getDefaultState();
         this.fillerBlock = ModBlocks.DWARF_DIRT.getDefaultState();

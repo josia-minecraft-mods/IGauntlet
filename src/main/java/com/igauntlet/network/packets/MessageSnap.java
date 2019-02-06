@@ -53,7 +53,7 @@ public class MessageSnap implements IMessage {
                 NBTTagCompound nbt = stack.getTagCompound();
 
 
-                if(!(playerIn.getHeldItemMainhand().getItem() == ModItems.INFINITY_GAUNTLET)) return;
+                if (!(playerIn.getHeldItemMainhand().getItem() == ModItems.INFINITY_GAUNTLET)) return;
                 for (Entity targetentity : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extend, extend, extend))) {
                     int entity = targetentity.getEntityId();
 

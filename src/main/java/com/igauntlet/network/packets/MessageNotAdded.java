@@ -8,7 +8,6 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 
-
 public class MessageNotAdded implements IMessage {
 
     public static int stone;

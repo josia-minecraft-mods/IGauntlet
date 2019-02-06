@@ -9,7 +9,7 @@ import net.minecraft.world.biome.BiomeProviderSingle;
 
 public class WorldProviderDwarf extends WorldProvider {
 
-    private static BiomeProviderSingle biomeP= new BiomeProviderSingle(ModBiomes.DWARF_DIMENSION);
+    private static BiomeProviderSingle biomeP = new BiomeProviderSingle(ModBiomes.DWARF_DIMENSION);
 
     public WorldProviderDwarf() {
 

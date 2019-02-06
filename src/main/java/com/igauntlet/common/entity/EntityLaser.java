@@ -50,10 +50,10 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
 
             if (result.entityHit instanceof EntityPlayer) {
                 if (!((EntityPlayer) result.entityHit).capabilities.isCreativeMode) {
-                        Block blk = ModBlocks.ASH_PILE;
-                        BlockPos pos0 = new BlockPos(result.entityHit.posX, result.entityHit.posY, result.entityHit.posZ);
-                        IBlockState state0 = blk.getDefaultState();
-                        world.setBlockState(pos0, state0);
+                    Block blk = ModBlocks.ASH_PILE;
+                    BlockPos pos0 = new BlockPos(result.entityHit.posX, result.entityHit.posY, result.entityHit.posZ);
+                    IBlockState state0 = blk.getDefaultState();
+                    world.setBlockState(pos0, state0);
 
                 }
 

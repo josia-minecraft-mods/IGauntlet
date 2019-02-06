@@ -32,7 +32,7 @@ public class Manipulator extends Block implements IHasModel {
 
         setResistance(15.0F);
 
-        if(tab)
+        if (tab)
             setCreativeTab(InfinityTabs.infinityTabs);
 
         ModBlocks.BLOCKS.add(this);
@@ -71,8 +71,7 @@ public class Manipulator extends Block implements IHasModel {
     }
 
     @Override
-    public void registerModels()
-    {
+    public void registerModels() {
         Infinity.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
     }
 

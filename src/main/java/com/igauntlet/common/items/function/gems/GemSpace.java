@@ -11,7 +11,7 @@ public class GemSpace {
 
     @SideOnly(Side.CLIENT)
     public static void OpenSpaceGui(EntityPlayer playerIn) {
-        if(playerIn.getHeldItemOffhand().getItem() != ModItems.INFINITY_GAUNTLET)
-        Minecraft.getMinecraft().displayGuiScreen(new GuiSpace());
+        if (playerIn.getHeldItemOffhand().getItem() != ModItems.INFINITY_GAUNTLET)
+            Minecraft.getMinecraft().displayGuiScreen(new GuiSpace());
     }
 }

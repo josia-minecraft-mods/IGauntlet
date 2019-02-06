@@ -16,15 +16,15 @@ import net.minecraft.world.World;
 public class GemTime {
 
     public static void ReviveAsh(BlockPos pos, World worldIn, EntityPlayer player) {
-            IBlockState block = worldIn.getBlockState(pos);
+        IBlockState block = worldIn.getBlockState(pos);
 
-            if (block.getBlock() instanceof AshPile) {
-                Block blk = Blocks.AIR;
-                IBlockState state0 = blk.getDefaultState();
-                SummonCreature(worldIn, player, pos);
-                worldIn.setBlockState(pos, state0);
-            }
+        if (block.getBlock() instanceof AshPile) {
+            Block blk = Blocks.AIR;
+            IBlockState state0 = blk.getDefaultState();
+            SummonCreature(worldIn, player, pos);
+            worldIn.setBlockState(pos, state0);
         }
+    }
 
     public static void SummonCreature(World worldIn, EntityPlayer player, BlockPos pos) {
         TileEntity ash_te = worldIn.getTileEntity(pos);
@@ -38,7 +38,7 @@ public class GemTime {
     public static boolean freeze = false;
 
     public static void FreezeNow() {
-         freeze = !freeze;
+        freeze = !freeze;
     }
 
     public static boolean GetFreeze() {
@@ -46,16 +46,16 @@ public class GemTime {
     }
 
     public static void FreezeTime(EntityPlayer player, World world, int extensionrange) {
-        for(Entity entity : player.world.getEntitiesWithinAABB(EntityLiving.class, player.getEntityBoundingBox().grow(extensionrange, extensionrange, extensionrange))) {
+        for (Entity entity : player.world.getEntitiesWithinAABB(EntityLiving.class, player.getEntityBoundingBox().grow(extensionrange, extensionrange, extensionrange))) {
 
             if (GetFreeze()) {
                 entity.setVelocity(0, 0, 0);
                 entity.getEntityData().setInteger("NoAI", 1);
                 entity.velocityChanged = true;
                 entity.extinguish();
-            }else{
+            } else {
                 entity.getEntityData().setInteger("NoAI", 0);
             }
         }
-     }
+    }
 }

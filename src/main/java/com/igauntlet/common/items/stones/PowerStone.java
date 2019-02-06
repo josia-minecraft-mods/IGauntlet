@@ -19,7 +19,6 @@ public class PowerStone extends Item implements IHasModel {
     }
 
 
-
     @Override
     public void registerModels() {
         Infinity.proxy.registerItemRenderer(this, 0, "inventory");

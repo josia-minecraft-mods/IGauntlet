@@ -20,7 +20,6 @@ public class GuiGauntlet extends GuiScreen {
     static final int GUI_HEIGHT = 256;
 
 
-
     GuiButton button1;
     GuiButton button2;
     GuiButton button3;
@@ -29,10 +28,10 @@ public class GuiGauntlet extends GuiScreen {
     GuiButton button6;
 
 
-
     public static final ResourceLocation TEXTURE = new ResourceLocation(Reference.MODID, "textures/gui/gui_gauntlet.png");
 
-    public GuiGauntlet() {}
+    public GuiGauntlet() {
+    }
 
 
     public class ButtonStones extends GuiButton {
@@ -78,14 +77,14 @@ public class GuiGauntlet extends GuiScreen {
     public void initGui() {
         buttonList.clear();
 
-        if(ModConfig.Gauntlet.GuiText) {
+        if (ModConfig.Gauntlet.GuiText) {
             buttonList.add(button1 = new ButtonStones(TIME, (width / 2) - 80, (height / 2) - 105, " Time"));
             buttonList.add(button2 = new ButtonStones(SOUL, (width / 2) + 30, (height / 2) - 105, "Soul"));
             buttonList.add(button3 = new ButtonStones(POWER, (width / 2) - 100, (height / 2) - 10, "Power"));
             buttonList.add(button4 = new ButtonStones(SPACE, (width / 2) - 25, (height / 2) + 50, "Space"));
             buttonList.add(button5 = new ButtonStones(REALITY, (width / 2) + 50, (height / 2) - 10, " Reality"));
             buttonList.add(button6 = new ButtonStones(MIND, (width / 2) - 25, (height / 2) - 40, " Mind"));
-        }else{
+        } else {
             buttonList.add(button1 = new ButtonStones(TIME, (width / 2) - 80, (height / 2) - 105, ""));
             buttonList.add(button2 = new ButtonStones(SOUL, (width / 2) + 30, (height / 2) - 105, ""));
             buttonList.add(button3 = new ButtonStones(REALITY, (width / 2) - 100, (height / 2) - 10, ""));
@@ -139,7 +138,7 @@ public class GuiGauntlet extends GuiScreen {
                 break;
         }
 
-        if(button.id == REALITY || button.id == SOUL || button.id == MIND || button.id == TIME) {
+        if (button.id == REALITY || button.id == SOUL || button.id == MIND || button.id == TIME) {
             NetworkHandler.NETWORK.sendToServer(new MessageNotAdded(STONE, button.id));
         }
 
