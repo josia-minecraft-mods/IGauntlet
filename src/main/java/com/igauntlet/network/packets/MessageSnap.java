@@ -67,8 +67,8 @@ public class MessageSnap implements IMessage {
                             WriteAsh(pos0, playerIn.world, entity);
                             targetentity.attackEntityFrom(IDamageSource.SNAP, 1000);
                         }
-                        playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
                     }
+                    playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
                 }
             });
             return null;

@@ -86,6 +86,8 @@ public class InfinityGauntlet extends Item implements IHasModel {
         ItemStack stack = player.getHeldItem(hand);
         int current = stack.getTagCompound().getInteger("currentstone");
 
+
+
         return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
     }
 
@@ -98,6 +100,11 @@ public class InfinityGauntlet extends Item implements IHasModel {
 
         if (worldIn.isRemote && playerIn.getHeldItemOffhand().getItem() == ModItems.INFINITY_GAUNTLET) {
             OpenInfinityGui();
+        }
+
+
+        if (current == POWER) {
+            GemPower.Laser(playerIn, worldIn, stack);
         }
 
 
@@ -118,11 +125,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
     @Override
     public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
         EntityPlayer entityplayer = (EntityPlayer) entityLiving;
-        int current = stack.getTagCompound().getInteger("currentstone");
 
-        if (current == POWER) {
-            GemPower.Laser(entityplayer, worldIn, stack);
-        }
 
         super.onPlayerStoppedUsing(stack, worldIn, entityLiving, timeLeft);
     }

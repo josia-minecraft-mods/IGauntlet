@@ -11,12 +11,11 @@ import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -89,49 +88,12 @@ public class Tesseract extends Block implements IHasModel, ITileEntityProvider {
                     }
                 }
                 tess.RemoveStone(playerIn);
-                setLightLevel(0F);
+                worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());
             }
         }
         return true;
     }
 
-
-    @Override
-    public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-        super.breakBlock(worldIn, pos, state);
-
-        TileEntity tileentity = worldIn.getTileEntity(pos);
-
-        if (tileentity instanceof TileTesseract) {
-            TileTesseract tess = (TileTesseract) tileentity;
-
-            ItemStack itemstack = new ItemStack(Item.getItemFromBlock(this));
-            NBTTagCompound nbttagcompound = new NBTTagCompound();
-            nbttagcompound.setInteger("BlockEntityTag", tess.GetStone());
-            itemstack.setTagCompound(nbttagcompound);
-
-            spawnAsEntity(worldIn, pos, itemstack);
-        }
-    }
-
-    @Override
-    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-        super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
-
-        TileEntity tileentity = worldIn.getTileEntity(pos);
-
-        if (tileentity instanceof TileTesseract) {
-            TileTesseract tess = (TileTesseract) tileentity;
-
-            if (stack.hasTagCompound()) {
-                NBTTagCompound nbt = stack.getTagCompound();
-                int data = nbt.getInteger("BlockEntityTag");
-                if (data == 1) {
-                    tess.AddStone();
-                }
-            }
-        }
-    }
 
     @Nullable
     @Override
