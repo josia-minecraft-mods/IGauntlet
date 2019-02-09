@@ -10,12 +10,22 @@
     ]
   },
   "snap": {
+  "category": "master",
+  "subtitle": "snap",
+  "sounds": [
+    {
+      "name": "igauntlet:snap",
+      "stream": true
+    }
+  ]
+},
+  "awesome_mix": {
     "category": "master",
-    "subtitle": "snap",
+    "subtitle": "awesome_mix_1",
     "sounds": [
       {
-        "name": "igauntlet:snap",
-        "stream": false
+        "name": "igauntlet:awesomemix/awesome_mix_1",
+        "stream": true
       }
     ]
   }
