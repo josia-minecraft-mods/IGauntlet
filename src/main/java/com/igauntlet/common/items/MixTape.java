@@ -8,16 +8,14 @@ import com.igauntlet.util.handlers.helpers.IHasModel;
 import net.minecraft.item.ItemRecord;
 import net.minecraft.util.SoundEvent;
 
+
 public class MixTape extends ItemRecord implements IHasModel {
-
-
 
     public MixTape(String name, SoundEvent sound) {
         super(name, sound);
         setTranslationKey(name);
         setRegistryName(name);
         setMaxStackSize(1);
-        setMaxDamage(4500);
         setCreativeTab(InfinityTabs.infinityTabs);
 
         ModItems.ITEMS.add(this);
