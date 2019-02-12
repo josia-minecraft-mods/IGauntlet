@@ -23,7 +23,7 @@ import net.minecraft.world.World;
 
 public class GemPower {
 
-    // Not in use , Current is a Packet
+    // Not in use , Current is a Packet (MessageSnap)
     public static void Snap(EntityPlayer playerIn, ItemStack stack, int extend) {
         NBTTagCompound nbt = stack.getTagCompound();
 
