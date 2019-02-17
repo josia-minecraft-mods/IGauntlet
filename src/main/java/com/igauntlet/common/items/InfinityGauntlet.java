@@ -106,6 +106,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
 
 
         if(playerIn.getHeldItemOffhand().getItem() != ModItems.INFINITY_GAUNTLET) {
+
             if (current == POWER) {
                 GemPower.Laser(playerIn, worldIn, stack);
             }
