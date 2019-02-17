@@ -2,17 +2,17 @@ package com.igauntlet.common.items.stones;
 
 import com.igauntlet.Infinity;
 import com.igauntlet.config.ModConfig;
+import com.igauntlet.init.ModItems;
 import com.igauntlet.network.NetworkHandler;
 import com.igauntlet.network.packets.MessageSpaceDrift;
+import com.igauntlet.tabs.InfinityTabs;
+import com.igauntlet.util.handlers.helpers.IHasModel;
+import com.igauntlet.util.helpers.PlayerHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import com.igauntlet.tabs.InfinityTabs;
-import com.igauntlet.util.handlers.helpers.IHasModel;
-import com.igauntlet.init.ModItems;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
 public class SpaceStone extends Item implements IHasModel {
@@ -43,12 +43,12 @@ public class SpaceStone extends Item implements IHasModel {
                 timeout++;
 
 
-                if (timeout == 50) {
-                    player.sendStatusMessage(new TextComponentTranslation("stones.space.donthold"), true);
+                if (timeout == 50% maxtimeout) {
+                    PlayerHelper.sendMessageClient(player,"stones.space.donthold", true);
                 }
 
                 if (timeout == maxtimeout) {
-                    player.sendStatusMessage(new TextComponentTranslation("stones.space.drifted"), true);
+                    PlayerHelper.sendMessageClient(player,"stones.space.drifted", true);
                 }
 
             }

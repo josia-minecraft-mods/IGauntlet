@@ -2,6 +2,7 @@ package com.igauntlet.common.items.function.gems;
 
 import com.igauntlet.common.blocks.AshPile;
 import com.igauntlet.common.tileentity.TileAshPile;
+import com.igauntlet.util.helpers.PlayerHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
@@ -36,18 +37,26 @@ public class GemTime {
 
 
 
-
-
-
     public static void FreezeTime(EntityPlayer player, World world,int freeze, int extensionrange) {
+        FreezeEntities(player, world, freeze, extensionrange);
+    }
+
+
+
+
+    public static void FreezeEntities(EntityPlayer player, World world,int freeze, int extensionrange) {
         for (EntityLiving entity : player.world.getEntitiesWithinAABB(EntityLiving.class, player.getEntityBoundingBox().grow(extensionrange, extensionrange, extensionrange))) {
             if (freeze == 1) {
                 entity.setNoAI(true);
                 entity.setEntityInvulnerable(true);
+                PlayerHelper.sendMessage(player, "stones.time.frozen", true);
             } else {
                 entity.setNoAI(false);
                 entity.setEntityInvulnerable(false);
+                PlayerHelper.sendMessage(player, "stones.time.unfrozen", true);
             }
         }
     }
+
+
 }

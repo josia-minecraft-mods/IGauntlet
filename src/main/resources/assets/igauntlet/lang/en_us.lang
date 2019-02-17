@@ -38,6 +38,8 @@ damagesource.igauntlet.laser=a Laser!
  //Messages
 stones.space.drifted=You have drifted!
 stones.space.donthold=Don't hold it for too long!
+stones.time.frozen=Entities Frozen!
+stones.time.unfrozen=Entities Unfrozen!
 
  //Config
 igauntlet.config.drift_timeout=Drift Timeout
