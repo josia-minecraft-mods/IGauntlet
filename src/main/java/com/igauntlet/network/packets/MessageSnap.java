@@ -8,7 +8,6 @@ import com.igauntlet.util.handlers.SoundsHandler;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -56,7 +55,7 @@ public class MessageSnap implements IMessage {
                 if (CanSnap) {
 
                     if (!(playerIn.getHeldItemMainhand().getItem() == ModItems.INFINITY_GAUNTLET)) return;
-                    for (Entity targetentity : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extend, extend, extend))) {
+                    for (EntityLiving targetentity : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extend, extend, extend))) {
                         int entity = targetentity.getEntityId();
 
                         if (!targetentity.getIsInvulnerable()) {
@@ -65,7 +64,7 @@ public class MessageSnap implements IMessage {
                             IBlockState state0 = blk.getDefaultState();
                             targetentity.world.setBlockState(pos0, state0);
                             WriteAsh(pos0, playerIn.world, entity);
-                            targetentity.attackEntityFrom(IDamageSource.SNAP, 1000);
+                            targetentity.attackEntityFrom(IDamageSource.SNAP, targetentity.getMaxHealth() - targetentity.getHealth());
                         }
                     }
                     playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
