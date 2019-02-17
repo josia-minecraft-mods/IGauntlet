@@ -5,9 +5,11 @@ import com.igauntlet.common.tileentity.TileAshPile;
 import com.igauntlet.util.helpers.PlayerHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
@@ -39,6 +41,7 @@ public class GemTime {
 
     public static void FreezeTime(EntityPlayer player, World world,int freeze, int extensionrange) {
         FreezeEntities(player, world, freeze, extensionrange);
+        FreezeThrowable(player, freeze, extensionrange);
     }
 
 
@@ -54,6 +57,20 @@ public class GemTime {
                 entity.setNoAI(false);
                 entity.setEntityInvulnerable(false);
                 PlayerHelper.sendMessage(player, "stones.time.unfrozen", true);
+            }
+        }
+    }
+
+    public static void FreezeThrowable(EntityPlayer player, int freeze,int extensionrange) {
+        for (Entity entity : player.world.getEntitiesWithinAABB(Entity.class, player.getEntityBoundingBox().grow(extensionrange, extensionrange, extensionrange))) {
+            if(freeze == 1 && entity instanceof EntityArrow) {
+                entity.setNoGravity(true);
+                entity.setVelocity(0,0,0);
+                entity.velocityChanged = true;
+            }else{
+                entity.setNoGravity(false);
+                entity.setVelocity(1,0,1);
+                entity.velocityChanged = true;
             }
         }
     }
