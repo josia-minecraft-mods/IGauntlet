@@ -2,6 +2,7 @@ package com.igauntlet.common.items;
 
 import com.igauntlet.Infinity;
 import com.igauntlet.client.gui.GuiGauntlet;
+import com.igauntlet.common.items.function.gems.GemMind;
 import com.igauntlet.common.items.function.gems.GemPower;
 import com.igauntlet.common.items.function.gems.GemSpace;
 import com.igauntlet.common.items.function.gems.GemTime;
@@ -104,23 +105,29 @@ public class InfinityGauntlet extends Item implements IHasModel {
         }
 
 
-        if (current == POWER) {
-            GemPower.Laser(playerIn, worldIn, stack);
-        }
-
-        if(current == TIME) {
-
-            if(stack.getTagCompound().getInteger("freeze") == 0) {
-                stack.getTagCompound().setInteger("freeze", 1);
-            }else{
-                stack.getTagCompound().setInteger("freeze", 0);
+        if(playerIn.getHeldItemOffhand().getItem() != ModItems.INFINITY_GAUNTLET) {
+            if (current == POWER) {
+                GemPower.Laser(playerIn, worldIn, stack);
             }
-            GemTime.FreezeTime(playerIn, worldIn, stack.getTagCompound().getInteger("freeze"),50);
-        }
+
+            if (current == TIME) {
+
+                if (stack.getTagCompound().getInteger("freeze") == 0) {
+                    stack.getTagCompound().setInteger("freeze", 1);
+                } else {
+                    stack.getTagCompound().setInteger("freeze", 0);
+                }
+                GemTime.FreezeTime(playerIn, worldIn, stack.getTagCompound().getInteger("freeze"), 50);
+            }
+
+            if (current == MIND) {
+                GemMind.Attack(playerIn);
+            }
 
 
-        if (worldIn.isRemote && current == SPACE) {
-            GemSpace.OpenSpaceGui(playerIn);
+            if (worldIn.isRemote && current == SPACE) {
+                GemSpace.OpenSpaceGui(playerIn);
+            }
         }
 
 
