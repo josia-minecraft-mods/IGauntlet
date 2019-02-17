@@ -115,7 +115,6 @@ public class InfinityGauntlet extends Item implements IHasModel {
             }else{
                 stack.getTagCompound().setInteger("freeze", 0);
             }
-            boolean freeze = false;
             GemTime.FreezeTime(playerIn, worldIn, stack.getTagCompound().getInteger("freeze"),50);
         }
 

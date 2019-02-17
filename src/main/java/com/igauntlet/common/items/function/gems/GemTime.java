@@ -45,9 +45,11 @@ public class GemTime {
             if (freeze == 1) {
                 ModUtil.Log("noAI?");
                 entity.setNoAI(true);
+                entity.setEntityInvulnerable(true);
             } else {
                 ModUtil.Log("noA41I?");
                 entity.setNoAI(false);
+                entity.setEntityInvulnerable(false);
             }
         }
     }
