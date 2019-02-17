@@ -4,6 +4,7 @@ import com.igauntlet.Infinity;
 import com.igauntlet.client.gui.GuiGauntlet;
 import com.igauntlet.common.items.function.gems.GemPower;
 import com.igauntlet.common.items.function.gems.GemSpace;
+import com.igauntlet.common.items.function.gems.GemTime;
 import com.igauntlet.config.ModConfig;
 import com.igauntlet.init.ModItems;
 import com.igauntlet.tabs.InfinityTabs;
@@ -105,6 +106,17 @@ public class InfinityGauntlet extends Item implements IHasModel {
 
         if (current == POWER) {
             GemPower.Laser(playerIn, worldIn, stack);
+        }
+
+        if(current == TIME) {
+
+            if(stack.getTagCompound().getInteger("freeze") == 0) {
+                stack.getTagCompound().setInteger("freeze", 1);
+            }else{
+                stack.getTagCompound().setInteger("freeze", 0);
+            }
+            boolean freeze = false;
+            GemTime.FreezeTime(playerIn, worldIn, stack.getTagCompound().getInteger("freeze"),50);
         }
 
 

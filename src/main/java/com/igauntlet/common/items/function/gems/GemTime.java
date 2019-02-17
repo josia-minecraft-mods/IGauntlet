@@ -2,9 +2,9 @@ package com.igauntlet.common.items.function.gems;
 
 import com.igauntlet.common.blocks.AshPile;
 import com.igauntlet.common.tileentity.TileAshPile;
+import com.igauntlet.util.ModUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.player.EntityPlayer;
@@ -35,26 +35,19 @@ public class GemTime {
         }
     }
 
-    public static boolean freeze = false;
 
-    public static void FreezeNow() {
-        freeze = !freeze;
-    }
 
-    public static boolean GetFreeze() {
-        return freeze;
-    }
 
-    public static void FreezeTime(EntityPlayer player, World world, int extensionrange) {
-        for (Entity entity : player.world.getEntitiesWithinAABB(EntityLiving.class, player.getEntityBoundingBox().grow(extensionrange, extensionrange, extensionrange))) {
 
-            if (GetFreeze()) {
-                entity.setVelocity(0, 0, 0);
-                entity.getEntityData().setInteger("NoAI", 1);
-                entity.velocityChanged = true;
-                entity.extinguish();
+
+    public static void FreezeTime(EntityPlayer player, World world,int freeze, int extensionrange) {
+        for (EntityLiving entity : player.world.getEntitiesWithinAABB(EntityLiving.class, player.getEntityBoundingBox().grow(extensionrange, extensionrange, extensionrange))) {
+            if (freeze == 1) {
+                ModUtil.Log("noAI?");
+                entity.setNoAI(true);
             } else {
-                entity.getEntityData().setInteger("NoAI", 0);
+                ModUtil.Log("noA41I?");
+                entity.setNoAI(false);
             }
         }
     }
