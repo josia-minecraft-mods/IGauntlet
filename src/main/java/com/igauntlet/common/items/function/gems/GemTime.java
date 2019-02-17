@@ -5,11 +5,10 @@ import com.igauntlet.common.tileentity.TileAshPile;
 import com.igauntlet.util.helpers.PlayerHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
@@ -62,8 +61,8 @@ public class GemTime {
     }
 
     public static void FreezeThrowable(EntityPlayer player, int freeze,int extensionrange) {
-        for (Entity entity : player.world.getEntitiesWithinAABB(Entity.class, player.getEntityBoundingBox().grow(extensionrange, extensionrange, extensionrange))) {
-            if(freeze == 1 && entity instanceof EntityArrow) {
+        for (EntityThrowable entity : player.world.getEntitiesWithinAABB(EntityThrowable.class, player.getEntityBoundingBox().grow(extensionrange, extensionrange, extensionrange))) {
+            if(freeze == 1) {
                 entity.setNoGravity(true);
                 entity.setVelocity(0,0,0);
                 entity.velocityChanged = true;
