@@ -5,9 +5,13 @@ import com.igauntlet.common.tileentity.TileAshPile;
 import com.igauntlet.util.helpers.PlayerHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.item.EntityFireworkRocket;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.entity.projectile.EntityFireball;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
@@ -61,14 +65,15 @@ public class GemTime {
     }
 
     public static void FreezeThrowable(EntityPlayer player, int freeze,int extensionrange) {
-        for (EntityThrowable entity : player.world.getEntitiesWithinAABB(EntityThrowable.class, player.getEntityBoundingBox().grow(extensionrange, extensionrange, extensionrange))) {
-            if(freeze == 1) {
-                entity.setNoGravity(true);
-                entity.setVelocity(0,0,0);
-                entity.velocityChanged = true;
-            }else{
-                entity.setNoGravity(false);
-                entity.setVelocity(1,0,1);
+        for (Entity entity : player.world.getEntitiesWithinAABB(Entity.class, player.getEntityBoundingBox().grow(extensionrange, extensionrange, extensionrange))) {
+            if (entity instanceof EntityArrow || entity instanceof EntityFireball || entity instanceof EntityFireworkRocket || entity instanceof EntityThrowable) {
+                if (freeze == 1) {
+                    entity.setNoGravity(true);
+                    entity.setVelocity(0, 0, 0);
+                } else {
+                    entity.setNoGravity(false);
+                    entity.setVelocity(1, 0, 1);
+                }
                 entity.velocityChanged = true;
             }
         }
