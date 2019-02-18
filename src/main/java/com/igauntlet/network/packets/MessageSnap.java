@@ -4,6 +4,7 @@ import com.igauntlet.common.damage.IDamageSource;
 import com.igauntlet.config.ModConfig;
 import com.igauntlet.init.ModBlocks;
 import com.igauntlet.init.ModItems;
+import com.igauntlet.util.ModUtil;
 import com.igauntlet.util.handlers.SoundsHandler;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
@@ -53,29 +54,43 @@ public class MessageSnap implements IMessage {
                 ItemStack stack = playerIn.getActiveItemStack();
                 boolean CanSnap = ModConfig.Gauntlet.Snap;
                 int extend = ModConfig.Gauntlet.ExtensionRange;
-                int passentity = 0;
                 NBTTagCompound nbt = stack.getTagCompound();
+                boolean Snapinit = false;
 
                 if (CanSnap) {
 
                     if (!(playerIn.getHeldItemMainhand().getItem() == ModItems.INFINITY_GAUNTLET)) return;
                     for (EntityLiving targetentity : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extend, extend, extend))) {
-                        int entity = targetentity.getEntityId();
-                        SNAPENTITY.add(targetentity);
-                        passentity++;
+                       SNAPENTITY.add(targetentity);
+                        Snapinit = true;
+                    }
 
-                            if (!targetentity.getIsInvulnerable()) {
-                                Block blk = ModBlocks.ASH_PILE;
-                                BlockPos pos0 = new BlockPos(targetentity.posX, targetentity.posY, targetentity.posZ);
-                                IBlockState state0 = blk.getDefaultState();
-                                targetentity.world.setBlockState(pos0, state0);
-                                WriteAsh(pos0, playerIn.world, entity);
-                                targetentity.attackEntityFrom(IDamageSource.SNAP, 1000);
+                    int passentity = 0;
+
+                    if (Snapinit) {
+                        for (EntityLiving e : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extend, extend, extend))) {
+                            passentity++;
+
+                            if(SNAPENTITY.size() == 0 || SNAPENTITY.size() == 1) return;
+                            EntityLiving targetentity = SNAPENTITY.get(passentity);
+
+                                int entity = targetentity.getEntityId();
+                                if (!targetentity.getIsInvulnerable()) {
+                                    Block blk = ModBlocks.ASH_PILE;
+                                    BlockPos pos0 = new BlockPos(targetentity.posX, targetentity.posY, targetentity.posZ);
+                                    IBlockState state0 = blk.getDefaultState();
+                                    targetentity.world.setBlockState(pos0, state0);
+                                    WriteAsh(pos0, playerIn.world, entity);
+                                    targetentity.attackEntityFrom(IDamageSource.SNAP, 1000);
+                                }
                             }
-                    }
-                        playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
-                        passentity = 0;
-                    }
+                            playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
+                            ModUtil.Log(SNAPENTITY.size() + " size");
+                            ModUtil.Log(passentity + " passentity");
+                        }
+                    passentity = 0;
+                    SNAPENTITY.clear();
+                }
             });
             return null;
         }
