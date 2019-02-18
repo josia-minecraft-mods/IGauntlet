@@ -93,6 +93,7 @@ public class MessageSnap implements IMessage {
                         }
                     }
                     SNAPENTITY.clear();
+                    passentity = 0;
                 }
             });
             return null;
