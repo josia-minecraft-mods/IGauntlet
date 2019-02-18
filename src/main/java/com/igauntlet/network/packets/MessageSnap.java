@@ -71,8 +71,11 @@ public class MessageSnap implements IMessage {
                         for (EntityLiving e : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extend, extend, extend))) {
                             passentity++;
 
-                            if(SNAPENTITY.size() == 0 || SNAPENTITY.size() == 1) return;
-                            EntityLiving targetentity = SNAPENTITY.get(passentity);
+
+
+                            if (passentity != SNAPENTITY.size() / 2 || SNAPENTITY.size() >= 1) {
+
+                                EntityLiving targetentity = SNAPENTITY.get(passentity);
 
                                 int entity = targetentity.getEntityId();
                                 if (!targetentity.getIsInvulnerable()) {
@@ -88,7 +91,7 @@ public class MessageSnap implements IMessage {
                             ModUtil.Log(SNAPENTITY.size() + " size");
                             ModUtil.Log(passentity + " passentity");
                         }
-                    passentity = 0;
+                    }
                     SNAPENTITY.clear();
                 }
             });
