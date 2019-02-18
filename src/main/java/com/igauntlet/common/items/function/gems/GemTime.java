@@ -72,7 +72,6 @@ public class GemTime {
                     entity.setVelocity(0, 0, 0);
                 } else {
                     entity.setNoGravity(false);
-                    entity.setVelocity(1, 0, 1);
                 }
                 entity.velocityChanged = true;
             }
