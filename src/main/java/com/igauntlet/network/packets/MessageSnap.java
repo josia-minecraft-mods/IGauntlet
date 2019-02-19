@@ -5,6 +5,7 @@ import com.igauntlet.config.ModConfig;
 import com.igauntlet.init.ModBlocks;
 import com.igauntlet.init.ModItems;
 import com.igauntlet.util.handlers.SoundsHandler;
+import com.igauntlet.util.helpers.PlayerHelper;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -75,7 +76,7 @@ public class MessageSnap implements IMessage {
 
                             int halfentity = passentity / 2;
 
-                            if(halfentity > 0) {
+                            if(halfentity > 0 ) {
                                 EntityLiving targetentity = SNAPENTITY.get(halfentity);
 
                                 int entity = targetentity.getEntityId();
@@ -89,7 +90,11 @@ public class MessageSnap implements IMessage {
                                     passentity--;
                                 }
                             }
-                            playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
+                            if(SNAPENTITY.size() >= 2) {
+                                playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
+                            }else{
+                                PlayerHelper.sendMessage(playerIn,"gauntlet.snap.notenough", true);
+                            }
                         }
                     }
                     SNAPENTITY.clear();

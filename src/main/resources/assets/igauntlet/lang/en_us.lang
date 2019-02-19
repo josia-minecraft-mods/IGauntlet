@@ -40,6 +40,7 @@ stones.space.drifted=You have drifted!
 stones.space.donthold=Don't hold it for too long!
 stones.time.frozen=Entities Frozen!
 stones.time.unfrozen=Entities Unfrozen!
+gauntlet.snap.notenough=There needs to be more than one entity in range!
 
  //Config
 igauntlet.config.drift_timeout=Drift Timeout
