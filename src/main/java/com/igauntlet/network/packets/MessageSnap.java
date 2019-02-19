@@ -70,10 +70,10 @@ public class MessageSnap implements IMessage {
                     if (Snapinit) {
                         for (EntityLiving e : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extend, extend, extend))) {
 
-                            int geton = passentity / 2;
+                            int halfentity = passentity / 2;
 
-                            if(geton > 0) {
-                                EntityLiving targetentity = SNAPENTITY.get(geton);
+                            if(halfentity > 0) {
+                                EntityLiving targetentity = SNAPENTITY.get(halfentity);
 
                                 int entity = targetentity.getEntityId();
                                 if (!targetentity.getIsInvulnerable()) {
