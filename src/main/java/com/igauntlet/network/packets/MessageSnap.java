@@ -56,6 +56,7 @@ public class MessageSnap implements IMessage {
                 int extend = ModConfig.Gauntlet.ExtensionRange;
                 NBTTagCompound nbt = stack.getTagCompound();
                 boolean Snapinit = false;
+                int passentity = 0;
 
                 if (CanSnap) {
 
@@ -63,19 +64,22 @@ public class MessageSnap implements IMessage {
                     for (EntityLiving targetentity : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extend, extend, extend))) {
                        SNAPENTITY.add(targetentity);
                         Snapinit = true;
+                        passentity++;
                     }
 
-                    int passentity = 0;
 
                     if (Snapinit) {
                         for (EntityLiving e : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extend, extend, extend))) {
-                            passentity++;
 
 
 
-                            if (passentity != SNAPENTITY.size() / 2 || SNAPENTITY.size() >= 1) {
 
-                                EntityLiving targetentity = SNAPENTITY.get(passentity);
+                            //if (passentity != SNAPENTITY.size() / 2 && SNAPENTITY.size() > 1 && passentity != SNAPENTITY.size()) {
+
+                            int geton = passentity / 2;
+
+                            if(geton > 0) {
+                                EntityLiving targetentity = SNAPENTITY.get(geton);
 
                                 int entity = targetentity.getEntityId();
                                 if (!targetentity.getIsInvulnerable()) {
@@ -85,6 +89,7 @@ public class MessageSnap implements IMessage {
                                     targetentity.world.setBlockState(pos0, state0);
                                     WriteAsh(pos0, playerIn.world, entity);
                                     targetentity.attackEntityFrom(IDamageSource.SNAP, 1000);
+                                    passentity--;
                                 }
                             }
                             playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
