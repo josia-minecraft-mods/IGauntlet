@@ -51,6 +51,12 @@ public class InfinityGauntlet extends Item implements IHasModel {
     int POWER = 5;
     int MIND = 6;
 
+    boolean TimeOn = ModConfig.AllowedGems.TimeStone;
+    boolean SpaceOn = ModConfig.AllowedGems.SpaceStone;
+    boolean RealityOn = ModConfig.AllowedGems.RealityStone;
+    boolean SoulOn = ModConfig.AllowedGems.SoulStone;
+    boolean MindOn = ModConfig.AllowedGems.MindStone;
+    boolean PowerOn = ModConfig.AllowedGems.PowerStone;
 
     public EnumAction getItemUseAction(ItemStack stack) {
         return EnumAction.BOW;
@@ -107,11 +113,11 @@ public class InfinityGauntlet extends Item implements IHasModel {
 
         if(playerIn.getHeldItemOffhand().getItem() != ModItems.INFINITY_GAUNTLET) {
 
-            if (current == POWER) {
+            if (PowerOn && current == POWER) {
                 GemPower.Laser(playerIn, worldIn, stack);
             }
 
-            if (current == TIME) {
+            if (TimeOn && current == TIME) {
 
                 if (stack.getTagCompound().getInteger("freeze") == 0) {
                     stack.getTagCompound().setInteger("freeze", 1);
@@ -121,12 +127,12 @@ public class InfinityGauntlet extends Item implements IHasModel {
                 GemTime.FreezeTime(playerIn, worldIn, stack.getTagCompound().getInteger("freeze"), 50);
             }
 
-            if (current == MIND) {
+            if (MindOn && current == MIND) {
                 GemMind.Attack(playerIn);
             }
 
 
-            if (worldIn.isRemote && current == SPACE) {
+            if (worldIn.isRemote && SpaceOn && current == SPACE) {
                 GemSpace.OpenSpaceGui(playerIn);
             }
         }

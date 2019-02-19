@@ -48,6 +48,15 @@ igauntlet.config.rangeteleportmaximum=Maximum Drift Range
 igauntlet.config.extensionrange=Extension Range
 igauntlet.config.cooldown=Cooldown
 igauntlet.config.snap=Snap
+igauntlet.config.dwarfid=Dwarf Dimension ID
+igauntlet.config.time.freezerange=Freeze Range
+igauntlet.config.allow.space=Space Stone
+igauntlet.config.allow.time=Time Stone
+igauntlet.config.allow.reality=Reality Stone
+igauntlet.config.allow.mind=Mind Stone
+igauntlet.config.allow.power=Power Stone
+igauntlet.config.allow.soul=Soul Stone
+
 
 //KeyBinds
 igauntlet.keybinds.snap=Snap

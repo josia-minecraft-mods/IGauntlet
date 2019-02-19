@@ -15,6 +15,7 @@ public class ModConfig {
 
     public static final Gauntlet Gauntlet = new Gauntlet();
     public static final Dimensions Dimensions = new Dimensions();
+    public static final AllowedGems AllowedGems = new AllowedGems();
 
 
     public static class Gauntlet {
@@ -27,6 +28,10 @@ public class ModConfig {
         public final MindStone MindStone = new MindStone();
 
         public static class TimeStone {
+            @Config.Comment("The range around you that using 'Time Freeze' with entities will be frozen.")
+            @Config.LangKey("igauntlet.config.time.freezerange")
+            @Config.RangeInt(min = 5, max = 100)
+            public int FreezeRange = 25;
         }
 
         public static class SoulStone {
@@ -81,6 +86,39 @@ public class ModConfig {
         @Config.LangKey("igauntlet.config.dwarfid")
         @Config.Comment("Change the id for the Dwarf Dimension")
         public int DwarfDimensionID = 20;
+    }
+
+    public static class AllowedGems {
+        @Config.RequiresMcRestart
+        @Config.Comment("Allow Powerstone")
+        @Config.LangKey("igauntlet.config.allow.power")
+        public boolean PowerStone = true;
+
+        @Config.RequiresMcRestart
+        @Config.Comment("Allow Powerstone")
+        @Config.LangKey("igauntlet.config.allow.reality")
+        public boolean RealityStone = true;
+
+        @Config.RequiresMcRestart
+        @Config.Comment("Allow Powerstone")
+        @Config.LangKey("igauntlet.config.allow.space")
+        public boolean SpaceStone = true;
+
+        @Config.RequiresMcRestart
+        @Config.Comment("Allow Powerstone")
+        @Config.LangKey("igauntlet.config.allow.soul")
+        public boolean SoulStone = true;
+
+        @Config.RequiresMcRestart
+        @Config.Comment("Allow Powerstone")
+        @Config.LangKey("igauntlet.config.allow.mind")
+        public boolean MindStone = true;
+
+        @Config.RequiresMcRestart
+        @Config.Comment("Allow Powerstone")
+        @Config.LangKey("igauntlet.config.allow.time")
+        public boolean TimeStone = true;
+
     }
 
 
