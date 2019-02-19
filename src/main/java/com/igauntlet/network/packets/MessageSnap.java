@@ -59,6 +59,8 @@ public class MessageSnap implements IMessage {
 
                 if (CanSnap) {
 
+                    // Entity Counter
+
                     if (!(playerIn.getHeldItemMainhand().getItem() == ModItems.INFINITY_GAUNTLET)) return;
                     for (EntityLiving targetentity : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extend, extend, extend))) {
                        SNAPENTITY.add(targetentity);
@@ -66,6 +68,7 @@ public class MessageSnap implements IMessage {
                         passentity++;
                     }
 
+                    // Snap
 
                     if (Snapinit) {
                         for (EntityLiving e : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extend, extend, extend))) {
