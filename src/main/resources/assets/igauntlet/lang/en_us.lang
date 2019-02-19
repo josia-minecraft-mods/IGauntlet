@@ -59,5 +59,10 @@ igauntlet.config.allow.power=Power Stone
 igauntlet.config.allow.soul=Soul Stone
 
 
+//Sound Subtitle
+sound.awesomemix1=Awesome Mix 1
+sound.snap=Snap
+sound.gauntlethum=Gauntlet Hum
+
 //KeyBinds
 igauntlet.keybinds.snap=Snap

@@ -1,7 +1,7 @@
 {
   "gauntlethum": {
     "category": "master",
-    "subtitle": "Gauntlet",
+    "subtitle": "sound.gauntlet",
     "sounds": [
       {
         "name": "igauntlet:gauntlethum",
@@ -11,7 +11,7 @@
   },
   "snap": {
   "category": "master",
-  "subtitle": "Snap",
+  "subtitle": "sound.snap",
   "sounds": [
     {
       "name": "igauntlet:snap",
@@ -21,7 +21,7 @@
 },
   "awesome_mix": {
     "category": "master",
-    "subtitle": "Awesome Mixtape 1",
+    "subtitle": "sound.awesomemix1",
     "sounds": [
       {
         "name": "igauntlet:awesomemix/awesome_mix_1",
