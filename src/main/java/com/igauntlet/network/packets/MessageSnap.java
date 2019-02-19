@@ -4,7 +4,6 @@ import com.igauntlet.common.damage.IDamageSource;
 import com.igauntlet.config.ModConfig;
 import com.igauntlet.init.ModBlocks;
 import com.igauntlet.init.ModItems;
-import com.igauntlet.util.ModUtil;
 import com.igauntlet.util.handlers.SoundsHandler;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
@@ -52,10 +51,10 @@ public class MessageSnap implements IMessage {
             ctx.getServerHandler().player.getServerWorld().addScheduledTask(() -> {
                 EntityPlayerMP playerIn = ctx.getServerHandler().player;
                 ItemStack stack = playerIn.getActiveItemStack();
-                boolean CanSnap = ModConfig.Gauntlet.Snap;
-                int extend = ModConfig.Gauntlet.ExtensionRange;
                 NBTTagCompound nbt = stack.getTagCompound();
+                boolean CanSnap = ModConfig.Gauntlet.Snap;
                 boolean Snapinit = false;
+                int extend = ModConfig.Gauntlet.ExtensionRange;
                 int passentity = 0;
 
                 if (CanSnap) {
@@ -70,11 +69,6 @@ public class MessageSnap implements IMessage {
 
                     if (Snapinit) {
                         for (EntityLiving e : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extend, extend, extend))) {
-
-
-
-
-                            //if (passentity != SNAPENTITY.size() / 2 && SNAPENTITY.size() > 1 && passentity != SNAPENTITY.size()) {
 
                             int geton = passentity / 2;
 
@@ -93,8 +87,6 @@ public class MessageSnap implements IMessage {
                                 }
                             }
                             playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
-                            ModUtil.Log(SNAPENTITY.size() + " size");
-                            ModUtil.Log(passentity + " passentity");
                         }
                     }
                     SNAPENTITY.clear();
