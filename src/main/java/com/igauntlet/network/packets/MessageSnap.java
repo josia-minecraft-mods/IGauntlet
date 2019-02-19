@@ -86,7 +86,7 @@ public class MessageSnap implements IMessage {
                                     IBlockState state0 = blk.getDefaultState();
                                     targetentity.world.setBlockState(pos0, state0);
                                     WriteAsh(pos0, playerIn.world, entity);
-                                    targetentity.attackEntityFrom(IDamageSource.SNAP, 1000);
+                                    targetentity.attackEntityFrom(IDamageSource.SNAP, targetentity.getMaxHealth());
                                     passentity--;
                                 }
                             }
