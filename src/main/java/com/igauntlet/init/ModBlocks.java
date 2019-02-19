@@ -1,6 +1,5 @@
 package com.igauntlet.init;
 
-
 import com.igauntlet.common.blocks.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -21,6 +20,5 @@ public class ModBlocks {
     public static final Block DWARF_WOOD = new DwarfWood("dwarf_wood", Material.WOOD, true);
     public static final Block FORGE = new Forge("forge", Material.ANVIL, true);
     public static final Block MANIPULATOR = new Manipulator("manipulator", Material.IRON, true);
-
-
+    
 }
