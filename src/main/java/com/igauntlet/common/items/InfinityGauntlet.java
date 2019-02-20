@@ -51,6 +51,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
     int POWER = 5;
     int MIND = 6;
 
+    int snapcooldown = 0;
     boolean TimeOn = ModConfig.AllowedGems.TimeStone;
     boolean SpaceOn = ModConfig.AllowedGems.SpaceStone;
     boolean RealityOn = ModConfig.AllowedGems.RealityStone;
@@ -95,7 +96,6 @@ public class InfinityGauntlet extends Item implements IHasModel {
         int current = stack.getTagCompound().getInteger("currentstone");
 
 
-
         return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
     }
 
@@ -111,7 +111,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
         }
 
 
-        if(playerIn.getHeldItemOffhand().getItem() != ModItems.INFINITY_GAUNTLET) {
+        if (playerIn.getHeldItemOffhand().getItem() != ModItems.INFINITY_GAUNTLET) {
 
             if (PowerOn && current == POWER) {
                 GemPower.Laser(playerIn, worldIn, stack);

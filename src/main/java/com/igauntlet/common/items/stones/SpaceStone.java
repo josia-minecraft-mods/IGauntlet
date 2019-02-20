@@ -4,7 +4,7 @@ import com.igauntlet.Infinity;
 import com.igauntlet.config.ModConfig;
 import com.igauntlet.init.ModItems;
 import com.igauntlet.network.NetworkHandler;
-import com.igauntlet.network.packets.MessageSpaceDrift;
+import com.igauntlet.network.packets.MessageSpace;
 import com.igauntlet.tabs.InfinityTabs;
 import com.igauntlet.util.handlers.helpers.IHasModel;
 import com.igauntlet.util.helpers.PlayerHelper;
@@ -60,7 +60,7 @@ public class SpaceStone extends Item implements IHasModel {
                 int random = (int) (Math.random() * max + min);
                 BlockPos pos1 = new BlockPos(random, random, random);
                 BlockPos pos2 = worldIn.getTopSolidOrLiquidBlock(pos1);
-                NetworkHandler.NETWORK.sendToServer(new MessageSpaceDrift(pos2, player.getEntityId()));
+                NetworkHandler.NETWORK.sendToServer(new MessageSpace(pos2, player.getEntityId()));
             }
         }
     }
