@@ -2,14 +2,14 @@ package com.igauntlet.common.items;
 
 import com.igauntlet.Infinity;
 import com.igauntlet.client.gui.GuiGauntlet;
-import com.igauntlet.common.items.function.gems.GemMind;
 import com.igauntlet.common.items.function.gems.GemPower;
 import com.igauntlet.common.items.function.gems.GemSpace;
 import com.igauntlet.common.items.function.gems.GemTime;
 import com.igauntlet.config.ModConfig;
 import com.igauntlet.init.ModItems;
 import com.igauntlet.tabs.InfinityTabs;
-import com.igauntlet.util.handlers.helpers.IHasModel;
+import com.igauntlet.util.handlers.helper.IHasModel;
+import com.igauntlet.util.helpers.GemHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -93,7 +93,6 @@ public class InfinityGauntlet extends Item implements IHasModel {
 
 
         ItemStack stack = player.getHeldItem(hand);
-        int current = stack.getTagCompound().getInteger("currentstone");
 
 
         return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
@@ -104,7 +103,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
         playerIn.setActiveHand(handIn);
         ItemStack stack = playerIn.getActiveItemStack();
 
-        int current = stack.getTagCompound().getInteger("currentstone");
+        int current = GemHelper.ActiveGem(playerIn);
 
         if (worldIn.isRemote && playerIn.getHeldItemOffhand().getItem() == ModItems.INFINITY_GAUNTLET) {
             OpenInfinityGui();
@@ -126,11 +125,6 @@ public class InfinityGauntlet extends Item implements IHasModel {
                 }
                 GemTime.FreezeTime(playerIn, worldIn, stack.getTagCompound().getInteger("freeze"), 50);
             }
-
-            if (MindOn && current == MIND) {
-                GemMind.Attack(playerIn);
-            }
-
 
             if (worldIn.isRemote && SpaceOn && current == SPACE) {
                 GemSpace.OpenSpaceGui(playerIn);
@@ -163,7 +157,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
             playerIn.setActiveHand(EnumHand.MAIN_HAND);
             int extend = ModConfig.Gauntlet.ExtensionRange;
             NBTTagCompound nbt = stack.getTagCompound();
-            int current = nbt.getInteger("currentstone");
+            int current = GemHelper.ActiveGem(playerIn);
 
 
             EnumHand hand = playerIn.getActiveHand();

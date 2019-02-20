@@ -1,6 +1,6 @@
 package com.igauntlet.world.dimension.dwarf;
 
-import com.igauntlet.util.handlers.helpers.IChunkGenerator;
+import com.igauntlet.util.handlers.helper.IChunkGenerator;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;

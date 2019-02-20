@@ -1,7 +1,7 @@
 package com.igauntlet.client.render;
 
 import com.igauntlet.common.entity.EntityLaser;
-import com.igauntlet.util.handlers.helpers.Util;
+import com.igauntlet.util.handlers.helper.Util;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;

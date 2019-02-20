@@ -6,7 +6,7 @@ import com.igauntlet.init.ModItems;
 import com.igauntlet.network.NetworkHandler;
 import com.igauntlet.network.packets.MessageSpace;
 import com.igauntlet.tabs.InfinityTabs;
-import com.igauntlet.util.handlers.helpers.IHasModel;
+import com.igauntlet.util.handlers.helper.IHasModel;
 import com.igauntlet.util.helpers.PlayerHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;

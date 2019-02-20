@@ -1,9 +1,9 @@
 package com.igauntlet.client.gui;
 
 import com.igauntlet.config.ModConfig;
-import com.igauntlet.network.NetworkHandler;
-import com.igauntlet.network.packets.MessageStone;
 import com.igauntlet.util.Reference;
+import com.igauntlet.util.helpers.GemHelper;
+import com.igauntlet.util.helpers.PlayerHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
@@ -138,10 +138,10 @@ public class GuiGauntlet extends GuiScreen {
         }
 
         if (button.id == REALITY || button.id == SOUL || button.id == MIND) {
-            NetworkHandler.NETWORK.sendToServer(new MessageNotAdded(STONE, button.id));
+            PlayerHelper.sendMessageClient(Minecraft.getMinecraft().player,"gui.gauntlet.stone.notadded" + button, true);
         }
 
-        NetworkHandler.NETWORK.sendToServer(new MessageStone(STONE));
+        GemHelper.setGem(STONE);
         Minecraft.getMinecraft().displayGuiScreen(null);
         super.actionPerformed(button);
     }

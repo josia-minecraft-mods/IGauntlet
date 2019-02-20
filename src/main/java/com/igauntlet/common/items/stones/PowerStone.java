@@ -1,10 +1,10 @@
 package com.igauntlet.common.items.stones;
 
 import com.igauntlet.Infinity;
-import net.minecraft.item.Item;
-import com.igauntlet.tabs.InfinityTabs;
-import com.igauntlet.util.handlers.helpers.IHasModel;
 import com.igauntlet.init.ModItems;
+import com.igauntlet.tabs.InfinityTabs;
+import com.igauntlet.util.handlers.helper.IHasModel;
+import net.minecraft.item.Item;
 
 public class PowerStone extends Item implements IHasModel {
 

@@ -6,7 +6,6 @@ import com.igauntlet.util.helpers.PlayerHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityFireworkRocket;
 import net.minecraft.entity.player.EntityPlayer;
@@ -34,9 +33,10 @@ public class GemTime {
     public static void SummonCreature(World worldIn, EntityPlayer player, BlockPos pos) {
         TileEntity ash_te = worldIn.getTileEntity(pos);
         if (ash_te != null && ash_te instanceof TileAshPile) {
-            int es = ((TileAshPile) ash_te).getEntity().getEntityId();
-            EntityList.createEntityByID(es, worldIn);
+            if (((TileAshPile) ash_te).getEntity().isDead) {
+                worldIn.spawnEntity(((TileAshPile) ash_te).getEntity());
 
+            }
         }
     }
 

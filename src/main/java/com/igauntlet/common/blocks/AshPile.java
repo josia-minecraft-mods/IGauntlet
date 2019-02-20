@@ -5,7 +5,7 @@ import com.igauntlet.common.tileentity.TileAshPile;
 import com.igauntlet.init.ModBlocks;
 import com.igauntlet.init.ModItems;
 import com.igauntlet.tabs.InfinityTabs;
-import com.igauntlet.util.handlers.helpers.IHasModel;
+import com.igauntlet.util.handlers.helper.IHasModel;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;

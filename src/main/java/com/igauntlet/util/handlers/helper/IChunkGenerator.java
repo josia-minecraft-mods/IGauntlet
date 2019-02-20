@@ -1,4 +1,4 @@
-package com.igauntlet.util.handlers.helpers;
+package com.igauntlet.util.handlers.helper;
 
 import net.minecraft.world.World;
 
