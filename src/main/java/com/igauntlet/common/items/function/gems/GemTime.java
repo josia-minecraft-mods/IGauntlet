@@ -33,7 +33,8 @@ public class GemTime {
     public static void SummonCreature(World worldIn, EntityPlayer player, BlockPos pos) {
         TileEntity ash_te = worldIn.getTileEntity(pos);
         if (ash_te != null && ash_te instanceof TileAshPile) {
-            worldIn.spawnEntity(((TileAshPile) ash_te).getEntity());
+            Entity e = worldIn.getMinecraftServer().getEntityFromUuid(((TileAshPile) ash_te).getEntity().getUniqueID());
+            worldIn.spawnEntity(e);
         }
     }
 
