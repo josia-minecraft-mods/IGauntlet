@@ -2,7 +2,6 @@ package com.igauntlet.client.gui;
 
 import com.igauntlet.config.ModConfig;
 import com.igauntlet.network.NetworkHandler;
-import com.igauntlet.network.packets.MessageNotAdded;
 import com.igauntlet.network.packets.MessageStone;
 import com.igauntlet.util.Reference;
 import net.minecraft.client.Minecraft;
