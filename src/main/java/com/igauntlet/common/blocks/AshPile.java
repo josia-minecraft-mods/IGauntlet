@@ -1,6 +1,7 @@
 package com.igauntlet.common.blocks;
 
 import com.igauntlet.Infinity;
+import com.igauntlet.common.items.function.gems.GemTime;
 import com.igauntlet.common.tileentity.TileAshPile;
 import com.igauntlet.init.ModBlocks;
 import com.igauntlet.init.ModItems;
@@ -50,8 +51,7 @@ public class AshPile extends BlockFalling implements IHasModel, ITileEntityProvi
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         if(!worldIn.isRemote) {
             TileAshPile pile = (TileAshPile) worldIn.getTileEntity(pos);
-            worldIn.spawnEntity(pile.getEntity());
-
+            GemTime.ReviveAsh(pos, worldIn, playerIn);
         }
         return true;
     }

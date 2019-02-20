@@ -32,6 +32,6 @@ public class TileAshPile extends TileEntity {
     @Override
     public void readFromNBT(NBTTagCompound nbt) {
         if (nbt != null && nbt.hasKey("entity"))
-        super.readFromNBT(nbt);
+            super.readFromNBT(nbt);
     }
 }
