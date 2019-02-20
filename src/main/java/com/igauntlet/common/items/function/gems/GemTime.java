@@ -17,9 +17,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class GemTime {
 
     public static void ReviveAsh(BlockPos pos, World worldIn, EntityPlayer player) {
@@ -43,37 +40,24 @@ public class GemTime {
 
 
     public static void FreezeTime(EntityPlayer player, World world,int freeze, int extensionrange) {
-        FreezeEntities(player, world, freeze, extensionrange);
+        FreezeEntities(player, freeze, extensionrange);
         FreezeThrowable(player, freeze, extensionrange);
     }
 
-    public static final List<EntityLiving> ENTITY = new ArrayList<EntityLiving>();
-    public static final List<Entity> ENTITYNORMAL = new ArrayList<Entity>();
-    public static int count1 = 0;
-
-
-    //Need to look at this , using it so people unfreeze the entities they forgot to unfreeze
-    public static void FreezeEntities(EntityPlayer player, World world,int freeze, int extensionrange) {
+    public static void FreezeEntities(EntityPlayer player,int freeze, int extensionrange) {
         for (EntityLiving entity : player.world.getEntitiesWithinAABB(EntityLiving.class, player.getEntityBoundingBox().grow(extensionrange, extensionrange, extensionrange))) {
             if (freeze == 1) {
-                count1++;
                 entity.setNoAI(true);
                 entity.setEntityInvulnerable(true);
-                ENTITY.add(entity);
             } else {
-                if (count1 > 0) {
-                    EntityLiving e = ENTITY.get(count1);
-                    e.setNoAI(false);
-                    e.setEntityInvulnerable(false);
-                    count1--;
-                }
+                    entity.setNoAI(false);
+                    entity.setEntityInvulnerable(false);
             }
         }
         if (freeze == 1) {
             PlayerHelper.sendMessage(player, "stones.time.frozen", true);
         }else{
             PlayerHelper.sendMessage(player, "stones.time.unfrozen", true);
-            ENTITY.clear();
         }
     }
 
