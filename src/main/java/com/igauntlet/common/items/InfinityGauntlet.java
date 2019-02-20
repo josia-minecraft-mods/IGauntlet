@@ -117,7 +117,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
                 GemPower.Laser(playerIn, worldIn, stack);
             }
 
-            if (TimeOn && current == TIME) {
+            if (TimeOn && current == TIME && !worldIn.isRemote) {
 
                 if (stack.getTagCompound().getInteger("freeze") == 0) {
                     stack.getTagCompound().setInteger("freeze", 1);
