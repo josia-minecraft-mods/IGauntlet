@@ -19,7 +19,7 @@ public class TileAshPile extends TileEntity {
     }
 
     public EntityLiving getEntity() {
-        return this.ENTITY.get(1);
+        return this.ENTITY.get(0);
     }
 
     @Override

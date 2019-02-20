@@ -46,7 +46,7 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
 
         if (result.typeOfHit == Type.ENTITY) {
             if (result.entityHit == this.thrower) return;
-            int entity = result.entityHit.getEntityId();
+            EntityLiving entity = (EntityLiving) result.entityHit;
 
 
             if (result.entityHit instanceof EntityPlayer) {
