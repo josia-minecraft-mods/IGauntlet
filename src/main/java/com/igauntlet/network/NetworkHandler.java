@@ -15,7 +15,6 @@ public class NetworkHandler {
         NETWORK.registerMessage(MessageNotAdded.Handler.class, MessageNotAdded.class, 2, Side.SERVER);
         NETWORK.registerMessage(MessageSpace.Handler.class, MessageSpace.class, 3, Side.SERVER);
         NETWORK.registerMessage(MessageNoCoords.Handler.class, MessageNoCoords.class, 4, Side.SERVER);
-        NETWORK.registerMessage(MessageSpaceDrift.Handler.class, MessageSpaceDrift.class, 5, Side.SERVER);
-        NETWORK.registerMessage(MessageSnap.Handler.class, MessageSnap.class, 6, Side.SERVER);
+        NETWORK.registerMessage(MessageSnap.Handler.class, MessageSnap.class, 5, Side.SERVER);
     }
 }
