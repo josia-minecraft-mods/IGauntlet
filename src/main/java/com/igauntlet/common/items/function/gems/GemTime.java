@@ -31,6 +31,7 @@ public class GemTime {
         }
     }
 
+    // Might be a good way to summon back with the tileenity = playerIn.world.spawnEntity(SNAPENTITY.get(1)); like snap but reverse
     public static void SummonCreature(World worldIn, EntityPlayer player, BlockPos pos) {
         TileEntity ash_te = worldIn.getTileEntity(pos);
         if (ash_te != null && ash_te instanceof TileAshPile) {
