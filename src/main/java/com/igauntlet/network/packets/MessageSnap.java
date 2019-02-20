@@ -77,7 +77,7 @@ public class MessageSnap implements IMessage {
                                 if (halfentity > 0) {
                                     EntityLiving targetentity = SNAPENTITY.get(halfentity);
 
-                                    int entity = targetentity.getEntityId();
+                                    EntityLiving entity = targetentity;
                                     if (!targetentity.getIsInvulnerable()) {
                                         Block blk = ModBlocks.ASH_PILE;
                                         BlockPos pos0 = new BlockPos(targetentity.posX, targetentity.posY, targetentity.posZ);

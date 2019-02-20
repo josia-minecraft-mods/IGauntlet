@@ -8,7 +8,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityFireworkRocket;
-import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityFireball;
@@ -35,9 +34,7 @@ public class GemTime {
     public static void SummonCreature(World worldIn, EntityPlayer player, BlockPos pos) {
         TileEntity ash_te = worldIn.getTileEntity(pos);
         if (ash_te != null && ash_te instanceof TileAshPile) {
-            EntityCreeper creeper = new EntityCreeper(worldIn);
-            creeper.setPosition(pos.getX(), pos.getY(), pos.getZ());
-            worldIn.spawnEntity(creeper);
+            worldIn.spawnEntity(((TileAshPile) ash_te).getEntity());
         }
     }
 

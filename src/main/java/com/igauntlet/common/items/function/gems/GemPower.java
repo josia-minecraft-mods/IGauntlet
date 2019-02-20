@@ -5,6 +5,7 @@ import com.igauntlet.common.entity.EntityLaser;
 import com.igauntlet.common.tileentity.TileAshPile;
 import com.igauntlet.init.ModItems;
 import com.igauntlet.util.handlers.SoundsHandler;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -28,7 +29,7 @@ public class GemPower {
         }
     }
 
-    public static void WriteAsh(BlockPos pos, World world, int entity) {
+    public static void WriteAsh(BlockPos pos, World world, EntityLiving entity) {
         TileEntity ash_te = world.getTileEntity(pos);
         if (ash_te != null && ash_te instanceof TileAshPile) {
             TileAshPile ash_te_f = (TileAshPile) ash_te;
