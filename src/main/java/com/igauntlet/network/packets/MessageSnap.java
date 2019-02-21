@@ -60,43 +60,43 @@ public class MessageSnap implements IMessage {
 
                 if (CanSnap) {
 
-                        // Entity Counter
-                        if (!(playerIn.getHeldItemMainhand().getItem() == ModItems.INFINITY_GAUNTLET)) return;
-                        for (EntityLiving targetentity : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extend, extend, extend))) {
-                            SNAPENTITY.add(targetentity);
-                            Snapinit = true;
-                            passentity++;
-                        }
+                    // Entity Counter
+                    if (!(playerIn.getHeldItemMainhand().getItem() == ModItems.INFINITY_GAUNTLET)) return;
+                    for (EntityLiving targetentity : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extend, extend, extend))) {
+                        SNAPENTITY.add(targetentity);
+                        Snapinit = true;
+                        passentity++;
+                    }
 
-                        // Snap
-                        if (Snapinit) {
-                            for (EntityLiving e : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extend, extend, extend))) {
+                    // Snap
+                    if (Snapinit) {
+                        for (EntityLiving e : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extend, extend, extend))) {
 
-                                int halfentity = passentity / 2;
+                            int halfentity = passentity / 2;
 
-                                if (halfentity > 0) {
-                                    EntityLiving targetentity = SNAPENTITY.get(halfentity);
+                            if (halfentity > 0) {
+                                EntityLiving targetentity = SNAPENTITY.get(halfentity);
 
-                                    EntityLiving entity = targetentity;
-                                    if (!targetentity.getIsInvulnerable()) {
-                                        Block blk = ModBlocks.ASH_PILE;
-                                        BlockPos pos0 = new BlockPos(targetentity.posX, targetentity.posY, targetentity.posZ);
-                                        IBlockState state0 = blk.getDefaultState();
-                                        targetentity.world.setBlockState(pos0, state0);
-                                        WriteAsh(pos0, playerIn.world, entity);
-                                        targetentity.attackEntityFrom(IDamageSource.SNAP, targetentity.getMaxHealth());
-                                        passentity--;
-                                    }
-                                }
-                                if (SNAPENTITY.size() >= 2) {
-                                    playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
-                                } else {
-                                    PlayerHelper.sendMessage(playerIn, "gauntlet.snap.notenough", true);
+                                EntityLiving entity = targetentity;
+                                if (!targetentity.getIsInvulnerable()) {
+                                    Block blk = ModBlocks.ASH_PILE;
+                                    BlockPos pos0 = new BlockPos(targetentity.posX, targetentity.posY, targetentity.posZ);
+                                    IBlockState state0 = blk.getDefaultState();
+                                    targetentity.world.setBlockState(pos0, state0);
+                                    WriteAsh(pos0, playerIn.world, entity);
+                                    targetentity.attackEntityFrom(IDamageSource.SNAP, targetentity.getMaxHealth());
+                                    passentity--;
                                 }
                             }
+                            if (SNAPENTITY.size() >= 2) {
+                                playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
+                            } else {
+                                PlayerHelper.sendMessage(playerIn, "gauntlet.snap.notenough", true);
+                            }
                         }
-                        SNAPENTITY.clear();
-                        passentity = 0;
+                    }
+                    SNAPENTITY.clear();
+                    passentity = 0;
                 }
             });
             return null;

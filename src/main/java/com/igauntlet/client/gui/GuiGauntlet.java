@@ -138,7 +138,7 @@ public class GuiGauntlet extends GuiScreen {
         }
 
         if (button.id == REALITY || button.id == SOUL || button.id == MIND) {
-            PlayerHelper.sendMessageClient(Minecraft.getMinecraft().player,"gui.gauntlet.stone.notadded" + button, true);
+            PlayerHelper.sendMessageClient(Minecraft.getMinecraft().player, "gui.gauntlet.stone.notadded" + button, true);
         }
 
         GemHelper.setGem(STONE);

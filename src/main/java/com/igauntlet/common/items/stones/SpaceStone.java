@@ -43,12 +43,12 @@ public class SpaceStone extends Item implements IHasModel {
                 timeout++;
 
 
-                if (timeout == 50% maxtimeout) {
-                    PlayerHelper.sendMessageClient(player,"stones.space.donthold", true);
+                if (timeout == 50 % maxtimeout) {
+                    PlayerHelper.sendMessageClient(player, "stones.space.donthold", true);
                 }
 
                 if (timeout == maxtimeout) {
-                    PlayerHelper.sendMessageClient(player,"stones.space.drifted", true);
+                    PlayerHelper.sendMessageClient(player, "stones.space.drifted", true);
                 }
 
             }
