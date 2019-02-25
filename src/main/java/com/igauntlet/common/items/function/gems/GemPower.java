@@ -1,32 +1,24 @@
 package com.igauntlet.common.items.function.gems;
 
-import com.igauntlet.common.damage.IDamageSource;
-import com.igauntlet.common.entity.EntityLaser;
 import com.igauntlet.common.tileentity.TileAshPile;
 import com.igauntlet.init.ModItems;
 import com.igauntlet.util.handlers.SoundsHandler;
+import com.igauntlet.util.helpers.GauntletHelper;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 
 public class GemPower {
 
     public static void Laser(EntityPlayer entityplayer, World worldIn, ItemStack stack) {
-        if (!entityplayer.isSneaking() && entityplayer.getHeldItemOffhand().getItem() != ModItems.INFINITY_GAUNTLET) {
-            Vec3d v3 = entityplayer.getLook(1);
-            EntityLaser laser = new EntityLaser(worldIn, entityplayer, 100, IDamageSource.LASER, new Vec3d(1, 0, 5));
-            laser.shoot(v3.x, v3.y, v3.z, 1.5F, (float) 0);
-            worldIn.spawnEntity(laser);
-
-        }
         if (worldIn.isRemote && !entityplayer.isSneaking() && entityplayer.getHeldItemOffhand().getItem() != ModItems.INFINITY_GAUNTLET) {
             entityplayer.playSound(SoundsHandler.GAUNTLET_HUM, 1, 1);
         }
+        GauntletHelper.ShootLaser(entityplayer, worldIn, 100, 1,0 ,5);
     }
 
     public static void WriteAsh(BlockPos pos, World world, EntityLiving entity) {
