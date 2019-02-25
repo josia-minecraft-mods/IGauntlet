@@ -10,6 +10,7 @@ import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -76,6 +77,11 @@ public class MessageSnap implements IMessage {
 
                             if (halfentity > 0) {
                                 EntityLiving targetentity = SNAPENTITY.get(halfentity);
+
+                                if(targetentity instanceof EntityDragon) {
+                                    targetentity.setDead();
+                                    return;
+                                }
 
                                 EntityLiving entity = targetentity;
                                 if (!targetentity.getIsInvulnerable()) {

@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
@@ -60,7 +61,7 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
                 if (result.entityHit instanceof EntityLiving) {
                     if (result.entityHit.getIsInvulnerable()) return;
 
-                    if (result.entityHit instanceof EntityEnderman) {
+                    if (result.entityHit instanceof EntityEnderman || result.entityHit instanceof EntityDragon) {
                         result.entityHit.setDead();
                     }
 
