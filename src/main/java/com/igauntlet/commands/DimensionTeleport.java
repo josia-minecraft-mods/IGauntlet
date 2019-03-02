@@ -1,7 +1,7 @@
 package com.igauntlet.commands;
 
 import com.google.common.collect.Lists;
-import com.igauntlet.util.Reference;
+import com.igauntlet.Infinity;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
@@ -15,7 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class DimensionTeleport extends CommandBase {
-    private final List<String> aliases = Lists.newArrayList(Reference.MODID, "TP", "tp", "tpdim", "tpdimension", "teleport");
+    private final List<String> aliases = Lists.newArrayList(Infinity.MODID, "TP", "tp", "tpdim", "tpdimension", "teleport");
 
     @Override
     public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {

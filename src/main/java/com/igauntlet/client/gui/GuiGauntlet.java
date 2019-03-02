@@ -1,7 +1,7 @@
 package com.igauntlet.client.gui;
 
-import com.igauntlet.config.ModConfig;
-import com.igauntlet.util.Reference;
+import com.igauntlet.Infinity;
+import com.igauntlet.init.ModConfig;
 import com.igauntlet.util.helpers.GemHelper;
 import com.igauntlet.util.helpers.PlayerHelper;
 import net.minecraft.client.Minecraft;
@@ -27,7 +27,7 @@ public class GuiGauntlet extends GuiScreen {
     GuiButton button6;
 
 
-    public static final ResourceLocation TEXTURE = new ResourceLocation(Reference.MODID, "textures/gui/gui_gauntlet.png");
+    public static final ResourceLocation TEXTURE = new ResourceLocation(Infinity.MODID, "textures/gui/gui_gauntlet.png");
 
     public GuiGauntlet() {
     }
@@ -138,7 +138,7 @@ public class GuiGauntlet extends GuiScreen {
         }
 
         if (button.id == REALITY || button.id == SOUL || button.id == MIND) {
-            PlayerHelper.sendMessageClient(Minecraft.getMinecraft().player, "gui.gauntlet.stone.notadded" + button, true);
+            PlayerHelper.sendMessageClient(Minecraft.getMinecraft().player, "gui.gauntlet.stone.notadded" + button.id, true);
         }
 
         GemHelper.setGem(STONE);

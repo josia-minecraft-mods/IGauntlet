@@ -28,4 +28,20 @@ public class PlayerHelper {
             player.sendStatusMessage(message, hotBar);
         }
     }
+
+    public static int getPDataInt(EntityPlayer player, String name) {
+        return player.getEntityData().getInteger(name);
+    }
+
+    public static boolean getPDataBoolean(EntityPlayer player, String name) {
+        return player.getEntityData().getBoolean(name);
+    }
+
+    public static void setPDataInt(EntityPlayer player, String name, int integer) {
+        player.getEntityData().setInteger(name, integer);
+    }
+
+    public static void setPDataBoolean(EntityPlayer player, String name, boolean bool) {
+        player.getEntityData().setBoolean(name, bool);
+    }
 }

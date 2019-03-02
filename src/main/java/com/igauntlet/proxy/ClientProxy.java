@@ -1,11 +1,12 @@
 package com.igauntlet.proxy;
 
+import com.igauntlet.client.render.RenderLaser;
 import com.igauntlet.client.util.ModKeyBinds;
-import com.igauntlet.init.ModEntities;
-import com.igauntlet.util.handlers.RenderHandler;
+import com.igauntlet.common.entity.EntityLaser;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
@@ -17,8 +18,9 @@ public class ClientProxy implements IProxy {
 
     @Override
     public void preInit(FMLPreInitializationEvent event) {
-        RenderHandler.registerEntityRenders();
-        ModEntities.registerEntities();
+       // RenderHandler.registerEntityRenders();
+      //  ModEntities.registerEntities();
+        entityRenders();
     }
 
     @Override
@@ -31,4 +33,7 @@ public class ClientProxy implements IProxy {
         ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), id));
     }
 
+    private void entityRenders() {
+        RenderingRegistry.registerEntityRenderingHandler(EntityLaser.class, RenderLaser::new);
+    }
 }

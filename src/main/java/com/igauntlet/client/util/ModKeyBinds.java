@@ -1,8 +1,8 @@
 package com.igauntlet.client.util;
 
+import com.igauntlet.Infinity;
 import com.igauntlet.network.NetworkHandler;
 import com.igauntlet.network.packets.MessageSnap;
-import com.igauntlet.util.Reference;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.client.event.InputUpdateEvent;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -17,7 +17,7 @@ public class ModKeyBinds {
     public static KeyBinding SNAP;
 
     public static void init() {
-        SNAP = new KeyBinding(Reference.MODID + ".keybinds.snap", Keyboard.KEY_M, Reference.NAME);
+        SNAP = new KeyBinding(Infinity.MODID + ".keybinds.snap", Keyboard.KEY_M, Infinity.NAME);
         ClientRegistry.registerKeyBinding(SNAP);
     }
 

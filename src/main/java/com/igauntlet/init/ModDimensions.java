@@ -1,7 +1,6 @@
 package com.igauntlet.init;
 
 
-import com.igauntlet.config.ModConfig;
 import com.igauntlet.world.dimension.dwarf.WorldProviderDwarf;
 import net.minecraft.world.DimensionType;
 import net.minecraftforge.common.DimensionManager;

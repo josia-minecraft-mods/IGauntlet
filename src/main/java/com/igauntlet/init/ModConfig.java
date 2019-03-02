@@ -1,6 +1,6 @@
-package com.igauntlet.config;
+package com.igauntlet.init;
 
-import com.igauntlet.util.Reference;
+import com.igauntlet.Infinity;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 
-@Config(modid = Reference.MODID)
+@Config(modid = Infinity.MODID)
 @Config.LangKey("igauntlet.config.title")
 
 public class ModConfig {
@@ -122,13 +122,13 @@ public class ModConfig {
     }
 
 
-    @Mod.EventBusSubscriber(modid = Reference.MODID)
+    @Mod.EventBusSubscriber(modid = Infinity.MODID)
     private static class EventHandler {
 
         @SubscribeEvent
         public static void onConfigChanged(final ConfigChangedEvent.OnConfigChangedEvent event) {
-            if (event.getModID().equals(Reference.MODID)) {
-                ConfigManager.sync(Reference.MODID, Config.Type.INSTANCE);
+            if (event.getModID().equals(Infinity.MODID)) {
+                ConfigManager.sync(Infinity.MODID, Config.Type.INSTANCE);
             }
         }
     }

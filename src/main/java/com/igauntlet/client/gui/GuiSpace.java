@@ -1,10 +1,9 @@
 package com.igauntlet.client.gui;
 
 
+import com.igauntlet.Infinity;
 import com.igauntlet.network.NetworkHandler;
-import com.igauntlet.network.packets.MessageNoCoords;
 import com.igauntlet.network.packets.MessageSpace;
-import com.igauntlet.util.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
@@ -29,7 +28,7 @@ public class GuiSpace extends GuiScreen {
     static final int GUI_HEIGHT = 256;
 
 
-    public static final ResourceLocation TEXTURE = new ResourceLocation(Reference.MODID, "textures/gui/gui_gauntlet_space.png");
+    public static final ResourceLocation TEXTURE = new ResourceLocation(Infinity.MODID, "textures/gui/gui_gauntlet_space.png");
 
 
     private Minecraft mc;

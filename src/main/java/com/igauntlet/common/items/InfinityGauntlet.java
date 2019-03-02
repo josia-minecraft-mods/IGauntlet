@@ -2,11 +2,8 @@ package com.igauntlet.common.items;
 
 import com.igauntlet.Infinity;
 import com.igauntlet.client.gui.GuiGauntlet;
-import com.igauntlet.common.items.function.gems.GemMind;
-import com.igauntlet.common.items.function.gems.GemPower;
-import com.igauntlet.common.items.function.gems.GemSpace;
-import com.igauntlet.common.items.function.gems.GemTime;
-import com.igauntlet.config.ModConfig;
+import com.igauntlet.common.items.function.gems.*;
+import com.igauntlet.init.ModConfig;
 import com.igauntlet.init.ModItems;
 import com.igauntlet.tabs.InfinityTabs;
 import com.igauntlet.util.handlers.helper.IHasModel;
@@ -119,6 +116,17 @@ public class InfinityGauntlet extends Item implements IHasModel {
 
             if(MindOn && current == MIND) {
                 GemMind.Attack(playerIn);
+            }
+
+            if(RealityOn && current == REALITY) {
+               /* if(PlayerHelper.getPDataInt(playerIn, "flight") == 0) {
+                    GemReality.SurvivalFlight(playerIn, true);
+                    PlayerHelper.setPDataInt(playerIn, "flight", 1);
+                }else{
+                    GemReality.SurvivalFlight(playerIn, false);
+                    PlayerHelper.setPDataInt(playerIn, "flight", 0);
+                }*/
+               GemReality.SurvivalFlight(playerIn, false);
             }
 
             if (TimeOn && current == TIME && !worldIn.isRemote) {

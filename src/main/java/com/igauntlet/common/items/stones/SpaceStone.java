@@ -1,7 +1,7 @@
 package com.igauntlet.common.items.stones;
 
 import com.igauntlet.Infinity;
-import com.igauntlet.config.ModConfig;
+import com.igauntlet.init.ModConfig;
 import com.igauntlet.init.ModItems;
 import com.igauntlet.network.NetworkHandler;
 import com.igauntlet.network.packets.MessageSpace;

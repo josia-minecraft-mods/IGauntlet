@@ -76,7 +76,4 @@ public class GemTime {
             }
         }
     }
-
-    public static void FreezeWorld(EntityPlayer player, int freeze) {
-    }
 }

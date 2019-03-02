@@ -1,8 +1,8 @@
 package com.igauntlet.network.packets;
 
 import com.igauntlet.common.damage.IDamageSource;
-import com.igauntlet.config.ModConfig;
 import com.igauntlet.init.ModBlocks;
+import com.igauntlet.init.ModConfig;
 import com.igauntlet.init.ModItems;
 import com.igauntlet.util.handlers.SoundsHandler;
 import com.igauntlet.util.helpers.PlayerHelper;
