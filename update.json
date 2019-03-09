@@ -2,8 +2,8 @@
   "homepage": "https://minecraft.curseforge.com/projects/igauntlet",
 
   "promos": {
-    "1.12.2-latest": "3.2",
-    "1.12.2-recommended": "3.2"
+    "1.12.2-latest": "3.3",
+    "1.12.2-recommended": "3.3"
   },
 
   "1.12.2": {
@@ -16,6 +16,7 @@
     "2.9": "Alot of stuff!",
     "3.0": "Time Stone! Freeze Entities and Throwable!",
     "3.1": "Snap Fix! 50% Killed instead of 100%, Config Change",
-    "3.2": "Performance Fixes"
+    "3.2": "Performance Fixes",
+    "3.3": "Performance and new registries"
   }
 }
