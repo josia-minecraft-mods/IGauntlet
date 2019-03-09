@@ -88,7 +88,7 @@ public class RegistryHandler {
     @GameRegistry.ObjectHolder(Infinity.MODID)
     public static class EntityEntries {
         //public static final EntityEntry THANOS = EntityEntryBuilder.create().entity(classs.class).id(new ResourceLocation(Infinity.MODID, "thanos"), 0).name("thanos").tracker(80, 3, false).build();
-   public static final EntityEntry LASER = EntityEntryBuilder.create().entity(EntityLaser.class).id(new ResourceLocation(Infinity.MODID, "ray"),0).name("ray").tracker(80,3,true).build();
+        public static final EntityEntry LASER = EntityEntryBuilder.create().entity(EntityLaser.class).id(new ResourceLocation(Infinity.MODID, "ray"), 0).name("ray").tracker(80, 3, true).build();
     }
 }
 

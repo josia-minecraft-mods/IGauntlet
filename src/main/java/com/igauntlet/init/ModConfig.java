@@ -38,6 +38,9 @@ public class ModConfig {
         }
 
         public static class RealityStone {
+          /*  @Config.Comment("Should the fireball explode blocks?")
+            @Config.LangKey("igauntlet.config.reality.explode")
+            public boolean ExplodeBlocks = true;*/
         }
 
         public static class SpaceStone {

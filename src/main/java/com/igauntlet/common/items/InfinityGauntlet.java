@@ -126,7 +126,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
                     GemReality.SurvivalFlight(playerIn, false);
                     PlayerHelper.setPDataInt(playerIn, "flight", 0);
                 }*/
-               GemReality.SurvivalFlight(playerIn, false);
+               GemReality.ShootFireBall(playerIn);
             }
 
             if (TimeOn && current == TIME && !worldIn.isRemote) {

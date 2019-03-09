@@ -60,6 +60,7 @@ igauntlet.config.allow.reality=Reality Stone
 igauntlet.config.allow.mind=Mind Stone
 igauntlet.config.allow.power=Power Stone
 igauntlet.config.allow.soul=Soul Stone
+igauntlet.config.reality.explode= Explode Blocks
 
 
 //Sound Subtitle
