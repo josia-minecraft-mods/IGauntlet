@@ -91,6 +91,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
 
 
         ItemStack stack = player.getHeldItem(hand);
+        int current = GemHelper.ActiveGem(player);
 
 
         return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);

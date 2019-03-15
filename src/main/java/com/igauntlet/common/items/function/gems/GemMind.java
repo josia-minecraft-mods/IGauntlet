@@ -12,13 +12,11 @@ public class GemMind {
     }
 
     public static void MakeFriendly(EntityPlayer player) {
-            for (EntityLiving e : player.world.getEntitiesWithinAABB(EntityLiving.class, player.getEntityBoundingBox().grow(20, 20, 20))) {
-                if(e.getEntityData().getBoolean("friendly")) {
-                    System.out.println(e.getEntityData().getBoolean("friendly"));
-                }
+        for (EntityLiving e : player.world.getEntitiesWithinAABB(EntityLiving.class, player.getEntityBoundingBox().grow(1, 1, 1))) {
+            if (!e.getEntityData().getBoolean("friendly"))
                 e.getEntityData().setBoolean("friendly", true);
+            else
+                e.getEntityData().setBoolean("friendly", false);
         }
-
-
     }
 }
