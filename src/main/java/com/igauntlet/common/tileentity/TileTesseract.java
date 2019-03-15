@@ -23,6 +23,7 @@ public class TileTesseract extends TileEntity {
         if (stone == 1) {
             world.spawnEntity(new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, new ItemStack(ModItems.SPACESTONE)));
             stone = 0;
+
         }
     }
 

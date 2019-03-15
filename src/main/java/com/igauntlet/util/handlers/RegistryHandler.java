@@ -7,7 +7,7 @@ import com.igauntlet.init.ModBiomes;
 import com.igauntlet.init.ModBlocks;
 import com.igauntlet.init.ModDimensions;
 import com.igauntlet.init.ModItems;
-import com.igauntlet.util.handlers.helper.IHasModel;
+import com.igauntlet.util.helpers.IHasModel;
 import com.igauntlet.world.ModWorldGen;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;

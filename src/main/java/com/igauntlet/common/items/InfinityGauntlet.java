@@ -6,8 +6,8 @@ import com.igauntlet.common.items.function.gems.*;
 import com.igauntlet.init.ModConfig;
 import com.igauntlet.init.ModItems;
 import com.igauntlet.tabs.InfinityTabs;
-import com.igauntlet.util.handlers.helper.IHasModel;
 import com.igauntlet.util.helpers.GemHelper;
+import com.igauntlet.util.helpers.IHasModel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -115,7 +115,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
             }
 
             if(MindOn && current == MIND) {
-                GemMind.Attack(playerIn);
+                GemMind.MakeFriendly(playerIn);
             }
 
             if(RealityOn && current == REALITY) {

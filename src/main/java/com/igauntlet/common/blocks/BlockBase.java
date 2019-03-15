@@ -3,7 +3,7 @@ package com.igauntlet.common.blocks;
 import com.igauntlet.Infinity;
 import com.igauntlet.init.ModBlocks;
 import com.igauntlet.init.ModItems;
-import com.igauntlet.util.handlers.helper.IHasModel;
+import com.igauntlet.util.helpers.IHasModel;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;

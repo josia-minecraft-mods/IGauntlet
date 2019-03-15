@@ -1,4 +1,4 @@
-package com.igauntlet.util.handlers.helper;
+package com.igauntlet.util.helpers;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;

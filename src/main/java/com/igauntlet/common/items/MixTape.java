@@ -4,7 +4,7 @@ import com.igauntlet.Infinity;
 import com.igauntlet.init.ModItems;
 import com.igauntlet.tabs.InfinityTabs;
 import com.igauntlet.util.handlers.SoundsHandler;
-import com.igauntlet.util.handlers.helper.IHasModel;
+import com.igauntlet.util.helpers.IHasModel;
 import net.minecraft.item.ItemRecord;
 import net.minecraft.util.SoundEvent;
 
