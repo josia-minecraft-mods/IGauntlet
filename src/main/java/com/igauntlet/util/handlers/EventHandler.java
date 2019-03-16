@@ -14,7 +14,7 @@ public class EventHandler {
     public static void CancelEnemy(LivingSetAttackTargetEvent event) {
         EntityLivingBase entity = event.getEntityLiving();
 
-        if (entity != null && !entity.world.isRemote && entity.getEntityData().getBoolean("friendly")) {
+        if (entity != null && !entity.world.isRemote && entity.getEntityData().getBoolean("isfriend")) {
             if (event.getTarget() != null) {
                 entity.setRevengeTarget(null);
 
