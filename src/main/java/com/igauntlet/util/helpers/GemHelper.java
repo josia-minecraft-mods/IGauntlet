@@ -18,6 +18,11 @@ public class GemHelper {
         return nbt.getInteger("currentstone");
     }
 
+    public static int ActiveGem(ItemStack stack) {
+        NBTTagCompound nbt = stack.getTagCompound();
+        return nbt.getInteger("currentstone");
+    }
+
 
     //Doesn't do anything for now , going to use a ArrayList.
     // Will add 1-6 numbers in array and check for them if all are present.

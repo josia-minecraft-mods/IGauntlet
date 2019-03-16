@@ -109,10 +109,6 @@ public class InfinityGauntlet extends Item implements IHasModel {
                 GemPower.Laser(playerIn, worldIn, stack);
             }
 
-            if (MindOn && current == MIND) {
-                GemMind.MakeFriendly(playerIn);
-            }
-
             if (RealityOn && current == REALITY) {
                /* if(PlayerHelper.getPDataInt(playerIn, "flight") == 0) {
                     GemReality.SurvivalFlight(playerIn, true);
@@ -141,6 +137,18 @@ public class InfinityGauntlet extends Item implements IHasModel {
 
 
         return super.onItemRightClick(worldIn, playerIn, handIn);
+    }
+
+    @Override
+    public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
+        if(!attacker.world.isRemote) {
+            int current = GemHelper.ActiveGem(stack);
+
+            if (MindOn && current == MIND) {
+                GemMind.MakeFriendly(target);
+            }
+        }
+        return super.hitEntity(stack, target, attacker);
     }
 
     @SideOnly(Side.CLIENT)

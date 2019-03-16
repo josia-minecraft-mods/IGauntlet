@@ -1,7 +1,7 @@
 package com.igauntlet.common.items.function.gems;
 
 
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 
 public class GemMind {
@@ -11,12 +11,13 @@ public class GemMind {
         }
     }
 
-    public static void MakeFriendly(EntityPlayer player) {
-        for (EntityLiving e : player.world.getEntitiesWithinAABB(EntityLiving.class, player.getEntityBoundingBox().grow(1, 1, 1))) {
-            if (!e.getEntityData().getBoolean("isfriend"))
-                e.getEntityData().setBoolean("isfriend", true);
-            else
-                e.getEntityData().setBoolean("isfriend", false);
-        }
+    public static void MakeFriendly(EntityLivingBase e) {
+
+        if (!e.getEntityData().getBoolean("isfriend"))
+            e.getEntityData().setBoolean("isfriend", true);
+        else
+            e.getEntityData().setBoolean("isfriend", false);
+
     }
+
 }
