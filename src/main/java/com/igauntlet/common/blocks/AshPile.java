@@ -2,8 +2,8 @@ package com.igauntlet.common.blocks;
 
 import com.igauntlet.Infinity;
 import com.igauntlet.common.tileentity.TileAshPile;
-import com.igauntlet.init.ModBlocks;
-import com.igauntlet.init.ModItems;
+import com.igauntlet.init.InfinityBlocks;
+import com.igauntlet.init.InfinityItems;
 import com.igauntlet.tabs.InfinityTabs;
 import com.igauntlet.util.helpers.IHasModel;
 import net.minecraft.block.BlockFalling;
@@ -39,8 +39,8 @@ public class AshPile extends BlockFalling implements IHasModel, ITileEntityProvi
         if (tab)
             setCreativeTab(InfinityTabs.infinityTabs);
 
-        ModBlocks.BLOCKS.add(this);
-        ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
+        InfinityBlocks.BLOCKS.add(this);
+        InfinityItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
     }
 
     @Override

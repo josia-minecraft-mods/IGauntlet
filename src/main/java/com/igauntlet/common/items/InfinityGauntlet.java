@@ -3,8 +3,8 @@ package com.igauntlet.common.items;
 import com.igauntlet.Infinity;
 import com.igauntlet.client.gui.GuiGauntlet;
 import com.igauntlet.common.items.function.gems.*;
-import com.igauntlet.init.ModConfig;
-import com.igauntlet.init.ModItems;
+import com.igauntlet.init.InfinityConfig;
+import com.igauntlet.init.InfinityItems;
 import com.igauntlet.tabs.InfinityTabs;
 import com.igauntlet.util.helpers.GemHelper;
 import com.igauntlet.util.helpers.IHasModel;
@@ -38,7 +38,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
         setMaxDamage(4500);
         setCreativeTab(InfinityTabs.infinityTabs);
 
-        ModItems.ITEMS.add(this);
+        InfinityItems.ITEMS.add(this);
     }
 
 
@@ -50,12 +50,12 @@ public class InfinityGauntlet extends Item implements IHasModel {
     int MIND = 6;
 
     int snapcooldown = 0;
-    boolean TimeOn = ModConfig.AllowedGems.TimeStone;
-    boolean SpaceOn = ModConfig.AllowedGems.SpaceStone;
-    boolean RealityOn = ModConfig.AllowedGems.RealityStone;
-    boolean SoulOn = ModConfig.AllowedGems.SoulStone;
-    boolean MindOn = ModConfig.AllowedGems.MindStone;
-    boolean PowerOn = ModConfig.AllowedGems.PowerStone;
+    boolean TimeOn = InfinityConfig.AllowedGems.TimeStone;
+    boolean SpaceOn = InfinityConfig.AllowedGems.SpaceStone;
+    boolean RealityOn = InfinityConfig.AllowedGems.RealityStone;
+    boolean SoulOn = InfinityConfig.AllowedGems.SoulStone;
+    boolean MindOn = InfinityConfig.AllowedGems.MindStone;
+    boolean PowerOn = InfinityConfig.AllowedGems.PowerStone;
 
     public EnumAction getItemUseAction(ItemStack stack) {
         return EnumAction.BOW;
@@ -88,7 +88,6 @@ public class InfinityGauntlet extends Item implements IHasModel {
 
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        ItemStack stack = player.getHeldItem(hand);
         return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
     }
 
@@ -99,12 +98,12 @@ public class InfinityGauntlet extends Item implements IHasModel {
 
         int current = GemHelper.ActiveGem(playerIn);
 
-        if (worldIn.isRemote && playerIn.getHeldItemOffhand().getItem() == ModItems.INFINITY_GAUNTLET) {
+        if (worldIn.isRemote && playerIn.getHeldItemOffhand().getItem() == InfinityItems.INFINITY_GAUNTLET) {
             OpenInfinityGui();
         }
 
 
-        if (playerIn.getHeldItemOffhand().getItem() != ModItems.INFINITY_GAUNTLET) {
+        if (playerIn.getHeldItemOffhand().getItem() != InfinityItems.INFINITY_GAUNTLET) {
 
             if (PowerOn && current == POWER) {
                 GemPower.Laser(playerIn, worldIn, stack);
@@ -164,7 +163,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
 
             EntityPlayer playerIn = (EntityPlayer) entityLiving;
             playerIn.setActiveHand(EnumHand.MAIN_HAND);
-            int extend = ModConfig.Gauntlet.ExtensionRange;
+            int extend = InfinityConfig.Gauntlet.ExtensionRange;
             NBTTagCompound nbt = stack.getTagCompound();
             int current = GemHelper.ActiveGem(playerIn);
 
@@ -193,7 +192,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
 
         if (!worldIn.isRemote && (isSelected)) {
             EntityPlayer player = (EntityPlayer) entityIn;
-            if (stack.getItem() == ModItems.INFINITY_GAUNTLET) {
+            if (stack.getItem() == InfinityItems.INFINITY_GAUNTLET) {
                 if (player.getActivePotionEffect(MobEffects.INSTANT_HEALTH) == null) {
                     player.addPotionEffect(new PotionEffect(MobEffects.INSTANT_HEALTH, 50, 3));
                 }

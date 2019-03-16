@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @Config(modid = Infinity.MODID)
 @Config.LangKey("igauntlet.config.title")
 
-public class ModConfig {
+public class InfinityConfig {
 
     public static final Gauntlet Gauntlet = new Gauntlet();
     public static final Dimensions Dimensions = new Dimensions();

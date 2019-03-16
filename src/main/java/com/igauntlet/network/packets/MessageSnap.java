@@ -1,9 +1,9 @@
 package com.igauntlet.network.packets;
 
 import com.igauntlet.common.damage.IDamageSource;
-import com.igauntlet.init.ModBlocks;
-import com.igauntlet.init.ModConfig;
-import com.igauntlet.init.ModItems;
+import com.igauntlet.init.InfinityBlocks;
+import com.igauntlet.init.InfinityConfig;
+import com.igauntlet.init.InfinityItems;
 import com.igauntlet.util.handlers.SoundsHandler;
 import com.igauntlet.util.helpers.PlayerHelper;
 import io.netty.buffer.ByteBuf;
@@ -54,15 +54,15 @@ public class MessageSnap implements IMessage {
                 EntityPlayerMP playerIn = ctx.getServerHandler().player;
                 ItemStack stack = playerIn.getActiveItemStack();
                 NBTTagCompound nbt = stack.getTagCompound();
-                boolean CanSnap = ModConfig.Gauntlet.Snap;
+                boolean CanSnap = InfinityConfig.Gauntlet.Snap;
                 boolean Snapinit = false;
-                int extend = ModConfig.Gauntlet.ExtensionRange;
+                int extend = InfinityConfig.Gauntlet.ExtensionRange;
                 int passentity = 0;
 
                 if (CanSnap) {
 
                     // Entity Counter
-                    if (!(playerIn.getHeldItemMainhand().getItem() == ModItems.INFINITY_GAUNTLET)) return;
+                    if (!(playerIn.getHeldItemMainhand().getItem() == InfinityItems.INFINITY_GAUNTLET)) return;
                     for (EntityLiving targetentity : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extend, extend, extend))) {
                         SNAPENTITY.add(targetentity);
                         Snapinit = true;
@@ -85,7 +85,7 @@ public class MessageSnap implements IMessage {
 
                                 EntityLiving entity = targetentity;
                                 if (!targetentity.getIsInvulnerable()) {
-                                    Block blk = ModBlocks.ASH_PILE;
+                                    Block blk = InfinityBlocks.ASH_PILE;
                                     BlockPos pos0 = new BlockPos(targetentity.posX, targetentity.posY, targetentity.posZ);
                                     IBlockState state0 = blk.getDefaultState();
                                     targetentity.world.setBlockState(pos0, state0);

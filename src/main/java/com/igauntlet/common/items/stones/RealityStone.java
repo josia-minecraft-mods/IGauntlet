@@ -1,7 +1,7 @@
 package com.igauntlet.common.items.stones;
 
 import com.igauntlet.Infinity;
-import com.igauntlet.init.ModItems;
+import com.igauntlet.init.InfinityItems;
 import com.igauntlet.tabs.InfinityTabs;
 import com.igauntlet.util.helpers.IHasModel;
 import net.minecraft.item.Item;
@@ -15,7 +15,7 @@ public class RealityStone extends Item implements IHasModel {
         setMaxStackSize(1);
         setMaxDamage(4500);
 
-        ModItems.ITEMS.add(this);
+        InfinityItems.ITEMS.add(this);
     }
 
 

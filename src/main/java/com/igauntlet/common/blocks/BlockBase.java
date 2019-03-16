@@ -1,8 +1,8 @@
 package com.igauntlet.common.blocks;
 
 import com.igauntlet.Infinity;
-import com.igauntlet.init.ModBlocks;
-import com.igauntlet.init.ModItems;
+import com.igauntlet.init.InfinityBlocks;
+import com.igauntlet.init.InfinityItems;
 import com.igauntlet.util.helpers.IHasModel;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -17,8 +17,8 @@ public class BlockBase extends Block implements IHasModel {
         setRegistryName(name);
 
 
-        ModBlocks.BLOCKS.add(this);
-        ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
+        InfinityBlocks.BLOCKS.add(this);
+        InfinityItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
     }
 
     @Override

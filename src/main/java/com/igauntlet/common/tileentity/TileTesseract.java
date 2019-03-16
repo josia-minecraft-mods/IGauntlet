@@ -1,6 +1,6 @@
 package com.igauntlet.common.tileentity;
 
-import com.igauntlet.init.ModItems;
+import com.igauntlet.init.InfinityItems;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -21,7 +21,7 @@ public class TileTesseract extends TileEntity {
 
     public void RemoveStone(EntityPlayer player) {
         if (stone == 1) {
-            world.spawnEntity(new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, new ItemStack(ModItems.SPACESTONE)));
+            world.spawnEntity(new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, new ItemStack(InfinityItems.SPACESTONE)));
             stone = 0;
 
         }

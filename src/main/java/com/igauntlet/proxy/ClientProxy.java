@@ -19,7 +19,7 @@ public class ClientProxy implements IProxy {
     @Override
     public void preInit(FMLPreInitializationEvent event) {
        // RenderHandler.registerEntityRenders();
-      //  ModEntities.registerEntities();
+      //  InfinityEntities.registerEntities();
         entityRenders();
     }
 

@@ -1,7 +1,7 @@
 package com.igauntlet.client.gui;
 
 import com.igauntlet.Infinity;
-import com.igauntlet.init.ModConfig;
+import com.igauntlet.init.InfinityConfig;
 import com.igauntlet.util.helpers.GemHelper;
 import com.igauntlet.util.helpers.PlayerHelper;
 import net.minecraft.client.Minecraft;
@@ -76,7 +76,7 @@ public class GuiGauntlet extends GuiScreen {
     public void initGui() {
         buttonList.clear();
 
-        if (ModConfig.Gauntlet.GuiText) {
+        if (InfinityConfig.Gauntlet.GuiText) {
             buttonList.add(button1 = new ButtonStones(TIME, (width / 2) - 80, (height / 2) - 105, " Time"));
             buttonList.add(button2 = new ButtonStones(SOUL, (width / 2) + 30, (height / 2) - 105, "Soul"));
             buttonList.add(button3 = new ButtonStones(POWER, (width / 2) - 100, (height / 2) - 10, "Power"));

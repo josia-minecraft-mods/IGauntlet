@@ -1,8 +1,8 @@
 package com.igauntlet.common.items.stones;
 
 import com.igauntlet.Infinity;
-import com.igauntlet.init.ModConfig;
-import com.igauntlet.init.ModItems;
+import com.igauntlet.init.InfinityConfig;
+import com.igauntlet.init.InfinityItems;
 import com.igauntlet.network.NetworkHandler;
 import com.igauntlet.network.packets.MessageSpace;
 import com.igauntlet.tabs.InfinityTabs;
@@ -24,7 +24,7 @@ public class SpaceStone extends Item implements IHasModel {
         setMaxStackSize(1);
         setMaxDamage(4500);
 
-        ModItems.ITEMS.add(this);
+        InfinityItems.ITEMS.add(this);
     }
 
 
@@ -36,7 +36,7 @@ public class SpaceStone extends Item implements IHasModel {
 
 
         EntityPlayer player = (EntityPlayer) entityIn;
-        int maxtimeout = ModConfig.Gauntlet.SpaceStone.SpaceDriftTimeout * 20;
+        int maxtimeout = InfinityConfig.Gauntlet.SpaceStone.SpaceDriftTimeout * 20;
 
         if (worldIn.isRemote) {
             if (isSelected) {
@@ -55,8 +55,8 @@ public class SpaceStone extends Item implements IHasModel {
 
             if (timeout > maxtimeout) {
                 timeout = 0;
-                int max = ModConfig.Gauntlet.SpaceStone.MaximumDriftRange;
-                int min = ModConfig.Gauntlet.SpaceStone.MinimumDriftRange;
+                int max = InfinityConfig.Gauntlet.SpaceStone.MaximumDriftRange;
+                int min = InfinityConfig.Gauntlet.SpaceStone.MinimumDriftRange;
                 int random = (int) (Math.random() * max + min);
                 BlockPos pos1 = new BlockPos(random, random, random);
                 BlockPos pos2 = worldIn.getTopSolidOrLiquidBlock(pos1);

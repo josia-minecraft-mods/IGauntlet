@@ -1,7 +1,7 @@
 package com.igauntlet.common.items.function.gems;
 
 import com.igauntlet.client.gui.GuiSpace;
-import com.igauntlet.init.ModItems;
+import com.igauntlet.init.InfinityItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.relauncher.Side;
@@ -11,7 +11,7 @@ public class GemSpace {
 
     @SideOnly(Side.CLIENT)
     public static void OpenSpaceGui(EntityPlayer playerIn) {
-        if (playerIn.getHeldItemOffhand().getItem() != ModItems.INFINITY_GAUNTLET)
+        if (playerIn.getHeldItemOffhand().getItem() != InfinityItems.INFINITY_GAUNTLET)
             Minecraft.getMinecraft().displayGuiScreen(new GuiSpace());
     }
 }

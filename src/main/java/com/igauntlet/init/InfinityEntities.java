@@ -6,7 +6,7 @@ import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
-public class ModEntities {
+public class InfinityEntities {
 
     public static int id = 0;
 

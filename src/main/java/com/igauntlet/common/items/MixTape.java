@@ -1,7 +1,7 @@
 package com.igauntlet.common.items;
 
 import com.igauntlet.Infinity;
-import com.igauntlet.init.ModItems;
+import com.igauntlet.init.InfinityItems;
 import com.igauntlet.tabs.InfinityTabs;
 import com.igauntlet.util.handlers.SoundsHandler;
 import com.igauntlet.util.helpers.IHasModel;
@@ -18,7 +18,7 @@ public class MixTape extends ItemRecord implements IHasModel {
         setMaxStackSize(1);
         setCreativeTab(InfinityTabs.infinityTabs);
 
-        ModItems.ITEMS.add(this);
+        InfinityItems.ITEMS.add(this);
     }
 
     @Override

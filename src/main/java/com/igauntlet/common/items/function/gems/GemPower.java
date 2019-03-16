@@ -1,7 +1,7 @@
 package com.igauntlet.common.items.function.gems;
 
 import com.igauntlet.common.tileentity.TileAshPile;
-import com.igauntlet.init.ModItems;
+import com.igauntlet.init.InfinityItems;
 import com.igauntlet.util.handlers.SoundsHandler;
 import com.igauntlet.util.helpers.GauntletHelper;
 import net.minecraft.entity.EntityLiving;
@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 public class GemPower {
 
     public static void Laser(EntityPlayer entityplayer, World worldIn, ItemStack stack) {
-        if (worldIn.isRemote && !entityplayer.isSneaking() && entityplayer.getHeldItemOffhand().getItem() != ModItems.INFINITY_GAUNTLET) {
+        if (worldIn.isRemote && !entityplayer.isSneaking() && entityplayer.getHeldItemOffhand().getItem() != InfinityItems.INFINITY_GAUNTLET) {
             entityplayer.playSound(SoundsHandler.GAUNTLET_HUM, 1, 1);
         }
         GauntletHelper.ShootLaser(entityplayer, worldIn, 100, 1,0 ,5);

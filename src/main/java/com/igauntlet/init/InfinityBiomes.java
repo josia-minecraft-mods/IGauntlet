@@ -8,7 +8,7 @@ import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.BiomeManager.*;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
-public class ModBiomes {
+public class InfinityBiomes {
     public static final Biome DWARF_DIMENSION = new BiomeDwarf();
 
     public static void registerBiomes() {

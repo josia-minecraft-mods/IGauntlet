@@ -1,6 +1,5 @@
 package com.igauntlet.tabs;
 
-import com.igauntlet.init.ModItems;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 
@@ -15,7 +14,7 @@ public class InfinityItems extends CreativeTabs {
 
     @Override
     public ItemStack createIcon() {
-        return new ItemStack(ModItems.INFINITY_GAUNTLET);
+        return new ItemStack(com.igauntlet.init.InfinityItems.INFINITY_GAUNTLET);
     }
 }
 

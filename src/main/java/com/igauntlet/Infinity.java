@@ -1,6 +1,6 @@
 package com.igauntlet;
 
-import com.igauntlet.init.ModRecipes;
+import com.igauntlet.init.InfinityRecipes;
 import com.igauntlet.network.NetworkHandler;
 import com.igauntlet.proxy.IProxy;
 import com.igauntlet.util.IReference;
@@ -38,7 +38,7 @@ public class Infinity {
 
     @Mod.EventHandler
     public static void Init(FMLInitializationEvent event) {
-        ModRecipes.init();
+        InfinityRecipes.init();
         proxy.init(event);
         RegistryHandler.initRegistries(event);
     }

@@ -1,6 +1,6 @@
 package com.igauntlet.world.dimension.dwarf;
 
-import com.igauntlet.init.ModBlocks;
+import com.igauntlet.init.InfinityBlocks;
 import com.igauntlet.world.dimension.IBiomeDecorator;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -12,8 +12,8 @@ public class BiomeDwarf extends Biome {
 
     public BiomeDwarf() {
         super(new BiomeProperties("Dwarf").setHeightVariation(0.00F).setBaseHeight(2F).setRainDisabled().setTemperature(0.4F));
-        this.topBlock = ModBlocks.DWARF_STONE.getDefaultState();
-        this.fillerBlock = ModBlocks.DWARF_DIRT.getDefaultState();
+        this.topBlock = InfinityBlocks.DWARF_STONE.getDefaultState();
+        this.fillerBlock = InfinityBlocks.DWARF_DIRT.getDefaultState();
         this.decorator = new IBiomeDecorator();
         this.spawnableCaveCreatureList.clear();
         this.spawnableCreatureList.clear();
