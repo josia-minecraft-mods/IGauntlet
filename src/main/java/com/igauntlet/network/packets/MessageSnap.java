@@ -59,6 +59,7 @@ public class MessageSnap implements IMessage {
                 int extend = InfinityConfig.Gauntlet.ExtensionRange;
                 int passentity = 0;
 
+                //May need a merge as it should be possible
                 if (CanSnap) {
 
                     // Entity Counter
@@ -92,6 +93,7 @@ public class MessageSnap implements IMessage {
                                     WriteAsh(pos0, playerIn.world, entity);
                                     targetentity.attackEntityFrom(IDamageSource.SNAP, targetentity.getMaxHealth());
                                     passentity--;
+                                    System.out.println('Snap has been activated?')
                                 }
                             }
                             if (SNAPENTITY.size() >= 2) {
