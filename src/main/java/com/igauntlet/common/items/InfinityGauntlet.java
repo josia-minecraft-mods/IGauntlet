@@ -141,12 +141,10 @@ public class InfinityGauntlet extends Item implements IHasModel {
 
     @Override
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-        if(!attacker.world.isRemote) {
-            int current = GemHelper.ActiveGem(stack);
+        int current = GemHelper.ActiveGem(stack);
 
-            if (MindOn && current == MIND) {
-                GemMind.MakeFriendly(target);
-            }
+        if (MindOn && current == MIND) {
+            GemMind.MakeFriendly(target);
         }
         return super.hitEntity(stack, target, attacker);
     }

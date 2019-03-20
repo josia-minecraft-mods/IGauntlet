@@ -12,12 +12,12 @@ public class GemMind {
     }
 
     public static void MakeFriendly(EntityLivingBase e) {
-
-        if (!e.getEntityData().getBoolean("isfriend"))
-            e.getEntityData().setBoolean("isfriend", true);
-        else
-            e.getEntityData().setBoolean("isfriend", false);
-
+        if (!e.world.isRemote) {
+            if (!e.getEntityData().getBoolean("isfriend"))
+                e.getEntityData().setBoolean("isfriend", true);
+            else
+                e.getEntityData().setBoolean("isfriend", false);
+        }
     }
 
 }

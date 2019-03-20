@@ -93,7 +93,6 @@ public class MessageSnap implements IMessage {
                                     WriteAsh(pos0, playerIn.world, entity);
                                     targetentity.attackEntityFrom(IDamageSource.SNAP, targetentity.getMaxHealth());
                                     passentity--;
-                                    System.out.println('Snap has been activated?')
                                 }
                             }
                             if (SNAPENTITY.size() >= 2) {

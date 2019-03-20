@@ -4,7 +4,11 @@ import com.igauntlet.Infinity;
 import com.igauntlet.init.InfinityItems;
 import com.igauntlet.tabs.InfinityTabs;
 import com.igauntlet.util.helpers.IHasModel;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
 public class RealityStone extends Item implements IHasModel {
 
@@ -18,6 +22,17 @@ public class RealityStone extends Item implements IHasModel {
         InfinityItems.ITEMS.add(this);
     }
 
+    @Override
+    public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+        super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
+
+
+        EntityPlayer player = (EntityPlayer) entityIn;
+
+        if (isSelected) {
+            player.noClip = true;
+        }
+    }
 
     @Override
     public void registerModels() {
