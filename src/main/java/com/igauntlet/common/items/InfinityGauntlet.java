@@ -2,9 +2,11 @@ package com.igauntlet.common.items;
 
 import com.igauntlet.Infinity;
 import com.igauntlet.client.gui.GuiGauntlet;
-import com.igauntlet.common.items.function.gems.*;
+import com.igauntlet.common.function.gems.*;
 import com.igauntlet.init.InfinityConfig;
 import com.igauntlet.init.InfinityItems;
+import com.igauntlet.network.NetworkHandler;
+import com.igauntlet.network.packets.MessageFlight;
 import com.igauntlet.tabs.InfinityTabs;
 import com.igauntlet.util.helpers.GemHelper;
 import com.igauntlet.util.helpers.IHasModel;
@@ -105,19 +107,15 @@ public class InfinityGauntlet extends Item implements IHasModel {
 
         if (playerIn.getHeldItemOffhand().getItem() != InfinityItems.INFINITY_GAUNTLET) {
 
+
             if (PowerOn && current == POWER) {
                 GemPower.Laser(playerIn, worldIn, stack);
             }
 
             if (RealityOn && current == REALITY) {
-               /* if(PlayerHelper.getPDataInt(playerIn, "flight") == 0) {
-                    GemReality.SurvivalFlight(playerIn, true);
-                    PlayerHelper.setPDataInt(playerIn, "flight", 1);
-                }else{
-                    GemReality.SurvivalFlight(playerIn, false);
-                    PlayerHelper.setPDataInt(playerIn, "flight", 0);
-                }*/
-                GemReality.ShootFireBall(playerIn);
+                if (!playerIn.isSneaking()) {
+                    GemReality.ShootFireBall(playerIn);
+                }
             }
 
             if (TimeOn && current == TIME && !worldIn.isRemote) {
@@ -142,10 +140,15 @@ public class InfinityGauntlet extends Item implements IHasModel {
     @Override
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
         int current = GemHelper.ActiveGem(stack);
+        EntityPlayer player = (EntityPlayer) attacker;
 
-        if (MindOn && current == MIND) {
+        if (current == MIND && MindOn) {
+     /*       if (player.isSneaking())
+                GemMind.Attack((EntityPlayer) attacker, (EntityLiving) target);
+        } else {*/
             GemMind.MakeFriendly(target);
         }
+
         return super.hitEntity(stack, target, attacker);
     }
 
@@ -194,20 +197,33 @@ public class InfinityGauntlet extends Item implements IHasModel {
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
         super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
         NBTTagCompound nbt = stack.getTagCompound();
+        EntityPlayer player = (EntityPlayer) entityIn;
 
 
-        if (!worldIn.isRemote && (isSelected)) {
-            EntityPlayer player = (EntityPlayer) entityIn;
-            if (stack.getItem() == InfinityItems.INFINITY_GAUNTLET) {
-                if (player.getActivePotionEffect(MobEffects.INSTANT_HEALTH) == null) {
-                    player.addPotionEffect(new PotionEffect(MobEffects.INSTANT_HEALTH, 50, 3));
-                }
-
-                if (!worldIn.isRemote && stack.getItem() instanceof InfinityGauntlet) {
-                    if (nbt == null) {
-                        nbt = new NBTTagCompound();
-                        stack.setTagCompound(nbt);
+        if (!worldIn.isRemote) {
+            if ((isSelected)) {
+                if (stack.getItem() == InfinityItems.INFINITY_GAUNTLET) {
+                    if (player.getActivePotionEffect(MobEffects.INSTANT_HEALTH) == null) {
+                        player.addPotionEffect(new PotionEffect(MobEffects.INSTANT_HEALTH, 50, 3));
                     }
+
+                    if (stack.getItem() instanceof InfinityGauntlet) {
+                        if (!worldIn.isRemote) {
+                            if (nbt == null) {
+                                nbt = new NBTTagCompound();
+                                stack.setTagCompound(nbt);
+                            }
+                        } else {
+                            int current = GemHelper.ActiveGem(stack);
+                            if (current == REALITY && RealityOn) {
+                                if (worldIn.isRemote) {
+                                    GemReality.SurvivalFlight(player, isSelected);
+                                }
+                            }
+                            NetworkHandler.NETWORK.sendToServer(new MessageFlight(isSelected, player));
+                        }
+                    }
+
                 }
             }
         }

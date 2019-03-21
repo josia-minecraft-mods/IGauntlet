@@ -1,4 +1,4 @@
-package com.igauntlet.common.items.function.gems;
+package com.igauntlet.common.function.gems;
 
 import com.igauntlet.common.tileentity.TileAshPile;
 import com.igauntlet.init.InfinityItems;

@@ -23,7 +23,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.igauntlet.common.items.function.gems.GemPower.WriteAsh;
+import static com.igauntlet.common.function.gems.GemPower.WriteAsh;
 
 
 public class MessageSnap implements IMessage {

@@ -1,14 +1,10 @@
-package com.igauntlet.common.items.function.gems;
+package com.igauntlet.common.function.gems;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.util.math.Vec3d;
 
 public class GemReality {
-
-    public static void SurvivalFlight(EntityPlayer player, boolean enable) {
-        player.capabilities.allowFlying = enable;
-    }
 
     public static void ShootFireBall(EntityPlayer player) {
         if (!player.world.isRemote) {
@@ -17,5 +13,15 @@ public class GemReality {
             smallfireball.shootingEntity = player;
             player.world.spawnEntity(smallfireball);
         }
+    }
+
+    public static void SurvivalFlight(EntityPlayer player, boolean selected) {
+
+        if(selected) {
+            player.capabilities.allowFlying = true;
+        }else{
+            player.capabilities.allowFlying = false;
+        }
+        player.sendPlayerAbilities();
     }
 }

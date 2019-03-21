@@ -1,4 +1,4 @@
-package com.igauntlet.common.items.function.gems;
+package com.igauntlet.common.function.gems;
 
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;

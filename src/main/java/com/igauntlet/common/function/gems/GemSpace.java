@@ -1,4 +1,4 @@
-package com.igauntlet.common.items.function.gems;
+package com.igauntlet.common.function.gems;
 
 import com.igauntlet.client.gui.GuiSpace;
 import com.igauntlet.init.InfinityItems;

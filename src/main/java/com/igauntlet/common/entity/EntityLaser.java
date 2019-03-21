@@ -1,6 +1,6 @@
 package com.igauntlet.common.entity;
 
-import com.igauntlet.common.items.function.gems.GemPower;
+import com.igauntlet.common.function.gems.GemPower;
 import com.igauntlet.init.InfinityBlocks;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;

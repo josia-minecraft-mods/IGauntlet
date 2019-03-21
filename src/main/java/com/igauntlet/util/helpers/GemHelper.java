@@ -12,6 +12,7 @@ public class GemHelper {
         NetworkHandler.NETWORK.sendToServer(new MessageStone(stone));
     }
 
+
     public static int ActiveGem(EntityPlayer player) {
         ItemStack stack = player.getActiveItemStack();
         NBTTagCompound nbt = stack.getTagCompound();
