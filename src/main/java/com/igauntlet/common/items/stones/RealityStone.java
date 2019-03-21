@@ -22,6 +22,7 @@ public class RealityStone extends Item implements IHasModel {
         InfinityItems.ITEMS.add(this);
     }
 
+
     @Override
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
         super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
@@ -30,8 +31,11 @@ public class RealityStone extends Item implements IHasModel {
         EntityPlayer player = (EntityPlayer) entityIn;
 
         if (isSelected) {
-            player.noClip = true;
+            player.capabilities.allowFlying = true;
+        }else{
+            player.capabilities.allowFlying = false;
         }
+        player.sendPlayerAbilities();
     }
 
     @Override
