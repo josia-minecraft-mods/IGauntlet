@@ -4,6 +4,8 @@ import com.igauntlet.Infinity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraftforge.event.entity.living.EnderTeleportEvent;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
 import net.minecraftforge.event.world.ExplosionEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -28,9 +30,24 @@ public class EventHandler {
     }
 
     @SubscribeEvent
+    public static void CancelAttack(LivingAttackEvent e) {
+        if(e.getSource() == null || e.getSource().getTrueSource() == null) return;
+        if(e.getSource().getTrueSource().getEntityData().getBoolean("isfriend")) {
+            e.setCanceled(true);
+        }
+    }
+
+    @SubscribeEvent
     public static void DenyExplosion(ExplosionEvent e) {
         Entity entity = e.getExplosion().getExplosivePlacedBy();
         if (entity.getEntityData().getBoolean("isfriend")) {
+            e.setCanceled(true);
+        }
+    }
+
+    @SubscribeEvent
+    public static void EndermanTeleport(EnderTeleportEvent e) {
+        if(e.getEntityLiving().getEntityData().getBoolean("isfriend")) {
             e.setCanceled(true);
         }
     }
