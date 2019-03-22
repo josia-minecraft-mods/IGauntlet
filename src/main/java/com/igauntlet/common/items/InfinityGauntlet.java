@@ -8,6 +8,7 @@ import com.igauntlet.init.InfinityItems;
 import com.igauntlet.tabs.InfinityTabs;
 import com.igauntlet.util.helpers.GemHelper;
 import com.igauntlet.util.helpers.IHasModel;
+import com.igauntlet.util.helpers.PlayerHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -42,7 +43,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
         InfinityItems.ITEMS.add(this);
     }
 
-
+    int NONE = 0;
     int REALITY = 1;
     int SPACE = 2;
     int SOUL = 3;
@@ -103,6 +104,9 @@ public class InfinityGauntlet extends Item implements IHasModel {
             OpenInfinityGui();
         }
 
+        if(current == NONE) {
+            PlayerHelper.sendMessageClient(playerIn, "gauntlet.selected.null", true);
+        }
 
         if (playerIn.getHeldItemOffhand().getItem() != InfinityItems.INFINITY_GAUNTLET) {
 
@@ -210,6 +214,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
                         if (!worldIn.isRemote) {
                             if (nbt == null) {
                                 nbt = new NBTTagCompound();
+                                nbt.setInteger("currentstone", 0);
                                 stack.setTagCompound(nbt);
                             }
 
