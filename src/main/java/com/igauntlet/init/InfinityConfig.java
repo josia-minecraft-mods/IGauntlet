@@ -41,6 +41,10 @@ public class InfinityConfig {
           /*  @Config.Comment("Should the fireball explode blocks?")
             @Config.LangKey("igauntlet.config.reality.explode")
             public boolean ExplodeBlocks = true;*/
+
+            @Config.Comment("Should friendly mobs fight the selected entity")
+            @Config.LangKey("igauntlet.config.reality.override")
+            public boolean Override = true;
         }
 
         public static class SpaceStone {

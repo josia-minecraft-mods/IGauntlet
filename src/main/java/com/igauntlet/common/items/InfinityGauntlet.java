@@ -5,13 +5,12 @@ import com.igauntlet.client.gui.GuiGauntlet;
 import com.igauntlet.common.function.gems.*;
 import com.igauntlet.init.InfinityConfig;
 import com.igauntlet.init.InfinityItems;
-import com.igauntlet.network.NetworkHandler;
-import com.igauntlet.network.packets.MessageFlight;
 import com.igauntlet.tabs.InfinityTabs;
 import com.igauntlet.util.helpers.GemHelper;
 import com.igauntlet.util.helpers.IHasModel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -143,12 +142,12 @@ public class InfinityGauntlet extends Item implements IHasModel {
         EntityPlayer player = (EntityPlayer) attacker;
 
         if (current == MIND && MindOn) {
-     /*       if (player.isSneaking())
+            if (player.isSneaking()) {
                 GemMind.Attack((EntityPlayer) attacker, (EntityLiving) target);
-        } else {*/
-            GemMind.MakeFriendly(target);
+            } else {
+                GemMind.MakeFriendly(target);
+            }
         }
-
         return super.hitEntity(stack, target, attacker);
     }
 
@@ -213,18 +212,12 @@ public class InfinityGauntlet extends Item implements IHasModel {
                                 nbt = new NBTTagCompound();
                                 stack.setTagCompound(nbt);
                             }
-                        } else {
-                            int current = GemHelper.ActiveGem(stack);
-                            if (current == REALITY && RealityOn) {
-                                if (worldIn.isRemote) {
-                                    GemReality.SurvivalFlight(player, isSelected);
-                                }
-                            }
-                            NetworkHandler.NETWORK.sendToServer(new MessageFlight(isSelected, player));
-                        }
-                    }
 
+                        }
+
+                    }
                 }
+
             }
         }
     }

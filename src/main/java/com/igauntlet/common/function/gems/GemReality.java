@@ -17,11 +17,13 @@ public class GemReality {
 
     public static void SurvivalFlight(EntityPlayer player, boolean selected) {
 
-        if(selected) {
-            player.capabilities.allowFlying = true;
-        }else{
-            player.capabilities.allowFlying = false;
+        if (!player.isCreative()) {
+            if (selected) {
+                player.capabilities.allowFlying = true;
+            } else {
+                player.capabilities.allowFlying = false;
+            }
+            player.sendPlayerAbilities();
         }
-        player.sendPlayerAbilities();
     }
 }
