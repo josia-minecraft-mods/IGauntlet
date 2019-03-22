@@ -147,6 +147,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
 
         if (current == MIND && MindOn) {
             if (player.isSneaking()) {
+                if(!(target instanceof EntityPlayer))
                 GemMind.Attack((EntityPlayer) attacker, (EntityLiving) target);
             } else {
                 GemMind.MakeFriendly(target);
