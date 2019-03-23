@@ -30,6 +30,7 @@ public class RealityStone extends Item implements IHasModel {
 
         EntityPlayer player = (EntityPlayer) entityIn;
 
+        if(player.isCreative()) return;
         if (isSelected || player.getHeldItemOffhand().getItem() == InfinityItems.REALITYSTONE) {
             player.capabilities.allowFlying = true;
         }else{
