@@ -5,6 +5,7 @@ import com.igauntlet.util.helpers.EntityHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
@@ -21,10 +22,10 @@ public class EventHandler {
 
         if (entity != null && !entity.world.isRemote && EntityHelper.EntityIsFriend(entity)) {
             if (event.getTarget() != null) {
-                entity.setRevengeTarget(null);
-
-                if (entity instanceof EntityLiving) {
+                if (event.getTarget() instanceof EntityPlayer) {
+                    entity.setRevengeTarget(null);
                     ((EntityLiving) entity).setAttackTarget(null);
+
                 }
             }
         }
@@ -32,9 +33,11 @@ public class EventHandler {
 
     @SubscribeEvent
     public static void CancelAttack(LivingAttackEvent e) {
-        if(e.getSource() == null || e.getSource().getTrueSource() == null) return;
-        if (EntityHelper.EntityIsFriend(e.getSource().getTrueSource())) {
-            e.setCanceled(true);
+        if (e.getSource() == null || e.getSource().getTrueSource() == null) return;
+        if (e.getEntity() instanceof EntityPlayer) {
+            if (EntityHelper.EntityIsFriend(e.getSource().getTrueSource())) {
+                e.setCanceled(true);
+            }
         }
     }
 
