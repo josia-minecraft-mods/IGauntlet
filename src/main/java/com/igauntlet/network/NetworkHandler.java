@@ -16,5 +16,7 @@ public class NetworkHandler {
         NETWORK.registerMessage(MessageSpace.Handler.class, MessageSpace.class, 3, Side.SERVER);
         NETWORK.registerMessage(MessageNoCoords.Handler.class, MessageNoCoords.class, 4, Side.SERVER);
         NETWORK.registerMessage(MessageSnap.Handler.class, MessageSnap.class, 5, Side.SERVER);
+        NETWORK.registerMessage(MessageWritePortal.Handler.class, MessageWritePortal.class, 6, Side.SERVER);
+        NETWORK.registerMessage(MessagePortalTeleport.Handler.class, MessagePortalTeleport.class, 7, Side.SERVER);
     }
 }

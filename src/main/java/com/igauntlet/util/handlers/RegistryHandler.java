@@ -3,6 +3,7 @@ package com.igauntlet.util.handlers;
 import com.igauntlet.Infinity;
 import com.igauntlet.commands.DimensionTeleport;
 import com.igauntlet.common.entity.EntityLaser;
+import com.igauntlet.common.entity.EntityPortal;
 import com.igauntlet.init.InfinityBiomes;
 import com.igauntlet.init.InfinityBlocks;
 import com.igauntlet.init.InfinityDimensions;
@@ -81,7 +82,7 @@ public class RegistryHandler {
     @SubscribeEvent
     public static void addEntities(RegistryEvent.Register<EntityEntry> e) {
         IForgeRegistry<EntityEntry> reg = e.getRegistry();
-        reg.registerAll(EntityEntries.LASER);
+        reg.registerAll(EntityEntries.LASER, EntityEntries.PORTAL);
     }
 
     // Entities
@@ -89,6 +90,7 @@ public class RegistryHandler {
     public static class EntityEntries {
         //public static final EntityEntry THANOS = EntityEntryBuilder.create().entity(classs.class).id(new ResourceLocation(Infinity.MODID, "thanos"), 0).name("thanos").tracker(80, 3, false).build();
         public static final EntityEntry LASER = EntityEntryBuilder.create().entity(EntityLaser.class).id(new ResourceLocation(Infinity.MODID, "ray"), 0).name("ray").tracker(80, 3, true).build();
+        public static final EntityEntry PORTAL = EntityEntryBuilder.create().entity(EntityPortal.class).id(new ResourceLocation(Infinity.MODID, "portal"), 1).name("portal").tracker(80, 3, false).build();
     }
 }
 
