@@ -7,11 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.item.EntityFireworkRocket;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityArrow;
-import net.minecraft.entity.projectile.EntityFireball;
-import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
@@ -63,9 +59,10 @@ public class GemTime {
         }
     }
 
+    // We could just get Entity as in one cunstructor and freeze all of them
     public static void FreezeThrowable(EntityPlayer player, int freeze, int extensionrange) {
         for (Entity entity : player.world.getEntitiesWithinAABB(Entity.class, player.getEntityBoundingBox().grow(extensionrange, extensionrange, extensionrange))) {
-            if (entity instanceof EntityArrow || entity instanceof EntityFireball || entity instanceof EntityFireworkRocket || entity instanceof EntityThrowable) {
+            if (entity instanceof Entity && !(entity instanceof EntityPlayer)) {
                 if (freeze == 1) {
                     entity.setNoGravity(true);
                     entity.setVelocity(0, 0, 0);

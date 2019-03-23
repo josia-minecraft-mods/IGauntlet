@@ -104,7 +104,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
             OpenInfinityGui();
         }
 
-        if(current == NONE) {
+        if (current == NONE) {
             PlayerHelper.sendMessageClient(playerIn, "gauntlet.selected.null", true);
         }
 
@@ -146,14 +146,15 @@ public class InfinityGauntlet extends Item implements IHasModel {
         EntityPlayer player = (EntityPlayer) attacker;
 
         if (current == MIND && MindOn) {
+
             if (player.isSneaking()) {
-                if(!(target instanceof EntityPlayer))
-                GemMind.Attack((EntityPlayer) attacker, (EntityLiving) target);
+                if (!(target instanceof EntityPlayer))
+                    GemMind.Attack((EntityPlayer) attacker, (EntityLiving) target);
             } else {
                 GemMind.MakeFriendly(target);
             }
         }
-        return super.hitEntity(stack, target, attacker);
+        return true;
     }
 
     @SideOnly(Side.CLIENT)
