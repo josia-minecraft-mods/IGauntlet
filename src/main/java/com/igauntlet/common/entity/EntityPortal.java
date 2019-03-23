@@ -35,8 +35,9 @@ public class EntityPortal extends EntityCow {
         int x = this.getEntityData().getInteger("x");
         int y = this.getEntityData().getInteger("y");
         int z = this.getEntityData().getInteger("z");
+        if(!this.getEntityData().getBoolean("isinit")) return;
         BlockPos pos = new BlockPos(x,y,z);
-        NetworkHandler.NETWORK.sendToServer(new MessagePortalTeleport(pos, entityIn.getEntityId(), this));
+        NetworkHandler.NETWORK.sendToServer(new MessagePortalTeleport(pos));
         this.setDead();
     }
 
@@ -49,7 +50,7 @@ public class EntityPortal extends EntityCow {
     public void onUpdate() {
         super.onUpdate();
 
-        if(this.ticksExisted >= 200 || this.getEntityData().getBoolean("collided")) {
+        if(this.ticksExisted >= 100 || this.collidedHorizontally || this.collidedVertically) {
             this.setDead();
         }
     }
