@@ -1,6 +1,7 @@
 package com.igauntlet.util.handlers;
 
 import com.igauntlet.Infinity;
+import com.igauntlet.util.helpers.EntityHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -18,7 +19,7 @@ public class EventHandler {
     public static void CancelEnemy(LivingSetAttackTargetEvent event) {
         EntityLivingBase entity = event.getEntityLiving();
 
-        if (entity != null && !entity.world.isRemote && entity.getEntityData().getBoolean("isfriend")) {
+        if (entity != null && !entity.world.isRemote && EntityHelper.EntityIsFriend(entity)) {
             if (event.getTarget() != null) {
                 entity.setRevengeTarget(null);
 
@@ -32,7 +33,7 @@ public class EventHandler {
     @SubscribeEvent
     public static void CancelAttack(LivingAttackEvent e) {
         if(e.getSource() == null || e.getSource().getTrueSource() == null) return;
-        if(e.getSource().getTrueSource().getEntityData().getBoolean("isfriend")) {
+        if (EntityHelper.EntityIsFriend(e.getSource().getTrueSource())) {
             e.setCanceled(true);
         }
     }
@@ -40,15 +41,17 @@ public class EventHandler {
     @SubscribeEvent
     public static void DenyExplosion(ExplosionEvent e) {
         Entity entity = e.getExplosion().getExplosivePlacedBy();
-        if (entity.getEntityData().getBoolean("isfriend")) {
+        if (EntityHelper.EntityIsFriend(entity)) {
             e.setCanceled(true);
         }
     }
 
     @SubscribeEvent
     public static void EndermanTeleport(EnderTeleportEvent e) {
-        if(e.getEntityLiving().getEntityData().getBoolean("isfriend")) {
+        if (EntityHelper.EntityIsFriend(e.getEntity())) {
             e.setCanceled(true);
         }
     }
+
+
 }
