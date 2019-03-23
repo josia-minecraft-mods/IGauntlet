@@ -43,6 +43,7 @@ public class MessagePortalTeleport implements IMessage {
                 WorldServer world = ctx.getServerHandler().player.getServerWorld();
                 BlockPos pos = world.getTopSolidOrLiquidBlock(message.pos);
                 ctx.getServerHandler().player.connection.setPlayerLocation(pos.getX(), pos.getY(), pos.getZ(), 0, 0);
+                e.getEntityData().setBoolean("collided", true);
             });
             return null;
         }

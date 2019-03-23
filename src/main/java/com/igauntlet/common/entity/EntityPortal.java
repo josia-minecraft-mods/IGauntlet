@@ -49,7 +49,7 @@ public class EntityPortal extends EntityCow {
     public void onUpdate() {
         super.onUpdate();
 
-        if(this.ticksExisted >= 200) {
+        if(this.ticksExisted >= 200 || this.getEntityData().getBoolean("collided")) {
             this.setDead();
         }
     }
