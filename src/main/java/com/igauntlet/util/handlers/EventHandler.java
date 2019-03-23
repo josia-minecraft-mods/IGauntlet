@@ -41,6 +41,7 @@ public class EventHandler {
     @SubscribeEvent
     public static void DenyExplosion(ExplosionEvent e) {
         Entity entity = e.getExplosion().getExplosivePlacedBy();
+        if(entity == null) return;
         if (EntityHelper.EntityIsFriend(entity)) {
             e.setCanceled(true);
         }
