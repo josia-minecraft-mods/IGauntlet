@@ -44,6 +44,9 @@ public class MessageWritePortal implements IMessage {
                 portal.getEntityData().setInteger("x", X);
                 portal.getEntityData().setInteger("y", Y);
                 portal.getEntityData().setInteger("z", Z);
+                portal.setNoGravity(true);
+                portal.setNoAI(true);
+                portal.setEntityInvulnerable(true);
                 portal.setPosition(player.posX + 2, player.posY, player.posZ + 2);
                 player.world.spawnEntity(portal);
             });
