@@ -5,11 +5,11 @@ import net.minecraft.client.model.ModelBox;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class powershoot extends ModelBase {
+public class ModelPowerShoot extends ModelBase {
 
     private final ModelRenderer bone;
 
-    public powershoot() {
+    public ModelPowerShoot() {
         textureWidth = 48;
         textureHeight = 48;
 

@@ -5,10 +5,10 @@ import net.minecraft.client.model.ModelBox;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class entityshoot extends ModelBase {
+public class ModelEnityShoot extends ModelBase {
     private final ModelRenderer bone;
 
-    public entityshoot() {
+    public ModelEnityShoot() {
         textureWidth = 48;
         textureHeight = 48;
 

@@ -6,7 +6,6 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
 public class ModelPortal extends ModelBase {
-
 	private final ModelRenderer bone;
 
 	public ModelPortal() {
@@ -15,7 +14,7 @@ public class ModelPortal extends ModelBase {
 
 		bone = new ModelRenderer(this);
 		bone.setRotationPoint(0.0F, 24.0F, 0.0F);
-		bone.cubeList.add(new ModelBox(bone, 53, 87, -6.0F, -18.0F, 0.0F, 12, 18, -1, 0.0F, false));
+		bone.cubeList.add(new ModelBox(bone, 147, 113, -17.0F, -32.0F, 0.0F, 32, 32, -1, 0.0F, false));
 	}
 
 	@Override
