@@ -1,7 +1,6 @@
 package com.igauntlet.common.tileentity;
 
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 
@@ -12,14 +11,14 @@ import java.util.List;
 public class TileAshPile extends TileEntity {
 
 
-    public static final List<EntityLiving> ENTITY = new ArrayList<EntityLiving>();
+    public static final List<Entity> ENTITY = new ArrayList<Entity>();
 
 
-    public void setEntity(EntityLiving entity) {
+    public void setEntity(Entity entity) {
         ENTITY.add(entity);
     }
 
-    public EntityLivingBase getEntity() {
+    public Entity getEntity() {
         return this.ENTITY.get(0);
     }
 

@@ -4,7 +4,7 @@ import com.igauntlet.common.tileentity.TileAshPile;
 import com.igauntlet.init.InfinityItems;
 import com.igauntlet.util.handlers.SoundsHandler;
 import com.igauntlet.util.helpers.GauntletHelper;
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -21,7 +21,7 @@ public class GemPower {
         GauntletHelper.ShootLaser(entityplayer, worldIn, 100, 1,0 ,5);
     }
 
-    public static void WriteAsh(BlockPos pos, World world, EntityLiving entity) {
+    public static void WriteAsh(BlockPos pos, World world, Entity entity) {
         TileEntity ash_te = world.getTileEntity(pos);
         if (ash_te != null && ash_te instanceof TileAshPile) {
             TileAshPile ash_te_f = (TileAshPile) ash_te;
