@@ -12,6 +12,7 @@ public class GemMind {
         if (!entityLiving.world.isRemote) {
             for (EntityMob e : player.world.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().grow(20, 20, 20))) {
                 if (!entityLiving.isDead && entityLiving.attackable())
+                    if(e == entityLiving) return;
                     e.setAttackTarget(entityLiving);
             }
         }
