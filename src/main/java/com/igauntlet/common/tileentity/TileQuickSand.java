@@ -7,11 +7,17 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 
 public class TileQuickSand extends TileEntity implements ITickable {
+
     public int timer;
+    public int placed = 1;
+
+    public void setplacedMethod(int placed) {
+        this.placed = placed;
+    }
 
     @Override
     public void update() {
-        if (timer < InfinityConfig.Gauntlet.RealityStone.SandTimer) {
+        if (placed == 1 && timer < InfinityConfig.Gauntlet.RealityStone.SandTimer) {
             timer++;
         }
 

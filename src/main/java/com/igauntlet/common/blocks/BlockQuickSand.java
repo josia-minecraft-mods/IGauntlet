@@ -3,16 +3,21 @@ package com.igauntlet.common.blocks;
 import com.igauntlet.Infinity;
 import com.igauntlet.common.tileentity.TileQuickSand;
 import com.igauntlet.init.InfinityBlocks;
+import com.igauntlet.init.InfinityItems;
 import com.igauntlet.tabs.InfinityTabs;
 import com.igauntlet.util.helpers.IHasModel;
-import net.minecraft.block.Block;
+import net.minecraft.block.BlockFalling;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -22,7 +27,7 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public class BlockQuickSand extends Block implements IHasModel,ITileEntityProvider{
+public class BlockQuickSand extends BlockFalling implements IHasModel,ITileEntityProvider{
 
     public BlockQuickSand(String name, Material material, boolean tab) {
         super(material);
@@ -34,7 +39,7 @@ public class BlockQuickSand extends Block implements IHasModel,ITileEntityProvid
             setCreativeTab(InfinityTabs.infinityTabs);
 
         InfinityBlocks.BLOCKS.add(this);
-        //InfinityItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
+        InfinityItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
     }
 
     @Nullable
@@ -63,7 +68,14 @@ public class BlockQuickSand extends Block implements IHasModel,ITileEntityProvid
         return Item.getItemFromBlock(Blocks.SAND);
     }
 
-
+    @Override
+    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+        super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
+        if(placer instanceof EntityPlayer) {
+            TileQuickSand tileQuickSand = (TileQuickSand) worldIn.getTileEntity(pos);
+            tileQuickSand.setplacedMethod(0);
+        }
+    }
 
     @Override
     public void registerModels() {
