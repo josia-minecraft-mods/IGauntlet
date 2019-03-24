@@ -31,9 +31,9 @@ public class EventHandler {
         }
     }
 
-    @SubscribeEvent
+   @SubscribeEvent
     public static void CancelAttack(LivingAttackEvent e) {
-        if (e.getSource() == null || e.getSource().getTrueSource() == null) return;
+        if (e.getSource() == null || e.getSource().getTrueSource() == null || e.getSource().getImmediateSource() == null) return;
         if (e.getEntity() instanceof EntityPlayer) {
             if (EntityHelper.EntityIsFriend(e.getSource().getTrueSource())) {
                 e.setCanceled(true);
