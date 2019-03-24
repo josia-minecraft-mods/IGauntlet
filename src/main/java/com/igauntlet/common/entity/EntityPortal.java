@@ -50,7 +50,7 @@ public class EntityPortal extends EntityCow {
     public void onUpdate() {
         super.onUpdate();
 
-        if(this.ticksExisted >= 100 || this.collidedHorizontally || this.collidedVertically) {
+        if(this.ticksExisted >= 70) {
             this.setDead();
         }
     }
