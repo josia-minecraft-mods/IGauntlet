@@ -28,6 +28,7 @@ tile.dwarf_cobble.name=Dwarven Cobblestone
 tile.dwarf_wood.name=Dwarven Planks
 tile.forge.name=Dwarven Forge
 tile.manipulator.name=Manipulator
+tile.quick_sand.name=Quick Sand
 
  //Entity
 entity.ray.name=Laser
@@ -62,6 +63,8 @@ igauntlet.config.allow.mind=Mind Stone
 igauntlet.config.allow.power=Power Stone
 igauntlet.config.allow.soul=Soul Stone
 igauntlet.config.reality.explode= Explode Blocks
+igauntlet.config.reality.quicksandtimer=QuickSand Timer
+igauntlet.config.reality.quicksandrange=QuickSand Range
 
 
 //Sound Subtitle
