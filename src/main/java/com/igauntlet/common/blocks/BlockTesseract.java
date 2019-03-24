@@ -26,11 +26,11 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-public class Tesseract extends Block implements IHasModel, ITileEntityProvider {
+public class BlockTesseract extends Block implements IHasModel, ITileEntityProvider {
 
     public static final AxisAlignedBB TESS_AABB = new AxisAlignedBB(0.34375, 0, 0.34375, 0.65625, 0.3125, 0.65625);
 
-    public Tesseract(String name, Material material, boolean tab) {
+    public BlockTesseract(String name, Material material, boolean tab) {
         super(material);
         setTranslationKey(name);
         setRegistryName(name);

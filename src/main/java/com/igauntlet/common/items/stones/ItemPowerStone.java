@@ -6,9 +6,9 @@ import com.igauntlet.tabs.InfinityTabs;
 import com.igauntlet.util.helpers.IHasModel;
 import net.minecraft.item.Item;
 
-public class TimeStone extends Item implements IHasModel {
+public class ItemPowerStone extends Item implements IHasModel {
 
-    public TimeStone(String name) {
+    public ItemPowerStone(String name) {
         setTranslationKey(name);
         setRegistryName(name);
         setCreativeTab(InfinityTabs.infinityTabs);
@@ -17,6 +17,7 @@ public class TimeStone extends Item implements IHasModel {
 
         InfinityItems.ITEMS.add(this);
     }
+
 
     @Override
     public void registerModels() {

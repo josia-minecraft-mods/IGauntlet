@@ -15,9 +15,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class SpaceStone extends Item implements IHasModel {
+public class ItemSpaceStone extends Item implements IHasModel {
 
-    public SpaceStone(String name) {
+    public ItemSpaceStone(String name) {
         setTranslationKey(name);
         setRegistryName(name);
         setCreativeTab(InfinityTabs.infinityTabs);

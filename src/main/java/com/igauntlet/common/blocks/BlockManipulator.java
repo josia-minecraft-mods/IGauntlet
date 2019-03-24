@@ -18,11 +18,11 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class Manipulator extends Block implements IHasModel {
+public class BlockManipulator extends Block implements IHasModel {
 
     public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
-    public Manipulator(String name, Material material, boolean tab) {
+    public BlockManipulator(String name, Material material, boolean tab) {
         super(material);
         setTranslationKey(name);
         setRegistryName(name);

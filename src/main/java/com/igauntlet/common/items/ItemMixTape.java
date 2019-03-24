@@ -9,9 +9,9 @@ import net.minecraft.item.ItemRecord;
 import net.minecraft.util.SoundEvent;
 
 
-public class MixTape extends ItemRecord implements IHasModel {
+public class ItemMixTape extends ItemRecord implements IHasModel {
 
-    public MixTape(String name, SoundEvent sound) {
+    public ItemMixTape(String name, SoundEvent sound) {
         super(name, sound);
         setTranslationKey(name);
         setRegistryName(name);

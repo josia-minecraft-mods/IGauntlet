@@ -8,18 +8,12 @@ import com.igauntlet.util.helpers.IHasModel;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 
-public class Forge extends Block implements IHasModel {
+public class BlockUruOre extends Block implements IHasModel {
 
-    public Forge(String name, Material material, boolean tab) {
+    public BlockUruOre(String name, Material material, boolean tab) {
         super(material);
         setTranslationKey(name);
         setRegistryName(name);
@@ -33,14 +27,6 @@ public class Forge extends Block implements IHasModel {
 
         InfinityBlocks.BLOCKS.add(this);
         InfinityItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
-    }
-
-    public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
-        if (!entityIn.isImmuneToFire() && entityIn instanceof EntityLivingBase && !EnchantmentHelper.hasFrostWalkerEnchantment((EntityLivingBase) entityIn)) {
-            entityIn.attackEntityFrom(DamageSource.HOT_FLOOR, 1.0F);
-        }
-
-        super.onEntityWalk(worldIn, pos, entityIn);
     }
 
     @Override

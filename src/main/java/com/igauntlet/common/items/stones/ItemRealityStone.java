@@ -10,9 +10,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class RealityStone extends Item implements IHasModel {
+public class ItemRealityStone extends Item implements IHasModel {
 
-    public RealityStone(String name) {
+    public ItemRealityStone(String name) {
         setTranslationKey(name);
         setRegistryName(name);
         setCreativeTab(InfinityTabs.infinityTabs);

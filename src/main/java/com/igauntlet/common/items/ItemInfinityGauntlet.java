@@ -31,9 +31,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 
-public class InfinityGauntlet extends Item implements IHasModel {
+public class ItemInfinityGauntlet extends Item implements IHasModel {
 
-    public InfinityGauntlet(String name) {
+    public ItemInfinityGauntlet(String name) {
         setTranslationKey(name);
         setRegistryName(name);
         setMaxStackSize(1);
@@ -118,6 +118,8 @@ public class InfinityGauntlet extends Item implements IHasModel {
             if (RealityOn && current == REALITY) {
                 if (!playerIn.isSneaking()) {
                     GemReality.ShootFireBall(playerIn);
+                }else{
+                    GemReality.QuickSand(playerIn);
                 }
             }
 
@@ -212,7 +214,7 @@ public class InfinityGauntlet extends Item implements IHasModel {
                         player.addPotionEffect(new PotionEffect(MobEffects.INSTANT_HEALTH, 50, 3));
                     }
 
-                    if (stack.getItem() instanceof InfinityGauntlet) {
+                    if (stack.getItem() instanceof ItemInfinityGauntlet) {
                         if (!worldIn.isRemote) {
                             if (nbt == null) {
                                 nbt = new NBTTagCompound();

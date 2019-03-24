@@ -38,13 +38,15 @@ public class InfinityConfig {
         }
 
         public static class RealityStone {
-          /*  @Config.Comment("Should the fireball explode blocks?")
-            @Config.LangKey("igauntlet.config.reality.explode")
-            public boolean ExplodeBlocks = true;*/
+            @Config.LangKey("igauntlet.config.reality.quicksandtimer")
+            @Config.Comment("The Timer for putting QuickSand back to Sand")
+            @Config.RangeInt(min = 50, max= 200)
+            public int SandTimer = 200;
 
-            @Config.Comment("Should friendly mobs fight the selected entity")
-            @Config.LangKey("igauntlet.config.reality.override")
-            public boolean Override = true;
+            @Config.LangKey("igauntlet.config.reality.quicksandrange")
+            @Config.Comment("The Ranger for putting Sand to QuickSand")
+            @Config.RangeInt(min = 5, max= 50)
+            public int SandRange = 20;
         }
 
         public static class SpaceStone {

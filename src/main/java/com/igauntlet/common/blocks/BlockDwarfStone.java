@@ -11,9 +11,9 @@ import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 
-public class DwarfWood extends Block implements IHasModel {
+public class BlockDwarfStone extends Block implements IHasModel {
 
-    public DwarfWood(String name, Material material, boolean tab) {
+    public BlockDwarfStone(String name, Material material, boolean tab) {
         super(material);
         setTranslationKey(name);
         setRegistryName(name);

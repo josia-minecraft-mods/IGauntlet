@@ -21,13 +21,13 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-public class AshPile extends BlockFalling implements IHasModel, ITileEntityProvider {
+public class BlockAshPile extends BlockFalling implements IHasModel, ITileEntityProvider {
 
 
     public static final AxisAlignedBB DUST_AABB = new AxisAlignedBB(0.296875, 0, 0.296875, 0.6900, 0.1875 / 2, 0.6900);
 
 
-    public AshPile(String name, Material material, boolean tab) {
+    public BlockAshPile(String name, Material material, boolean tab) {
         super(material);
         setTranslationKey(name);
         setRegistryName(name);
@@ -42,6 +42,7 @@ public class AshPile extends BlockFalling implements IHasModel, ITileEntityProvi
         InfinityBlocks.BLOCKS.add(this);
         InfinityItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
     }
+
 
     @Override
     public boolean isNormalCube(IBlockState state, IBlockAccess world, BlockPos pos) {

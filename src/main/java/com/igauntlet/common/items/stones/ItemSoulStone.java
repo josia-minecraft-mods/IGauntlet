@@ -1,4 +1,4 @@
-package com.igauntlet.common.items.tools;
+package com.igauntlet.common.items.stones;
 
 import com.igauntlet.Infinity;
 import com.igauntlet.init.InfinityItems;
@@ -6,9 +6,9 @@ import com.igauntlet.tabs.InfinityTabs;
 import com.igauntlet.util.helpers.IHasModel;
 import net.minecraft.item.Item;
 
-public class Dwarfhammer extends Item implements IHasModel {
+public class ItemSoulStone extends Item implements IHasModel {
 
-    public Dwarfhammer(String name) {
+    public ItemSoulStone(String name) {
         setTranslationKey(name);
         setRegistryName(name);
         setCreativeTab(InfinityTabs.infinityTabs);

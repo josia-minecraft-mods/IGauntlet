@@ -11,14 +11,14 @@ public class InfinityBlocks {
 
     public static final List<Block> BLOCKS = new ArrayList<Block>();
 
-    public static final Block ASH_PILE = new AshPile("ash_pile", Material.SAND, true);
-    public static final Block URU_ORE = new UruOre("uru_ore", Material.ROCK, true);
-    public static final Block TESSERACT = new Tesseract("tesseract", Material.CLAY, true);
-    public static final Block DWARF_STONE = new DwarfStone("dwarf_stone", Material.GROUND, true);
-    public static final Block DWARF_DIRT = new DwarfDirt("dwarf_dirt", Material.GRASS, true);
-    public static final Block DWARF_COBBLE = new DwarfCobble("dwarf_cobble", Material.GROUND, true);
-    public static final Block DWARF_WOOD = new DwarfWood("dwarf_wood", Material.WOOD, true);
-    public static final Block FORGE = new Forge("forge", Material.ANVIL, true);
-    public static final Block MANIPULATOR = new Manipulator("manipulator", Material.IRON, true);
-
+    public static final Block ASH_PILE = new BlockAshPile("ash_pile", Material.SAND, true);
+    public static final Block URU_ORE = new BlockUruOre("uru_ore", Material.ROCK, true);
+    public static final Block TESSERACT = new BlockTesseract("tesseract", Material.CLAY, true);
+    public static final Block DWARF_STONE = new BlockDwarfStone("dwarf_stone", Material.GROUND, true);
+    public static final Block DWARF_DIRT = new BlockDwarfDirt("dwarf_dirt", Material.GRASS, true);
+    public static final Block DWARF_COBBLE = new BlockDwarfCobble("dwarf_cobble", Material.GROUND, true);
+    public static final Block DWARF_WOOD = new BlockDwarfWood("dwarf_wood", Material.WOOD, true);
+    public static final Block FORGE = new BlockForge("forge", Material.ANVIL, true);
+    public static final Block MANIPULATOR = new BlockManipulator("manipulator", Material.IRON, true);
+    public static final Block QUICK_SAND = new BlockQuickSand("quick_sand", Material.SAND, false);
 }

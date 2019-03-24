@@ -1,6 +1,6 @@
 package com.igauntlet.common.function.gems;
 
-import com.igauntlet.common.blocks.AshPile;
+import com.igauntlet.common.blocks.BlockAshPile;
 import com.igauntlet.common.tileentity.TileAshPile;
 import com.igauntlet.util.helpers.PlayerHelper;
 import net.minecraft.block.Block;
@@ -18,7 +18,7 @@ public class GemTime {
     public static void ReviveAsh(BlockPos pos, World worldIn, EntityPlayer player) {
         IBlockState block = worldIn.getBlockState(pos);
 
-        if (block.getBlock() instanceof AshPile) {
+        if (block.getBlock() instanceof BlockAshPile) {
             Block blk = Blocks.AIR;
             IBlockState state0 = blk.getDefaultState();
             SummonCreature(worldIn, player, pos);
