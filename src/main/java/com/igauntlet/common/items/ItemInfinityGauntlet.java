@@ -153,7 +153,7 @@ public class ItemInfinityGauntlet extends Item implements IHasModel {
                 if (!(target instanceof EntityPlayer))
                     GemMind.Attack((EntityPlayer) attacker, (EntityLiving) target);
             } else {
-                GemMind.MakeFriendly(target);
+               // GemMind.MakeFriendly(target);
             }
         }
         return true;
