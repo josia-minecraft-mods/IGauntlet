@@ -118,7 +118,7 @@ public class ItemInfinityGauntlet extends Item implements IHasModel {
             if (RealityOn && current == REALITY) {
                 if (!playerIn.isSneaking()) {
                     GemReality.ShootFireBall(playerIn);
-                }else{
+                } else {
                     GemReality.QuickSand(playerIn);
                 }
             }
@@ -130,7 +130,7 @@ public class ItemInfinityGauntlet extends Item implements IHasModel {
                 } else {
                     stack.getTagCompound().setInteger("freeze", 0);
                 }
-                GemTime.FreezeTime(playerIn, worldIn, stack.getTagCompound().getInteger("freeze"), 50);
+                GemTime.FreezeTime(playerIn, worldIn, stack.getTagCompound().getInteger("freeze"), InfinityConfig.Gauntlet.TimeStone.FreezeRange);
             }
 
             if (worldIn.isRemote && SpaceOn && current == SPACE) {
@@ -153,7 +153,7 @@ public class ItemInfinityGauntlet extends Item implements IHasModel {
                 if (!(target instanceof EntityPlayer))
                     GemMind.Attack((EntityPlayer) attacker, (EntityLiving) target);
             } else {
-               // GemMind.MakeFriendly(target);
+                // GemMind.MakeFriendly(target);
             }
         }
         return true;

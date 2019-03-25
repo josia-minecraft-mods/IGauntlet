@@ -44,7 +44,7 @@ stones.time.unfrozen=Entities Unfrozen!
 gauntlet.snap.notenough=There needs to be more than one entity in range!
 gauntlet.snap.cantsnap.cooldown=The cooldown hasn't passed yet!
 gauntlet.snap.cantsnap.disabled=Snap is disabled in config!
-gui.gauntlet.stone.notadded=This stone hasn't been added yet! Stone :
+gui.gauntlet.stone.notadded =This stone hasn't been added yet! Stone :
 gauntlet.selected.null=You haven't selected a stone yet!
 
  //Config
