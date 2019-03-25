@@ -21,7 +21,7 @@ public class EventHandler {
         EntityLivingBase entity = event.getEntityLiving();
 
         if (entity != null && !entity.world.isRemote && EntityHelper.EntityIsFriend(entity)) {
-            if (event.getTarget() != null) {
+            if (event.getTarget() != null && event.getEntityLiving().isOnSameTeam(event.getTarget())) {
                 if (event.getTarget() instanceof EntityPlayer) {
                     entity.setRevengeTarget(null);
                     ((EntityLiving) entity).setAttackTarget(null);
@@ -31,9 +31,9 @@ public class EventHandler {
         }
     }
 
-   @SubscribeEvent
+ @SubscribeEvent
     public static void CancelAttack(LivingAttackEvent e) {
-        if (e.getSource() == null || e.getSource().getTrueSource() == null || e.getSource().getImmediateSource() == null) return;
+        if (e.getSource() == null || e.getSource().getTrueSource() == null || e.getSource().getImmediateSource() == null && e.getEntity() == null) return;
         if (e.getEntity() instanceof EntityPlayer) {
             if (EntityHelper.EntityIsFriend(e.getSource().getTrueSource())) {
                 e.setCanceled(true);
