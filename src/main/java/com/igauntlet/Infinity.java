@@ -20,7 +20,7 @@ public class Infinity {
     public static Infinity instance;
 
     public static final String NAME = "IGauntlet Mod";
-    public static final String VERSION = "3.4";
+    public static final String VERSION = "3.3";
     public static final String MODID = "igauntlet";
     public static final String UPDATEURL = "https://raw.githubusercontent.com/rootheworld/NewInfinityGauntlet/master/update.json";
 

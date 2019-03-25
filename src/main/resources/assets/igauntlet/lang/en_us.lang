@@ -48,6 +48,7 @@ gui.gauntlet.stone.notadded =This stone hasn't been added yet! Stone :
 gauntlet.selected.null=You haven't selected a stone yet!
 
  //Config
+ igauntlet.config.updatechecker=Update Checker
 igauntlet.config.drift_timeout=Drift Timeout
 igauntlet.config.rangeteleportminimum=Minimum Drift Range
 igauntlet.config.rangeteleportmaximum=Maximum Drift Range

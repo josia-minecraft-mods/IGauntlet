@@ -27,6 +27,10 @@ public class InfinityConfig {
         public final PowerStone PowerStone = new PowerStone();
         public final MindStone MindStone = new MindStone();
 
+        @Config.Comment("Mod Update Checker")
+        @Config.LangKey("igauntlet.config.updatechecker")
+        public boolean UpdateChecker = true;
+
         public static class TimeStone {
             @Config.Comment("The range around you that using 'Time Freeze' with entities will be frozen.")
             @Config.LangKey("igauntlet.config.time.freezerange")
@@ -127,7 +131,6 @@ public class InfinityConfig {
         @Config.Comment("Allow Powerstone")
         @Config.LangKey("igauntlet.config.allow.time")
         public boolean TimeStone = true;
-
     }
 
 
