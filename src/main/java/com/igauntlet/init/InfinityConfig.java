@@ -27,10 +27,6 @@ public class InfinityConfig {
         public final PowerStone PowerStone = new PowerStone();
         public final MindStone MindStone = new MindStone();
 
-        @Config.Comment("Mod Update Checker")
-        @Config.LangKey("igauntlet.config.updatechecker")
-        public boolean UpdateChecker = true;
-
         public static class TimeStone {
             @Config.Comment("The range around you that using 'Time Freeze' with entities will be frozen.")
             @Config.LangKey("igauntlet.config.time.freezerange")
@@ -76,6 +72,10 @@ public class InfinityConfig {
 
         }
 
+        @Config.Comment("Mod Update Checker")
+        @Config.LangKey("igauntlet.config.updatechecker")
+        public boolean UpdateChecker = true;
+
         @Config.LangKey("igauntlet.config.guitext")
         @Config.Comment("Enable Text on Gantlet GUI")
         public boolean GuiText = true;
@@ -83,6 +83,10 @@ public class InfinityConfig {
         @Config.Comment("Shift + left Click to kill Entities in range")
         @Config.LangKey("igauntlet.config.snap")
         public boolean Snap = true;
+
+        @Config.Comment("Should Snap kill players")
+        @Config.LangKey("igauntlet.config.snap.playerkill")
+        public boolean SnapKillPlayers = true;
 
         @Config.Comment("The range around you that using 'snap' will be killed.")
         @Config.LangKey("igauntlet.config.extensionrange")
