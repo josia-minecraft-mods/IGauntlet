@@ -1,18 +1,18 @@
 package com.igauntlet.client.models;//Made by Josia50
 //Paste this code into your mod.
 
-import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelBox;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class ModelBiped extends ModelBase {
+public class SModelBiped extends ModelBiped {
 	private final ModelRenderer head;
 	private final ModelRenderer body;
 	private final ModelRenderer arms;
 	private final ModelRenderer legs;
 
-	public ModelBiped() {
+	public SModelBiped() {
 		textureWidth = 64;
 		textureHeight = 32;
 

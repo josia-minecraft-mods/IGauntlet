@@ -1,12 +1,12 @@
 package com.igauntlet.client.models;//Made by Josia50
 //Paste this code into your mod.
 
-import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelBox;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class ModelBipedAlex extends ModelBase {
+public class ModelBipedAlex extends ModelBiped {
 	private final ModelRenderer head;
 	private final ModelRenderer body;
 	private final ModelRenderer arms;
@@ -38,9 +38,13 @@ public class ModelBipedAlex extends ModelBase {
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		head.render(f5);
+		bipedHead.addChild(head);
 		body.render(f5);
+		bipedBody.addChild(body);
 		arms.render(f5);
+		bipedLeftArm.addChild(arms);
 		legs.render(f5);
+		bipedLeftLeg.addChild(legs);
 	}
 	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
 		modelRenderer.rotateAngleX = x;
