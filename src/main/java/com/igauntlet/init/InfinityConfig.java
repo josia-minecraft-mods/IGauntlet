@@ -32,6 +32,11 @@ public class InfinityConfig {
             @Config.LangKey("igauntlet.config.time.freezerange")
             @Config.RangeInt(min = 5, max = 100)
             public int FreezeRange = 25;
+
+            @Config.Comment("How fast should the time stone when being hold move time?")
+            @Config.LangKey("igauntlet.config.time.movetimespeed")
+            @Config.RangeInt(min = 50, max = 200)
+            public int TimeSpeed = 100;
         }
 
         public static class SoulStone {

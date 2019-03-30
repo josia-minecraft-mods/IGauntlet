@@ -65,6 +65,7 @@ igauntlet.config.allow.mind=Mind Stone
 igauntlet.config.allow.power=Power Stone
 igauntlet.config.allow.soul=Soul Stone
 igauntlet.config.reality.explode= Explode Blocks
+igauntlet.config.time.movetimespeed=Time Speed
 igauntlet.config.reality.quicksandtimer=QuickSand Timer
 igauntlet.config.reality.quicksandrange=QuickSand Range
 
