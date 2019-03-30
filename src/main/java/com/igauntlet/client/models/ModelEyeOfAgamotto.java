@@ -5,6 +5,7 @@ import net.minecraft.client.model.ModelBox;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
+// Model By Ben1Ben1
 public class ModelEyeOfAgamotto extends ModelBiped {
 	private final ModelRenderer necklace;
 	private final ModelRenderer stonesmoothness;
