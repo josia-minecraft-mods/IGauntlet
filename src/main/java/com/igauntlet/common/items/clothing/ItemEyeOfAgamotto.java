@@ -1,7 +1,7 @@
 package com.igauntlet.common.items.clothing;
 
 import com.igauntlet.Infinity;
-import com.igauntlet.client.models.ModelNecklace;
+import com.igauntlet.client.models.ModelEyeOfAgamotto;
 import com.igauntlet.init.InfinityItems;
 import com.igauntlet.util.helpers.IHasModel;
 import net.minecraft.client.model.ModelBiped;
@@ -15,9 +15,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 
-public class ItemNecklace extends ItemArmor implements IHasModel {
+public class ItemEyeOfAgamotto extends ItemArmor implements IHasModel {
 
-    public ItemNecklace(String name) {
+    public ItemEyeOfAgamotto(String name) {
         super(ArmorMaterial.CHAIN, 0, EntityEquipmentSlot.CHEST);
         setRegistryName(name);
         setTranslationKey(name);
@@ -34,7 +34,7 @@ public class ItemNecklace extends ItemArmor implements IHasModel {
     @SideOnly(Side.CLIENT)
     @Override
     public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped _default) {
-        return new ModelNecklace(_default);
+        return new ModelEyeOfAgamotto(_default);
     }
 
     @Override

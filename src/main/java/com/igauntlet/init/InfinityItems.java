@@ -3,7 +3,7 @@ package com.igauntlet.init;
 import com.igauntlet.common.items.ItemBase;
 import com.igauntlet.common.items.ItemInfinityGauntlet;
 import com.igauntlet.common.items.ItemMixTape;
-import com.igauntlet.common.items.clothing.ItemNecklace;
+import com.igauntlet.common.items.clothing.ItemEyeOfAgamotto;
 import com.igauntlet.common.items.stones.*;
 import com.igauntlet.common.items.tools.ItemDwarfhammer;
 import com.igauntlet.util.handlers.SoundsHandler;
@@ -36,7 +36,7 @@ public class InfinityItems {
     public static final Item DWARFHAMMER = new ItemDwarfhammer("dwarf_hammer");
 
     //Clothing
-    public static final Item  NECKLACE = new ItemNecklace("eye_agamotto");
+    public static final Item  NECKLACE = new ItemEyeOfAgamotto("eye_agamotto");
 
 }
 
