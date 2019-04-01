@@ -1,4 +1,4 @@
-# World Plus ![](https://img.shields.io/badge/Creator-UKMinecrafted-orange.svg) ![](https://img.shields.io/badge/Minecraft-1.12.2-blue.svg) ![](https://img.shields.io/badge/Owner-BPTeam-blue.svg) ![](https://img.shields.io/badge/Mod%20Status-Incomplete-red.svg) ![Discord](https://img.shields.io/discord/538796875311218721.svg?style=plastic)
+# IGauntlet Mod ![](https://img.shields.io/badge/Creator-Josia50-orange.svg) ![](https://img.shields.io/badge/Minecraft-1.12.2-blue.svg) ![](https://img.shields.io/badge/Owner-IGauntlet-blue.svg) ![](https://img.shields.io/badge/Mod%20Status-Incomplete-red.svg)
 
 Makes your Minecraft Worlds better.
 
