@@ -1,4 +1,4 @@
-# IGauntlet Mod ![](https://img.shields.io/badge/Creator-Josia50-orange.svg) ![](https://img.shields.io/badge/Minecraft-1.12.2-blue.svg) ![](https://img.shields.io/badge/Owner-IGauntlet-blue.svg) ![](https://img.shields.io/badge/Mod%20Status-Incomplete-red.svg)
+# IGauntlet Mod ![](https://img.shields.io/badge/Creator-Josia50-orange.svg) ![](https://img.shields.io/badge/Minecraft-1.12.2-blue.svg) ![](https://img.shields.io/badge/Owner-JMTeam-blue.svg) ![](https://img.shields.io/badge/Mod%20Status-Incomplete-red.svg)
 
 Makes your Minecraft Worlds better.
 
