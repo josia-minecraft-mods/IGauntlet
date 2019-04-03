@@ -3,6 +3,7 @@ package com.igauntlet.client.models;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelBox;
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 
 // Model By Ben1Ben1
@@ -65,9 +66,14 @@ public class ModelEyeOfAgamotto extends ModelBiped {
 
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+		GlStateManager.pushMatrix();
+		if (entity != null && entity.isSneaking()) {
+			GlStateManager.translate(0, 0.25F, 0);
+		}
 		necklace.render(f5);
 		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 		this.bipedHeadwear.addChild(necklace);
+		GlStateManager.popMatrix();
 	}
 	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
 		modelRenderer.rotateAngleX = x;
