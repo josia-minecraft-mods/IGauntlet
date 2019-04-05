@@ -10,7 +10,7 @@ If you need more help join our [Discord](https://discord.gg/aqf25uP)
 ### Prerequisite
 The Latest Version of [Minecraft  Forge 1.12.2](https://www.minecraftforge.net)
 
-#Install
+## Install
 
 Download the 1.12.2 version of the Mod from the source [Here](https://minecraft.curseforge.com/projects/igauntlet)
 
