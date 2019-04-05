@@ -28,6 +28,7 @@ tile.dwarf_cobble.name=Dwarven Cobblestone
 tile.dwarf_wood.name=Dwarven Planks
 tile.forge.name=Dwarven Forge
 tile.manipulator.name=Manipulator
+tile.quick_sand.name=Quick Sand
 
  //Entity
 entity.ray.name=Laser
@@ -43,16 +44,18 @@ stones.time.unfrozen=Entities Unfrozen!
 gauntlet.snap.notenough=There needs to be more than one entity in range!
 gauntlet.snap.cantsnap.cooldown=The cooldown hasn't passed yet!
 gauntlet.snap.cantsnap.disabled=Snap is disabled in config!
-gui.gauntlet.stone.notadded=This stone hasn't been added yet! Stone :
+gui.gauntlet.stone.notadded =This stone hasn't been added yet! Stone :
 gauntlet.selected.null=You haven't selected a stone yet!
 
  //Config
+ igauntlet.config.updatechecker=Update Checker
 igauntlet.config.drift_timeout=Drift Timeout
 igauntlet.config.rangeteleportminimum=Minimum Drift Range
 igauntlet.config.rangeteleportmaximum=Maximum Drift Range
 igauntlet.config.extensionrange=Extension Range
 igauntlet.config.cooldown=Cooldown
 igauntlet.config.snap=Snap
+igauntlet.config.snap.playerkill=SnapPlayerKill
 igauntlet.config.dwarfid=Dwarf Dimension ID
 igauntlet.config.time.freezerange=Freeze Range
 igauntlet.config.allow.space=Space Stone
@@ -62,6 +65,9 @@ igauntlet.config.allow.mind=Mind Stone
 igauntlet.config.allow.power=Power Stone
 igauntlet.config.allow.soul=Soul Stone
 igauntlet.config.reality.explode= Explode Blocks
+igauntlet.config.time.movetimespeed=Time Speed
+igauntlet.config.reality.quicksandtimer=QuickSand Timer
+igauntlet.config.reality.quicksandrange=QuickSand Range
 
 
 //Sound Subtitle

@@ -3,42 +3,12 @@
 
   "pattern":
           [
-            "BRO",
-            "PUY",
-            "GUH"
+            "U U",
+            "UUU",
+            "UHU"
           ],
   "key":
   {
-    "G":
-    {
-      "item": "igauntlet:time_stone"
-    },
-
-    "P":
-    {
-      "item": "igauntlet:power_stone"
-    },
-
-    "B":
-    {
-      "item": "igauntlet:space_stone"
-    },
-
-    "R":
-    {
-      "item": "igauntlet:reality_stone"
-    },
-
-    "O":
-    {
-      "item": "igauntlet:soul_stone"
-    },
-
-    "Y":
-    {
-      "item": "igauntlet:mind_stone"
-    },
-
     "U":
     {
       "item": "igauntlet:uru_ingot"

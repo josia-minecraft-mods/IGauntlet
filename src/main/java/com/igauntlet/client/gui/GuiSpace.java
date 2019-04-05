@@ -3,7 +3,7 @@ package com.igauntlet.client.gui;
 
 import com.igauntlet.Infinity;
 import com.igauntlet.network.NetworkHandler;
-import com.igauntlet.network.packets.MessageSpace;
+import com.igauntlet.network.packets.MessageWritePortal;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
@@ -43,7 +43,8 @@ public class GuiSpace extends GuiScreen {
     protected void actionPerformed(GuiButton button) throws IOException {
         if (button == this.warp) {
             BlockPos tpPos = new BlockPos(getInt(xCoord.getText(), XYZ.X), getInt(yCoord.getText(), XYZ.Y), getInt(zCoord.getText(), XYZ.Z));
-            NetworkHandler.NETWORK.sendToServer(new MessageSpace(tpPos, mc.player.getEntityId()));
+           // NetworkHandler.NETWORK.sendToServer(new MessageSpace(tpPos, mc.player.getEntityId()));
+            NetworkHandler.NETWORK.sendToServer(new MessageWritePortal(tpPos.getX(), tpPos.getY(), tpPos.getZ()));
             Minecraft.getMinecraft().displayGuiScreen(null);
         }
 

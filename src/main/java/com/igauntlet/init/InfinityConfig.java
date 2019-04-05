@@ -32,19 +32,26 @@ public class InfinityConfig {
             @Config.LangKey("igauntlet.config.time.freezerange")
             @Config.RangeInt(min = 5, max = 100)
             public int FreezeRange = 25;
+
+            @Config.Comment("How fast should the time stone when being hold move time?")
+            @Config.LangKey("igauntlet.config.time.movetimespeed")
+            @Config.RangeInt(min = 50, max = 200)
+            public int TimeSpeed = 100;
         }
 
         public static class SoulStone {
         }
 
         public static class RealityStone {
-          /*  @Config.Comment("Should the fireball explode blocks?")
-            @Config.LangKey("igauntlet.config.reality.explode")
-            public boolean ExplodeBlocks = true;*/
+            @Config.LangKey("igauntlet.config.reality.quicksandtimer")
+            @Config.Comment("The Timer for putting QuickSand back to Sand")
+            @Config.RangeInt(min = 50, max= 200)
+            public int SandTimer = 200;
 
-            @Config.Comment("Should friendly mobs fight the selected entity")
-            @Config.LangKey("igauntlet.config.reality.override")
-            public boolean Override = true;
+            @Config.LangKey("igauntlet.config.reality.quicksandrange")
+            @Config.Comment("The Ranger for putting Sand to QuickSand")
+            @Config.RangeInt(min = 5, max= 50)
+            public int SandRange = 20;
         }
 
         public static class SpaceStone {
@@ -70,6 +77,10 @@ public class InfinityConfig {
 
         }
 
+        @Config.Comment("Mod Update Checker")
+        @Config.LangKey("igauntlet.config.updatechecker")
+        public boolean UpdateChecker = true;
+
         @Config.LangKey("igauntlet.config.guitext")
         @Config.Comment("Enable Text on Gantlet GUI")
         public boolean GuiText = true;
@@ -77,6 +88,10 @@ public class InfinityConfig {
         @Config.Comment("Shift + left Click to kill Entities in range")
         @Config.LangKey("igauntlet.config.snap")
         public boolean Snap = true;
+
+        @Config.Comment("Should Snap kill players")
+        @Config.LangKey("igauntlet.config.snap.playerkill")
+        public boolean SnapKillPlayers = true;
 
         @Config.Comment("The range around you that using 'snap' will be killed.")
         @Config.LangKey("igauntlet.config.extensionrange")
@@ -125,7 +140,6 @@ public class InfinityConfig {
         @Config.Comment("Allow Powerstone")
         @Config.LangKey("igauntlet.config.allow.time")
         public boolean TimeStone = true;
-
     }
 
 

@@ -1,7 +1,11 @@
 package com.igauntlet.common.function.gems;
 
+import com.igauntlet.init.InfinityBlocks;
+import com.igauntlet.init.InfinityConfig;
+import net.minecraft.block.BlockSand;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntitySmallFireball;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 
 public class GemReality {
@@ -24,6 +28,15 @@ public class GemReality {
                 player.capabilities.allowFlying = false;
             }
             player.sendPlayerAbilities();
+        }
+    }
+
+    public static void QuickSand(EntityPlayer player) {
+        int r = InfinityConfig.Gauntlet.RealityStone.SandRange;
+        for (BlockPos b : BlockPos.getAllInBox((int) player.posX - r, (int) player.posY - 10, (int) player.posZ - r, (int) player.posX + r, (int) player.posY + r, (int) player.posZ + r)) {
+            if (player.world.getBlockState(b).getBlock() instanceof BlockSand) {
+                player.world.setBlockState(b, InfinityBlocks.QUICK_SAND.getDefaultState());
+            }
         }
     }
 }

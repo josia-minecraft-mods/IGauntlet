@@ -5,6 +5,7 @@ import com.igauntlet.init.InfinityBlocks;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.EntityDragon;
@@ -47,7 +48,7 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
 
         if (result.typeOfHit == Type.ENTITY) {
             if (result.entityHit == this.thrower) return;
-            EntityLiving entity = (EntityLiving) result.entityHit;
+            Entity entity =  result.entityHit;
 
 
             if (result.entityHit instanceof EntityPlayer) {
