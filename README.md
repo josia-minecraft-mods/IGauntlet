@@ -1,11 +1,11 @@
 # IGauntlet Mod ![](https://img.shields.io/badge/Creator-Josia50-orange.svg) ![](https://img.shields.io/badge/Minecraft-1.12.2-blue.svg) ![](https://img.shields.io/badge/Owner-JMTeam-blue.svg) ![](https://img.shields.io/badge/Mod%20Status-Incomplete-red.svg)
 
-Makes your Minecraft Worlds better.
-
+Allows you to use the Infinity Gauntlet to enhance your gameplay or destroy your enemy's
+ 
 ## Getting Started
 
 This is info about the mod!
-If you need more help join out [Discord](https://discord.gg/aqf25uP)
+If you need more help join our [Discord](https://discord.gg/aqf25uP)
 
 ### Prerequisite
 The Latest Version of [Minecraft  Forge 1.12.2](https://www.minecraftforge.net)
