@@ -34,11 +34,11 @@ public class ItemPowerStone extends Item implements IHasModel {
     int min = 1;
     int max = 7;
     int randomNum = ThreadLocalRandom.current().nextInt(min, max + 1);
-    if randomNum == 1, 2, 3, 4, 5, 6 {
-        player.setDead();
+    if randomNum == 3 {
+        PlayerHelper.sendMessageClient(player, "stones.power.spaired", true);
     }
     else {
-        PlayerHelper.sendMessageClient(player, "stones.power.spaired", true);
+        player.setDead();
     }
 }
              
