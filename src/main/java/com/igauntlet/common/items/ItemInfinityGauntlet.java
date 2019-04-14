@@ -117,7 +117,7 @@ public class ItemInfinityGauntlet extends Item implements IHasModel {
 
             if (RealityOn && current == REALITY) {
                 if (!playerIn.isSneaking()) {
-                  //  GemReality.makeBubbles(playerIn);
+                    //  GemReality.makeBubbles(playerIn);
                 } else {
                     GemReality.QuickSand(playerIn);
                 }
@@ -125,12 +125,18 @@ public class ItemInfinityGauntlet extends Item implements IHasModel {
 
             if (TimeOn && current == TIME && !worldIn.isRemote) {
 
-                if (stack.getTagCompound().getInteger("freeze") == 0) {
-                    stack.getTagCompound().setInteger("freeze", 1);
+                if (!playerIn.isSneaking()) {
+                    if (stack.getTagCompound().getInteger("freeze") == 0) {
+                        stack.getTagCompound().setInteger("freeze", 1);
+                    } else {
+                        stack.getTagCompound().setInteger("freeze", 0);
+                    }
+                    GemTime.FreezeTime(playerIn, worldIn, stack.getTagCompound().getInteger("freeze"), InfinityConfig.Gauntlet.TimeStone.FreezeRange);
                 } else {
-                    stack.getTagCompound().setInteger("freeze", 0);
+                    for (BlockPos b : BlockPos.getAllInBox((int) playerIn.posX - 20, (int) playerIn.posY - 10, (int) playerIn.posZ - 20, (int) playerIn.posX + 20, (int) playerIn.posY + 10, (int) playerIn.posZ + 20)) {
+                        GemTime.ReviveAsh(b, worldIn);
+                    }
                 }
-                GemTime.FreezeTime(playerIn, worldIn, stack.getTagCompound().getInteger("freeze"), InfinityConfig.Gauntlet.TimeStone.FreezeRange);
             }
 
             if (worldIn.isRemote && SpaceOn && current == SPACE) {
