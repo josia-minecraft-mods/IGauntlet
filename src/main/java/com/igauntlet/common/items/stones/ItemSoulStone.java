@@ -18,7 +18,6 @@ public class ItemSoulStone extends Item implements IHasModel {
         InfinityItems.ITEMS.add(this);
     }
 
-
     @Override
     public void registerModels() {
         Infinity.proxy.registerItemRenderer(this, 0, "inventory");

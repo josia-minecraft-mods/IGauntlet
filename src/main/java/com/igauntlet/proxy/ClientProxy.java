@@ -10,10 +10,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class ClientProxy implements IProxy {
 
-    public static void registerRenders() {
-    }
-
-
     @Override
     public void preInit(FMLPreInitializationEvent event) {
         RenderHandler.registerEntityRenders();
