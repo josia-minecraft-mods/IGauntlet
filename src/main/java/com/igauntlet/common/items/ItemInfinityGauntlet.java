@@ -117,7 +117,7 @@ public class ItemInfinityGauntlet extends Item implements IHasModel {
 
             if (RealityOn && current == REALITY) {
                 if (!playerIn.isSneaking()) {
-                    GemReality.ShootFireBall(playerIn);
+                  //  GemReality.makeBubbles(playerIn);
                 } else {
                     GemReality.QuickSand(playerIn);
                 }
