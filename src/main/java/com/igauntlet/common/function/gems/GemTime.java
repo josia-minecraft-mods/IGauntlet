@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
@@ -59,10 +60,9 @@ public class GemTime {
         }
     }
 
-    // We could just get Entity as in one cunstructor and freeze all of them
-    public static void FreezeThrowable(EntityPlayer player, int freeze, int extensionrange) {
+   public static void FreezeThrowable(EntityPlayer player, int freeze, int extensionrange) {
         for (Entity entity : player.world.getEntitiesWithinAABB(Entity.class, player.getEntityBoundingBox().grow(extensionrange, extensionrange, extensionrange))) {
-            if (entity instanceof Entity && !(entity instanceof EntityPlayer)) {
+            if (entity instanceof IProjectile) {
                 if (freeze == 1) {
                     entity.setNoGravity(true);
                     entity.setVelocity(0, 0, 0);
@@ -73,4 +73,5 @@ public class GemTime {
             }
         }
     }
+
 }
