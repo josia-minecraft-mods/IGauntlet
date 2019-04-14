@@ -1,8 +1,8 @@
 package com.igauntlet.client.render;
 
 import com.igauntlet.Infinity;
-import com.igauntlet.client.models.ModelBipedAlex;
 import com.igauntlet.common.entity.EntitySquirrelGirl;
+import net.minecraft.client.model.ModelPlayer;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
@@ -17,7 +17,7 @@ public class RenderSquirrelGirl extends RenderLiving<EntitySquirrelGirl> {
     public static final ResourceLocation TEXTURES = new ResourceLocation(Infinity.MODID + ":textures/entity/squirrelgirl.png");
 
     public RenderSquirrelGirl(RenderManager renderManager) {
-        super(renderManager, new ModelBipedAlex(), 0.0F);
+        super(renderManager, new ModelPlayer(1.0f, true), 0.0F);
     }
 
     @Override
