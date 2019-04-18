@@ -297,12 +297,12 @@
 	"display": {
 		"thirdperson_righthand": {
 			"rotation": [-89, -180, 180],
-			"translation": [0, 1, 4.5],
+			"translation": [0, 1, 3.75],
 			"scale": [0.43, 0.43, 0.42]
 		},
 		"thirdperson_lefthand": {
 			"rotation": [-89, -180, 180],
-			"translation": [0, 1, 4.5],
+			"translation": [0, 1, 4],
 			"scale": [0.43, 0.43, 0.42]
 		},
 		"firstperson_righthand": {
