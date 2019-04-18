@@ -64,7 +64,7 @@ public class MessageSnap implements IMessage {
                 boolean ticklimit = true;
 
                 //May need a merge as it should be possible
-                if (CanSnap) {
+                if (CanSnap && PlayerHelper.getPDataInt(playerIn, "snapped") == 0) {
 
                     // Entity Counter
                     if (!(playerIn.getHeldItemMainhand().getItem() == InfinityItems.INFINITY_GAUNTLET)) return;
@@ -100,8 +100,9 @@ public class MessageSnap implements IMessage {
                                 }
                             }
                             if (SNAPENTITY.size() > 1) {
-                                if(ticklimit) {
+                                if (ticklimit) {
                                     playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
+                                    PlayerHelper.setPDataInt(playerIn, "snapped", InfinityConfig.Gauntlet.SnapCooldown * 20);
                                     if (r == 3) {
                                         playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.IDONTFEELGOOD, SoundCategory.AMBIENT, 1F, 1F);
                                     }
