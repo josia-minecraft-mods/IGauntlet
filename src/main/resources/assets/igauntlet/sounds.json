@@ -28,6 +28,16 @@
         "stream": true
       }
     ]
+  },
+  "feelgood": {
+    "category": "master",
+    "subtitle": "sound.nofeelgood",
+    "sounds": [
+      {
+        "name": "igauntlet:nofeelgood",
+        "stream": true
+      }
+    ]
   }
 }
 

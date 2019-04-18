@@ -74,6 +74,7 @@ igauntlet.config.reality.quicksandrange=QuickSand Range
 sound.awesomemix1=Awesome Mix 1
 sound.snap=Snap
 sound.gauntlet=Gauntlet Hum
+sound.nofeelgood=I don't feel good Mr Stark!
 
 //KeyBinds
 igauntlet.keybinds.snap=Snap

@@ -22,6 +22,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static com.igauntlet.common.function.gems.GemPower.WriteAsh;
 
@@ -58,6 +59,9 @@ public class MessageSnap implements IMessage {
                 boolean Snapinit = false;
                 int extend = InfinityConfig.Gauntlet.ExtensionRange;
                 int passentity = 0;
+                Random random = new Random();
+                int r = random.nextInt(10);
+                boolean ticklimit = true;
 
                 //May need a merge as it should be possible
                 if (CanSnap) {
@@ -79,7 +83,7 @@ public class MessageSnap implements IMessage {
                             if (halfentity > 0) {
                                 EntityLiving targetentity = SNAPENTITY.get(halfentity);
 
-                                if(targetentity instanceof EntityDragon) {
+                                if (targetentity instanceof EntityDragon) {
                                     targetentity.setDead();
                                     return;
                                 }
@@ -95,8 +99,14 @@ public class MessageSnap implements IMessage {
                                     passentity--;
                                 }
                             }
-                            if (SNAPENTITY.size() >= 2) {
-                                playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
+                            if (SNAPENTITY.size() > 1) {
+                                if(ticklimit) {
+                                    playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
+                                    if (r == 3) {
+                                        playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.IDONTFEELGOOD, SoundCategory.AMBIENT, 1F, 1F);
+                                    }
+                                    ticklimit = false;
+                                }
                             } else {
                                 PlayerHelper.sendMessage(playerIn, "gauntlet.snap.notenough", true);
                             }
