@@ -1,6 +1,7 @@
 package com.igauntlet.util.handlers;
 
 import com.igauntlet.Infinity;
+import com.igauntlet.common.items.InfinityItems;
 import com.igauntlet.init.InfinityConfig;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.text.TextComponentString;
@@ -8,6 +9,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.event.ClickEvent;
 import net.minecraft.util.text.event.HoverEvent;
 import net.minecraftforge.common.ForgeVersion;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -44,6 +46,23 @@ public class EventHandler {
             e.setCanceled(true);
         }
     }*/
+
+    @SubscribeEvent
+    public static void countDownSnap(LivingEvent.LivingUpdateEvent e) {
+        if (e.getEntity() instanceof EntityPlayer) {
+            EntityPlayer player = (EntityPlayer) e.getEntity();
+
+            if (player.getEntityData().hasKey("snapped")) {
+                if (player.getEntityData().getInteger("snapped") > 0) {
+                    int removing = player.getEntityData().getInteger("snapped") - 1;
+                    player.getEntityData().setInteger("snapped", removing);
+                }
+            } else {
+                if (player.getActiveItemStack().getItem() == InfinityItems.infinity_gauntlet)
+                    player.getEntityData().setInteger("snapped", 0);
+            }
+        }
+    }
 
 
     @SubscribeEvent

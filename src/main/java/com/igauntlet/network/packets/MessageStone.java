@@ -1,6 +1,6 @@
 package com.igauntlet.network.packets;
 
-import com.igauntlet.init.InfinityItems;
+import com.igauntlet.common.items.InfinityItems;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -37,7 +37,7 @@ public class MessageStone implements IMessage {
                 EntityPlayerMP player = ctx.getServerHandler().player;
                 ItemStack stack = player.getActiveItemStack();
 
-                if (stack.getItem() == InfinityItems.INFINITY_GAUNTLET) {
+                if (stack.getItem() == InfinityItems.infinity_gauntlet) {
                     NBTTagCompound nbt = stack.getTagCompound();
                     nbt.setInteger("currentstone", stone);
                     stack.setTagCompound(nbt);

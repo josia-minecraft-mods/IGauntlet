@@ -1,6 +1,6 @@
 package com.igauntlet.world;
 
-import com.igauntlet.init.InfinityBlocks;
+import com.igauntlet.common.blocks.InfinityBlocks;
 import net.minecraft.block.state.pattern.BlockMatcher;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
@@ -19,7 +19,7 @@ public class ModWorldGen implements IWorldGenerator {
 
 
     public ModWorldGen() {
-        uru_ore = new WorldGenMinable(InfinityBlocks.URU_ORE.getDefaultState(), 9, BlockMatcher.forBlock(Blocks.STONE));
+        uru_ore = new WorldGenMinable(InfinityBlocks.uru_ore.getDefaultState(), 9, BlockMatcher.forBlock(Blocks.STONE));
     }
 
     @Override

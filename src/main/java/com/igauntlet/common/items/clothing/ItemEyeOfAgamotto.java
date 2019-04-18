@@ -2,8 +2,6 @@ package com.igauntlet.common.items.clothing;
 
 import com.igauntlet.Infinity;
 import com.igauntlet.client.models.ModelEyeOfAgamotto;
-import com.igauntlet.init.InfinityItems;
-import com.igauntlet.util.helpers.IHasModel;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -15,14 +13,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 
-public class ItemEyeOfAgamotto extends ItemArmor implements IHasModel {
+public class ItemEyeOfAgamotto extends ItemArmor {
 
     public ItemEyeOfAgamotto(String name) {
         super(ArmorMaterial.CHAIN, 0, EntityEquipmentSlot.CHEST);
         setRegistryName(name);
         setTranslationKey(name);
-
-        InfinityItems.ITEMS.add(this);
     }
 
     @Nullable
@@ -35,10 +31,5 @@ public class ItemEyeOfAgamotto extends ItemArmor implements IHasModel {
     @Override
     public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped _default) {
         return new ModelEyeOfAgamotto(_default);
-    }
-
-    @Override
-    public void registerModels() {
-        Infinity.proxy.registerItemRenderer(this, 0, "inventory");
     }
 }

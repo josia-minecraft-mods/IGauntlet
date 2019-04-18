@@ -17,6 +17,8 @@ import java.io.IOException;
 
 public class GuiSpace extends GuiScreen {
 
+    //TODO Fix that you can tp to other dimensions & & Better Portal soon (I hope)
+
     public GuiTextField xCoord;
     public GuiTextField yCoord;
     public GuiTextField zCoord;

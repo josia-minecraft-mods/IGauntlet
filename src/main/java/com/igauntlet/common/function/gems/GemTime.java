@@ -3,36 +3,31 @@ package com.igauntlet.common.function.gems;
 import com.igauntlet.common.blocks.BlockAshPile;
 import com.igauntlet.common.tileentity.TileAshPile;
 import com.igauntlet.util.helpers.PlayerHelper;
-import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class GemTime {
 
-    public static void ReviveAsh(BlockPos pos, World worldIn, EntityPlayer player) {
+    public static void ReviveAsh(BlockPos pos, World worldIn) {
         IBlockState block = worldIn.getBlockState(pos);
 
         if (block.getBlock() instanceof BlockAshPile) {
-            Block blk = Blocks.AIR;
-            IBlockState state0 = blk.getDefaultState();
-            SummonCreature(worldIn, player, pos);
-            worldIn.setBlockState(pos, state0);
+            SummonCreature(worldIn, pos);
         }
     }
 
-    public static void SummonCreature(World worldIn, EntityPlayer player, BlockPos pos) {
-        TileEntity ash_te = worldIn.getTileEntity(pos);
+    public static void SummonCreature(World worldIn, BlockPos pos) {
+        TileAshPile ash_te = (TileAshPile) worldIn.getTileEntity(pos);
         if (ash_te != null && ash_te instanceof TileAshPile) {
-            if (((TileAshPile) ash_te).getEntity().isDead) {
-                worldIn.spawnEntity(((TileAshPile) ash_te).getEntity());
-
-            }
+            EntityList.createEntityByID(ash_te.getEntity().getEntityId(), worldIn).setPosition(pos.getX(), pos.getY(), pos.getZ());
+            worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());
         }
     }
 
@@ -59,10 +54,9 @@ public class GemTime {
         }
     }
 
-    // We could just get Entity as in one cunstructor and freeze all of them
     public static void FreezeThrowable(EntityPlayer player, int freeze, int extensionrange) {
         for (Entity entity : player.world.getEntitiesWithinAABB(Entity.class, player.getEntityBoundingBox().grow(extensionrange, extensionrange, extensionrange))) {
-            if (entity instanceof Entity && !(entity instanceof EntityPlayer)) {
+            if (entity instanceof IProjectile) {
                 if (freeze == 1) {
                     entity.setNoGravity(true);
                     entity.setVelocity(0, 0, 0);
@@ -73,4 +67,5 @@ public class GemTime {
             }
         }
     }
+
 }

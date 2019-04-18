@@ -1,38 +1,24 @@
 package com.igauntlet.common.blocks;
 
-import com.igauntlet.Infinity;
-import com.igauntlet.init.InfinityBlocks;
-import com.igauntlet.init.InfinityItems;
-import com.igauntlet.tabs.InfinityTabs;
-import com.igauntlet.util.helpers.IHasModel;
+import com.igauntlet.util.helpers.IHaveItem;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockForge extends Block implements IHasModel {
+public class BlockForge extends Block implements IHaveItem {
 
-    public BlockForge(String name, Material material, boolean tab) {
+    public BlockForge(Material material) {
         super(material);
-        setTranslationKey(name);
-        setRegistryName(name);
         setSoundType(SoundType.STONE);
         setHarvestLevel("pickaxe", 2);
         setHardness(15.0F);
         setResistance(15.0F);
-
-        if (tab)
-            setCreativeTab(InfinityTabs.infinityTabs);
-
-        InfinityBlocks.BLOCKS.add(this);
-        InfinityItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
     }
 
     public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
@@ -44,8 +30,7 @@ public class BlockForge extends Block implements IHasModel {
     }
 
     @Override
-    public void registerModels() {
-        Infinity.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
+    public boolean hasItem() {
+        return true;
     }
-
 }

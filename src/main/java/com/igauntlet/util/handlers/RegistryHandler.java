@@ -2,19 +2,20 @@ package com.igauntlet.util.handlers;
 
 import com.igauntlet.Infinity;
 import com.igauntlet.commands.DimensionTeleport;
+import com.igauntlet.common.blocks.InfinityBlocks;
 import com.igauntlet.common.entity.EntityLaser;
 import com.igauntlet.common.entity.EntityPortal;
 import com.igauntlet.common.entity.EntitySquirrelGirl;
+import com.igauntlet.common.items.InfinityItems;
 import com.igauntlet.init.InfinityBiomes;
-import com.igauntlet.init.InfinityBlocks;
 import com.igauntlet.init.InfinityDimensions;
-import com.igauntlet.init.InfinityItems;
-import com.igauntlet.util.helpers.IHasModel;
 import com.igauntlet.world.ModWorldGen;
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -31,28 +32,10 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class RegistryHandler {
 
     @SubscribeEvent
-    public static void onItemRegister(RegistryEvent.Register<Item> event) {
-        event.getRegistry().registerAll(InfinityItems.ITEMS.toArray(new Item[0]));
-    }
-
-    @SubscribeEvent
-    public static void onBlockRegister(RegistryEvent.Register<Block> event) {
-        event.getRegistry().registerAll(InfinityBlocks.BLOCKS.toArray(new Block[0]));
-    }
-
-
-    @SubscribeEvent
     public static void onModelRegister(ModelRegistryEvent event) {
-        for (Item item : InfinityItems.ITEMS) {
-            if (item instanceof IHasModel) {
-                ((IHasModel) item).registerModels();
-            }
-        }
-
-        for (Block block : InfinityBlocks.BLOCKS) {
-            if (block instanceof IHasModel) {
-                ((IHasModel) block).registerModels();
-            }
+        InfinityItems.registerRenders();
+        for(Block block : InfinityBlocks.BLOCKS) {
+            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(block.getRegistryName(), "normal"));
         }
     }
 

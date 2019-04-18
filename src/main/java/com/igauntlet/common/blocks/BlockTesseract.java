@@ -1,11 +1,8 @@
 package com.igauntlet.common.blocks;
 
-import com.igauntlet.Infinity;
+import com.igauntlet.common.items.InfinityItems;
 import com.igauntlet.common.tileentity.TileTesseract;
-import com.igauntlet.init.InfinityBlocks;
-import com.igauntlet.init.InfinityItems;
-import com.igauntlet.tabs.InfinityTabs;
-import com.igauntlet.util.helpers.IHasModel;
+import com.igauntlet.util.helpers.IHaveItem;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
@@ -13,8 +10,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -26,25 +21,17 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-public class BlockTesseract extends Block implements IHasModel, ITileEntityProvider {
+public class BlockTesseract extends Block implements IHaveItem, ITileEntityProvider {
 
     public static final AxisAlignedBB TESS_AABB = new AxisAlignedBB(0.34375, 0, 0.34375, 0.65625, 0.3125, 0.65625);
 
-    public BlockTesseract(String name, Material material, boolean tab) {
+    public BlockTesseract(Material material) {
         super(material);
-        setTranslationKey(name);
-        setRegistryName(name);
         setSoundType(SoundType.METAL);
         setHardness(0.0F);
         setResistance(0.1F);
         setLightLevel(0.5F);
         setLightOpacity(1);
-
-        if (tab)
-            setCreativeTab(InfinityTabs.infinityTabs);
-
-        InfinityBlocks.BLOCKS.add(this);
-        InfinityItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
     }
 
     @Override
@@ -63,11 +50,6 @@ public class BlockTesseract extends Block implements IHasModel, ITileEntityProvi
     }
 
     @Override
-    public void registerModels() {
-        Infinity.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
-    }
-
-    @Override
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
         return TESS_AABB;
     }
@@ -80,7 +62,7 @@ public class BlockTesseract extends Block implements IHasModel, ITileEntityProvi
             if (te instanceof TileTesseract) {
                 TileTesseract tess = (TileTesseract) te;
                 if (stack.getItem() != null) {
-                    if (stack.getItem() == InfinityItems.SPACESTONE) {
+                    if (stack.getItem() == InfinityItems.space_stone) {
                         if (tess.AddStone()) {
                             stack.setCount(0);
                             return true;
@@ -99,5 +81,10 @@ public class BlockTesseract extends Block implements IHasModel, ITileEntityProvi
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
         return new TileTesseract();
+    }
+
+    @Override
+    public boolean hasItem() {
+        return true;
     }
 }

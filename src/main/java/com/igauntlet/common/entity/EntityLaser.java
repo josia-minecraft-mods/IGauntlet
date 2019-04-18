@@ -1,7 +1,7 @@
 package com.igauntlet.common.entity;
 
+import com.igauntlet.common.blocks.InfinityBlocks;
 import com.igauntlet.common.function.gems.GemPower;
-import com.igauntlet.init.InfinityBlocks;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -53,7 +53,7 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
 
             if (result.entityHit instanceof EntityPlayer) {
                 if (!((EntityPlayer) result.entityHit).capabilities.isCreativeMode) {
-                    Block blk = InfinityBlocks.ASH_PILE;
+                    Block blk = InfinityBlocks.ash_pile;
                     BlockPos pos0 = new BlockPos(result.entityHit.posX, result.entityHit.posY, result.entityHit.posZ);
                     IBlockState state0 = blk.getDefaultState();
                     world.setBlockState(pos0, state0);
@@ -67,7 +67,7 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
                     }
 
 
-                    Block blk = InfinityBlocks.ASH_PILE;
+                    Block blk = InfinityBlocks.ash_pile;
                     BlockPos pos0 = new BlockPos(result.entityHit.posX, result.entityHit.posY, result.entityHit.posZ);
                     IBlockState state0 = blk.getDefaultState();
                     world.setBlockState(pos0, state0);
