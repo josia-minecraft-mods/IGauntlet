@@ -10,10 +10,14 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Mod.EventBusSubscriber
 public class InfinityItems {
     public static final List<Item> ITEMS = new ArrayList<Item>();
 
@@ -56,6 +60,11 @@ public class InfinityItems {
 
     public static void registerRenderMeta(Item item, int meta, String name) {
         ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(new ResourceLocation(Infinity.MODID, name), "inventory"));
+    }
+
+    @SubscribeEvent
+    public static void onItemRegister(RegistryEvent.Register<Item> event) {
+        event.getRegistry().registerAll(InfinityItems.ITEMS.toArray(new Item[0]));
     }
 }
 

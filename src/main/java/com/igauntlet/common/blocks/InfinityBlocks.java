@@ -5,13 +5,15 @@ import com.igauntlet.tabs.InfinityTabs;
 import com.igauntlet.util.helpers.IHaveItem;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.ItemBlock;
-import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Mod.EventBusSubscriber
 public class InfinityBlocks {
 
     public static final List<Block> BLOCKS = new ArrayList<Block>();
@@ -40,11 +42,14 @@ public class InfinityBlocks {
                 if (tab) {
                     block.setCreativeTab(InfinityTabs.infinityTabs);
                 }
-                //InfinityItems.registerRender(itemBlock);
                 InfinityItems.ITEMS.add(itemBlock);
-                ModelLoader.setCustomModelResourceLocation(itemBlock, 0, new ModelResourceLocation(itemBlock.getRegistryName(), "inventory"));
             }
         }
         return block;
+    }
+
+    @SubscribeEvent
+    public static void onBlockRegister(RegistryEvent.Register<Block> event) {
+        event.getRegistry().registerAll(InfinityBlocks.BLOCKS.toArray(new Block[0]));
     }
 }
