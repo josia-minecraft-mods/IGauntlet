@@ -2,14 +2,13 @@ package com.igauntlet.util.handlers;
 
 import com.igauntlet.Infinity;
 import com.igauntlet.commands.DimensionTeleport;
+import com.igauntlet.common.blocks.InfinityBlocks;
 import com.igauntlet.common.entity.EntityLaser;
 import com.igauntlet.common.entity.EntityPortal;
 import com.igauntlet.common.entity.EntitySquirrelGirl;
+import com.igauntlet.common.items.InfinityItems;
 import com.igauntlet.init.InfinityBiomes;
-import com.igauntlet.init.InfinityBlocks;
 import com.igauntlet.init.InfinityDimensions;
-import com.igauntlet.init.InfinityItems;
-import com.igauntlet.util.helpers.IHasModel;
 import com.igauntlet.world.ModWorldGen;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -43,17 +42,7 @@ public class RegistryHandler {
 
     @SubscribeEvent
     public static void onModelRegister(ModelRegistryEvent event) {
-        for (Item item : InfinityItems.ITEMS) {
-            if (item instanceof IHasModel) {
-                ((IHasModel) item).registerModels();
-            }
-        }
-
-        for (Block block : InfinityBlocks.BLOCKS) {
-            if (block instanceof IHasModel) {
-                ((IHasModel) block).registerModels();
-            }
-        }
+        InfinityItems.registerRenders();
     }
 
     public static void preInitRegistries(FMLPreInitializationEvent event) {

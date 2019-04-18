@@ -1,12 +1,9 @@
 package com.igauntlet.common.items.stones;
 
-import com.igauntlet.Infinity;
 import com.igauntlet.init.InfinityConfig;
-import com.igauntlet.init.InfinityItems;
 import com.igauntlet.network.NetworkHandler;
 import com.igauntlet.network.packets.MessageSpace;
 import com.igauntlet.tabs.InfinityTabs;
-import com.igauntlet.util.helpers.IHasModel;
 import com.igauntlet.util.helpers.PlayerHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,7 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class ItemSpaceStone extends Item implements IHasModel {
+public class ItemSpaceStone extends Item {
 
     public ItemSpaceStone(String name) {
         setTranslationKey(name);
@@ -23,8 +20,6 @@ public class ItemSpaceStone extends Item implements IHasModel {
         setCreativeTab(InfinityTabs.infinityTabs);
         setMaxStackSize(1);
         setMaxDamage(4500);
-
-        InfinityItems.ITEMS.add(this);
     }
 
 
@@ -62,11 +57,5 @@ public class ItemSpaceStone extends Item implements IHasModel {
                 NetworkHandler.NETWORK.sendToServer(new MessageSpace(pos2, player.getEntityId()));
             }
         }
-    }
-
-
-    @Override
-    public void registerModels() {
-        Infinity.proxy.registerItemRenderer(this, 0, "inventory");
     }
 }

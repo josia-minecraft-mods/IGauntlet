@@ -1,13 +1,10 @@
 package com.igauntlet.common.items;
 
-import com.igauntlet.Infinity;
 import com.igauntlet.client.gui.GuiGauntlet;
 import com.igauntlet.common.function.gems.*;
 import com.igauntlet.init.InfinityConfig;
-import com.igauntlet.init.InfinityItems;
 import com.igauntlet.tabs.InfinityTabs;
 import com.igauntlet.util.helpers.GemHelper;
-import com.igauntlet.util.helpers.IHasModel;
 import com.igauntlet.util.helpers.PlayerHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -31,7 +28,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 
-public class ItemInfinityGauntlet extends Item implements IHasModel {
+public class ItemInfinityGauntlet extends Item {
 
     public ItemInfinityGauntlet(String name) {
         setTranslationKey(name);
@@ -39,8 +36,6 @@ public class ItemInfinityGauntlet extends Item implements IHasModel {
         setMaxStackSize(1);
         setMaxDamage(4500);
         setCreativeTab(InfinityTabs.infinityTabs);
-
-        InfinityItems.ITEMS.add(this);
     }
 
     int NONE = 0;
@@ -100,7 +95,7 @@ public class ItemInfinityGauntlet extends Item implements IHasModel {
 
         int current = GemHelper.ActiveGem(playerIn);
 
-        if (worldIn.isRemote && playerIn.getHeldItemOffhand().getItem() == InfinityItems.INFINITY_GAUNTLET) {
+        if (worldIn.isRemote && playerIn.getHeldItemOffhand().getItem() == InfinityItems.infinity_gauntlet) {
             OpenInfinityGui();
         }
 
@@ -108,7 +103,7 @@ public class ItemInfinityGauntlet extends Item implements IHasModel {
             PlayerHelper.sendMessageClient(playerIn, "gauntlet.selected.null", true);
         }
 
-        if (playerIn.getHeldItemOffhand().getItem() != InfinityItems.INFINITY_GAUNTLET) {
+        if (playerIn.getHeldItemOffhand().getItem() != InfinityItems.infinity_gauntlet) {
 
 
             if (PowerOn && current == POWER) {
@@ -215,7 +210,7 @@ public class ItemInfinityGauntlet extends Item implements IHasModel {
 
         if (!worldIn.isRemote) {
             if ((isSelected)) {
-                if (stack.getItem() == InfinityItems.INFINITY_GAUNTLET) {
+                if (stack.getItem() == InfinityItems.infinity_gauntlet) {
                     if (player.getActivePotionEffect(MobEffects.INSTANT_HEALTH) == null) {
                         player.addPotionEffect(new PotionEffect(MobEffects.INSTANT_HEALTH, 50, 3));
                     }
@@ -235,11 +230,5 @@ public class ItemInfinityGauntlet extends Item implements IHasModel {
 
             }
         }
-    }
-
-
-    @Override
-    public void registerModels() {
-        Infinity.proxy.registerItemRenderer(this, 0, "inventory");
     }
 }

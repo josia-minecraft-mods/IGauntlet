@@ -1,18 +1,15 @@
 package com.igauntlet.common.items.stones;
 
-import com.igauntlet.Infinity;
 import com.igauntlet.common.damage.IDamageSource;
 import com.igauntlet.init.InfinityConfig;
-import com.igauntlet.init.InfinityItems;
 import com.igauntlet.tabs.InfinityTabs;
 import com.igauntlet.util.helpers.EntityHelper;
-import com.igauntlet.util.helpers.IHasModel;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class ItemTimeStone extends Item implements IHasModel {
+public class ItemTimeStone extends Item {
     private int time = 0;
 
     public ItemTimeStone(String name) {
@@ -21,13 +18,6 @@ public class ItemTimeStone extends Item implements IHasModel {
         setCreativeTab(InfinityTabs.infinityTabs);
         setMaxStackSize(1);
         setMaxDamage(4500);
-
-        InfinityItems.ITEMS.add(this);
-    }
-
-    @Override
-    public void registerModels() {
-        Infinity.proxy.registerItemRenderer(this, 0, "inventory");
     }
 
     @Override

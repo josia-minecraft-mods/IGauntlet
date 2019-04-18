@@ -1,8 +1,8 @@
 package com.igauntlet.util.handlers;
 
 import com.igauntlet.Infinity;
+import com.igauntlet.common.items.InfinityItems;
 import com.igauntlet.init.InfinityConfig;
-import com.igauntlet.init.InfinityItems;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
@@ -58,7 +58,7 @@ public class EventHandler {
                     player.getEntityData().setInteger("snapped", removing);
                 }
             } else {
-                if (player.getActiveItemStack().getItem() == InfinityItems.INFINITY_GAUNTLET)
+                if (player.getActiveItemStack().getItem() == InfinityItems.infinity_gauntlet)
                     player.getEntityData().setInteger("snapped", 0);
             }
         }

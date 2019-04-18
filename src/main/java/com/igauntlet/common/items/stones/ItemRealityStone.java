@@ -1,16 +1,14 @@
 package com.igauntlet.common.items.stones;
 
-import com.igauntlet.Infinity;
-import com.igauntlet.init.InfinityItems;
+import com.igauntlet.common.items.InfinityItems;
 import com.igauntlet.tabs.InfinityTabs;
-import com.igauntlet.util.helpers.IHasModel;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class ItemRealityStone extends Item implements IHasModel {
+public class ItemRealityStone extends Item {
 
     public ItemRealityStone(String name) {
         setTranslationKey(name);
@@ -18,8 +16,6 @@ public class ItemRealityStone extends Item implements IHasModel {
         setCreativeTab(InfinityTabs.infinityTabs);
         setMaxStackSize(1);
         setMaxDamage(4500);
-
-        InfinityItems.ITEMS.add(this);
     }
 
 
@@ -31,16 +27,11 @@ public class ItemRealityStone extends Item implements IHasModel {
         EntityPlayer player = (EntityPlayer) entityIn;
 
         if(player.isCreative()) return;
-        if (isSelected || player.getHeldItemOffhand().getItem() == InfinityItems.REALITYSTONE) {
+        if (isSelected || player.getHeldItemOffhand().getItem() == InfinityItems.reality_stone) {
             player.capabilities.allowFlying = true;
         }else{
             player.capabilities.allowFlying = false;
         }
         player.sendPlayerAbilities();
-    }
-
-    @Override
-    public void registerModels() {
-        Infinity.proxy.registerItemRenderer(this, 0, "inventory");
     }
 }

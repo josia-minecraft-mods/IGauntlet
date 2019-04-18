@@ -1,9 +1,9 @@
 package com.igauntlet.network.packets;
 
+import com.igauntlet.common.blocks.InfinityBlocks;
 import com.igauntlet.common.damage.IDamageSource;
-import com.igauntlet.init.InfinityBlocks;
+import com.igauntlet.common.items.InfinityItems;
 import com.igauntlet.init.InfinityConfig;
-import com.igauntlet.init.InfinityItems;
 import com.igauntlet.util.handlers.SoundsHandler;
 import com.igauntlet.util.helpers.PlayerHelper;
 import io.netty.buffer.ByteBuf;
@@ -67,7 +67,7 @@ public class MessageSnap implements IMessage {
                 if (CanSnap && PlayerHelper.getPDataInt(playerIn, "snapped") == 0) {
 
                     // Entity Counter
-                    if (!(playerIn.getHeldItemMainhand().getItem() == InfinityItems.INFINITY_GAUNTLET)) return;
+                    if (!(playerIn.getHeldItemMainhand().getItem() == InfinityItems.infinity_gauntlet)) return;
                     for (EntityLiving targetentity : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extend, extend, extend))) {
                         SNAPENTITY.add(targetentity);
                         Snapinit = true;
@@ -90,7 +90,7 @@ public class MessageSnap implements IMessage {
 
                                 EntityLiving entity = targetentity;
                                 if (!targetentity.getIsInvulnerable()) {
-                                    Block blk = InfinityBlocks.ASH_PILE;
+                                    Block blk = InfinityBlocks.ash_pile;
                                     BlockPos pos0 = new BlockPos(targetentity.posX, targetentity.posY, targetentity.posZ);
                                     IBlockState state0 = blk.getDefaultState();
                                     targetentity.world.setBlockState(pos0, state0);
