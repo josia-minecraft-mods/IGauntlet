@@ -6,10 +6,10 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class ItemPowerStone extends Item {
 
@@ -25,15 +25,25 @@ public class ItemPowerStone extends Item {
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
         super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
 
+        // TODO Make this cleaner!
+
+        if(stack.getTagCompound() == null) {
+            NBTTagCompound nbtTagCompound = new NBTTagCompound();
+            stack.setTagCompound(nbtTagCompound);
+        }
 
         EntityPlayer player = (EntityPlayer) entityIn;
         Random random = new Random();
         int randomn = random.nextInt(8);
-        if (randomn == 3) {
-            PlayerHelper.sendMessageClient(player, "stones.power.spaired", true);
-        }
-        else {
-            player.setDead();
+        if (isSelected && stack.getTagCompound() != null) {
+            if (randomn == 3 && !stack.getTagCompound().getBoolean("checked")) {
+                PlayerHelper.sendMessageClient(player, "stones.power.spaired", true);
+            } else {
+                player.setDead();
+            }
+            stack.getTagCompound().setBoolean("checked", true);
+        } else {
+            stack.getTagCompound().setBoolean("checked", false);
         }
     }
 }
