@@ -37,7 +37,7 @@ public class ItemPowerStone extends Item {
         Random random = new Random();
         int randomn = random.nextInt(8);
         if (isSelected && stack.getTagCompound() != null) {
-            if (randomn == 3 && !stack.getTagCompound().getBoolean("checked")) {
+            if (!(randomn == 3) && !stack.getTagCompound().getBoolean("checked")) {
                 PlayerHelper.sendMessageClient(player, "stones.power.spaired", true);
             } else {
                 player.attackEntityFrom(ISource.MAGIC, player.getHealth());
