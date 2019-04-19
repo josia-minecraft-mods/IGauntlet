@@ -1,5 +1,6 @@
 package com.igauntlet.common.items.stones;
 
+import com.igauntlet.common.damage.ISource;
 import com.igauntlet.tabs.InfinityTabs;
 import com.igauntlet.util.helpers.PlayerHelper;
 import net.minecraft.entity.Entity;
@@ -39,7 +40,7 @@ public class ItemPowerStone extends Item {
             if (randomn == 3 && !stack.getTagCompound().getBoolean("checked")) {
                 PlayerHelper.sendMessageClient(player, "stones.power.spaired", true);
             } else {
-                player.setDead();
+                player.attackEntityFrom(ISource.MAGIC, player.getHealth());
             }
             stack.getTagCompound().setBoolean("checked", true);
         } else {
