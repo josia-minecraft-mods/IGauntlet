@@ -35,7 +35,9 @@ tile.quick_sand.name=Quick Sand
 entity.ray.name=Laser
 
  //DeathSource
-damagesource.igauntlet.laser=a Laser!
+damagesource.igauntlet.laser=%1$s got hit by a laser!
+damagesource.igauntlet.snap=%1$s turned to ashes!
+damagesource.igauntlet.powerstone=%1$s felt the power!
 
  //Messages
 stones.space.drifted=You have drifted!
