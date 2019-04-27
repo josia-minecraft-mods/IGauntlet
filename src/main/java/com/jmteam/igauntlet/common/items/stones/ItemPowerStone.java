@@ -33,7 +33,8 @@ public class ItemPowerStone extends Item {
         if (stack.getTagCompound() == null) {
             NBTTagCompound nbtTagCompound = new NBTTagCompound();
             stack.setTagCompound(nbtTagCompound);
-            stack.getTagCompound().setBoolean("checked", false);
+            if(!nbtTagCompound.hasKey("checked"))
+                stack.getTagCompound().setBoolean("checked", false);
         } else {
             if (isSelected) {
                 if (!stack.getTagCompound().getBoolean("checked")) {
