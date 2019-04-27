@@ -26,28 +26,31 @@ public class ItemPowerStone extends Item {
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
         super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
 
-        // TODO Make this cleaner!
-
         EntityPlayer player = (EntityPlayer) entityIn;
         Random random = new Random();
         int randomn = random.nextInt(8);
 
-        if(stack.getTagCompound() == null) {
+        if (stack.getTagCompound() == null) {
             NBTTagCompound nbtTagCompound = new NBTTagCompound();
+            stack.getTagCompound().setBoolean("checked", false);
             stack.setTagCompound(nbtTagCompound);
-        }else {
+
+            System.out.println(nbtTagCompound.getBoolean("checked"));
+        } else {
             if (isSelected) {
-                if (!(randomn == 3) && stack.getTagCompound().getBoolean("checked") == false) {
-                    PlayerHelper.sendMessageClient(player, "stones.power.spaired", true);
-                    System.out.println(stack.getTagCompound().getBoolean("checked"));
-                    System.out.println(randomn); // TODO Needs fixing , Why is it keeping me killed
-                } else {
-                    player.attackEntityFrom(ISource.MAGIC, player.getHealth());
+                if (!stack.getTagCompound().getBoolean("checked")) {
+                    if (!(randomn == 3)) {
+                        PlayerHelper.sendMessageClient(player, "stones.power.spaired", true);
+                        System.out.println(stack.getTagCompound().getBoolean("checked"));
+                    } else {
+                        player.attackEntityFrom(ISource.MAGIC, player.getHealth());
+                    }
                 }
                 stack.getTagCompound().setBoolean("checked", true);
             } else {
                 stack.getTagCompound().setBoolean("checked", false);
             }
+
         }
     }
 }

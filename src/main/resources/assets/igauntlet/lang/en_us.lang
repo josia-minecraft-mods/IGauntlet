@@ -46,6 +46,7 @@ gauntlet.snap.cantsnap.cooldown=The cooldown hasn't passed yet!
 gauntlet.snap.cantsnap.disabled=Snap is disabled in config!
 gui.gauntlet.stone.notadded =This stone hasn't been added yet! Stone :
 gauntlet.selected.null=You haven't selected a stone yet!
+stones.power.spaired= You have been spaired!
 
  //Config
  igauntlet.config.updatechecker=Update Checker
