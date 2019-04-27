@@ -6,12 +6,14 @@ import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityHanging;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.item.ItemHangingEntity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
@@ -62,16 +64,19 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
                 if (result.entityHit instanceof EntityLiving) {
                     if (result.entityHit.getIsInvulnerable()) return;
 
-                    if (result.entityHit instanceof EntityEnderman || result.entityHit instanceof EntityDragon) {
-                        result.entityHit.setDead();
+                    if (!(result.entityHit instanceof EntityHanging)) {
+
+                        if (result.entityHit instanceof EntityEnderman || result.entityHit instanceof EntityDragon) {
+                            result.entityHit.setDead();
+                        }
+
+
+                        Block blk = InfinityBlocks.ash_pile;
+                        BlockPos pos0 = new BlockPos(result.entityHit.posX, result.entityHit.posY, result.entityHit.posZ);
+                        IBlockState state0 = blk.getDefaultState();
+                        world.setBlockState(pos0, state0);
+                        GemPower.WriteAsh(pos0, world, entity);
                     }
-
-
-                    Block blk = InfinityBlocks.ash_pile;
-                    BlockPos pos0 = new BlockPos(result.entityHit.posX, result.entityHit.posY, result.entityHit.posZ);
-                    IBlockState state0 = blk.getDefaultState();
-                    world.setBlockState(pos0, state0);
-                    GemPower.WriteAsh(pos0, world, entity);
                 }
             }
             result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), damage);

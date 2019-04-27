@@ -6,9 +6,9 @@
     "version": "3.5",
     "mcversion": "1.12.2",
     "url": " https://discord.gg/aqf25uP ",
-    "updateUrl": "",
-    "authorList": ["rootheworld,Josia50,UKMinecrafted"],
-    "credits": "&2JMTeam",
+    "updateUrl": "https://minecraft.curseforge.com/projects/igauntlet",
+    "authorList": ["rootheworld,Josia50,UKMinecrafted",Ben1Ben1],
+    "credits": "§2JMTeam",
     "logoFile": "gauntlet.png",
     "screenshots": [],
     "dependencies": ["Forge 1.12.2"]
