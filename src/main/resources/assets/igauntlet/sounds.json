@@ -4,7 +4,7 @@
     "subtitle": "sound.gauntlet",
     "sounds": [
       {
-        "name": "igauntlet:gauntlethum",
+        "name": "igauntlet:gauntlet/gauntlethum",
         "stream": false
       }
     ]
@@ -14,7 +14,7 @@
   "subtitle": "sound.snap",
   "sounds": [
     {
-      "name": "igauntlet:snap",
+      "name": "igauntlet:gauntlet/snap/snap",
       "stream": false
     }
   ]
@@ -34,7 +34,7 @@
     "subtitle": "sound.nofeelgood",
     "sounds": [
       {
-        "name": "igauntlet:nofeelgood",
+        "name": "igauntlet:gauntlet/snap/nofeelgood",
         "stream": true
       }
     ]
