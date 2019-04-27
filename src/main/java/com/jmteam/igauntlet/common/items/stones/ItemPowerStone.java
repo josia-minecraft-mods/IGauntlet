@@ -34,14 +34,11 @@ public class ItemPowerStone extends Item {
             NBTTagCompound nbtTagCompound = new NBTTagCompound();
             stack.getTagCompound().setBoolean("checked", false);
             stack.setTagCompound(nbtTagCompound);
-
-            System.out.println(nbtTagCompound.getBoolean("checked"));
         } else {
             if (isSelected) {
                 if (!stack.getTagCompound().getBoolean("checked")) {
                     if (!(randomn == 3)) {
                         PlayerHelper.sendMessageClient(player, "stones.power.spaired", true);
-                        System.out.println(stack.getTagCompound().getBoolean("checked"));
                     } else {
                         player.attackEntityFrom(ISource.MAGIC, player.getHealth());
                     }
