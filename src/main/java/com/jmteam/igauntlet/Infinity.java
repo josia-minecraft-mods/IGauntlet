@@ -16,7 +16,6 @@ import org.apache.logging.log4j.Logger;
 public class Infinity {
 
     //TODO Rewrite the whole mod when the mod is fully released. Easier for debugging and stuff later
-    //TODO New Registries and stuff , Moving away from the tutorials aka learning process.
 
     @Mod.Instance
     public static Infinity instance;
