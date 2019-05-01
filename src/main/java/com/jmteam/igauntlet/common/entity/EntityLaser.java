@@ -52,7 +52,6 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
             if (result.entityHit == this.thrower) return;
             Entity entity =  result.entityHit;
 
-
             if (result.entityHit instanceof EntityPlayer) {
                 if (!((EntityPlayer) result.entityHit).capabilities.isCreativeMode) {
                     Block blk = InfinityBlocks.ash_pile;
