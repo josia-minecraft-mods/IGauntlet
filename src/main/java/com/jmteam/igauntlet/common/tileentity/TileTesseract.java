@@ -3,6 +3,7 @@ package com.jmteam.igauntlet.common.tileentity;
 import com.jmteam.igauntlet.common.items.InfinityItems;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -22,8 +23,7 @@ public class TileTesseract extends TileEntity {
     public void RemoveStone(EntityPlayer player) {
         if (stone == 1) {
             world.spawnEntity(new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, new ItemStack(InfinityItems.space_stone)));
-            stone = 0;
-
+            stone = 0; world.setBlockState(pos, Blocks.AIR.getDefaultState());
         }
     }
 

@@ -70,7 +70,6 @@ public class BlockTesseract extends Block implements IHaveItem, ITileEntityProvi
                     }
                 }
                 tess.RemoveStone(playerIn);
-                worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());
             }
         }
         return true;
