@@ -41,9 +41,7 @@ public class TileAshPile extends TileEntity implements ITickable {
     @Override
     public void update() {
         tick++;
-
-        if(tick == 1200) {
+        if(tick == 1200)
             world.setBlockState(pos, Blocks.AIR.getDefaultState());
-        }
     }
 }
