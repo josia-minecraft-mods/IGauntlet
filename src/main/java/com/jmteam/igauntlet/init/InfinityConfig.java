@@ -85,7 +85,7 @@ public class InfinityConfig {
         @Config.Comment("Enable Text on Gantlet GUI")
         public boolean GuiText = true;
 
-        @Config.Comment("Shift + left Click to kill Entities in range")
+        @Config.Comment("Kill 50% of the entities in rznge!")
         @Config.LangKey("igauntlet.config.snap")
         public boolean Snap = true;
 

@@ -1,7 +1,7 @@
 package com.jmteam.igauntlet.world.dimension.dwarf;
 
-import com.jmteam.igauntlet.init.InfinityBiomes;
-import com.jmteam.igauntlet.init.InfinityDimensions;
+import com.jmteam.igauntlet.world.InfinityBiomes;
+import com.jmteam.igauntlet.world.InfinityDimensions;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.BiomeProvider;
