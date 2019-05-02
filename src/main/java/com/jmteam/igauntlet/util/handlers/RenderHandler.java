@@ -6,6 +6,7 @@ import com.jmteam.igauntlet.client.render.RenderSquirrelGirl;
 import com.jmteam.igauntlet.common.entity.EntityLaser;
 import com.jmteam.igauntlet.common.entity.EntityPortal;
 import com.jmteam.igauntlet.common.entity.EntitySquirrelGirl;
+import net.minecraft.client.renderer.entity.RenderPlayer;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public class RenderHandler {

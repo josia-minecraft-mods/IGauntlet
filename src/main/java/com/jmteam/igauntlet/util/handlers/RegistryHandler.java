@@ -34,7 +34,7 @@ public class RegistryHandler {
     @SubscribeEvent
     public static void onModelRegister(ModelRegistryEvent event) {
         InfinityItems.registerRenders();
-        for(Block block : InfinityBlocks.BLOCKS) {
+        for (Block block : InfinityBlocks.BLOCKS) {
             ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(block.getRegistryName(), "normal"));
         }
     }
@@ -50,9 +50,7 @@ public class RegistryHandler {
 
 
     public static void postInitRegistries(FMLPostInitializationEvent event) {
-
     }
-
 
     public static void OtherRegistries() {
         GameRegistry.registerWorldGenerator(new ModWorldGen(), 3);
@@ -69,7 +67,6 @@ public class RegistryHandler {
         reg.registerAll(EntityEntries.LASER, EntityEntries.PORTAL, EntityEntries.SQUIRREL_GIRL);
     }
 
-    // Entities
     @GameRegistry.ObjectHolder(Infinity.MODID)
     public static class EntityEntries {
         public static final EntityEntry LASER = EntityEntryBuilder.create().entity(EntityLaser.class).id(new ResourceLocation(Infinity.MODID, "ray"), 0).name("ray").tracker(80, 3, true).build();
