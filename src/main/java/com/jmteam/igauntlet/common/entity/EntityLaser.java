@@ -2,6 +2,7 @@ package com.jmteam.igauntlet.common.entity;
 
 import com.jmteam.igauntlet.common.blocks.InfinityBlocks;
 import com.jmteam.igauntlet.common.function.gems.GemPower;
+import com.jmteam.igauntlet.util.helpers.GauntletHelper;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -50,7 +51,7 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
 
         if (result.typeOfHit == Type.ENTITY) {
             if (result.entityHit == this.thrower) return;
-            Entity entity =  result.entityHit;
+            Entity entity = result.entityHit;
 
             if (result.entityHit instanceof EntityPlayer) {
                 if (!((EntityPlayer) result.entityHit).capabilities.isCreativeMode) {
@@ -64,17 +65,12 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
                     if (result.entityHit.getIsInvulnerable()) return;
 
                     if (!(result.entityHit instanceof EntityHanging)) {
-
                         if (result.entityHit instanceof EntityEnderman || result.entityHit instanceof EntityDragon) {
                             result.entityHit.setDead();
                         }
 
-
-                        Block blk = InfinityBlocks.ash_pile;
                         BlockPos pos0 = new BlockPos(result.entityHit.posX, result.entityHit.posY, result.entityHit.posZ);
-                        IBlockState state0 = blk.getDefaultState();
-                        world.setBlockState(pos0, state0);
-                        GemPower.WriteAsh(pos0, world, entity);
+                        GauntletHelper.makeAshPile(world, pos0, entity);
                     }
                 }
             }

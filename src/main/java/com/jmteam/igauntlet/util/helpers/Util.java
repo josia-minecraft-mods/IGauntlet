@@ -109,7 +109,6 @@ public class Util {
             bb.pos(-width, -height, -d).endVertex();
             tessellator.draw();
         }
-
         GlStateManager.popMatrix();
     }
 

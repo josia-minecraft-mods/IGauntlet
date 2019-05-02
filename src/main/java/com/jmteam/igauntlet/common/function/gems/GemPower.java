@@ -20,14 +20,6 @@ public class GemPower {
         }
         GauntletHelper.ShootLaser(entityplayer, worldIn, 100, 1,0 ,5);
     }
-
-    public static void WriteAsh(BlockPos pos, World world, Entity entity) {
-        TileEntity ash_te = world.getTileEntity(pos);
-        if (ash_te != null && ash_te instanceof TileAshPile) {
-            TileAshPile ash_te_f = (TileAshPile) ash_te;
-            ash_te_f.setEntity(entity);
-        }
-    }
 }
 
 
