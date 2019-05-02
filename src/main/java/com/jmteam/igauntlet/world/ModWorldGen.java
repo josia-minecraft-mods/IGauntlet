@@ -13,6 +13,8 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 
 import java.util.Random;
 
+import static com.jmteam.igauntlet.world.InfinityDimensions.DWARFID;
+
 
 public class ModWorldGen implements IWorldGenerator {
     private WorldGenerator uru_ore;
@@ -24,20 +26,8 @@ public class ModWorldGen implements IWorldGenerator {
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-        switch (world.provider.getDimension()) {
-            case -1:
-                break;
-
-            case 0:
-
-                break;
-
-            case 1:
-                break;
-
-            case 20:
-                runGenerator(uru_ore, world, random, chunkX, chunkZ, 20, 20, 60);
-                break;
+        if(world.provider.getDimension() == DWARFID) {
+            runGenerator(uru_ore, world, random, chunkX, chunkZ, 20, 20, 60);
         }
     }
 

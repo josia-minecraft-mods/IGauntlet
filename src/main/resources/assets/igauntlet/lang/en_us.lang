@@ -59,6 +59,7 @@ igauntlet.config.rangeteleportmaximum=Maximum Drift Range
 igauntlet.config.extensionrange=Extension Range
 igauntlet.config.cooldown=Cooldown
 igauntlet.config.snap=Snap
+igauntlet.config.customids=CustomDimensionID
 igauntlet.config.snap.playerkill=SnapPlayerKill
 igauntlet.config.dwarfid=Dwarf Dimension ID
 igauntlet.config.time.freezerange=Freeze Range

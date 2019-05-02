@@ -105,6 +105,11 @@ public class InfinityConfig {
     }
 
     public static class Dimensions {
+
+        @Config.LangKey("igauntlet.config.customids")
+        @Config.Comment("Should the mod use the custom dimension id's from config")
+        public boolean CustomDimensionID = false;
+
         @Config.LangKey("igauntlet.config.dwarfid")
         @Config.Comment("Change the id for the Dwarf Dimension")
         public int DwarfDimensionID = 20;
