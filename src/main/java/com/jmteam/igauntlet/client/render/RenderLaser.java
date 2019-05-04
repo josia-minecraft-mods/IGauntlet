@@ -1,7 +1,7 @@
 package com.jmteam.igauntlet.client.render;
 
 import com.jmteam.igauntlet.common.entity.EntityLaser;
-import com.jmteam.igauntlet.util.helpers.Util;
+import com.jmteam.igauntlet.util.helpers.RenderUtil;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -23,7 +23,7 @@ public class RenderLaser extends Render<EntityLaser> {
     @Override
     public void doRender(EntityLaser entity, double x, double y, double z, float entityYaw, float partialTicks) {
 
-        Util.setupRenderLightning();
+        RenderUtil.setupRenderLightning();
         GlStateManager.translate(x, y, z);
 
         Vec3d vec1 = new Vec3d(entity.lastTickPosX, entity.lastTickPosY, entity.lastTickPosZ);
@@ -43,8 +43,8 @@ public class RenderLaser extends Render<EntityLaser> {
 
         GlStateManager.rotate(-yaw, 0.0F, 1.0F, 0.0F);
         GlStateManager.rotate(pitch, 1.0F, 0.0F, 0.0F);
-        Util.drawGlowingLine(Vec3d.ZERO, new Vec3d(0, 0, 1), 0.5F, entity.color);
-        Util.finishRenderLightning();
+        RenderUtil.drawGlowingLine(Vec3d.ZERO, new Vec3d(0, 0, 1), 0.5F, entity.color);
+        RenderUtil.finishRenderLightning();
     }
 
     @Override

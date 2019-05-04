@@ -20,7 +20,6 @@ public class InfinityBiomes {
         ForgeRegistries.BIOMES.register(biome);
         BiomeDictionary.addTypes(biome, types);
         BiomeManager.addBiome(biomeType, new BiomeEntry(biome, 10));
-
         return biome;
     }
 }

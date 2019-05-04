@@ -1,6 +1,6 @@
 package com.jmteam.igauntlet;
 
-import com.jmteam.igauntlet.init.InfinityRecipes;
+import com.jmteam.igauntlet.util.InfinityRecipes;
 import com.jmteam.igauntlet.network.NetworkHandler;
 import com.jmteam.igauntlet.proxy.IProxy;
 import com.jmteam.igauntlet.util.handlers.RegistryHandler;

@@ -1,4 +1,4 @@
-package com.jmteam.igauntlet.init;
+package com.jmteam.igauntlet.util;
 
 import com.jmteam.igauntlet.common.blocks.InfinityBlocks;
 import com.jmteam.igauntlet.common.items.InfinityItems;

@@ -1,6 +1,6 @@
 package com.jmteam.igauntlet.common.tileentity;
 
-import com.jmteam.igauntlet.init.InfinityConfig;
+import com.jmteam.igauntlet.util.InfinityConfig;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;

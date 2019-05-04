@@ -12,7 +12,7 @@ import org.lwjgl.opengl.GL11;
 
 import static net.minecraft.client.renderer.OpenGlHelper.*;
 
-public class Util {
+public class RenderUtil {
     public static void setupRenderLightning() {
         GlStateManager.pushMatrix();
         GlStateManager.disableTexture2D();

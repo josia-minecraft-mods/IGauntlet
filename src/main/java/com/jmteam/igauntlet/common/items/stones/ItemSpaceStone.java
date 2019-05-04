@@ -1,6 +1,6 @@
 package com.jmteam.igauntlet.common.items.stones;
 
-import com.jmteam.igauntlet.init.InfinityConfig;
+import com.jmteam.igauntlet.util.InfinityConfig;
 import com.jmteam.igauntlet.network.NetworkHandler;
 import com.jmteam.igauntlet.network.packets.MessageSpace;
 import com.jmteam.igauntlet.tabs.InfinityTabs;

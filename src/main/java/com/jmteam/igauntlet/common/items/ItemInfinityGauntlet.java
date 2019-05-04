@@ -2,7 +2,7 @@ package com.jmteam.igauntlet.common.items;
 
 import com.jmteam.igauntlet.client.gui.GuiGauntlet;
 import com.jmteam.igauntlet.common.function.gems.*;
-import com.jmteam.igauntlet.init.InfinityConfig;
+import com.jmteam.igauntlet.util.InfinityConfig;
 import com.jmteam.igauntlet.tabs.InfinityTabs;
 import com.jmteam.igauntlet.util.helpers.GemHelper;
 import com.jmteam.igauntlet.util.helpers.PlayerHelper;

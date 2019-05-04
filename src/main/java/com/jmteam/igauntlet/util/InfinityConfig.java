@@ -1,4 +1,4 @@
-package com.jmteam.igauntlet.init;
+package com.jmteam.igauntlet.util;
 
 import com.jmteam.igauntlet.Infinity;
 import net.minecraftforge.common.config.Config;

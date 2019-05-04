@@ -2,7 +2,7 @@ package com.jmteam.igauntlet.util.handlers;
 
 import com.jmteam.igauntlet.Infinity;
 import com.jmteam.igauntlet.common.items.InfinityItems;
-import com.jmteam.igauntlet.init.InfinityConfig;
+import com.jmteam.igauntlet.util.InfinityConfig;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;

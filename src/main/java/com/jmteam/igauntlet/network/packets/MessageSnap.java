@@ -2,13 +2,12 @@ package com.jmteam.igauntlet.network.packets;
 
 import com.jmteam.igauntlet.common.damage.IDamageSource;
 import com.jmteam.igauntlet.common.items.InfinityItems;
-import com.jmteam.igauntlet.init.InfinityConfig;
+import com.jmteam.igauntlet.util.InfinityConfig;
 import com.jmteam.igauntlet.util.handlers.SoundsHandler;
 import com.jmteam.igauntlet.util.helpers.GauntletHelper;
 import com.jmteam.igauntlet.util.helpers.PlayerHelper;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.SoundCategory;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;

@@ -1,6 +1,6 @@
 package com.jmteam.igauntlet.world;
 
-import com.jmteam.igauntlet.init.InfinityConfig;
+import com.jmteam.igauntlet.util.InfinityConfig;
 import com.jmteam.igauntlet.world.dimension.dwarf.WorldProviderDwarf;
 import net.minecraft.world.DimensionType;
 import net.minecraftforge.common.DimensionManager;
