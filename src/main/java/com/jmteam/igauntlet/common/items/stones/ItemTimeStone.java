@@ -31,7 +31,6 @@ public class ItemTimeStone extends Item {
                 EntityHelper.AttackBySource(entityIn, IDamageSource.HOLDING, 0.001F);
             if (time == 201)
                 time = 0;
-            System.out.println(time);
         }
     }
 }
