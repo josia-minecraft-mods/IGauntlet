@@ -32,14 +32,14 @@ public class GemTime {
     }
 
 
-    public static void FreezeTime(EntityPlayer player, World world, int freeze, int extensionrange) {
+    public static void FreezeTime(EntityPlayer player, World world, boolean freeze, int extensionrange) {
         FreezeEntities(player, freeze, extensionrange);
         FreezeThrowable(player, freeze, extensionrange);
     }
 
-    public static void FreezeEntities(EntityPlayer player, int freeze, int extensionrange) {
+    public static void FreezeEntities(EntityPlayer player, boolean freeze, int extensionrange) {
         for (EntityLiving entity : player.world.getEntitiesWithinAABB(EntityLiving.class, player.getEntityBoundingBox().grow(extensionrange, extensionrange, extensionrange))) {
-            if (freeze == 1) {
+            if (freeze) {
                 entity.setNoAI(true);
                 entity.setEntityInvulnerable(true);
             } else {
@@ -47,17 +47,17 @@ public class GemTime {
                 entity.setEntityInvulnerable(false);
             }
         }
-        if (freeze == 1) {
+        if (freeze) {
             PlayerHelper.sendMessage(player, "stones.time.frozen", true);
         } else {
             PlayerHelper.sendMessage(player, "stones.time.unfrozen", true);
         }
     }
 
-    public static void FreezeThrowable(EntityPlayer player, int freeze, int extensionrange) {
+    public static void FreezeThrowable(EntityPlayer player, boolean freeze, int extensionrange) {
         for (Entity entity : player.world.getEntitiesWithinAABB(Entity.class, player.getEntityBoundingBox().grow(extensionrange, extensionrange, extensionrange))) {
             if (entity instanceof IProjectile) {
-                if (freeze == 1) {
+                if (freeze) {
                     entity.setNoGravity(true);
                     entity.setVelocity(0, 0, 0);
                 } else {

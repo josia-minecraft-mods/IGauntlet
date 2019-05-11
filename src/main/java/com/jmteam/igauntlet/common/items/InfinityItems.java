@@ -34,17 +34,9 @@ public class InfinityItems {
     public static Item necklace = registerItem(new ItemEyeOfAgamotto("eye_agamotto"), true);
 
     public static void registerRenders() {
-        registerRender(infinity_gauntlet);
-        registerRender(mixtape);
-        registerRender(uru_ingot);
-        registerRender(mind_stone);
-        registerRender(reality_stone);
-        registerRender(time_stone);
-        registerRender(space_stone);
-        registerRender(power_stone);
-        registerRender(soul_stone);
-        registerRender(dwarf_hammer);
-        registerRender(necklace);
+        for(Item item : ITEMS) {
+            registerRender(item);
+        }
     }
 
     public static Item registerItem(Item item, boolean tab) {

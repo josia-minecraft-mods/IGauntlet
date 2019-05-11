@@ -46,7 +46,6 @@ public class ItemInfinityGauntlet extends Item {
     int POWER = 5;
     int MIND = 6;
 
-    int snapcooldown = 0;
     boolean TimeOn = InfinityConfig.AllowedGems.TimeStone;
     boolean SpaceOn = InfinityConfig.AllowedGems.SpaceStone;
     boolean RealityOn = InfinityConfig.AllowedGems.RealityStone;
@@ -121,12 +120,12 @@ public class ItemInfinityGauntlet extends Item {
             if (TimeOn && current == TIME && !worldIn.isRemote) {
 
                 if (!playerIn.isSneaking()) {
-                    if (stack.getTagCompound().getInteger("freeze") == 0) {
-                        stack.getTagCompound().setInteger("freeze", 1);
+                    if (!stack.getTagCompound().getBoolean("freeze")) {
+                        stack.getTagCompound().setBoolean("freeze", true);
                     } else {
-                        stack.getTagCompound().setInteger("freeze", 0);
+                        stack.getTagCompound().setBoolean("freeze", false);
                     }
-                    GemTime.FreezeTime(playerIn, worldIn, stack.getTagCompound().getInteger("freeze"), InfinityConfig.Gauntlet.TimeStone.FreezeRange);
+                    GemTime.FreezeTime(playerIn, worldIn, stack.getTagCompound().getBoolean("freeze"), InfinityConfig.Gauntlet.TimeStone.FreezeRange);
                 } /*else {
                     for (BlockPos b : BlockPos.getAllInBox((int) playerIn.posX - 20, (int) playerIn.posY - 10, (int) playerIn.posZ - 20, (int) playerIn.posX + 20, (int) playerIn.posY + 10, (int) playerIn.posZ + 20)) {
                         GemTime.ReviveAsh(b, worldIn);
