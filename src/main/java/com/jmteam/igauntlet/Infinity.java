@@ -1,9 +1,13 @@
 package com.jmteam.igauntlet;
 
+import com.jmteam.igauntlet.common.capability.CapInfinityStorage;
+import com.jmteam.igauntlet.common.capability.CapabilityInfinity;
+import com.jmteam.igauntlet.common.capability.IInfinityCap;
 import com.jmteam.igauntlet.util.InfinityRecipes;
 import com.jmteam.igauntlet.network.NetworkHandler;
 import com.jmteam.igauntlet.proxy.IProxy;
 import com.jmteam.igauntlet.util.handlers.RegistryHandler;
+import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -34,6 +38,7 @@ public class Infinity {
         proxy.preInit(event);
         RegistryHandler.OtherRegistries();
         NetworkHandler.init();
+        CapabilityManager.INSTANCE.register(IInfinityCap.class, new CapInfinityStorage(), CapabilityInfinity::new);
         RegistryHandler.preInitRegistries(event);
     }
 
