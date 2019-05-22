@@ -20,6 +20,8 @@ import javax.annotation.Nonnull;
 public class CapabilityInfinity implements IInfinityCap {
 
     private EntityPlayer player;
+    private int possesionentity;
+    private boolean isPosessing = false;
 
 
     public CapabilityInfinity() {}
@@ -40,13 +42,37 @@ public class CapabilityInfinity implements IInfinityCap {
     }
 
     @Override
+    public void setPosessing(boolean posessing) {
+        this.isPosessing = posessing;
+    }
+
+    @Override
+    public boolean isPosessing() {
+        return isPosessing;
+    }
+
+    @Override
+    public void setPosessedEntity(Entity posessedEntity) {
+        this.possesionentity = posessedEntity.getEntityId();
+    }
+
+    @Override
+    public Entity getPosessedEntity() {
+        return player.world.getEntityByID(possesionentity);
+    }
+
+    @Override
     public NBTTagCompound serializeNBT() {
-        return null;
+        NBTTagCompound nbt = new NBTTagCompound();
+        nbt.setInteger("posses_entity", possesionentity);
+        nbt.setBoolean("is_posessing", isPosessing);
+        return nbt;
     }
 
     @Override
     public void deserializeNBT(NBTTagCompound nbt) {
-
+        possesionentity = nbt.getInteger("posses_entity");
+        isPosessing = nbt.getBoolean("is_posessing");
     }
 
     @Mod.EventBusSubscriber(modid = Infinity.MODID)

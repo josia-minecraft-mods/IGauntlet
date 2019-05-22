@@ -160,6 +160,12 @@ public class ItemInfinityGauntlet extends Item {
         return true;
     }
 
+    @Override
+    public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
+
+        return super.itemInteractionForEntity(stack, playerIn, target, hand);
+    }
+
     @SideOnly(Side.CLIENT)
     public void OpenInfinityGui() {
         Minecraft.getMinecraft().displayGuiScreen(new GuiGauntlet());
