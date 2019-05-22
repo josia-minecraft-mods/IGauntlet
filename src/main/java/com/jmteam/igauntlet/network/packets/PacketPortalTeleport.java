@@ -7,14 +7,14 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
-public class MessagePortalTeleport implements IMessage {
+public class PacketPortalTeleport implements IMessage {
 
     public BlockPos pos;
 
-    public MessagePortalTeleport() {
+    public PacketPortalTeleport() {
     }
 
-    public MessagePortalTeleport(BlockPos pos) {
+    public PacketPortalTeleport(BlockPos pos) {
         this.pos = pos;
     }
 
@@ -28,10 +28,10 @@ public class MessagePortalTeleport implements IMessage {
         buf.writeLong(pos.toLong());
     }
 
-    public static class Handler implements IMessageHandler<MessagePortalTeleport, IMessage> {
+    public static class Handler implements IMessageHandler<PacketPortalTeleport, IMessage> {
 
         @Override
-        public IMessage onMessage(MessagePortalTeleport message, MessageContext ctx) {
+        public IMessage onMessage(PacketPortalTeleport message, MessageContext ctx) {
             ctx.getServerHandler().player.getServerWorld().addScheduledTask(() -> {
                 WorldServer world = ctx.getServerHandler().player.getServerWorld();
                 BlockPos pos = world.getTopSolidOrLiquidBlock(message.pos);

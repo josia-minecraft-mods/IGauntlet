@@ -1,7 +1,7 @@
 package com.jmteam.igauntlet.common.entity;
 
 import com.jmteam.igauntlet.network.NetworkHandler;
-import com.jmteam.igauntlet.network.packets.MessagePortalTeleport;
+import com.jmteam.igauntlet.network.packets.PacketPortalTeleport;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWanderAvoidWater;
@@ -37,7 +37,7 @@ public class EntityPortal extends EntityCow {
         int z = this.getEntityData().getInteger("z");
         if(!this.getEntityData().getBoolean("isinit")) return;
         BlockPos pos = new BlockPos(x,y,z);
-        NetworkHandler.NETWORK.sendToServer(new MessagePortalTeleport(pos));
+        NetworkHandler.NETWORK.sendToServer(new PacketPortalTeleport(pos));
         this.setDead();
     }
 

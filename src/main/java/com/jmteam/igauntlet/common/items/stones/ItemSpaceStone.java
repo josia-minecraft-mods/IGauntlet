@@ -2,7 +2,7 @@ package com.jmteam.igauntlet.common.items.stones;
 
 import com.jmteam.igauntlet.util.InfinityConfig;
 import com.jmteam.igauntlet.network.NetworkHandler;
-import com.jmteam.igauntlet.network.packets.MessageSpace;
+import com.jmteam.igauntlet.network.packets.PacketSpace;
 import com.jmteam.igauntlet.tabs.InfinityTabs;
 import com.jmteam.igauntlet.util.helpers.PlayerHelper;
 import net.minecraft.entity.Entity;
@@ -54,7 +54,7 @@ public class ItemSpaceStone extends Item {
                 int random = (int) (Math.random() * max + min);
                 BlockPos pos1 = new BlockPos(random, random, random);
                 BlockPos pos2 = worldIn.getTopSolidOrLiquidBlock(pos1);
-                NetworkHandler.NETWORK.sendToServer(new MessageSpace(pos2, player.getEntityId()));
+                NetworkHandler.NETWORK.sendToServer(new PacketSpace(pos2, player.getEntityId()));
             }
         }
     }

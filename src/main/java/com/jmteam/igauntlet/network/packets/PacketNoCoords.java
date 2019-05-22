@@ -8,15 +8,15 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 
-public class MessageNoCoords implements IMessage {
+public class PacketNoCoords implements IMessage {
 
     public static boolean statusbar;
 
 
-    public MessageNoCoords() {
+    public PacketNoCoords() {
     }
 
-    public MessageNoCoords(boolean statusbar) {
+    public PacketNoCoords(boolean statusbar) {
         this.statusbar = statusbar;
     }
 
@@ -28,10 +28,10 @@ public class MessageNoCoords implements IMessage {
         buf.writeBoolean(this.statusbar);
     }
 
-    public static class Handler implements IMessageHandler<MessageNoCoords, IMessage> {
+    public static class Handler implements IMessageHandler<PacketNoCoords, IMessage> {
 
         @Override
-        public IMessage onMessage(MessageNoCoords message, MessageContext ctx) {
+        public IMessage onMessage(PacketNoCoords message, MessageContext ctx) {
             ctx.getServerHandler().player.getServerWorld().addScheduledTask(() -> {
                 EntityPlayer player = ctx.getServerHandler().player;
                 player.sendStatusMessage(new TextComponentString("You didn't define any coordinates!"), statusbar);

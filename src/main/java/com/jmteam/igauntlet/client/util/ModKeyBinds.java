@@ -2,7 +2,7 @@ package com.jmteam.igauntlet.client.util;
 
 import com.jmteam.igauntlet.Infinity;
 import com.jmteam.igauntlet.network.NetworkHandler;
-import com.jmteam.igauntlet.network.packets.MessageSnap;
+import com.jmteam.igauntlet.network.packets.PacketSnap;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.client.event.InputUpdateEvent;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -25,7 +25,7 @@ public class ModKeyBinds {
     public static void onClientTick(InputUpdateEvent e) {
 
         if (ModKeyBinds.SNAP.isPressed()) {
-            NetworkHandler.NETWORK.sendToServer(new MessageSnap());
+            NetworkHandler.NETWORK.sendToServer(new PacketSnap());
         }
     }
 }

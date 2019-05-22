@@ -7,15 +7,15 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
-public class MessageSpace implements IMessage {
+public class PacketSpace implements IMessage {
 
     public BlockPos pos;
     public int id;
 
-    public MessageSpace() {
+    public PacketSpace() {
     }
 
-    public MessageSpace(BlockPos pos, int id) {
+    public PacketSpace(BlockPos pos, int id) {
         this.pos = pos;
         this.id = id;
     }
@@ -32,10 +32,10 @@ public class MessageSpace implements IMessage {
         buf.writeInt(this.id);
     }
 
-    public static class Handler implements IMessageHandler<MessageSpace, IMessage> {
+    public static class Handler implements IMessageHandler<PacketSpace, IMessage> {
 
         @Override
-        public IMessage onMessage(MessageSpace message, MessageContext ctx) {
+        public IMessage onMessage(PacketSpace message, MessageContext ctx) {
             ctx.getServerHandler().player.getServerWorld().addScheduledTask(() -> {
                 WorldServer world = ctx.getServerHandler().player.getServerWorld();
                 BlockPos pos = world.getTopSolidOrLiquidBlock(message.pos);

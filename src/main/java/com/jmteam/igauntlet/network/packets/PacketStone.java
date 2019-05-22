@@ -10,14 +10,14 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 
-public class MessageStone implements IMessage {
+public class PacketStone implements IMessage {
 
     public static int stone;
 
-    public MessageStone() {
+    public PacketStone() {
     }
 
-    public MessageStone(int stone) {
+    public PacketStone(int stone) {
         this.stone = stone;
     }
 
@@ -29,10 +29,10 @@ public class MessageStone implements IMessage {
         buf.writeInt(this.stone);
     }
 
-    public static class Handler implements IMessageHandler<MessageStone, IMessage> {
+    public static class Handler implements IMessageHandler<PacketStone, IMessage> {
 
         @Override
-        public IMessage onMessage(MessageStone message, MessageContext ctx) {
+        public IMessage onMessage(PacketStone message, MessageContext ctx) {
             ctx.getServerHandler().player.getServerWorld().addScheduledTask(() -> {
                 EntityPlayerMP player = ctx.getServerHandler().player;
                 ItemStack stack = player.getActiveItemStack();

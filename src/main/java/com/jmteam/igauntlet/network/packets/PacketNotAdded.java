@@ -8,16 +8,16 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 
-public class MessageNotAdded implements IMessage {
+public class PacketNotAdded implements IMessage {
 
     public static int stone;
     public static int button;
 
 
-    public MessageNotAdded() {
+    public PacketNotAdded() {
     }
 
-    public MessageNotAdded(int stone, int button) {
+    public PacketNotAdded(int stone, int button) {
         this.stone = stone;
         this.button = button;
     }
@@ -32,10 +32,10 @@ public class MessageNotAdded implements IMessage {
         buf.writeInt(this.button);
     }
 
-    public static class Handler implements IMessageHandler<MessageNotAdded, IMessage> {
+    public static class Handler implements IMessageHandler<PacketNotAdded, IMessage> {
 
         @Override
-        public IMessage onMessage(MessageNotAdded message, MessageContext ctx) {
+        public IMessage onMessage(PacketNotAdded message, MessageContext ctx) {
             ctx.getServerHandler().player.getServerWorld().addScheduledTask(() -> {
                 EntityPlayer player = ctx.getServerHandler().player;
                 player.sendStatusMessage(new TextComponentString("This stone hasn't been added yet! Stone : " + button), true);

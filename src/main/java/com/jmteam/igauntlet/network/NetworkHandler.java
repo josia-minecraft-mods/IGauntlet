@@ -9,14 +9,16 @@ import net.minecraftforge.fml.relauncher.Side;
 public class NetworkHandler {
 
     public static final SimpleNetworkWrapper NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel(Infinity.MODID);
+    private static int id = -1;
 
     public static void init() {
-        NETWORK.registerMessage(MessageStone.Handler.class, MessageStone.class, 1, Side.SERVER);
-        NETWORK.registerMessage(MessageNotAdded.Handler.class, MessageNotAdded.class, 2, Side.SERVER);
-        NETWORK.registerMessage(MessageSpace.Handler.class, MessageSpace.class, 3, Side.SERVER);
-        NETWORK.registerMessage(MessageNoCoords.Handler.class, MessageNoCoords.class, 4, Side.SERVER);
-        NETWORK.registerMessage(MessageSnap.Handler.class, MessageSnap.class, 5, Side.SERVER);
-        NETWORK.registerMessage(MessageWritePortal.Handler.class, MessageWritePortal.class, 6, Side.SERVER);
-        NETWORK.registerMessage(MessagePortalTeleport.Handler.class, MessagePortalTeleport.class, 7, Side.SERVER);
+        NETWORK.registerMessage(PacketStone.Handler.class, PacketStone.class, id++, Side.SERVER);
+        NETWORK.registerMessage(PacketNotAdded.Handler.class, PacketNotAdded.class, id++, Side.SERVER);
+        NETWORK.registerMessage(PacketSpace.Handler.class, PacketSpace.class, id++, Side.SERVER);
+        NETWORK.registerMessage(PacketNoCoords.Handler.class, PacketNoCoords.class, id++, Side.SERVER);
+        NETWORK.registerMessage(PacketSnap.Handler.class, PacketSnap.class, id++, Side.SERVER);
+        NETWORK.registerMessage(PacketWritePortal.Handler.class, PacketWritePortal.class, id++, Side.SERVER);
+        NETWORK.registerMessage(PacketPortalTeleport.Handler.class, PacketPortalTeleport.class, id++, Side.SERVER);
+        NETWORK.registerMessage(PacketCapSync.Handler.class, PacketCapSync.class, id++, Side.CLIENT);
     }
 }

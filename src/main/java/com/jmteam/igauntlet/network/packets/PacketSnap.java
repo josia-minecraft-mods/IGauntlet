@@ -18,15 +18,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class MessageSnap implements IMessage {
+public class PacketSnap implements IMessage {
 
     public static boolean snap;
     public static final List<EntityLiving> SNAPENTITY = new ArrayList<EntityLiving>();
 
-    public MessageSnap() {
+    public PacketSnap() {
     }
 
-    public MessageSnap(boolean snap) {
+    public PacketSnap(boolean snap) {
         this.snap = snap;
     }
 
@@ -38,10 +38,10 @@ public class MessageSnap implements IMessage {
         buf.writeBoolean(this.snap);
     }
 
-    public static class Handler implements IMessageHandler<MessageSnap, IMessage> {
+    public static class Handler implements IMessageHandler<PacketSnap, IMessage> {
 
         @Override
-        public IMessage onMessage(MessageSnap message, MessageContext ctx) {
+        public IMessage onMessage(PacketSnap message, MessageContext ctx) {
             ctx.getServerHandler().player.getServerWorld().addScheduledTask(() -> {
                 EntityPlayerMP playerIn = ctx.getServerHandler().player;
                 Random random = new Random();
