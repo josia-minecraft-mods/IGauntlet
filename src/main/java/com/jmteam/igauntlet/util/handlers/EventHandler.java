@@ -1,13 +1,18 @@
 package com.jmteam.igauntlet.util.handlers;
 
 import com.jmteam.igauntlet.Infinity;
+import com.jmteam.igauntlet.common.capability.CapabilityInfinity;
+import com.jmteam.igauntlet.common.capability.IInfinityCap;
 import com.jmteam.igauntlet.common.items.InfinityItems;
 import com.jmteam.igauntlet.util.InfinityConfig;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.event.ClickEvent;
 import net.minecraft.util.text.event.HoverEvent;
+import net.minecraft.world.GameType;
 import net.minecraftforge.common.ForgeVersion;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.Loader;
@@ -75,6 +80,33 @@ public class EventHandler {
                 msg.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://minecraft.curseforge.com/projects/igauntlet"));
                 msg.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentString("Open Website")));
                 player.sendMessage(msg);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void PosessEntity(LivingEvent.LivingUpdateEvent e) {
+        if(e.getEntity() instanceof EntityPlayer) {
+            EntityPlayer player = (EntityPlayer) e.getEntity();
+
+            IInfinityCap cap = CapabilityInfinity.get(player);
+
+            if(cap.isPosessing()) {
+                Entity p = cap.getPosessedEntity();
+
+                if(player.world.isRemote && !player.isSpectator())
+                player.setGameType(GameType.SPECTATOR);
+                player.setInvisible(true); // TODO Save coords so you get tp'd back before you went all goofy
+                p.motionX = player.motionX;
+                p.motionY = player.motionY;
+                p.motionZ = player.motionZ; // TODO check if it works without player in gm3
+                player.startRiding(p);
+
+            }else{
+                if(player.isSpectator()) {
+                    if(player.world.isRemote)
+                        player.setGameType(GameType.CREATIVE); // TODO Make it so you become the gamemode you were once before
+                }
             }
         }
     }

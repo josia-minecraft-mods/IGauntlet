@@ -1,6 +1,8 @@
 package com.jmteam.igauntlet.common.items;
 
 import com.jmteam.igauntlet.client.gui.GuiGauntlet;
+import com.jmteam.igauntlet.common.capability.CapabilityInfinity;
+import com.jmteam.igauntlet.common.capability.IInfinityCap;
 import com.jmteam.igauntlet.common.function.gems.*;
 import com.jmteam.igauntlet.util.InfinityConfig;
 import com.jmteam.igauntlet.tabs.InfinityTabs;
@@ -162,7 +164,14 @@ public class ItemInfinityGauntlet extends Item {
 
     @Override
     public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
+        IInfinityCap cap = CapabilityInfinity.get(playerIn);
+        int current = GemHelper.ActiveGem(stack);
 
+        if(!cap.isPosessing() && current == MIND && MindOn) {
+            System.out.println(cap.isPosessing());
+            cap.setPosessedEntity(target);
+            cap.setPosessing(true);
+        }
         return super.itemInteractionForEntity(stack, playerIn, target, hand);
     }
 
