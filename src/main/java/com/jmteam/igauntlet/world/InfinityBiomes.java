@@ -19,7 +19,7 @@ public class InfinityBiomes {
         biome.setRegistryName(name);
         ForgeRegistries.BIOMES.register(biome);
         BiomeDictionary.addTypes(biome, types);
-        BiomeManager.addBiome(biomeType, new BiomeEntry(biome, 10));
+        BiomeManager.addBiome(biomeType, new BiomeEntry(biome, 10)); // TODO Fix so it doesn't spawn in overworld!
         return biome;
     }
 }
