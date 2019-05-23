@@ -94,20 +94,23 @@ public class EventHandler {
             if(cap.isPosessing()) {
                 Entity p = cap.getPosessedEntity();
 
-                if(player.world.isRemote && !player.isSpectator())
-                player.setGameType(GameType.SPECTATOR);
-                player.setInvisible(true); // TODO Save coords so you get tp'd back before you went all goofy
+                 // TODO Save coords so you get tp'd back before you went all goofy
                 p.motionX = player.motionX;
+                p.rotationPitch = player.rotationPitch; // TODO Use Packets from client to steer the entity with keypresses
                 p.motionY = player.motionY;
-                p.motionZ = player.motionZ; // TODO check if it works without player in gm3
-                player.startRiding(p);
-
-            }else{
-                if(player.isSpectator()) {
-                    if(player.world.isRemote)
-                        player.setGameType(GameType.CREATIVE); // TODO Make it so you become the gamemode you were once before
-                }
+                p.motionZ = player.motionZ;
             }
+            }
+        }
+
+    @SubscribeEvent
+    public static void PlayerJoinWorld(PlayerEvent.PlayerLoggedOutEvent playerEvent) {
+        IInfinityCap cap = CapabilityInfinity.get(playerEvent.player);
+        if(cap.isPosessing()) {
+            cap.setPosessing(false);
+            playerEvent.player.setInvisible(false);
+            if(playerEvent.player.isRiding())
+                playerEvent.player.dismountRidingEntity();
         }
     }
 }

@@ -167,10 +167,12 @@ public class ItemInfinityGauntlet extends Item {
         IInfinityCap cap = CapabilityInfinity.get(playerIn);
         int current = GemHelper.ActiveGem(stack);
 
-        if(!cap.isPosessing() && current == MIND && MindOn) {
+        if(!cap.isPosessing() && current == SOUL && SoulOn) {
             System.out.println(cap.isPosessing());
             cap.setPosessedEntity(target);
             cap.setPosessing(true);
+            playerIn.setInvisible(true);
+            playerIn.startRiding(target);
         }
         return super.itemInteractionForEntity(stack, playerIn, target, hand);
     }
