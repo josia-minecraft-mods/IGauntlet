@@ -152,16 +152,6 @@ public class ItemInfinityGauntlet extends Item {
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
         int current = GemHelper.ActiveGem(stack);
         EntityPlayer player = (EntityPlayer) attacker;
-
-        if (current == MIND && MindOn) {
-
-            if (player.isSneaking()) {
-                if (!(target instanceof EntityPlayer))
-                    GemMind.Attack((EntityPlayer) attacker, (EntityLiving) target);
-            } else {
-                // GemMind.MakeFriendly(target);
-            }
-        }
         return true;
     }
 
@@ -175,6 +165,16 @@ public class ItemInfinityGauntlet extends Item {
             cap.setPosessing(true);
             playerIn.setEntityInvulnerable(true);
             playerIn.startRiding(target);
+        }
+
+        if (current == MIND && MindOn) {
+
+            if (playerIn.isSneaking()) {
+                if (!(target instanceof EntityPlayer))
+                    GemMind.Attack(playerIn, (EntityLiving) target);
+            } else {
+                // GemMind.MakeFriendly(target);
+            }
         }
         return super.itemInteractionForEntity(stack, playerIn, target, hand);
     }

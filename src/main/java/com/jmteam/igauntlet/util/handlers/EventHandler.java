@@ -3,13 +3,17 @@ package com.jmteam.igauntlet.util.handlers;
 import com.jmteam.igauntlet.Infinity;
 import com.jmteam.igauntlet.common.capability.CapabilityInfinity;
 import com.jmteam.igauntlet.common.capability.IInfinityCap;
+import com.jmteam.igauntlet.common.function.gems.GemSoul;
 import com.jmteam.igauntlet.common.init.InfinityItems;
 import com.jmteam.igauntlet.util.InfinityConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.EntityCreeper;
+import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
@@ -21,6 +25,8 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
+
+import java.util.Random;
 
 @Mod.EventBusSubscriber(modid = Infinity.MODID)
 public class EventHandler {
@@ -91,73 +97,7 @@ public class EventHandler {
     public static void PosessEntity(LivingEvent.LivingUpdateEvent e) {
         if (e.getEntity() instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) e.getEntity();
-            Vec3d vec = player.getLookVec();
-
-            IInfinityCap cap = CapabilityInfinity.get(player);
-
-            if (cap.isPosessing()) {
-                Entity p = cap.getPosessedEntity();
-
-                if (p instanceof EntityLiving) {
-
-                    EntityLiving l = (EntityLiving) p;
-
-                    // TODO Save coords so you get tp'd back before you went all goofy
-
-                    if (Minecraft.getMinecraft().gameSettings.keyBindForward.isKeyDown()
-                            || Minecraft.getMinecraft().gameSettings.keyBindBack.isKeyDown()
-                            || Minecraft.getMinecraft().gameSettings.keyBindJump.isKeyDown()) {
-
-                        if (Minecraft.getMinecraft().gameSettings.keyBindForward.isKeyDown() && p.onGround) {
-                            p.motionX = vec.x / 4;
-                            p.motionZ = vec.z / 4;
-                        }
-
-                        if (Minecraft.getMinecraft().gameSettings.keyBindBack.isKeyDown() && p.onGround) {
-                            p.motionX = -vec.x / 4;
-                            p.motionZ = -vec.z / 4;
-                        }
-
-
-                        // Special Functions per entity
-                        if (p instanceof EntityCreeper) {
-                            if (Minecraft.getMinecraft().gameSettings.keyBindJump.isKeyDown() && p.onGround) { // TODO Change to custom keybind
-                                p.world.createExplosion(p, p.posX, p.posY, p.posZ, 5, true);
-                                p.setDead();
-                                cap.clearPosessing();
-                            }
-                        }
-
-                    } else {
-                        p.motionX = 0;
-                        p.motionZ = 0;
-                    }
-
-                    if (Minecraft.getMinecraft().gameSettings.keyBindSneak.isKeyDown() && p.onGround) {
-                        cap.clearPosessing();
-                    }
-
-                    if (Minecraft.getMinecraft().gameSettings.keyBindJump.isKeyDown()) {
-                        if(p.onGround)
-                        p.motionY = 0.4;
-
-                        p.motionX = vec.x / 8;
-                        p.motionZ = vec.z / 8;
-                    }
-
-                    if(Minecraft.getMinecraft().gameSettings.keyBindSprint.isKeyDown()) {
-                        p.motionX = vec.x / 3;
-                        p.motionZ = vec.z / 3;
-                    }
-
-                    if(((EntityLiving) p).getHealth() <= 0) {
-                        cap.clearPosessing();
-                    }
-
-                    p.rotationYaw = player.rotationYawHead;
-                    p.rotationPitch = player.rotationPitch;
-                }
-            }
+            GemSoul.ProcessTakenSoul(player);
         }
     }
 
