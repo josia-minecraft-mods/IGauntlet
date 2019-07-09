@@ -14,6 +14,8 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
+import static com.jmteam.igauntlet.common.init.InfinityNbtKeys.CHECKED;
+
 public class ItemPowerStone extends Item {
 
     public ItemPowerStone(String name) {
@@ -35,20 +37,20 @@ public class ItemPowerStone extends Item {
         if (stack.getTagCompound() == null) {
             NBTTagCompound nbtTagCompound = new NBTTagCompound();
             stack.setTagCompound(nbtTagCompound);
-            if(!nbtTagCompound.hasKey("checked"))
-                stack.getTagCompound().setBoolean("checked", false);
+            if(!nbtTagCompound.hasKey(CHECKED))
+                stack.getTagCompound().setBoolean(CHECKED, false);
         } else {
             if (isSelected) {
-                if (!stack.getTagCompound().getBoolean("checked")) {
+                if (!stack.getTagCompound().getBoolean(CHECKED)) {
                     if (!(randomn == 3)) {
                         PlayerHelper.sendMessageClient(player, "stones.power.spaired", true);
                     } else {
                         player.attackEntityFrom(IDamageSource.POWER, player.getHealth());
                     }
                 }
-                stack.getTagCompound().setBoolean("checked", true);
+                stack.getTagCompound().setBoolean(CHECKED, true);
             } else {
-                stack.getTagCompound().setBoolean("checked", false);
+                stack.getTagCompound().setBoolean(CHECKED, false);
             }
 
         }
