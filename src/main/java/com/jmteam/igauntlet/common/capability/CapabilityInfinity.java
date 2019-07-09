@@ -73,6 +73,7 @@ public class CapabilityInfinity implements IInfinityCap {
         setPosessing(false);
         player.setEntityInvulnerable(false);
         Minecraft.getMinecraft().gameSettings.thirdPersonView = 0;
+        sync();
        // player.eyeHeight = last_eyeheight;
     }
 

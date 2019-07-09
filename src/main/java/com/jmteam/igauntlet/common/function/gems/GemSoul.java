@@ -10,6 +10,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityEnderman;
+import net.minecraft.entity.passive.EntityBat;
+import net.minecraft.entity.passive.EntityFlying;
+import net.minecraft.entity.passive.EntityParrot;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
@@ -24,6 +27,7 @@ public class GemSoul {
 
         if (cap.isPosessing()) {
             Entity p = cap.getPosessedEntity();
+
 
             if (p instanceof EntityLiving) {
                 EntityLiving l = (EntityLiving) p;
@@ -45,6 +49,7 @@ public class GemSoul {
                 || Minecraft.getMinecraft().gameSettings.keyBindBack.isKeyDown()
                 || Minecraft.getMinecraft().gameSettings.keyBindJump.isKeyDown()) {
 
+            if(!(p instanceof EntityFlying)) {
             if (Minecraft.getMinecraft().gameSettings.keyBindForward.isKeyDown() && p.onGround) {
                 p.motionX = vec.x / 4;
                 p.motionZ = vec.z / 4;
@@ -57,11 +62,19 @@ public class GemSoul {
 
             if (p.getPosition().getY() < 0) clearPosessing(player);
 
+        } else{
+                if (p instanceof EntityFlying) {
+                    p.motionX = vec.x / 4;
+                    p.motionY = vec.y / 3;
+                    p.motionZ = vec.z / 4;
+                }
+            }
 
         } else {
             p.motionX = 0;
             p.motionZ = 0;
         }
+
 
         if (Minecraft.getMinecraft().gameSettings.keyBindSneak.isKeyDown() && p.onGround) {
             clearPosessing(player);
@@ -109,7 +122,7 @@ public class GemSoul {
 
     public static void processCreeper(EntityLiving p, EntityPlayer player) {
         if (p instanceof EntityCreeper) {
-            p.world.createExplosion(p, p.posX, p.posY, p.posZ, 5, true);
+            p.world.createExplosion(p, p.posX, p.posY, p.posZ, 3, true);
             p.setDead();
             clearPosessing(player);
         }
@@ -117,6 +130,8 @@ public class GemSoul {
 
 
     public static void clearPosessing(EntityPlayer p) {
-            CapabilityInfinity.get(p).clearPosessing();
+        CapabilityInfinity.get(p).clearPosessing();
+        CapabilityInfinity.get(p).sync();
+        p.dismountRidingEntity();
     }
 }
