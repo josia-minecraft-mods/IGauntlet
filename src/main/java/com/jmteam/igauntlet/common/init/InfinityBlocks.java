@@ -1,6 +1,6 @@
-package com.jmteam.igauntlet.common.blocks;
+package com.jmteam.igauntlet.common.init;
 
-import com.jmteam.igauntlet.common.items.InfinityItems;
+import com.jmteam.igauntlet.common.blocks.*;
 import com.jmteam.igauntlet.tabs.InfinityTabs;
 import com.jmteam.igauntlet.util.helpers.IHaveItem;
 import net.minecraft.block.Block;

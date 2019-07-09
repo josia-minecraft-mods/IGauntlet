@@ -1,4 +1,4 @@
-package com.jmteam.igauntlet.client.util;
+package com.jmteam.igauntlet.util.handlers.client;
 
 import com.jmteam.igauntlet.Infinity;
 import com.jmteam.igauntlet.network.NetworkHandler;

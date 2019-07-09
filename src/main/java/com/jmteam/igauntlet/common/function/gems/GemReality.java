@@ -1,6 +1,6 @@
 package com.jmteam.igauntlet.common.function.gems;
 
-import com.jmteam.igauntlet.common.blocks.InfinityBlocks;
+import com.jmteam.igauntlet.common.init.InfinityBlocks;
 import com.jmteam.igauntlet.util.InfinityConfig;
 import net.minecraft.block.BlockSand;
 import net.minecraft.entity.Entity;

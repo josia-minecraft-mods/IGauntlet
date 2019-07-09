@@ -1,6 +1,6 @@
 package com.jmteam.igauntlet.world.dimension.dwarf;
 
-import com.jmteam.igauntlet.common.blocks.InfinityBlocks;
+import com.jmteam.igauntlet.common.init.InfinityBlocks;
 import com.jmteam.igauntlet.world.dimension.IBiomeDecorator;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;

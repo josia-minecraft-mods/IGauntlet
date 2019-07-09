@@ -1,6 +1,6 @@
 package com.jmteam.igauntlet.common.tileentity;
 
-import com.jmteam.igauntlet.common.items.InfinityItems;
+import com.jmteam.igauntlet.common.init.InfinityItems;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;

@@ -1,6 +1,6 @@
 package com.jmteam.igauntlet.world;
 
-import com.jmteam.igauntlet.common.blocks.InfinityBlocks;
+import com.jmteam.igauntlet.common.init.InfinityBlocks;
 import net.minecraft.block.state.pattern.BlockMatcher;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;

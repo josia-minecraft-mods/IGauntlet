@@ -2,11 +2,11 @@ package com.jmteam.igauntlet.util.handlers;
 
 import com.jmteam.igauntlet.Infinity;
 import com.jmteam.igauntlet.commands.DimensionTeleport;
-import com.jmteam.igauntlet.common.blocks.InfinityBlocks;
+import com.jmteam.igauntlet.common.init.InfinityBlocks;
 import com.jmteam.igauntlet.common.entity.EntityLaser;
 import com.jmteam.igauntlet.common.entity.EntityPortal;
 import com.jmteam.igauntlet.common.entity.EntitySquirrelGirl;
-import com.jmteam.igauntlet.common.items.InfinityItems;
+import com.jmteam.igauntlet.common.init.InfinityItems;
 import com.jmteam.igauntlet.world.InfinityBiomes;
 import com.jmteam.igauntlet.world.InfinityDimensions;
 import com.jmteam.igauntlet.world.ModWorldGen;

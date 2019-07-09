@@ -18,4 +18,7 @@ public interface IInfinityCap extends INBTSerializable<NBTTagCompound> {
     void setPosessedEntity(Entity posessedEntity);
 
     Entity getPosessedEntity();
+
+    void clearPosessing();
+
 }

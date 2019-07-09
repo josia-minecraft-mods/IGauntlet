@@ -6,6 +6,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
+import static com.jmteam.igauntlet.common.init.InfinityNbtKeys.CURRENTSTONE;
+
 public class GemHelper {
 
     public static void setGem(int stone) {
@@ -15,11 +17,11 @@ public class GemHelper {
     public static int ActiveGem(EntityPlayer player) {
         ItemStack stack = player.getActiveItemStack();
         NBTTagCompound nbt = stack.getTagCompound();
-        return nbt.getInteger("currentstone");
+        return nbt.getInteger(CURRENTSTONE);
     }
 
     public static int ActiveGem(ItemStack stack) {
         NBTTagCompound nbt = stack.getTagCompound();
-        return nbt.getInteger("currentstone");
+        return nbt.getInteger(CURRENTSTONE);
     }
 }

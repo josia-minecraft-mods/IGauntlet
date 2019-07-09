@@ -22,6 +22,7 @@ public class CapabilityInfinity implements IInfinityCap {
     private EntityPlayer player;
     private int possesionentity;
     private boolean isPosessing = false;
+    private float last_eyeheight = 0f;
 
 
     public CapabilityInfinity() {}
@@ -33,7 +34,9 @@ public class CapabilityInfinity implements IInfinityCap {
 
     @Override
     public void update() {
-
+        if(isPosessing()) {
+            player.setInvisible(true);
+        }
     }
 
     @Override
@@ -44,6 +47,11 @@ public class CapabilityInfinity implements IInfinityCap {
     @Override
     public void setPosessing(boolean posessing) {
         this.isPosessing = posessing;
+
+        if(posessing) {
+            this.last_eyeheight = player.getEyeHeight();
+          //  player.eyeHeight = getPosessedEntity().getEyeHeight();
+        }
     }
 
     @Override
@@ -53,6 +61,7 @@ public class CapabilityInfinity implements IInfinityCap {
 
     @Override
     public void setPosessedEntity(Entity posessedEntity) {
+        if(!isPosessing())
         this.possesionentity = posessedEntity.getEntityId();
     }
 
@@ -62,9 +71,18 @@ public class CapabilityInfinity implements IInfinityCap {
     }
 
     @Override
+    public void clearPosessing() {
+        setPosessing(false);
+        player.setInvisible(false);
+        player.setEntityInvulnerable(false);
+       // player.eyeHeight = last_eyeheight;
+    }
+
+    @Override
     public NBTTagCompound serializeNBT() {
         NBTTagCompound nbt = new NBTTagCompound();
         nbt.setInteger("posses_entity", possesionentity);
+        nbt.setFloat("last_eyeheight", last_eyeheight);
         nbt.setBoolean("is_posessing", isPosessing);
         return nbt;
     }
@@ -72,6 +90,7 @@ public class CapabilityInfinity implements IInfinityCap {
     @Override
     public void deserializeNBT(NBTTagCompound nbt) {
         possesionentity = nbt.getInteger("posses_entity");
+        last_eyeheight = nbt.getFloat("last_eyeheight");
         isPosessing = nbt.getBoolean("is_posessing");
     }
 
@@ -81,7 +100,7 @@ public class CapabilityInfinity implements IInfinityCap {
         @SubscribeEvent
         public static void attach(AttachCapabilitiesEvent<Entity> event) {
             if (event.getObject() instanceof EntityPlayer)
-                event.addCapability(new ResourceLocation(Infinity.MODID, "meta_cap"), new CapInfinityStorage.InfinityCapProvider((EntityPlayer) event.getObject()));
+                event.addCapability(new ResourceLocation(Infinity.MODID, "infinity_cap"), new CapInfinityStorage.InfinityCapProvider((EntityPlayer) event.getObject()));
         }
 
         @SubscribeEvent
@@ -107,6 +126,11 @@ public class CapabilityInfinity implements IInfinityCap {
         public static void playerTracking(PlayerEvent.StartTracking event) {
             get(event.getEntityPlayer()).sync();
         }
+
+        @SubscribeEvent
+        public static void onPlayerLeave(net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedOutEvent event) {
+            get(event.player).clearPosessing();
+        }
     }
 
 
@@ -114,6 +138,8 @@ public class CapabilityInfinity implements IInfinityCap {
     public static void onPlayerRespawn(net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerRespawnEvent event) {
         get(event.player).sync();
     }
+
+
 
     @SubscribeEvent
     public static void onPlayerChangedDimension(net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerChangedDimensionEvent event) {

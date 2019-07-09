@@ -1,14 +1,10 @@
 package com.jmteam.igauntlet.common.function.gems;
 
-import com.jmteam.igauntlet.common.items.InfinityItems;
-import com.jmteam.igauntlet.common.tileentity.TileAshPile;
+import com.jmteam.igauntlet.common.init.InfinityItems;
 import com.jmteam.igauntlet.util.handlers.SoundsHandler;
 import com.jmteam.igauntlet.util.helpers.GauntletHelper;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 

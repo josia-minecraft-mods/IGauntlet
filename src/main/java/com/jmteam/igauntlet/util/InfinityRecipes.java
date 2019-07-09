@@ -1,7 +1,7 @@
 package com.jmteam.igauntlet.util;
 
-import com.jmteam.igauntlet.common.blocks.InfinityBlocks;
-import com.jmteam.igauntlet.common.items.InfinityItems;
+import com.jmteam.igauntlet.common.init.InfinityBlocks;
+import com.jmteam.igauntlet.common.init.InfinityItems;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 

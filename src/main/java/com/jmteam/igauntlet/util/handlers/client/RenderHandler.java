@@ -1,4 +1,4 @@
-package com.jmteam.igauntlet.util.handlers;
+package com.jmteam.igauntlet.util.handlers.client;
 
 import com.jmteam.igauntlet.client.render.RenderLaser;
 import com.jmteam.igauntlet.client.render.RenderPortal;

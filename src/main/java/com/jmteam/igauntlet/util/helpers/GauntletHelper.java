@@ -1,9 +1,8 @@
 package com.jmteam.igauntlet.util.helpers;
 
-import com.jmteam.igauntlet.common.blocks.InfinityBlocks;
+import com.jmteam.igauntlet.common.init.InfinityBlocks;
 import com.jmteam.igauntlet.common.damage.IDamageSource;
 import com.jmteam.igauntlet.common.entity.EntityLaser;
-import com.jmteam.igauntlet.common.items.InfinityItems;
 import com.jmteam.igauntlet.common.tileentity.TileAshPile;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;

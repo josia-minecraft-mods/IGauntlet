@@ -1,7 +1,7 @@
 package com.jmteam.igauntlet.common.function.gems;
 
 import com.jmteam.igauntlet.client.gui.GuiSpace;
-import com.jmteam.igauntlet.common.items.InfinityItems;
+import com.jmteam.igauntlet.common.init.InfinityItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.relauncher.Side;

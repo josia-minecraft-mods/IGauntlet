@@ -1,7 +1,7 @@
 package com.jmteam.igauntlet.network.packets;
 
 import com.jmteam.igauntlet.common.damage.IDamageSource;
-import com.jmteam.igauntlet.common.items.InfinityItems;
+import com.jmteam.igauntlet.common.init.InfinityItems;
 import com.jmteam.igauntlet.util.InfinityConfig;
 import com.jmteam.igauntlet.util.handlers.SoundsHandler;
 import com.jmteam.igauntlet.util.helpers.GauntletHelper;

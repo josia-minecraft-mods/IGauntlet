@@ -11,7 +11,7 @@ public class InfinityItems extends CreativeTabs {
 
     @Override
     public ItemStack createIcon() {
-        return new ItemStack(com.jmteam.igauntlet.common.items.InfinityItems.infinity_gauntlet);
+        return new ItemStack(com.jmteam.igauntlet.common.init.InfinityItems.infinity_gauntlet);
     }
 }
 

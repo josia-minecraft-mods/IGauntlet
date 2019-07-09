@@ -1,7 +1,6 @@
 package com.jmteam.igauntlet.common.entity;
 
-import com.jmteam.igauntlet.common.blocks.InfinityBlocks;
-import com.jmteam.igauntlet.common.function.gems.GemPower;
+import com.jmteam.igauntlet.common.init.InfinityBlocks;
 import com.jmteam.igauntlet.util.helpers.GauntletHelper;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
@@ -14,7 +13,6 @@ import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
-import net.minecraft.item.ItemHangingEntity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;

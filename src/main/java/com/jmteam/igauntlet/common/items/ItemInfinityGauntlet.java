@@ -4,6 +4,7 @@ import com.jmteam.igauntlet.client.gui.GuiGauntlet;
 import com.jmteam.igauntlet.common.capability.CapabilityInfinity;
 import com.jmteam.igauntlet.common.capability.IInfinityCap;
 import com.jmteam.igauntlet.common.function.gems.*;
+import com.jmteam.igauntlet.common.init.InfinityItems;
 import com.jmteam.igauntlet.util.InfinityConfig;
 import com.jmteam.igauntlet.tabs.InfinityTabs;
 import com.jmteam.igauntlet.util.helpers.GemHelper;
@@ -28,6 +29,8 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import static com.jmteam.igauntlet.common.init.InfinityNbtKeys.CURRENTSTONE;
 
 
 public class ItemInfinityGauntlet extends Item {
@@ -167,11 +170,10 @@ public class ItemInfinityGauntlet extends Item {
         IInfinityCap cap = CapabilityInfinity.get(playerIn);
         int current = GemHelper.ActiveGem(stack);
 
-        if(!cap.isPosessing() && current == SOUL && SoulOn) {
-            System.out.println(cap.isPosessing());
+        if (!cap.isPosessing() && current == SOUL && SoulOn) {
             cap.setPosessedEntity(target);
             cap.setPosessing(true);
-            playerIn.setInvisible(true);
+            playerIn.setEntityInvulnerable(true);
             playerIn.startRiding(target);
         }
         return super.itemInteractionForEntity(stack, playerIn, target, hand);
@@ -229,14 +231,14 @@ public class ItemInfinityGauntlet extends Item {
             if ((isSelected)) {
                 if (stack.getItem() == InfinityItems.infinity_gauntlet) {
                     if (player.getActivePotionEffect(MobEffects.INSTANT_HEALTH) == null) {
-                        player.addPotionEffect(new PotionEffect(MobEffects.INSTANT_HEALTH, 50, 3));
+                        player.addPotionEffect(new PotionEffect(MobEffects.INSTANT_HEALTH, 50, 3, true, false));
                     }
 
                     if (stack.getItem() instanceof ItemInfinityGauntlet) {
                         if (!worldIn.isRemote) {
                             if (nbt == null) {
                                 nbt = new NBTTagCompound();
-                                nbt.setInteger("currentstone", 0);
+                                nbt.setInteger(CURRENTSTONE, 0);
                                 stack.setTagCompound(nbt);
                             }
 
@@ -244,7 +246,6 @@ public class ItemInfinityGauntlet extends Item {
 
                     }
                 }
-
             }
         }
     }

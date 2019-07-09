@@ -1,6 +1,9 @@
-package com.jmteam.igauntlet.common.items;
+package com.jmteam.igauntlet.common.init;
 
 import com.jmteam.igauntlet.Infinity;
+import com.jmteam.igauntlet.common.items.ItemBase;
+import com.jmteam.igauntlet.common.items.ItemInfinityGauntlet;
+import com.jmteam.igauntlet.common.items.ItemMixTape;
 import com.jmteam.igauntlet.common.items.clothing.ItemEyeOfAgamotto;
 import com.jmteam.igauntlet.common.items.stones.*;
 import com.jmteam.igauntlet.common.items.tools.ItemDwarfhammer;

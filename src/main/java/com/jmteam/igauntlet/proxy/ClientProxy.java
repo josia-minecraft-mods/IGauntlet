@@ -1,7 +1,7 @@
 package com.jmteam.igauntlet.proxy;
 
-import com.jmteam.igauntlet.client.util.ModKeyBinds;
-import com.jmteam.igauntlet.util.handlers.RenderHandler;
+import com.jmteam.igauntlet.util.handlers.client.ModKeyBinds;
+import com.jmteam.igauntlet.util.handlers.client.RenderHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
