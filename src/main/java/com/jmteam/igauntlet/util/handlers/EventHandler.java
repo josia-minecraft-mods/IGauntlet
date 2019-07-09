@@ -28,6 +28,8 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 
 import java.util.Random;
 
+import static com.jmteam.igauntlet.common.init.InfinityNbtKeys.SNAPPED;
+
 @Mod.EventBusSubscriber(modid = Infinity.MODID)
 public class EventHandler {
 
@@ -65,14 +67,14 @@ public class EventHandler {
         if (e.getEntity() instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) e.getEntity();
 
-            if (player.getEntityData().hasKey("snapped")) {
-                if (player.getEntityData().getInteger("snapped") > 0) {
-                    int removing = player.getEntityData().getInteger("snapped") - 1;
-                    player.getEntityData().setInteger("snapped", removing);
+            if (player.getEntityData().hasKey(SNAPPED)) {
+                if (player.getEntityData().getInteger(SNAPPED) > 0) {
+                    int removing = player.getEntityData().getInteger(SNAPPED) - 1;
+                    player.getEntityData().setInteger(SNAPPED, removing);
                 }
             } else {
                 if (player.getActiveItemStack().getItem() == InfinityItems.infinity_gauntlet)
-                    player.getEntityData().setInteger("snapped", 0);
+                    player.getEntityData().setInteger(SNAPPED, 0);
             }
         }
     }
@@ -106,7 +108,6 @@ public class EventHandler {
         IInfinityCap cap = CapabilityInfinity.get(playerEvent.player);
         if (cap.isPosessing()) {
             cap.setPosessing(false);
-            playerEvent.player.setInvisible(false);
             if (playerEvent.player.isRiding())
                 playerEvent.player.dismountRidingEntity();
         }

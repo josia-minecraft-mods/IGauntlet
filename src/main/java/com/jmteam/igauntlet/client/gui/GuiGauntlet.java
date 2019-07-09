@@ -137,10 +137,6 @@ public class GuiGauntlet extends GuiScreen {
                 break;
         }
 
-        if (button.id == SOUL) {
-            PlayerHelper.sendMessageClient(Minecraft.getMinecraft().player, "Soul Stone isn't added yet!", true);
-        }
-
         GemHelper.setGem(STONE);
         Minecraft.getMinecraft().displayGuiScreen(null);
         super.actionPerformed(button);

@@ -165,6 +165,7 @@ public class ItemInfinityGauntlet extends Item {
             cap.setPosessing(true);
             playerIn.setEntityInvulnerable(true);
             playerIn.startRiding(target);
+            Minecraft.getMinecraft().gameSettings.thirdPersonView = 1;
         }
 
         if (current == MIND && MindOn) {

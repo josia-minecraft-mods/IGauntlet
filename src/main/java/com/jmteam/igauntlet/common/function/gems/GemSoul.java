@@ -3,7 +3,9 @@ package com.jmteam.igauntlet.common.function.gems;
 
 import com.jmteam.igauntlet.common.capability.CapabilityInfinity;
 import com.jmteam.igauntlet.common.capability.IInfinityCap;
+import com.jmteam.igauntlet.util.handlers.client.ModKeyBinds;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.EntityCreeper;
@@ -26,9 +28,9 @@ public class GemSoul {
             if (p instanceof EntityLiving) {
                 EntityLiving l = (EntityLiving) p;
 
-                if (Minecraft.getMinecraft().gameSettings.keyBindDrop.isKeyDown()) { // TODO Change keybind
+                if (ModKeyBinds.SPECIAL.isKeyDown()) {
                     processEnderman(l);
-                    processCreeper(l);
+                    processCreeper(l, player);
                 }
                 processGeneral(l, player);
             }
@@ -53,7 +55,7 @@ public class GemSoul {
                 p.motionZ = -vec.z / 4;
             }
 
-            if (p.getPosition().getY() < 0) clearPosessing(p);
+            if (p.getPosition().getY() < 0) clearPosessing(player);
 
 
         } else {
@@ -62,7 +64,7 @@ public class GemSoul {
         }
 
         if (Minecraft.getMinecraft().gameSettings.keyBindSneak.isKeyDown() && p.onGround) {
-            clearPosessing(p);
+            clearPosessing(player);
         }
 
         if (Minecraft.getMinecraft().gameSettings.keyBindJump.isKeyDown()) {
@@ -79,7 +81,7 @@ public class GemSoul {
         }
 
         if (p.getHealth() <= 0) {
-            clearPosessing(p);
+            clearPosessing(player);
         }
 
         p.rotationYaw = player.rotationYawHead;
@@ -105,19 +107,16 @@ public class GemSoul {
         }
     }
 
-    public static void processCreeper(EntityLiving p) {
+    public static void processCreeper(EntityLiving p, EntityPlayer player) {
         if (p instanceof EntityCreeper) {
             p.world.createExplosion(p, p.posX, p.posY, p.posZ, 5, true);
             p.setDead();
-            clearPosessing(p);
+            clearPosessing(player);
         }
     }
 
 
-    public static void clearPosessing(EntityLiving p) {
-        if (p.isBeingRidden()) {
-            EntityPlayer player = (EntityPlayer) p.getRidingEntity();
-            CapabilityInfinity.get(player).clearPosessing();
-        }
+    public static void clearPosessing(EntityPlayer p) {
+            CapabilityInfinity.get(p).clearPosessing();
     }
 }

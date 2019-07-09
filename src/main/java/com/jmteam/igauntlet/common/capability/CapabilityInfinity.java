@@ -3,6 +3,7 @@ package com.jmteam.igauntlet.common.capability;
 import com.jmteam.igauntlet.Infinity;
 import com.jmteam.igauntlet.network.NetworkHandler;
 import com.jmteam.igauntlet.network.packets.PacketCapSync;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -34,9 +35,6 @@ public class CapabilityInfinity implements IInfinityCap {
 
     @Override
     public void update() {
-        if(isPosessing()) {
-            player.setInvisible(true);
-        }
     }
 
     @Override
@@ -73,8 +71,8 @@ public class CapabilityInfinity implements IInfinityCap {
     @Override
     public void clearPosessing() {
         setPosessing(false);
-        player.setInvisible(false);
         player.setEntityInvulnerable(false);
+        Minecraft.getMinecraft().gameSettings.thirdPersonView = 0;
        // player.eyeHeight = last_eyeheight;
     }
 
