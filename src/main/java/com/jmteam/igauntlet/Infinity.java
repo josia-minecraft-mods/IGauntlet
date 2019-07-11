@@ -46,8 +46,8 @@ public class Infinity {
 
     @Mod.EventHandler
     public static void Init(FMLInitializationEvent event) {
-        InfinityRecipes.init();
         proxy.init(event);
+        InfinityRecipes.init();
         RegistryHandler.initRegistries(event);
     }
 
