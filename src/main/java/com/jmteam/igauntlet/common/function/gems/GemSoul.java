@@ -76,7 +76,7 @@ public class GemSoul {
         }
 
 
-        if (Minecraft.getMinecraft().gameSettings.keyBindSneak.isKeyDown() && p.onGround) {
+        if (Minecraft.getMinecraft().gameSettings.keyBindSneak.isKeyDown()) {
             clearPosessing(player);
         }
 
