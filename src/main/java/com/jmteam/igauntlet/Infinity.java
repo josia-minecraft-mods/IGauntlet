@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid = Infinity.MODID, name = Infinity.NAME, version = Infinity.VERSION, updateJSON = Infinity.UPDATEURL)
+@Mod(modid = Infinity.MODID, name = Infinity.NAME, version = Infinity.VERSION, dependencies = Infinity.DEPENDENCY,updateJSON = Infinity.UPDATEURL)
 public class Infinity {
 
     //TODO Rewrite the whole mod when the mod is fully released. Easier for debugging and stuff later
@@ -27,6 +27,7 @@ public class Infinity {
     public static final String NAME = "IGauntlet Mod";
     public static final String VERSION = "3.6";
     public static final String MODID = "igauntlet";
+    public static final String DEPENDENCY = "required-after:forge@[14.23.2.2638,)";
     public static final String UPDATEURL = "https://raw.githubusercontent.com/josia-minecraft-mods/IGauntlet/master/update.json";
 
     @SidedProxy(clientSide = "com.jmteam.igauntlet.proxy.ClientProxy", serverSide = "com.jmteam.igauntlet.proxy.CommonProxy")
