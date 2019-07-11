@@ -14,6 +14,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 @Mod(modid = Infinity.MODID, name = Infinity.NAME, version = Infinity.VERSION, dependencies = Infinity.DEPENDENCY,updateJSON = Infinity.UPDATEURL)
@@ -32,7 +33,7 @@ public class Infinity {
 
     @SidedProxy(clientSide = "com.jmteam.igauntlet.proxy.ClientProxy", serverSide = "com.jmteam.igauntlet.proxy.CommonProxy")
     public static IProxy proxy;
-    public static Logger logger;
+    public static Logger logger = LogManager.getLogger(NAME);
 
     @Mod.EventHandler
     public static void PreInit(FMLPreInitializationEvent event) {
