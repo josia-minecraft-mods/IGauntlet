@@ -164,6 +164,7 @@ public class ItemInfinityGauntlet extends Item {
 
         if (!cap.isPosessing() && current == SOUL && SoulOn) {
             if(Minecraft.getMinecraft().isSingleplayer()) {
+                // TODO Fix
                 if (target instanceof EntityLiving) GemSoul.startPosessing(playerIn, (EntityLiving) target, cap);
             }else{
                 playerIn.sendStatusMessage(new TextComponentTranslation(TextFormatting.BLUE + "Soul Stone doesn't work on servers yet"), false);
