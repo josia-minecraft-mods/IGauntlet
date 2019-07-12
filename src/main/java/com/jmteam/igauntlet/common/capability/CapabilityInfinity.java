@@ -8,6 +8,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -24,6 +25,7 @@ public class CapabilityInfinity implements IInfinityCap {
     private int possesionentity;
     private boolean isPosessing = false;
     private float last_eyeheight = 0f;
+    private BlockPos last_pos = BlockPos.ORIGIN;
 
 
     public CapabilityInfinity() {}
@@ -50,6 +52,16 @@ public class CapabilityInfinity implements IInfinityCap {
             this.last_eyeheight = player.getEyeHeight();
           //  player.eyeHeight = getPosessedEntity().getEyeHeight();
         }
+    }
+
+    @Override
+    public void setLastPos(BlockPos pos) {
+        this.last_pos = pos;
+    }
+
+    @Override
+    public BlockPos getLastPos() {
+        return last_pos;
     }
 
     @Override
@@ -83,6 +95,7 @@ public class CapabilityInfinity implements IInfinityCap {
         nbt.setInteger("posses_entity", possesionentity);
         nbt.setFloat("last_eyeheight", last_eyeheight);
         nbt.setBoolean("is_posessing", isPosessing);
+        nbt.setLong("last_pos", last_pos.toLong());
         return nbt;
     }
 
@@ -91,6 +104,7 @@ public class CapabilityInfinity implements IInfinityCap {
         possesionentity = nbt.getInteger("posses_entity");
         last_eyeheight = nbt.getFloat("last_eyeheight");
         isPosessing = nbt.getBoolean("is_posessing");
+        last_pos = BlockPos.fromLong(nbt.getLong("last_pos"));
     }
 
     @Mod.EventBusSubscriber(modid = Infinity.MODID)

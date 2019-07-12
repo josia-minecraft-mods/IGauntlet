@@ -161,11 +161,7 @@ public class ItemInfinityGauntlet extends Item {
         int current = GemHelper.ActiveGem(stack);
 
         if (!cap.isPosessing() && current == SOUL && SoulOn) {
-            cap.setPosessedEntity(target);
-            cap.setPosessing(true);
-            playerIn.setEntityInvulnerable(true);
-            playerIn.startRiding(target);
-            Minecraft.getMinecraft().gameSettings.thirdPersonView = 1;
+            if(target instanceof EntityLiving) GemSoul.startPosessing(playerIn, (EntityLiving) target, cap);
         }
 
         if (current == MIND && MindOn) {

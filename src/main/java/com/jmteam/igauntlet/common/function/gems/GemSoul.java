@@ -1,6 +1,8 @@
 package com.jmteam.igauntlet.common.function.gems;
 
 
+import com.jmteam.igauntlet.Infinity;
+import com.jmteam.igauntlet.common.capability.CapInfinityStorage;
 import com.jmteam.igauntlet.common.capability.CapabilityInfinity;
 import com.jmteam.igauntlet.common.capability.IInfinityCap;
 import com.jmteam.igauntlet.util.handlers.client.ModKeyBinds;
@@ -17,6 +19,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 
 import java.util.Random;
 
@@ -49,7 +53,7 @@ public class GemSoul {
                 || Minecraft.getMinecraft().gameSettings.keyBindBack.isKeyDown()
                 || Minecraft.getMinecraft().gameSettings.keyBindJump.isKeyDown()) {
 
-            if(!(p instanceof EntityFlying)) {
+            if(!isFlyingEntity(p)) {
             if (Minecraft.getMinecraft().gameSettings.keyBindForward.isKeyDown() && p.onGround) {
                 p.motionX = vec.x / 4;
                 p.motionZ = vec.z / 4;
@@ -63,7 +67,7 @@ public class GemSoul {
             if (p.getPosition().getY() < 0) clearPosessing(player);
 
         } else{
-                if (p instanceof EntityFlying) {
+                if (isFlyingEntity(p)) {
                     p.motionX = vec.x / 4;
                     p.motionY = vec.y / 3;
                     p.motionZ = vec.z / 4;
@@ -101,6 +105,12 @@ public class GemSoul {
         p.rotationPitch = player.rotationPitch;
     }
 
+    public static boolean isFlyingEntity(EntityLiving e) {
+        if(e instanceof EntityFlying) return true;
+        if(e instanceof EntityBat) return true;
+        return false;
+    }
+
 
     public static void processEnderman(EntityLiving p) {
         if (p instanceof EntityEnderman) {
@@ -128,10 +138,22 @@ public class GemSoul {
         }
     }
 
+    public static void startPosessing(EntityPlayer player, EntityLiving e, IInfinityCap cap) {
+        cap.setPosessedEntity(e);
+        cap.setLastPos(player.getPosition());
+        cap.setPosessing(true);
+        player.setEntityInvulnerable(true);
+        player.startRiding(e);
+        Minecraft.getMinecraft().gameSettings.thirdPersonView = 1;
+    }
+
 
     public static void clearPosessing(EntityPlayer p) {
-        CapabilityInfinity.get(p).clearPosessing();
-        CapabilityInfinity.get(p).sync();
+       IInfinityCap cap =  CapabilityInfinity.get(p);
+        cap.clearPosessing();
+        cap.sync();
         p.dismountRidingEntity();
+        p.setPositionAndUpdate(cap.getLastPos().getX(), cap.getLastPos().getY(), cap.getLastPos().getZ());
+        p.sendStatusMessage(new TextComponentTranslation("gauntlet.soul.tpback"), true);
     }
 }
