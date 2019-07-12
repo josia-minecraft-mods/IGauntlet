@@ -1,6 +1,7 @@
 package com.jmteam.igauntlet.common.capability;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.util.INBTSerializable;
@@ -22,7 +23,7 @@ public interface IInfinityCap extends INBTSerializable<NBTTagCompound> {
 
     void setPosessedEntity(Entity posessedEntity);
 
-    Entity getPosessedEntity();
+    EntityLiving getPosessedEntity();
 
     void clearPosessing();
 

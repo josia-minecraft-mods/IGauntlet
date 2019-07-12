@@ -5,6 +5,7 @@ import com.jmteam.igauntlet.network.NetworkHandler;
 import com.jmteam.igauntlet.network.packets.PacketCapSync;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
@@ -14,8 +15,10 @@ import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
 
 import javax.annotation.Nonnull;
 
@@ -76,16 +79,17 @@ public class CapabilityInfinity implements IInfinityCap {
     }
 
     @Override
-    public Entity getPosessedEntity() {
-        return player.world.getEntityByID(possesionentity);
+    public EntityLiving getPosessedEntity() {
+        return (EntityLiving) player.world.getEntityByID(possesionentity);
     }
 
     @Override
     public void clearPosessing() {
         setPosessing(false);
         player.setEntityInvulnerable(false);
-        Minecraft.getMinecraft().gameSettings.thirdPersonView = 0;
         sync();
+        if(FMLCommonHandler.instance().getSide() == Side.CLIENT)
+        Minecraft.getMinecraft().gameSettings.thirdPersonView = 0;
        // player.eyeHeight = last_eyeheight;
     }
 
