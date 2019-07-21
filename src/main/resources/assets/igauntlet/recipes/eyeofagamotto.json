@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+
+  "pattern":
+          [
+            "GGG",
+            "GEG",
+            "GGG"
+          ],
+  "key":
+  {
+    "G":
+    {
+      "item": "minecraft:gold_ingot"
+
+    },
+
+    "E":
+    {
+      "item": "minecraft:emerald"
+    }
+  },
+
+  "result":
+  {
+    "item": "igauntlet:eye_agamotto",
+    "count": 1
+  }
+}
