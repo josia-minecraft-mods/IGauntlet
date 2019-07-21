@@ -4,7 +4,7 @@
   "pattern":
           [
             "GGG",
-            "GEG",
+            "GTG",
             "GGG"
           ],
   "key":
@@ -15,9 +15,9 @@
 
     },
 
-    "E":
+    "T":
     {
-      "item": "minecraft:emerald"
+      "item": "igauntlet:time_stone"
     }
   },
 
