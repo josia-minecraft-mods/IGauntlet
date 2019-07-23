@@ -4,7 +4,6 @@ import com.jmteam.igauntlet.Infinity;
 import com.jmteam.igauntlet.common.items.ItemBase;
 import com.jmteam.igauntlet.common.items.ItemInfinityGauntlet;
 import com.jmteam.igauntlet.common.items.ItemMixTape;
-import com.jmteam.igauntlet.common.items.tools.ItemMjolnir;
 import com.jmteam.igauntlet.common.items.clothing.ItemEyeOfAgamotto;
 import com.jmteam.igauntlet.common.items.stones.*;
 import com.jmteam.igauntlet.common.items.tools.ItemDwarfhammer;
@@ -36,7 +35,7 @@ public class InfinityItems {
     public static Item soul_stone = registerItem(new ItemSoulStone("soul_stone"), true);
     public static Item dwarf_hammer = registerItem(new ItemDwarfhammer("dwarf_hammer"), true);
     public static Item necklace = registerItem(new ItemEyeOfAgamotto("eye_agamotto"), true);
-    public static Item thunder_hammer = registerItem(new ItemMjolnir("mjolnir") , true);
+ //   public static Item thunder_hammer = registerItem(new ItemMjolnir("mjolnir") , true);
 
     public static void registerRenders() {
         for(Item item : ITEMS) {
