@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+
+  "pattern":
+          [
+            "UUU",
+            " S ",
+            " S "
+          ],
+  "key":
+  {
+    "S":
+    {
+      "item": "minecraft:stick"
+    },
+
+    "U":
+    {
+      "item": "igauntlet:uru_ingot"
+    }
+  },
+
+  "result":
+  {
+    "item": "igauntlet:mjolnir",
+    "count": 1
+  }
+}
