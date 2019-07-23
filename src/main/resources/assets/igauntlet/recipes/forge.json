@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+
+  "pattern":
+  [
+    "GGG",
+    "GTG",
+    "GGG"
+  ],
+  "key":
+  {
+    "G":
+    {
+      "item": "igauntlet:dwarf_stone"
+
+    },
+
+    "T":
+    {
+      "item": "minecraft:lava_bucket"
+    }
+  },
+
+  "result":
+  {
+    "item": "igauntlet:forge",
+    "count": 1
+  }
+}

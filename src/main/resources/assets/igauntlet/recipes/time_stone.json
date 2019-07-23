@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+
+  "pattern":
+  [
+    "GGG",
+    "GTG",
+    "GGG"
+  ],
+  "key":
+  {
+    "G":
+    {
+      "item": "minecraft:emerald"
+
+    },
+
+    "T":
+    {
+      "item": "minecraft:diamond"
+    }
+  },
+
+  "result":
+  {
+    "item": "igauntlet:time_stone",
+    "count": 1
+  }
+}
