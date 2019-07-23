@@ -5,10 +5,7 @@ import net.minecraft.item.Item;
 
 public class ItemSoulStone extends Item {
 
-    public ItemSoulStone(String name) {
-        setTranslationKey(name);
-        setRegistryName(name);
-        setCreativeTab(InfinityTabs.infinityTabs);
+    public ItemSoulStone() {
         setMaxStackSize(1);
         setMaxDamage(4500);
     }

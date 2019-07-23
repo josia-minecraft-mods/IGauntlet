@@ -18,10 +18,7 @@ import static com.jmteam.igauntlet.common.init.InfinityNbtKeys.CHECKED;
 
 public class ItemPowerStone extends Item {
 
-    public ItemPowerStone(String name) {
-        setTranslationKey(name);
-        setRegistryName(name);
-        setCreativeTab(InfinityTabs.infinityTabs);
+    public ItemPowerStone() {
         setMaxStackSize(1);
         setMaxDamage(4500);
     }

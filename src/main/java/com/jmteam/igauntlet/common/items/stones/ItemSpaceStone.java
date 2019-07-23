@@ -14,10 +14,7 @@ import net.minecraft.world.World;
 
 public class ItemSpaceStone extends Item {
 
-    public ItemSpaceStone(String name) {
-        setTranslationKey(name);
-        setRegistryName(name);
-        setCreativeTab(InfinityTabs.infinityTabs);
+    public ItemSpaceStone() {
         setMaxStackSize(1);
         setMaxDamage(4500);
     }

@@ -10,10 +10,7 @@ import net.minecraft.world.World;
 
 public class ItemRealityStone extends Item {
 
-    public ItemRealityStone(String name) {
-        setTranslationKey(name);
-        setRegistryName(name);
-        setCreativeTab(InfinityTabs.infinityTabs);
+    public ItemRealityStone() {
         setMaxStackSize(1);
         setMaxDamage(4500);
     }

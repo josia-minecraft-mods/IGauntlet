@@ -5,10 +5,7 @@ import net.minecraft.item.Item;
 
 public class ItemMindStone extends Item {
 
-    public ItemMindStone(String name) {
-        setTranslationKey(name);
-        setRegistryName(name);
-        setCreativeTab(InfinityTabs.infinityTabs);
+    public ItemMindStone() {
         setMaxStackSize(1);
         setMaxDamage(4500);
     }

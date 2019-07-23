@@ -37,9 +37,7 @@ import static com.jmteam.igauntlet.common.init.InfinityNbtKeys.CURRENTSTONE;
 
 public class ItemInfinityGauntlet extends Item {
 
-    public ItemInfinityGauntlet(String name) {
-        setTranslationKey(name);
-        setRegistryName(name);
+    public ItemInfinityGauntlet() {
         setMaxStackSize(1);
         setMaxDamage(4500);
         setCreativeTab(InfinityTabs.infinityTabs);

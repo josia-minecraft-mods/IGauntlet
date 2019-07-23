@@ -12,8 +12,6 @@ public class ItemMixTape extends ItemRecord {
 
     public ItemMixTape(String name, SoundEvent sound) {
         super(name, sound);
-        setTranslationKey(name);
-        setRegistryName(name);
         setMaxStackSize(1);
     }
 

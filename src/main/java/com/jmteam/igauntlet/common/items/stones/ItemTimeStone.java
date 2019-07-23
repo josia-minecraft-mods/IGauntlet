@@ -12,10 +12,7 @@ import net.minecraft.world.World;
 public class ItemTimeStone extends Item {
     private int time = 0;
 
-    public ItemTimeStone(String name) {
-        setTranslationKey(name);
-        setRegistryName(name);
-        setCreativeTab(InfinityTabs.infinityTabs);
+    public ItemTimeStone() {
         setMaxStackSize(1);
         setMaxDamage(4500);
     }

@@ -38,10 +38,8 @@ public class InfinityBlocks {
         if (block instanceof IHaveItem) {
             if (((IHaveItem) block).hasItem()) {
                 ItemBlock itemBlock = (ItemBlock) new ItemBlock(block).setRegistryName(name);
+                if (tab) block.setCreativeTab(InfinityTabs.infinityTabs);
 
-                if (tab) {
-                    block.setCreativeTab(InfinityTabs.infinityTabs);
-                }
                 InfinityItems.ITEMS.add(itemBlock);
             }
         }
