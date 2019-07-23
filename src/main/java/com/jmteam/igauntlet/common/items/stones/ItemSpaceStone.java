@@ -1,9 +1,8 @@
 package com.jmteam.igauntlet.common.items.stones;
 
-import com.jmteam.igauntlet.util.InfinityConfig;
 import com.jmteam.igauntlet.network.NetworkHandler;
 import com.jmteam.igauntlet.network.packets.PacketSpace;
-import com.jmteam.igauntlet.tabs.InfinityTabs;
+import com.jmteam.igauntlet.util.InfinityConfig;
 import com.jmteam.igauntlet.util.helpers.PlayerHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;

@@ -2,7 +2,6 @@ package com.jmteam.igauntlet.common.items.stones;
 
 import com.jmteam.igauntlet.common.damage.IDamageSource;
 import com.jmteam.igauntlet.util.InfinityConfig;
-import com.jmteam.igauntlet.tabs.InfinityTabs;
 import com.jmteam.igauntlet.util.helpers.EntityHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;

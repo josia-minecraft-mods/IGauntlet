@@ -1,15 +1,12 @@
 package com.jmteam.igauntlet.common.items.stones;
 
 import com.jmteam.igauntlet.common.damage.IDamageSource;
-import com.jmteam.igauntlet.common.damage.ISource;
-import com.jmteam.igauntlet.tabs.InfinityTabs;
 import com.jmteam.igauntlet.util.helpers.PlayerHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
 import java.util.Random;
