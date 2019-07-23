@@ -2,8 +2,8 @@
   "homepage": "https://minecraft.curseforge.com/projects/igauntlet",
 
   "promos": {
-    "1.12.2-latest": "3.6.1",
-    "1.12.2-recommended": "3.6.1"
+    "1.12.2-latest": "3.7",
+    "1.12.2-recommended": "3.7"
   },
 
   "1.12.2": {
@@ -22,5 +22,6 @@
     "3.5": "More Realistic, Power Stone , Time..",
     "3.6": "Soul Stone!!!! Control entities",
     "3.6.1": "Posess Fix & Crash Fix (Disabled Soul on Server)",
+    "3.7": "Recipe Update"
   },
 }
