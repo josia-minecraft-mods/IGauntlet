@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "blocks/texture",
-		"particle": "blocks/texture"
+		"0": "igauntlet:items/mjolnir",
+		"particle": "igauntlet:items/mjolnir"
 	},
 	"elements": [
 		{
