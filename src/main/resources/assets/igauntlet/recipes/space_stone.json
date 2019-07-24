@@ -11,8 +11,7 @@
   {
     "G":
     {
-      "item": "minecraft:dye",
-      "data": 4
+      "item": "minecraft:lapis_block"
 
     },
 
@@ -24,7 +23,7 @@
 
   "result":
   {
-    "item": "igauntlet:time_stone",
+    "item": "igauntlet:space_stone",
     "count": 1
   }
 }
