@@ -35,6 +35,7 @@ public class InfinityItems {
     public static Item soul_stone = registerItem(new ItemSoulStone(), "soul_stone").setCreativeTab(InfinityTabs.infinityTabs);
     public static Item dwarf_hammer = registerItem(new ItemDwarfhammer(), "dwarf_hammer").setCreativeTab(InfinityTabs.infinityTabs);
     public static Item necklace = registerItem(new ItemEyeOfAgamotto(), "eye_agamotto").setCreativeTab(InfinityTabs.infinityTabs);
+    //   public static Item thunder_hammer = registerItem(new ItemMjolnir(), "mjolnir").setCreativeTab(InfinityTabs.infinityTabs);
 
     public static void registerRenders() {
         for (Item i : ITEMS) {

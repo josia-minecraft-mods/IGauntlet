@@ -26,7 +26,6 @@ public class InfinityBlocks {
     public static Block dwarf_cobble = RegisterBlock(new BlockDwarfCobble(Material.GROUND), "dwarf_cobble").setCreativeTab(InfinityTabs.infinityTabs);
     public static Block dwarf_wood = RegisterBlock(new BlockDwarfWood(Material.WOOD), "dwarf_wood").setCreativeTab(InfinityTabs.infinityTabs);
     public static Block forge = RegisterBlock(new BlockForge(Material.ANVIL), "forge").setCreativeTab(InfinityTabs.infinityTabs);
-    ;
     public static Block manipulator = RegisterBlock(new BlockManipulator(Material.IRON), "manipulator").setCreativeTab(InfinityTabs.infinityTabs);
     public static Block quick_sand = RegisterBlock(new BlockQuickSand(Material.SAND), "quick_sand").setCreativeTab(InfinityTabs.infinityTabs);
 
