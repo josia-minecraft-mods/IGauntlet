@@ -1,4 +1,4 @@
-package com.jmteam.igauntlet.commands;
+package com.jmteam.igauntlet.common.commands;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
