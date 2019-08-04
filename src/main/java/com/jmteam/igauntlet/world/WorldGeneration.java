@@ -16,11 +16,11 @@ import java.util.Random;
 import static com.jmteam.igauntlet.world.InfinityDimensions.DWARFID;
 
 
-public class ModWorldGen implements IWorldGenerator {
+public class WorldGeneration implements IWorldGenerator {
     private WorldGenerator uru_ore;
 
 
-    public ModWorldGen() {
+    public WorldGeneration() {
         uru_ore = new WorldGenMinable(InfinityBlocks.uru_ore.getDefaultState(), 9, BlockMatcher.forBlock(Blocks.STONE));
     }
 
