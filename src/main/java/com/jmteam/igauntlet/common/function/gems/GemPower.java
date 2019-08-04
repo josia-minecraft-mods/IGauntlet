@@ -14,6 +14,8 @@ public class GemPower {
         if (worldIn.isRemote && !entityplayer.isSneaking() && entityplayer.getHeldItemOffhand().getItem() != InfinityItems.infinity_gauntlet) {
             entityplayer.playSound(SoundsHandler.GAUNTLET_HUM, 1, 1);
         }
+
+        if(!entityplayer.isSneaking())
         GauntletHelper.ShootLaser(entityplayer, worldIn, 100, 1,0 ,5);
     }
 }

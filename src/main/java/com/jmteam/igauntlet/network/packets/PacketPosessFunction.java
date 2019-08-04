@@ -44,6 +44,8 @@ public class PacketPosessFunction implements IMessage {
                     if(f.equalsIgnoreCase("special"))
                         GemSoul.useSpecialFunction(cap.getPosessedEntity(), player);
 
+                    if(f.equalsIgnoreCase("clear")) GemSoul.clearPosessing(player);
+
                     GemSoul.processGeneral(cap.getPosessedEntity(), player, f);
                 }
             });

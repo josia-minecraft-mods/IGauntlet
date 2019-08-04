@@ -7,7 +7,6 @@ import net.minecraft.util.SoundEvent;
 
 public class ItemMixTape extends ItemRecord {
 
-
     public ItemMixTape(String name, SoundEvent sound) {
         super(name, sound);
         setMaxStackSize(1);

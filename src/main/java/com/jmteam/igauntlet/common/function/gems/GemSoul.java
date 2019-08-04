@@ -37,7 +37,6 @@ public class GemSoul {
 
     public static void processGeneral(EntityLiving p, EntityPlayer player, String f) {
 
-        // TODO Save coords so you get tp'd back before you went all goofy
         Vec3d vec = player.getLookVec();
         if (!f.equals("")) {
 
@@ -65,10 +64,6 @@ public class GemSoul {
         } else {
             p.motionX = 0;
             p.motionZ = 0;
-        }
-
-        if (f.equalsIgnoreCase("sneak")) {
-            clearPosessing(player);
         }
 
         if (f.equalsIgnoreCase("jump")) {
@@ -125,8 +120,8 @@ public class GemSoul {
     public static void processCreeper(EntityLiving p, EntityPlayer player) {
         if (p instanceof EntityCreeper) {
             p.world.createExplosion(p, p.posX, p.posY, p.posZ, 3, true);
-            p.setDead();
             clearPosessing(player);
+            p.setDead();
         }
     }
 
