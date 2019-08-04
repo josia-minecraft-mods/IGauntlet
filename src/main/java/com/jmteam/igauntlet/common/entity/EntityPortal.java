@@ -33,9 +33,10 @@ public class EntityPortal extends Entity {
     public void onCollideWithPlayer(EntityPlayer entityIn) {
         super.onCollideWithPlayer(entityIn);
 
-        if (!init) return;
-        NetworkHandler.NETWORK.sendToServer(new PacketPortalTeleport(pos));
-        init = !init;
+        if (init) {
+            NetworkHandler.NETWORK.sendToServer(new PacketPortalTeleport(pos));
+            init = !init;
+        }
     }
 
     @Override
@@ -54,6 +55,6 @@ public class EntityPortal extends Entity {
     public void onUpdate() {
         super.onUpdate();
 
-       if (this.ticksExisted >= 70 ) this.setDead();
+       if (this.ticksExisted >= 70 || !init) this.setDead();
     }
 }
