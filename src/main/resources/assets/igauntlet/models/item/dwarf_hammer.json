@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "blocks/dwarf_hammer",
-		"particle": "blocks/dwarf_hammer"
+		"0": "igauntlet:items/dwarf_hammer",
+		"particle": "igauntlet:items/dwarf_hammer"
 	},
 	"elements": [
 		{

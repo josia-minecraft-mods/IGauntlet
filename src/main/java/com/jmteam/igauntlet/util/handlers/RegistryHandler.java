@@ -1,15 +1,15 @@
 package com.jmteam.igauntlet.util.handlers;
 
 import com.jmteam.igauntlet.Infinity;
-import com.jmteam.igauntlet.commands.DimensionTeleport;
-import com.jmteam.igauntlet.common.init.InfinityBlocks;
+import com.jmteam.igauntlet.common.commands.DimensionTeleport;
 import com.jmteam.igauntlet.common.entity.EntityLaser;
 import com.jmteam.igauntlet.common.entity.EntityPortal;
 import com.jmteam.igauntlet.common.entity.EntitySquirrelGirl;
+import com.jmteam.igauntlet.common.init.InfinityBlocks;
 import com.jmteam.igauntlet.common.init.InfinityItems;
 import com.jmteam.igauntlet.world.InfinityBiomes;
 import com.jmteam.igauntlet.world.InfinityDimensions;
-import com.jmteam.igauntlet.world.ModWorldGen;
+import com.jmteam.igauntlet.world.WorldGeneration;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -53,7 +53,7 @@ public class RegistryHandler {
     }
 
     public static void OtherRegistries() {
-        GameRegistry.registerWorldGenerator(new ModWorldGen(), 3);
+        GameRegistry.registerWorldGenerator(new WorldGeneration(), 3);
         InfinityBiomes.registerBiomes();
     }
 

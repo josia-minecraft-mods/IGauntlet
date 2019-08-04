@@ -1,28 +1,22 @@
 package com.jmteam.igauntlet.common.function.gems;
 
 
-import com.jmteam.igauntlet.Infinity;
-import com.jmteam.igauntlet.common.capability.CapInfinityStorage;
 import com.jmteam.igauntlet.common.capability.CapabilityInfinity;
 import com.jmteam.igauntlet.common.capability.IInfinityCap;
-import com.jmteam.igauntlet.util.handlers.client.ModKeyBinds;
+import com.jmteam.igauntlet.network.NetworkHandler;
+import com.jmteam.igauntlet.network.packets.PacketChangePOV;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.entity.passive.EntityFlying;
-import net.minecraft.entity.passive.EntityParrot;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
-
-import java.util.Random;
 
 public class GemSoul {
 
@@ -36,37 +30,31 @@ public class GemSoul {
             if (p instanceof EntityLiving) {
                 EntityLiving l = (EntityLiving) p;
 
-                if (ModKeyBinds.SPECIAL.isKeyDown()) {
-                    processEnderman(l);
-                    processCreeper(l, player);
-                }
-                processGeneral(l, player);
+                // processGeneral(l, player);
             }
         }
     }
 
-    public static void processGeneral(EntityLiving p, EntityPlayer player) {
+    public static void processGeneral(EntityLiving p, EntityPlayer player, String f) {
 
         // TODO Save coords so you get tp'd back before you went all goofy
         Vec3d vec = player.getLookVec();
-        if (Minecraft.getMinecraft().gameSettings.keyBindForward.isKeyDown()
-                || Minecraft.getMinecraft().gameSettings.keyBindBack.isKeyDown()
-                || Minecraft.getMinecraft().gameSettings.keyBindJump.isKeyDown()) {
+        if (!f.equals("")) {
 
-            if(!isFlyingEntity(p)) {
-            if (Minecraft.getMinecraft().gameSettings.keyBindForward.isKeyDown() && p.onGround) {
-                p.motionX = vec.x / 4;
-                p.motionZ = vec.z / 4;
-            }
+            if (!isFlyingEntity(p)) {
+                if (f.equalsIgnoreCase("forward") && p.onGround) {
+                    p.motionX = vec.x / 4;
+                    p.motionZ = vec.z / 4;
+                }
 
-            if (Minecraft.getMinecraft().gameSettings.keyBindBack.isKeyDown() && p.onGround) {
-                p.motionX = -vec.x / 4;
-                p.motionZ = -vec.z / 4;
-            }
+                if (f.equalsIgnoreCase("back") && p.onGround) {
+                    p.motionX = -vec.x / 4;
+                    p.motionZ = -vec.z / 4;
+                }
 
-            if (p.getPosition().getY() < 0) clearPosessing(player);
+                if (p.getPosition().getY() < 0) clearPosessing(player);
 
-        } else{
+            } else {
                 if (isFlyingEntity(p)) {
                     p.motionX = vec.x / 4;
                     p.motionY = vec.y / 3;
@@ -79,12 +67,11 @@ public class GemSoul {
             p.motionZ = 0;
         }
 
-
-        if (Minecraft.getMinecraft().gameSettings.keyBindSneak.isKeyDown()) {
+        if (f.equalsIgnoreCase("sneak")) {
             clearPosessing(player);
         }
 
-        if (Minecraft.getMinecraft().gameSettings.keyBindJump.isKeyDown()) {
+        if (f.equalsIgnoreCase("jump")) {
             if (p.onGround)
                 p.motionY = 0.4;
 
@@ -92,7 +79,7 @@ public class GemSoul {
             p.motionZ = vec.z / 8;
         }
 
-        if (Minecraft.getMinecraft().gameSettings.keyBindSprint.isKeyDown()) {
+        if (f.equalsIgnoreCase("sprint")) {
             p.motionX = vec.x / 3;
             p.motionZ = vec.z / 3;
         }
@@ -105,9 +92,14 @@ public class GemSoul {
         p.rotationPitch = player.rotationPitch;
     }
 
+    public static void useSpecialFunction(EntityLiving l, EntityPlayer player) {
+        processEnderman(l);
+        processCreeper(l, player);
+    }
+
     public static boolean isFlyingEntity(EntityLiving e) {
-        if(e instanceof EntityFlying) return true;
-        if(e instanceof EntityBat) return true;
+        if (e instanceof EntityFlying) return true;
+        if (e instanceof EntityBat) return true;
         return false;
     }
 
@@ -144,16 +136,19 @@ public class GemSoul {
         cap.setPosessing(true);
         player.setEntityInvulnerable(true);
         player.startRiding(e);
-        Minecraft.getMinecraft().gameSettings.thirdPersonView = 1;
+
+        if(player.world.isRemote)
+            Minecraft.getMinecraft().gameSettings.thirdPersonView = 1;
     }
 
 
     public static void clearPosessing(EntityPlayer p) {
-       IInfinityCap cap =  CapabilityInfinity.get(p);
+        IInfinityCap cap = CapabilityInfinity.get(p);
         cap.clearPosessing();
         cap.sync();
         p.dismountRidingEntity();
         p.setPositionAndUpdate(cap.getLastPos().getX(), cap.getLastPos().getY(), cap.getLastPos().getZ());
         p.sendStatusMessage(new TextComponentTranslation("gauntlet.soul.tpback"), true);
+        NetworkHandler.NETWORK.sendToAll(new PacketChangePOV(p, 0));
     }
 }

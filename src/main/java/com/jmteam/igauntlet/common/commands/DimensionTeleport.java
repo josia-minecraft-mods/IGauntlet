@@ -1,4 +1,4 @@
-package com.jmteam.igauntlet.commands;
+package com.jmteam.igauntlet.common.commands;
 
 import com.google.common.collect.Lists;
 import com.jmteam.igauntlet.Infinity;

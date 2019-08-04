@@ -3,18 +3,9 @@ package com.jmteam.igauntlet.util.handlers;
 import com.jmteam.igauntlet.Infinity;
 import com.jmteam.igauntlet.common.capability.CapabilityInfinity;
 import com.jmteam.igauntlet.common.capability.IInfinityCap;
-import com.jmteam.igauntlet.common.function.gems.GemSoul;
 import com.jmteam.igauntlet.common.init.InfinityItems;
 import com.jmteam.igauntlet.util.InfinityConfig;
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.monster.EntityCreeper;
-import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.event.ClickEvent;
@@ -25,8 +16,6 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
-
-import java.util.Random;
 
 import static com.jmteam.igauntlet.common.init.InfinityNbtKeys.SNAPPED;
 
@@ -67,6 +56,7 @@ public class EventHandler {
         if (e.getEntity() instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) e.getEntity();
 
+            // Snap Countdown
             if (player.getEntityData().hasKey(SNAPPED)) {
                 if (player.getEntityData().getInteger(SNAPPED) > 0) {
                     int removing = player.getEntityData().getInteger(SNAPPED) - 1;
@@ -76,6 +66,9 @@ public class EventHandler {
                 if (player.getActiveItemStack().getItem() == InfinityItems.infinity_gauntlet)
                     player.getEntityData().setInteger(SNAPPED, 0);
             }
+
+            // Posession
+            //    GemSoul.ProcessTakenSoul(player);
         }
     }
 
@@ -93,14 +86,6 @@ public class EventHandler {
             }
         }
         if (CapabilityInfinity.get(player).isPosessing()) CapabilityInfinity.get(player).setPosessing(false);
-    }
-
-    @SubscribeEvent
-    public static void PosessEntity(LivingEvent.LivingUpdateEvent e) {
-        if (e.getEntity() instanceof EntityPlayer) {
-            EntityPlayer player = (EntityPlayer) e.getEntity();
-            GemSoul.ProcessTakenSoul(player);
-        }
     }
 
     @SubscribeEvent

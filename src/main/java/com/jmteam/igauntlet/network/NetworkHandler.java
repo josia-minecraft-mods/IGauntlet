@@ -13,13 +13,11 @@ public class NetworkHandler {
 
     public static void init() {
         NETWORK.registerMessage(PacketStone.Handler.class, PacketStone.class, id++, Side.SERVER);
-        NETWORK.registerMessage(PacketNotAdded.Handler.class, PacketNotAdded.class, id++, Side.SERVER);
-        NETWORK.registerMessage(PacketSpace.Handler.class, PacketSpace.class, id++, Side.SERVER);
-        NETWORK.registerMessage(PacketNoCoords.Handler.class, PacketNoCoords.class, id++, Side.SERVER);
+        NETWORK.registerMessage(PacketTeleport.Handler.class, PacketTeleport.class, id++, Side.SERVER);
         NETWORK.registerMessage(PacketSnap.Handler.class, PacketSnap.class, id++, Side.SERVER);
         NETWORK.registerMessage(PacketWritePortal.Handler.class, PacketWritePortal.class, id++, Side.SERVER);
-        NETWORK.registerMessage(PacketPortalTeleport.Handler.class, PacketPortalTeleport.class, id++, Side.SERVER);
         NETWORK.registerMessage(PacketCapSync.Handler.class, PacketCapSync.class, id++, Side.CLIENT);
         NETWORK.registerMessage(PacketPosessFunction.Handler.class, PacketPosessFunction.class, id++, Side.SERVER);
+        NETWORK.registerMessage(PacketChangePOV.Handler.class, PacketChangePOV.class, id++, Side.CLIENT);
     }
 }

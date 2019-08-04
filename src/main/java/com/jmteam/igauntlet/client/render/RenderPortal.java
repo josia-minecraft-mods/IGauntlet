@@ -3,7 +3,9 @@ package com.jmteam.igauntlet.client.render;
 import com.jmteam.igauntlet.Infinity;
 import com.jmteam.igauntlet.client.models.ModelPortal;
 import com.jmteam.igauntlet.common.entity.EntityPortal;
-import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
@@ -12,18 +14,22 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nullable;
 
 @SideOnly(Side.CLIENT)
-public class RenderPortal extends RenderLiving<EntityPortal> {
+public class RenderPortal extends Render<EntityPortal> {
 
+    public static final ModelPortal portal = new ModelPortal();
     public static final ResourceLocation TEXTURES = new ResourceLocation(Infinity.MODID + ":textures/entity/portal.png");
 
     public RenderPortal(RenderManager renderManager) {
-        super(renderManager, new ModelPortal(), 0.0F);
+        super(renderManager);
     }
 
     @Override
-    protected void applyRotations(EntityPortal entityLiving, float p_77043_2_, float rotationYaw, float partialTicks)
-    {
-        super.applyRotations(entityLiving, p_77043_2_, rotationYaw, partialTicks);
+    public void doRender(EntityPortal entity, double x, double y, double z, float entityYaw, float partialTicks) {
+        GlStateManager.pushMatrix();
+        Minecraft.getMinecraft().getTextureManager().bindTexture(TEXTURES);
+        GlStateManager.rotate(entity.rotationYaw, 0,1,0);
+        portal.render(entity, 0,0,0,0,0,0.0625f);
+        GlStateManager.popMatrix();
     }
 
     @Nullable

@@ -3,9 +3,9 @@ package com.jmteam.igauntlet;
 import com.jmteam.igauntlet.common.capability.CapInfinityStorage;
 import com.jmteam.igauntlet.common.capability.CapabilityInfinity;
 import com.jmteam.igauntlet.common.capability.IInfinityCap;
-import com.jmteam.igauntlet.util.InfinityRecipes;
 import com.jmteam.igauntlet.network.NetworkHandler;
 import com.jmteam.igauntlet.proxy.IProxy;
+import com.jmteam.igauntlet.util.InfinityRecipes;
 import com.jmteam.igauntlet.util.handlers.RegistryHandler;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.Mod;
@@ -33,7 +33,7 @@ public class Infinity {
 
     @SidedProxy(clientSide = "com.jmteam.igauntlet.proxy.ClientProxy", serverSide = "com.jmteam.igauntlet.proxy.CommonProxy")
     public static IProxy proxy;
-    public static Logger logger = LogManager.getLogger(NAME);
+    public static Logger log = LogManager.getLogger(NAME);
 
     @Mod.EventHandler
     public static void PreInit(FMLPreInitializationEvent event) {
