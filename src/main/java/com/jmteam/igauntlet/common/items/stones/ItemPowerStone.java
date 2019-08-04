@@ -2,6 +2,7 @@ package com.jmteam.igauntlet.common.items.stones;
 
 import com.jmteam.igauntlet.common.damage.IDamageSource;
 import com.jmteam.igauntlet.util.helpers.PlayerHelper;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -9,6 +10,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
+import java.util.List;
 import java.util.Random;
 
 import static com.jmteam.igauntlet.common.init.InfinityNbtKeys.CHECKED;
@@ -31,7 +34,7 @@ public class ItemPowerStone extends Item {
         if (stack.getTagCompound() == null) {
             NBTTagCompound nbtTagCompound = new NBTTagCompound();
             stack.setTagCompound(nbtTagCompound);
-            if(!nbtTagCompound.hasKey(CHECKED))
+            if (!nbtTagCompound.hasKey(CHECKED))
                 stack.getTagCompound().setBoolean(CHECKED, false);
         } else {
             if (isSelected) {
@@ -48,5 +51,11 @@ public class ItemPowerStone extends Item {
             }
 
         }
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+        super.addInformation(stack, worldIn, tooltip, flagIn);
+        tooltip.add("§cYou can die holding this!");
     }
 }
