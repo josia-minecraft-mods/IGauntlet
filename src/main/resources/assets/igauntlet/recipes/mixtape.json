@@ -1,35 +1,24 @@
 {
   "type": "minecraft:crafting_shaped",
-
-  "pattern":
-  [
+  "pattern": [
     "BBB",
     "III",
     "WWW"
   ],
-  "key":
-  {
-    "W":
-    {
+  "key": {
+    "W": {
       "item": "minecraft:concrete",
-      "meta": 0
-
+      "data": 0
     },
-
-    "I":
-    {
+    "I": {
       "item": "minecraft:iron_ingot"
+    },
+    "B": {
+      "item": "minecraft:concrete",
+      "data": 15
     }
   },
-  "B":
-  {
-    "item": "minecraft:concrete",
-    "meta": 15
-
-  },
-
-  "result":
-  {
+  "result": {
     "item": "igauntlet:time_stone",
     "count": 1
   }

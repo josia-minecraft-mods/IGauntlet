@@ -1,28 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
-
-  "pattern":
-  [
+  "pattern": [
     "GGG",
     "GTG",
     "GGG"
   ],
-  "key":
-  {
-    "G":
-    {
+  "key": {
+    "G": {
       "item": "minecraft:gold_ingot"
-
     },
-
-    "T":
-    {
+    "T": {
       "item": "minecraft:emerald"
     }
   },
-
-  "result":
-  {
+  "result": {
     "item": "igauntlet:mind_stone",
     "count": 1
   }
