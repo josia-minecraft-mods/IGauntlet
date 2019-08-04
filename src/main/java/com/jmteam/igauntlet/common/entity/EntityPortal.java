@@ -2,56 +2,58 @@ package com.jmteam.igauntlet.common.entity;
 
 import com.jmteam.igauntlet.network.NetworkHandler;
 import com.jmteam.igauntlet.network.packets.PacketPortalTeleport;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIWander;
-import net.minecraft.entity.ai.EntityAIWanderAvoidWater;
-import net.minecraft.entity.passive.EntityCow;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class EntityPortal extends EntityCow {
+public class EntityPortal extends Entity {
 
-    public EntityPortal(World worldIn) {
+    private BlockPos pos;
+    private boolean init;
+
+    public EntityPortal(World world) {
+        super(world);
+    }
+
+    public EntityPortal(World worldIn, int X, int Y, int Z, float rot,boolean init) {
         super(worldIn);
+        this.pos = new BlockPos(X, Y, Z);
+        this.rotationYaw = rot;
+        this.init = init;
     }
 
     @Override
-    protected void initEntityAI() {
-        this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 0.0D));
-        this.tasks.addTask(8, new EntityAIWander(this, 0.0D));
-    }
+    protected void entityInit() {
 
-    @Override
-    protected void applyEntityAttributes() {
-        super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.0);
     }
-
 
     @Override
     public void onCollideWithPlayer(EntityPlayer entityIn) {
         super.onCollideWithPlayer(entityIn);
-        int x = this.getEntityData().getInteger("x");
-        int y = this.getEntityData().getInteger("y");
-        int z = this.getEntityData().getInteger("z");
-        if(!this.getEntityData().getBoolean("isinit")) return;
-        BlockPos pos = new BlockPos(x,y,z);
+
+        if (!init) return;
         NetworkHandler.NETWORK.sendToServer(new PacketPortalTeleport(pos));
-        this.setDead();
+        init = !init;
     }
 
     @Override
-    protected void updateAITasks() {
-        super.updateAITasks();
+    protected void readEntityFromNBT(NBTTagCompound compound) {
+    }
+
+    public void setRotation(float rotation) {
+
+    }
+
+    @Override
+    protected void writeEntityToNBT(NBTTagCompound compound) {
     }
 
     @Override
     public void onUpdate() {
         super.onUpdate();
 
-        if(this.ticksExisted >= 70) {
-            this.setDead();
-        }
+       if (this.ticksExisted >= 70 ) this.setDead();
     }
 }

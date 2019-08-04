@@ -40,13 +40,8 @@ public class PacketWritePortal implements IMessage {
         public IMessage onMessage(PacketWritePortal message, MessageContext ctx) {
             ctx.getServerHandler().player.getServerWorld().addScheduledTask(() -> {
                 EntityPlayer player = ctx.getServerHandler().player;
-                EntityPortal portal = new EntityPortal(player.world);
-                portal.getEntityData().setInteger("x", X);
-                portal.getEntityData().setInteger("y", Y);
-                portal.getEntityData().setInteger("z", Z);
-                portal.getEntityData().setBoolean("isinit", true);
+                EntityPortal portal = new EntityPortal(player.world, X, Y, Z, player.rotationYaw, true);
                 portal.setNoGravity(true);
-                portal.setNoAI(true);
                 portal.setEntityInvulnerable(true);
                 portal.setPosition(player.posX + 0.5, player.posY, player.posZ + 0.5);
                 player.world.spawnEntity(portal);
