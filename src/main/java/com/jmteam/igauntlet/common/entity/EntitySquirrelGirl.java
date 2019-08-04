@@ -1,11 +1,11 @@
 package com.jmteam.igauntlet.common.entity;
 
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIWander;
+import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
-public class EntitySquirrelGirl extends EntityLiving {
+public class EntitySquirrelGirl extends EntityMob {
 
     public EntitySquirrelGirl(World worldIn) {
         super(worldIn);
@@ -15,6 +15,7 @@ public class EntitySquirrelGirl extends EntityLiving {
     @Override
     protected void initEntityAI() {
         super.initEntityAI();
+        tasks.addTask(1, new EntityAIWander(this, 0.2f, 4));
     }
 
     @Override
@@ -25,7 +26,6 @@ public class EntitySquirrelGirl extends EntityLiving {
     @Override
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.1D);
     }
 
     @Override
