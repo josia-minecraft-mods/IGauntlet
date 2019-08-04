@@ -7,15 +7,15 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
-public class PacketSpace implements IMessage {
+public class PacketTeleport implements IMessage {
 
     public BlockPos pos;
     public int id;
 
-    public PacketSpace() {
+    public PacketTeleport() {
     }
 
-    public PacketSpace(BlockPos pos, int id) {
+    public PacketTeleport(BlockPos pos, int id) {
         this.pos = pos;
         this.id = id;
     }
@@ -32,14 +32,18 @@ public class PacketSpace implements IMessage {
         buf.writeInt(this.id);
     }
 
-    public static class Handler implements IMessageHandler<PacketSpace, IMessage> {
+    public static class Handler implements IMessageHandler<PacketTeleport, IMessage> {
 
         @Override
-        public IMessage onMessage(PacketSpace message, MessageContext ctx) {
-            ctx.getServerHandler().player.getServerWorld().addScheduledTask(() -> {
-                WorldServer world = ctx.getServerHandler().player.getServerWorld();
-                BlockPos pos = world.getTopSolidOrLiquidBlock(message.pos);
-                ctx.getServerHandler().player.connection.setPlayerLocation(pos.getX(), pos.getY(), pos.getZ(), 0, 0);
+        public IMessage onMessage(PacketTeleport message, MessageContext ctx) {
+            ctx.getServerHandler().player.getServerWorld().addScheduledTask(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        WorldServer world = ctx.getServerHandler().player.getServerWorld();
+                        BlockPos pos = world.getTopSolidOrLiquidBlock(message.pos);
+                        ctx.getServerHandler().player.connection.setPlayerLocation(pos.getX(), pos.getY(), pos.getZ(), 0, 0);
+                    }
             });
             return null;
         }

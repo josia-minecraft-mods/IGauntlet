@@ -40,9 +40,13 @@ public class PacketStone implements IMessage {
                 ItemStack stack = player.getActiveItemStack();
 
                 if (stack.getItem() == InfinityItems.infinity_gauntlet) {
-                    NBTTagCompound nbt = stack.getTagCompound();
-                    nbt.setInteger(CURRENTSTONE, stone);
-                    stack.setTagCompound(nbt);
+                    if(stack.getTagCompound() == null) {
+                        NBTTagCompound nbt = stack.getTagCompound();
+                        nbt.setInteger(CURRENTSTONE, stone);
+                        stack.setTagCompound(nbt);
+                    }else{
+                        stack.getTagCompound().setInteger(CURRENTSTONE, stone);
+                    }
                 }
             });
             return null;

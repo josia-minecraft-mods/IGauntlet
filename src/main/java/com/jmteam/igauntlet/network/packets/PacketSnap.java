@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static com.jmteam.igauntlet.common.init.InfinityNbtKeys.SNAPPED;
+
 public class PacketSnap implements IMessage {
 
     public static boolean snap;
@@ -53,7 +55,7 @@ public class PacketSnap implements IMessage {
                 boolean ticklimit = true;
 
 
-                if (CanSnap && PlayerHelper.getPDataInt(playerIn, "snapped") == 0) {
+                if (CanSnap && PlayerHelper.getPDataInt(playerIn, SNAPPED) == 0) {
                     if (!(playerIn.getHeldItemMainhand().getItem() == InfinityItems.infinity_gauntlet)) return;
                     for (EntityLiving targetentity : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extend, extend, extend))) {
                         SNAPENTITY.add(targetentity);

@@ -1,7 +1,7 @@
 package com.jmteam.igauntlet.common.entity;
 
 import com.jmteam.igauntlet.network.NetworkHandler;
-import com.jmteam.igauntlet.network.packets.PacketPortalTeleport;
+import com.jmteam.igauntlet.network.packets.PacketTeleport;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -30,11 +30,11 @@ public class EntityPortal extends Entity {
     }
 
     @Override
-    public void onCollideWithPlayer(EntityPlayer entityIn) {
-        super.onCollideWithPlayer(entityIn);
+    public void onCollideWithPlayer(EntityPlayer player) {
+        super.onCollideWithPlayer(player);
 
         if (init) {
-            NetworkHandler.NETWORK.sendToServer(new PacketPortalTeleport(pos));
+            NetworkHandler.NETWORK.sendToServer(new PacketTeleport(pos, player.getEntityId()));
             init = !init;
         }
     }
