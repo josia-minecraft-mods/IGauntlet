@@ -55,6 +55,10 @@ public class BlockAshPile extends BlockFalling implements IHaveItem, ITileEntity
         return false;
     }
 
+    @Override
+    public boolean isFullCube(IBlockState state) {
+        return false;
+    }
 
     @Override
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
