@@ -7,6 +7,7 @@ import com.jmteam.igauntlet.network.NetworkHandler;
 import com.jmteam.igauntlet.network.packets.PacketPosessFunction;
 import com.jmteam.igauntlet.network.packets.PacketSnap;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.settings.GameSettings;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.client.event.InputUpdateEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
@@ -52,13 +53,24 @@ public class ClientEvents {
 
     @SubscribeEvent
     public static void onClientTick(InputUpdateEvent e) {
+        Minecraft mc = Minecraft.getMinecraft();
+        GameSettings set = mc.gameSettings;
         IInfinityCap cap = CapabilityInfinity.get(e.getEntityPlayer());
+        String func = "";
 
         if (InfinityKeyBinds.SNAP.isPressed())
             NetworkHandler.NETWORK.sendToServer(new PacketSnap());
 
-        if(cap.isPosessing())
-        NetworkHandler.NETWORK.sendToServer(new PacketPosessFunction());
+        if(cap.isPosessing()) {
+            if(InfinityKeyBinds.SPECIAL.isPressed()) func = "special";
+            if(set.keyBindForward.isKeyDown()) func = "forward";
+            if(set.keyBindBack.isKeyDown()) func = "back";
+            if(set.keyBindSprint.isKeyDown()) func = "sprint";
+            if(set.keyBindSneak.isKeyDown()) func = "sneak";
+            if(set.keyBindJump.isKeyDown()) func = "jump";
+
+            if(!func.equals("")) NetworkHandler.NETWORK.sendToServer(new PacketPosessFunction(func));
+        }
     }
 
     @SubscribeEvent

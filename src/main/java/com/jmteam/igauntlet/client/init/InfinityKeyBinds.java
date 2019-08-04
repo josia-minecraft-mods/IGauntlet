@@ -1,12 +1,11 @@
-package com.jmteam.igauntlet.util.handlers.client;
+package com.jmteam.igauntlet.client.init;
 
 import com.jmteam.igauntlet.Infinity;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import org.lwjgl.input.Keyboard;
 
-@Mod.EventBusSubscriber(Side.CLIENT)
-public class ModKeyBinds {
+public class InfinityKeyBinds {
 
     public static KeyBinding SNAP;
     public static KeyBinding SPECIAL;
@@ -16,13 +15,5 @@ public class ModKeyBinds {
         ClientRegistry.registerKeyBinding(SNAP);
         SPECIAL = new KeyBinding(Infinity.MODID + ".keybinds.special", Keyboard.KEY_N, Infinity.NAME);
         ClientRegistry.registerKeyBinding(SPECIAL);
-    }
-
-    @SubscribeEvent
-    public static void onClientTick(InputUpdateEvent e) {
-
-        if (ModKeyBinds.SNAP.isPressed()) {
-            NetworkHandler.NETWORK.sendToServer(new PacketSnap());
-        }
     }
 }
