@@ -66,7 +66,7 @@ public class ClientEvents {
             if(set.keyBindForward.isKeyDown()) func = "forward";
             if(set.keyBindBack.isKeyDown()) func = "back";
             if(set.keyBindSprint.isKeyDown()) func = "sprint";
-            if(set.keyBindSneak.isKeyDown()) func = "sneak";
+            if(set.keyBindSneak.isKeyDown()) func = "clear";
             if(set.keyBindJump.isKeyDown()) func = "jump";
 
             if(!func.equals("")) NetworkHandler.NETWORK.sendToServer(new PacketPosessFunction(func));
@@ -77,10 +77,12 @@ public class ClientEvents {
     public static void renderPlayer(RenderPlayerEvent.Pre e) {
         EntityPlayer player = Minecraft.getMinecraft().player;
 
-        if (player != null) {
-            if (CapabilityInfinity.get(player).isPosessing()) {
-                e.setCanceled(true);
-                return;
+        if(!e.isCanceled()) {
+            if (player != null) {
+                if (CapabilityInfinity.get(player).isPosessing()) {
+                    e.setCanceled(true);
+                    return;
+                }
             }
         }
     }

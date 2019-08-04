@@ -158,7 +158,7 @@ public class ItemInfinityGauntlet extends Item {
         IInfinityCap cap = CapabilityInfinity.get(playerIn);
         int current = GemHelper.ActiveGem(stack);
 
-        if (!cap.isPosessing() && current == SOUL && SoulOn) {
+        if (!cap.isPosessing() && current == SOUL && SoulOn && !playerIn.isSneaking()) {
             if (target instanceof EntityLiving) GemSoul.startPosessing(playerIn, (EntityLiving) target, cap);
         }
 
