@@ -18,5 +18,6 @@ public class NetworkHandler {
         NETWORK.registerMessage(PacketWritePortal.Handler.class, PacketWritePortal.class, id++, Side.SERVER);
         NETWORK.registerMessage(PacketCapSync.Handler.class, PacketCapSync.class, id++, Side.CLIENT);
         NETWORK.registerMessage(PacketPosessFunction.Handler.class, PacketPosessFunction.class, id++, Side.SERVER);
+        NETWORK.registerMessage(PacketChangePOV.Handler.class, PacketChangePOV.class, id++, Side.CLIENT);
     }
 }

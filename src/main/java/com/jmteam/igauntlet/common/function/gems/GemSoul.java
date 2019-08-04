@@ -3,6 +3,9 @@ package com.jmteam.igauntlet.common.function.gems;
 
 import com.jmteam.igauntlet.common.capability.CapabilityInfinity;
 import com.jmteam.igauntlet.common.capability.IInfinityCap;
+import com.jmteam.igauntlet.network.NetworkHandler;
+import com.jmteam.igauntlet.network.packets.PacketChangePOV;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.EntityCreeper;
@@ -133,7 +136,9 @@ public class GemSoul {
         cap.setPosessing(true);
         player.setEntityInvulnerable(true);
         player.startRiding(e);
-        // TODO Minecraft.getMinecraft().gameSettings.thirdPersonView = 1;
+
+        if(player.world.isRemote)
+            Minecraft.getMinecraft().gameSettings.thirdPersonView = 1;
     }
 
 
@@ -144,5 +149,6 @@ public class GemSoul {
         p.dismountRidingEntity();
         p.setPositionAndUpdate(cap.getLastPos().getX(), cap.getLastPos().getY(), cap.getLastPos().getZ());
         p.sendStatusMessage(new TextComponentTranslation("gauntlet.soul.tpback"), true);
+        NetworkHandler.NETWORK.sendToAll(new PacketChangePOV(p, 0));
     }
 }

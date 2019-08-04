@@ -3,7 +3,6 @@ package com.jmteam.igauntlet.common.capability;
 import com.jmteam.igauntlet.Infinity;
 import com.jmteam.igauntlet.network.NetworkHandler;
 import com.jmteam.igauntlet.network.packets.PacketCapSync;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,10 +14,8 @@ import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.Side;
 
 import javax.annotation.Nonnull;
 
@@ -88,8 +85,6 @@ public class CapabilityInfinity implements IInfinityCap {
         setPosessing(false);
         player.setEntityInvulnerable(false);
         sync();
-        if(FMLCommonHandler.instance().getSide() == Side.CLIENT)
-        Minecraft.getMinecraft().gameSettings.thirdPersonView = 0;
        // player.eyeHeight = last_eyeheight;
     }
 
