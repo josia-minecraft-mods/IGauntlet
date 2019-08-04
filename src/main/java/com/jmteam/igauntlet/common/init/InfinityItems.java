@@ -4,6 +4,7 @@ import com.jmteam.igauntlet.Infinity;
 import com.jmteam.igauntlet.common.items.ItemBase;
 import com.jmteam.igauntlet.common.items.ItemInfinityGauntlet;
 import com.jmteam.igauntlet.common.items.ItemMixTape;
+import com.jmteam.igauntlet.common.items.ItemWalkman;
 import com.jmteam.igauntlet.common.items.clothing.ItemEyeOfAgamotto;
 import com.jmteam.igauntlet.common.items.stones.*;
 import com.jmteam.igauntlet.common.items.tools.ItemDwarfhammer;
@@ -24,27 +25,28 @@ import java.util.List;
 public class InfinityItems {
     public static final List<Item> ITEMS = new ArrayList<Item>();
 
-    public static Item infinity_gauntlet = registerItem(new ItemInfinityGauntlet("infinity_gauntlet"), true);
-    public static Item mixtape = registerItem(new ItemMixTape("awesome_mix", SoundsHandler.AWESOMEMIX), true);
-    public static Item uru_ingot = registerItem(new ItemBase("uru_ingot"), true);
-    public static Item mind_stone = registerItem(new ItemMindStone("mind_stone"), true);
-    public static Item reality_stone = registerItem(new ItemRealityStone("reality_stone"), true);
-    public static Item time_stone = registerItem(new ItemTimeStone("time_stone"), true);
-    public static Item space_stone = registerItem(new ItemSpaceStone("space_stone"), true);
-    public static Item power_stone = registerItem(new ItemPowerStone("power_stone"), true);
-    public static Item soul_stone = registerItem(new ItemSoulStone("soul_stone"), true);
-    public static Item dwarf_hammer = registerItem(new ItemDwarfhammer("dwarf_hammer"), true);
-    public static Item necklace = registerItem(new ItemEyeOfAgamotto("eye_agamotto"), true);
+    public static Item infinity_gauntlet = registerItem(new ItemInfinityGauntlet(), "infinity_gauntlet").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Item mixtape = registerItem(new ItemMixTape("awesome_mix", SoundsHandler.AWESOMEMIX), "awesome_mix").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Item uru_ingot = registerItem(new ItemBase(), "uru_ingot").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Item mind_stone = registerItem(new ItemMindStone(), "mind_stone").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Item reality_stone = registerItem(new ItemRealityStone(), "reality_stone").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Item time_stone = registerItem(new ItemTimeStone(), "time_stone").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Item space_stone = registerItem(new ItemSpaceStone(), "space_stone").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Item power_stone = registerItem(new ItemPowerStone(), "power_stone").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Item soul_stone = registerItem(new ItemSoulStone(), "soul_stone").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Item dwarf_hammer = registerItem(new ItemDwarfhammer(), "dwarf_hammer").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Item necklace = registerItem(new ItemEyeOfAgamotto(), "eye_agamotto").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Item walkman = registerItem(new ItemWalkman(), "walkman").setCreativeTab(InfinityTabs.infinityTabs);
 
     public static void registerRenders() {
-        for(Item item : ITEMS) {
-            registerRender(item);
+        for (Item i : ITEMS) {
+            registerRender(i);
         }
     }
 
-    public static Item registerItem(Item item, boolean tab) {
-        if (tab)
-            item.setCreativeTab(InfinityTabs.infinityTabs);
+    private static Item registerItem(Item item, String name) {
+        item.setRegistryName(name);
+        item.setTranslationKey(name);
         ITEMS.add(item);
         return item;
     }
