@@ -2,12 +2,12 @@
 	"credit": "Made with Blockbench",
 	"parent": "walkman",
 	"textures": {
-		"0": "Walkman/Walkman",
-		"1": "Walkman/texture",
-		"2": "Walkman/texture1",
-		"3": "Walkman/texture2",
-		"4": "Walkman/texture3",
-		"particle": "Walkman/Walkman"
+		"0": "igauntlet:items/Walkman",
+		"1": "igauntlet:items/texture",
+		"2": "igauntlet:items/texture1",
+		"3": "igauntlet:items/texture2",
+		"4": "igauntlet:items/texture3",
+		"particle": "igauntlet:items/Walkman"
 	},
 	"elements": [
 		{
