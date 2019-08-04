@@ -35,7 +35,6 @@ public class InfinityItems {
     public static Item soul_stone = registerItem(new ItemSoulStone("soul_stone"), true);
     public static Item dwarf_hammer = registerItem(new ItemDwarfhammer("dwarf_hammer"), true);
     public static Item necklace = registerItem(new ItemEyeOfAgamotto("eye_agamotto"), true);
- //   public static Item thunder_hammer = registerItem(new ItemMjolnir("mjolnir") , true);
 
     public static void registerRenders() {
         for(Item item : ITEMS) {

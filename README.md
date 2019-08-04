@@ -22,6 +22,7 @@ and click play and enjoy
 
 ## Authors
 * **[Josia50](https://GitHub.com/Josia50)** - *Mod Creator*
+* **[UKMinecrafted](https://github.com/UKMinecrafted)** - *Mod Developer*
 
 ## Contact
 You can contact us at the following below

@@ -1,9 +1,8 @@
 package com.jmteam.igauntlet.common.items.stones;
 
-import com.jmteam.igauntlet.util.InfinityConfig;
 import com.jmteam.igauntlet.network.NetworkHandler;
 import com.jmteam.igauntlet.network.packets.PacketSpace;
-import com.jmteam.igauntlet.tabs.InfinityTabs;
+import com.jmteam.igauntlet.util.InfinityConfig;
 import com.jmteam.igauntlet.util.helpers.PlayerHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,10 +13,7 @@ import net.minecraft.world.World;
 
 public class ItemSpaceStone extends Item {
 
-    public ItemSpaceStone(String name) {
-        setTranslationKey(name);
-        setRegistryName(name);
-        setCreativeTab(InfinityTabs.infinityTabs);
+    public ItemSpaceStone() {
         setMaxStackSize(1);
         setMaxDamage(4500);
     }

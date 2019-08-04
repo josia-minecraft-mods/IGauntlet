@@ -5,8 +5,8 @@ import com.jmteam.igauntlet.common.capability.CapabilityInfinity;
 import com.jmteam.igauntlet.common.capability.IInfinityCap;
 import com.jmteam.igauntlet.common.function.gems.*;
 import com.jmteam.igauntlet.common.init.InfinityItems;
-import com.jmteam.igauntlet.util.InfinityConfig;
 import com.jmteam.igauntlet.tabs.InfinityTabs;
+import com.jmteam.igauntlet.util.InfinityConfig;
 import com.jmteam.igauntlet.util.helpers.GemHelper;
 import com.jmteam.igauntlet.util.helpers.PlayerHelper;
 import net.minecraft.client.Minecraft;
@@ -28,7 +28,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -37,9 +36,7 @@ import static com.jmteam.igauntlet.common.init.InfinityNbtKeys.CURRENTSTONE;
 
 public class ItemInfinityGauntlet extends Item {
 
-    public ItemInfinityGauntlet(String name) {
-        setTranslationKey(name);
-        setRegistryName(name);
+    public ItemInfinityGauntlet() {
         setMaxStackSize(1);
         setMaxDamage(4500);
         setCreativeTab(InfinityTabs.infinityTabs);

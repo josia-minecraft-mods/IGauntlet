@@ -15,10 +15,8 @@ import javax.annotation.Nullable;
 
 public class ItemEyeOfAgamotto extends ItemArmor {
 
-    public ItemEyeOfAgamotto(String name) {
+    public ItemEyeOfAgamotto() {
         super(ArmorMaterial.CHAIN, 0, EntityEquipmentSlot.CHEST);
-        setRegistryName(name);
-        setTranslationKey(name);
     }
 
     @Nullable
