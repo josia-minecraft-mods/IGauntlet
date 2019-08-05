@@ -9,11 +9,13 @@ import net.minecraft.world.World;
 
 public class ItemWalkman extends Item {
 
-    public ItemWalkman() {}
+    public ItemWalkman() {
+        // TODO Add Item Property Override to make Casette Show
+    }
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
-     // TODO open GUI with container
+     // TODO open GUI with container (First Make one)
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
 }
