@@ -10,15 +10,15 @@
     ]
   },
   "snap": {
-  "category": "master",
-  "subtitle": "sound.snap",
-  "sounds": [
-    {
-      "name": "igauntlet:gauntlet/snap/snap",
-      "stream": false
-    }
-  ]
-},
+    "category": "master",
+    "subtitle": "sound.snap",
+    "sounds": [
+      {
+        "name": "igauntlet:gauntlet/snap/snap",
+        "stream": false
+      }
+    ]
+  },
   "awesome_mix": {
     "category": "master",
     "subtitle": "sound.awesomemix1",
