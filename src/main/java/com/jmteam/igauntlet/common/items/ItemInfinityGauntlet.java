@@ -5,7 +5,6 @@ import com.jmteam.igauntlet.common.capability.CapabilityInfinity;
 import com.jmteam.igauntlet.common.capability.IInfinityCap;
 import com.jmteam.igauntlet.common.function.gems.*;
 import com.jmteam.igauntlet.common.init.InfinityItems;
-import com.jmteam.igauntlet.tabs.InfinityTabs;
 import com.jmteam.igauntlet.util.InfinityConfig;
 import com.jmteam.igauntlet.util.helpers.GemHelper;
 import com.jmteam.igauntlet.util.helpers.PlayerHelper;
@@ -38,7 +37,6 @@ public class ItemInfinityGauntlet extends Item {
     public ItemInfinityGauntlet() {
         setMaxStackSize(1);
         setMaxDamage(4500);
-        setCreativeTab(InfinityTabs.infinityTabs);
     }
 
     int NONE = 0;
