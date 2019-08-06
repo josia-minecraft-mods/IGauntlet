@@ -1,6 +1,7 @@
 package com.jmteam.igauntlet.common.init;
 
 import com.jmteam.igauntlet.common.blocks.*;
+import com.jmteam.igauntlet.common.blocks.stoneholders.BlockTesseract;
 import com.jmteam.igauntlet.tabs.InfinityTabs;
 import com.jmteam.igauntlet.util.helpers.IHaveItem;
 import net.minecraft.block.Block;
