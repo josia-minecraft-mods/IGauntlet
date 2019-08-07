@@ -7,6 +7,7 @@ import com.jmteam.igauntlet.network.NetworkHandler;
 import com.jmteam.igauntlet.proxy.IProxy;
 import com.jmteam.igauntlet.util.InfinityRecipes;
 import com.jmteam.igauntlet.util.handlers.RegistryHandler;
+import com.jmteam.igauntlet.util.handlers.SoundsHandler;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -48,7 +49,6 @@ public class Infinity {
     public static void Init(FMLInitializationEvent event) {
         proxy.init(event);
         InfinityRecipes.init();
-        RegistryHandler.initRegistries(event);
     }
 
     @Mod.EventHandler
