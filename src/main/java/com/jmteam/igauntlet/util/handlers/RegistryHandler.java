@@ -44,15 +44,11 @@ public class RegistryHandler {
         InfinityDimensions.registerDimensions();
     }
 
-    public static void initRegistries(FMLInitializationEvent event) {
-        SoundsHandler.registerSounds();
-    }
-
-
     public static void postInitRegistries(FMLPostInitializationEvent event) {
     }
 
     public static void OtherRegistries() {
+        SoundsHandler.registerSounds();
         GameRegistry.registerWorldGenerator(new WorldGeneration(), 3);
         InfinityBiomes.registerBiomes();
     }
