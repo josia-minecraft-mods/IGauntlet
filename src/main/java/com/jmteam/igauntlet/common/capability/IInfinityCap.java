@@ -13,6 +13,8 @@ public interface IInfinityCap extends INBTSerializable<NBTTagCompound> {
 
     void sync();
 
+
+    // Possesion
     void setPosessing(boolean posessing);
 
     void setLastPos(BlockPos pos);
@@ -27,4 +29,9 @@ public interface IInfinityCap extends INBTSerializable<NBTTagCompound> {
 
     void clearPosessing();
 
+
+    //Snap
+    void setSnapCooldown(int cooldown);
+
+    int getSnapCooldown();
 }

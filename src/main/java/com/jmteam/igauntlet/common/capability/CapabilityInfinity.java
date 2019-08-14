@@ -26,6 +26,7 @@ public class CapabilityInfinity implements IInfinityCap {
     private boolean isPosessing = false;
     private float last_eyeheight = 0f;
     private BlockPos last_pos = BlockPos.ORIGIN;
+    private int snap_cooldown = 0;
 
 
     public CapabilityInfinity() {}
@@ -37,6 +38,7 @@ public class CapabilityInfinity implements IInfinityCap {
 
     @Override
     public void update() {
+        if(snap_cooldown > 0) snap_cooldown--;
     }
 
     @Override
@@ -89,12 +91,23 @@ public class CapabilityInfinity implements IInfinityCap {
     }
 
     @Override
+    public void setSnapCooldown(int cooldown) {
+        snap_cooldown = cooldown * 20;
+    }
+
+    @Override
+    public int getSnapCooldown() {
+        return snap_cooldown;
+    }
+
+    @Override
     public NBTTagCompound serializeNBT() {
         NBTTagCompound nbt = new NBTTagCompound();
         nbt.setInteger("posses_entity", possesionentity);
         nbt.setFloat("last_eyeheight", last_eyeheight);
         nbt.setBoolean("is_posessing", isPosessing);
         nbt.setLong("last_pos", last_pos.toLong());
+        nbt.setInteger("snap_cooldown", snap_cooldown);
         return nbt;
     }
 
@@ -104,6 +117,7 @@ public class CapabilityInfinity implements IInfinityCap {
         last_eyeheight = nbt.getFloat("last_eyeheight");
         isPosessing = nbt.getBoolean("is_posessing");
         last_pos = BlockPos.fromLong(nbt.getLong("last_pos"));
+        snap_cooldown = nbt.getInteger("snap_cooldown");
     }
 
     @Mod.EventBusSubscriber(modid = Infinity.MODID)
@@ -118,8 +132,10 @@ public class CapabilityInfinity implements IInfinityCap {
         @SubscribeEvent
         public static void update(LivingEvent.LivingUpdateEvent event) {
             CapabilityInfinity cap = event.getEntityLiving().getCapability(CapInfinityStorage.CAPABILITY, null);
-            if (cap != null)
+            if (cap != null) {
                 cap.update();
+                cap.sync();
+            }
         }
 
         @SubscribeEvent

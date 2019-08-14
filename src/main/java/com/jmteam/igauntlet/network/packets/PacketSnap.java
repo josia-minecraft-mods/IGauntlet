@@ -1,7 +1,8 @@
 package com.jmteam.igauntlet.network.packets;
 
+import com.jmteam.igauntlet.common.capability.CapabilityInfinity;
+import com.jmteam.igauntlet.common.capability.IInfinityCap;
 import com.jmteam.igauntlet.common.damage.IDamageSource;
-import com.jmteam.igauntlet.common.init.InfinityItems;
 import com.jmteam.igauntlet.util.InfinityConfig;
 import com.jmteam.igauntlet.util.handlers.SoundsHandler;
 import com.jmteam.igauntlet.util.helpers.GauntletHelper;
@@ -17,8 +18,6 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-import static com.jmteam.igauntlet.common.init.InfinityNbtKeys.SNAPPED;
 
 public class PacketSnap implements IMessage {
 
@@ -44,52 +43,41 @@ public class PacketSnap implements IMessage {
 
         @Override
         public IMessage onMessage(PacketSnap message, MessageContext ctx) {
-            ctx.getServerHandler().player.getServerWorld().addScheduledTask(() -> {
-                EntityPlayerMP playerIn = ctx.getServerHandler().player;
-                Random random = new Random();
+            ctx.getServerHandler().player.getServerWorld().addScheduledTask(new Runnable() {
+                @Override
+                public void run() {
+                    EntityPlayerMP player = ctx.getServerHandler().player;
+                    Random r = new Random();
+                    boolean CanSnap = InfinityConfig.Gauntlet.Snap;
+                    IInfinityCap cap = CapabilityInfinity.get(player);
+                    int extend = InfinityConfig.Gauntlet.ExtensionRange;
+                    boolean tick = false;
+                    List<EntityLiving> entities = player.world.getEntitiesWithinAABB(EntityLiving.class, player.getEntityBoundingBox().grow(extend, extend, extend));
 
-                boolean CanSnap = InfinityConfig.Gauntlet.Snap;
-                int extend = InfinityConfig.Gauntlet.ExtensionRange;
-                int r = random.nextInt(10);
-                int snapentity = 0;
-                boolean ticklimit = true;
+                    if (CanSnap && cap.getSnapCooldown() <= 0) {
+                        if (entities.size() > 1) {
 
-
-                if (CanSnap && PlayerHelper.getPDataInt(playerIn, SNAPPED) == 0) {
-                    if (!(playerIn.getHeldItemMainhand().getItem() == InfinityItems.infinity_gauntlet)) return;
-                    for (EntityLiving targetentity : playerIn.world.getEntitiesWithinAABB(EntityLiving.class, playerIn.getEntityBoundingBox().grow(extend, extend, extend))) {
-                        SNAPENTITY.add(targetentity);
-                    }
-                    snapentity = SNAPENTITY.size() / 2;
-
-                    for (EntityLiving e : SNAPENTITY) {
-
-                        if (snapentity > 0) {
-                            EntityLiving targetentity = SNAPENTITY.get(snapentity);
-
-                            EntityLiving entity = targetentity;
-                            if (!targetentity.getIsInvulnerable()) {
-                                GauntletHelper.makeAshPile(entity.world, entity.getPosition(), entity);
-                                targetentity.attackEntityFrom(IDamageSource.SNAP, targetentity.getMaxHealth());
-                                snapentity--;
-                            }
-                        }
-                        if (SNAPENTITY.size() > 1) {
-                            if (ticklimit) {
-                                playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
-                                PlayerHelper.setPDataInt(playerIn, "snapped", InfinityConfig.Gauntlet.SnapCooldown * 20);
-                                if (r == 3) {
-                                    playerIn.world.playSound(null, playerIn.getPosition(), SoundsHandler.IDONTFEELGOOD, SoundCategory.AMBIENT, 1F, 1F);
+                            for (int i = 0; i < (entities.size() / 2); i++) {
+                                EntityLiving e = entities.get(i);
+                                if (!e.getIsInvulnerable()) {
+                                    e.attackEntityFrom(IDamageSource.SNAP, Float.POSITIVE_INFINITY);
+                                    GauntletHelper.makeAshPile(e.world, e.getPosition(), e);
                                 }
-                                ticklimit = false;
+                            }
+
+                            if (!tick) {
+                                cap.setSnapCooldown(InfinityConfig.Gauntlet.SnapCooldown);
+                                player.world.playSound(null, player.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
+                                if (r.nextInt(10) == 3)
+                                    player.world.playSound(null, player.getPosition(), SoundsHandler.IDONTFEELGOOD, SoundCategory.AMBIENT, 1F, 1F);
+                                tick = !tick;
                             }
                         } else {
-                            PlayerHelper.sendMessage(playerIn, "gauntlet.snap.notenough", true);
+                            PlayerHelper.sendMessage(player, "gauntlet.snap.notenough", true);
                         }
+                        entities.clear();
                     }
                 }
-                SNAPENTITY.clear();
-                snapentity = 0;
             });
             return null;
         }

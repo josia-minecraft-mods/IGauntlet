@@ -3,7 +3,6 @@ package com.jmteam.igauntlet.util.handlers;
 import com.jmteam.igauntlet.Infinity;
 import com.jmteam.igauntlet.common.capability.CapabilityInfinity;
 import com.jmteam.igauntlet.common.capability.IInfinityCap;
-import com.jmteam.igauntlet.common.init.InfinityItems;
 import com.jmteam.igauntlet.util.InfinityConfig;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.text.TextComponentString;
@@ -11,13 +10,10 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.event.ClickEvent;
 import net.minecraft.util.text.event.HoverEvent;
 import net.minecraftforge.common.ForgeVersion;
-import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
-
-import static com.jmteam.igauntlet.common.init.InfinityNbtKeys.SNAPPED;
 
 @Mod.EventBusSubscriber(modid = Infinity.MODID)
 public class EventHandler {
@@ -52,28 +48,6 @@ public class EventHandler {
     }*/
 
     @SubscribeEvent
-    public static void countDownSnap(LivingEvent.LivingUpdateEvent e) {
-        if (e.getEntity() instanceof EntityPlayer) {
-            EntityPlayer player = (EntityPlayer) e.getEntity();
-
-            // Snap Countdown
-            if (player.getEntityData().hasKey(SNAPPED)) {
-                if (player.getEntityData().getInteger(SNAPPED) > 0) {
-                    int removing = player.getEntityData().getInteger(SNAPPED) - 1;
-                    player.getEntityData().setInteger(SNAPPED, removing);
-                }
-            } else {
-                if (player.getActiveItemStack().getItem() == InfinityItems.infinity_gauntlet)
-                    player.getEntityData().setInteger(SNAPPED, 0);
-            }
-
-            // Posession
-            //    GemSoul.ProcessTakenSoul(player);
-        }
-    }
-
-
-    @SubscribeEvent
     public static void PlayerJoinWorld(PlayerEvent.PlayerLoggedInEvent playerEvent) {
         EntityPlayer player = playerEvent.player;
         if (!player.world.isRemote && InfinityConfig.Gauntlet.UpdateChecker) {
@@ -89,7 +63,7 @@ public class EventHandler {
     }
 
     @SubscribeEvent
-    public static void PlayerJoinWorld(PlayerEvent.PlayerLoggedOutEvent playerEvent) {
+    public static void PlayerLeaveWorld(PlayerEvent.PlayerLoggedOutEvent playerEvent) {
         IInfinityCap cap = CapabilityInfinity.get(playerEvent.player);
         if (cap.isPosessing()) {
             cap.setPosessing(false);
