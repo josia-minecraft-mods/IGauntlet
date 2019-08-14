@@ -52,7 +52,7 @@ public class ClientEvents {
     }
 
     @SubscribeEvent
-    public static void onClientTick(InputUpdateEvent e) {
+    public static void onKeyboardInput(InputUpdateEvent e) {
         Minecraft mc = Minecraft.getMinecraft();
         GameSettings set = mc.gameSettings;
         IInfinityCap cap = CapabilityInfinity.get(e.getEntityPlayer());
