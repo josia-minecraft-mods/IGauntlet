@@ -11,12 +11,10 @@ import net.minecraft.world.World;
 public class GemPower {
 
     public static void Laser(EntityPlayer entityplayer, World worldIn, ItemStack stack) {
-        if (worldIn.isRemote && !entityplayer.isSneaking() && entityplayer.getHeldItemOffhand().getItem() != InfinityItems.infinity_gauntlet) {
+        if (!entityplayer.isSneaking() && entityplayer.getHeldItemOffhand().getItem() != InfinityItems.infinity_gauntlet) {
             entityplayer.playSound(SoundsHandler.GAUNTLET_HUM, 1, 1);
+            GauntletHelper.ShootLaser(entityplayer, worldIn, Float.MAX_VALUE, 1, 0, 5);
         }
-
-        if(!entityplayer.isSneaking())
-        GauntletHelper.ShootLaser(entityplayer, worldIn, Float.MAX_VALUE, 1,0 ,5);
     }
 }
 
