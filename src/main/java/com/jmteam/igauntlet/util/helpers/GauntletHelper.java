@@ -13,10 +13,10 @@ import net.minecraft.world.World;
 
 public class GauntletHelper {
 
-    public static void ShootLaser(EntityPlayer entityplayer, World worldIn, int damage, int r, int g, int b) {
-        Vec3d v3 = entityplayer.getLook(1);
+    public static void ShootLaser(EntityPlayer entityplayer, World worldIn, float damage, int r, int g, int b) {
+        Vec3d v = entityplayer.getLook(1);
         EntityLaser laser = new EntityLaser(worldIn, entityplayer, damage, IDamageSource.LASER, new Vec3d(r, g, b));
-        laser.shoot(v3.x, v3.y, v3.z, 1.5F, (float) 0);
+        laser.shoot(v.x, v.y, v.z, 1.5F, 0F);
         worldIn.spawnEntity(laser);
     }
 

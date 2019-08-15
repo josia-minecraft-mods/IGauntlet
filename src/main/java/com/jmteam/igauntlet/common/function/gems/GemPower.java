@@ -16,7 +16,7 @@ public class GemPower {
         }
 
         if(!entityplayer.isSneaking())
-        GauntletHelper.ShootLaser(entityplayer, worldIn, 100, 1,0 ,5);
+        GauntletHelper.ShootLaser(entityplayer, worldIn, Float.MAX_VALUE, 1,0 ,5);
     }
 }
 
