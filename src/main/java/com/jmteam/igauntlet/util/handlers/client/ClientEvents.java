@@ -59,7 +59,7 @@ public class ClientEvents {
         String func = "";
 
         if (InfinityKeyBinds.SNAP.isPressed())
-            NetworkHandler.NETWORK.sendToServer(new PacketSnap());
+            NetworkHandler.NETWORK.sendToServer(new PacketSnap(e.getEntityPlayer().isSneaking()));
 
         if(cap.isPosessing()) {
             if(InfinityKeyBinds.SPECIAL.isPressed()) func = "special";

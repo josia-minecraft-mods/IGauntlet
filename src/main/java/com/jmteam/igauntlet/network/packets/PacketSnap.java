@@ -3,6 +3,8 @@ package com.jmteam.igauntlet.network.packets;
 import com.jmteam.igauntlet.common.capability.CapabilityInfinity;
 import com.jmteam.igauntlet.common.capability.IInfinityCap;
 import com.jmteam.igauntlet.common.damage.IDamageSource;
+import com.jmteam.igauntlet.common.function.gems.GemTime;
+import com.jmteam.igauntlet.common.init.InfinityBlocks;
 import com.jmteam.igauntlet.util.InfinityConfig;
 import com.jmteam.igauntlet.util.handlers.SoundsHandler;
 import com.jmteam.igauntlet.util.helpers.GauntletHelper;
@@ -11,32 +13,31 @@ import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class PacketSnap implements IMessage {
 
-    public static boolean snap;
-    public static final List<EntityLiving> SNAPENTITY = new ArrayList<EntityLiving>();
+    public boolean reverse = false;
 
     public PacketSnap() {
     }
 
-    public PacketSnap(boolean snap) {
-        this.snap = snap;
+    public PacketSnap(boolean reverse) {
+        this.reverse = reverse;
     }
 
     public void fromBytes(ByteBuf buf) {
-        this.snap = buf.readBoolean();
+        this.reverse = buf.readBoolean();
     }
 
     public void toBytes(ByteBuf buf) {
-        buf.writeBoolean(this.snap);
+        buf.writeBoolean(this.reverse);
     }
 
     public static class Handler implements IMessageHandler<PacketSnap, IMessage> {
@@ -47,7 +48,8 @@ public class PacketSnap implements IMessage {
                 @Override
                 public void run() {
                     EntityPlayerMP player = ctx.getServerHandler().player;
-                    Random r = new Random();
+                    BlockPos p = player.getPosition();
+                    Random rn = new Random();
                     boolean CanSnap = InfinityConfig.Gauntlet.Snap;
                     IInfinityCap cap = CapabilityInfinity.get(player);
                     int extend = InfinityConfig.Gauntlet.ExtensionRange;
@@ -55,27 +57,45 @@ public class PacketSnap implements IMessage {
                     List<EntityLiving> entities = player.world.getEntitiesWithinAABB(EntityLiving.class, player.getEntityBoundingBox().grow(extend, extend, extend));
 
                     if (CanSnap && cap.getSnapCooldown() <= 0) {
-                        if (entities.size() > 1) {
 
-                            for (int i = 0; i < (entities.size() / 2); i++) {
-                                EntityLiving e = entities.get(i);
-                                if (!e.getIsInvulnerable()) {
-                                    e.attackEntityFrom(IDamageSource.SNAP, Float.POSITIVE_INFINITY);
-                                    GauntletHelper.makeAshPile(e.world, e.getPosition(), e);
+                        if (message.reverse) {
+                            boolean canRevive = InfinityConfig.Gauntlet.ReviveAsh;
+                            int r = InfinityConfig.Gauntlet.AshReviveRange;
+
+                            if (canRevive) {
+                                String status = "snap.revivedashfail";
+                                for (BlockPos bp : BlockPos.getAllInBox(p.getX() - r, p.getY() - r, p.getZ() - r, p.getX() + r, p.getY() + r, p.getZ() + r)) {
+                                    if (player.world.getBlockState(bp).getBlock() == InfinityBlocks.ash_pile) {
+                                        GemTime.SummonCreature(player.world, bp);
+                                        status = "snap.revivedash";
+                                    }
                                 }
-                            }
-
-                            if (!tick) {
-                                cap.setSnapCooldown(InfinityConfig.Gauntlet.SnapCooldown);
-                                player.world.playSound(null, player.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
-                                if (r.nextInt(10) == 3)
-                                    player.world.playSound(null, player.getPosition(), SoundsHandler.IDONTFEELGOOD, SoundCategory.AMBIENT, 1F, 1F);
-                                tick = !tick;
+                                PlayerHelper.sendMessage(player, status, true);
                             }
                         } else {
-                            PlayerHelper.sendMessage(player, "gauntlet.snap.notenough", true);
+                            if (entities.size() > 1) {
+
+                                for (int i = 0; i < (entities.size() / 2); i++) {
+                                    EntityLiving e = entities.get(i);
+                                    if (!e.getIsInvulnerable()) {
+                                        e.setDropItemsWhenDead(false);
+                                        e.attackEntityFrom(IDamageSource.SNAP, Float.POSITIVE_INFINITY);
+                                        GauntletHelper.makeAshPile(e.world, e.getPosition(), e);
+                                    }
+                                }
+
+                                if (!tick) {
+                                    cap.setSnapCooldown(InfinityConfig.Gauntlet.SnapCooldown);
+                                    player.world.playSound(null, player.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
+                                    if (rn.nextInt(10) == 3)
+                                        player.world.playSound(null, player.getPosition(), SoundsHandler.IDONTFEELGOOD, SoundCategory.AMBIENT, 1F, 1F);
+                                    tick = !tick;
+                                }
+                            } else {
+                                PlayerHelper.sendMessage(player, "gauntlet.snap.notenough", true);
+                            }
+                            entities.clear();
                         }
-                        entities.clear();
                     }
                 }
             });

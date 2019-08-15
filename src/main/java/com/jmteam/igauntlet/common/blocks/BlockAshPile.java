@@ -3,7 +3,6 @@ package com.jmteam.igauntlet.common.blocks;
 import com.jmteam.igauntlet.common.tileentity.TileAshPile;
 import com.jmteam.igauntlet.util.helpers.IHaveItem;
 import net.minecraft.block.BlockFalling;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -18,7 +17,7 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-public class BlockAshPile extends BlockFalling implements IHaveItem, ITileEntityProvider {
+public class BlockAshPile extends BlockFalling implements IHaveItem {
 
 
     public static final AxisAlignedBB DUST_AABB = new AxisAlignedBB(0.296875, 0, 0.296875, 0.6900, 0.1875 / 2, 0.6900);
@@ -34,10 +33,8 @@ public class BlockAshPile extends BlockFalling implements IHaveItem, ITileEntity
 
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-
-        if(!worldIn.isRemote) {
-            TileAshPile tileAshPile = (TileAshPile) worldIn.getTileEntity(pos);
-       }
+        TileAshPile tileAshPile = (TileAshPile) worldIn.getTileEntity(pos);
+        tileAshPile.summonEntity();
         return true;
     }
 
@@ -75,8 +72,13 @@ public class BlockAshPile extends BlockFalling implements IHaveItem, ITileEntity
 
     @Nullable
     @Override
-    public TileEntity createNewTileEntity(World world, int data) {
+    public TileEntity createTileEntity(World world, IBlockState state) {
         return new TileAshPile();
+    }
+
+    @Override
+    public boolean hasTileEntity(IBlockState state) {
+        return true;
     }
 
     @Override

@@ -51,6 +51,8 @@ gauntlet.snap.cantsnap.cooldown=The cooldown hasn't passed yet!
 gauntlet.snap.cantsnap.disabled=Snap is disabled in config!
 gui.gauntlet.stone.notadded =This stone hasn't been added yet! Stone :
 gauntlet.selected.null=You haven't selected a stone yet!
+snap.revivedash=Revived Ash Piles!
+snap.revivedashfail=Couldn't revive any ash piles!
 stones.power.spaired= You have been spaired!
 
 //Config
@@ -66,6 +68,8 @@ igauntlet.config.snap.playerkill=SnapPlayerKill
 igauntlet.config.dwarfid=Dwarf Dimension ID
 igauntlet.config.time.freezerange=Freeze Range
 igauntlet.config.allow.space=Space Stone
+igauntlet.config.reviveashrange=Revive Ash Range
+igauntlet.config.reviveash=Revive Ash
 igauntlet.config.allow.time=Time Stone
 igauntlet.config.allow.reality=Reality Stone
 igauntlet.config.allow.mind=Mind Stone

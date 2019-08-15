@@ -3,6 +3,7 @@ package com.jmteam.igauntlet.util.handlers;
 import com.jmteam.igauntlet.Infinity;
 import com.jmteam.igauntlet.common.capability.CapabilityInfinity;
 import com.jmteam.igauntlet.common.capability.IInfinityCap;
+import com.jmteam.igauntlet.common.damage.IDamageSource;
 import com.jmteam.igauntlet.util.InfinityConfig;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.text.TextComponentString;
@@ -10,6 +11,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.event.ClickEvent;
 import net.minecraft.util.text.event.HoverEvent;
 import net.minecraftforge.common.ForgeVersion;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -46,6 +48,13 @@ public class EventHandler {
             e.setCanceled(true);
         }
     }*/
+
+   @SubscribeEvent
+   public static void DropEvent(LivingDropsEvent e) {
+       if(e.getSource() == IDamageSource.SNAP) {
+           e.getDrops().clear();
+       }
+   }
 
     @SubscribeEvent
     public static void PlayerJoinWorld(PlayerEvent.PlayerLoggedInEvent playerEvent) {

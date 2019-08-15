@@ -89,6 +89,15 @@ public class InfinityConfig {
         @Config.LangKey("igauntlet.config.snap")
         public boolean Snap = true;
 
+        @Config.Comment("What's the range of Ash piles being revived?")
+        @Config.LangKey("igauntlet.config.reviveashrange")
+        @Config.RangeInt(min = 50, max = 100)
+        public int AshReviveRange = 50;
+
+        @Config.Comment("Can players revive ash piles?")
+        @Config.LangKey("igauntlet.config.reviveash")
+        public boolean ReviveAsh = true;
+
         @Config.Comment("Should Snap kill players")
         @Config.LangKey("igauntlet.config.snap.playerkill")
         public boolean SnapKillPlayers = true;

@@ -17,13 +17,13 @@ public class TileQuickSand extends TileEntity implements ITickable {
 
     @Override
     public void update() {
-        if (placed == 1 && timer < InfinityConfig.Gauntlet.RealityStone.SandTimer) {
+        if (placed == 1 && timer < InfinityConfig.Gauntlet.RealityStone.SandTimer)
             timer++;
-        }
 
-        if (timer == InfinityConfig.Gauntlet.RealityStone.SandTimer) {
+
+        if (timer >= InfinityConfig.Gauntlet.RealityStone.SandTimer)
             world.setBlockState(pos, Blocks.SAND.getDefaultState());
-        }
+
     }
 
     @Override

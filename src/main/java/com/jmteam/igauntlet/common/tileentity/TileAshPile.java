@@ -11,43 +11,43 @@ import net.minecraft.util.ResourceLocation;
 
 public class TileAshPile extends TileEntity implements ITickable {
 
-
-    public static String entity = "";
+    public String entity = "";
     private int tick = 0;
 
-
     public void setEntity(EntityLiving entity) {
-       this.entity = EntityList.getKey(entity).toString();
+        this.entity = EntityList.getKey(entity).toString();
     }
 
-    public EntityLiving getEntity() {
-        return  (EntityLiving) EntityList.createEntityByIDFromName(new ResourceLocation(entity), getWorld());
+    private EntityLiving getEntity() {
+        return (EntityLiving) EntityList.createEntityByIDFromName(new ResourceLocation(entity), getWorld());
     }
 
     public void summonEntity() {
-        EntityLiving e = (EntityLiving) getEntity();
-        e.setLocationAndAngles(pos.getX(), pos.getY(), pos.getZ(), 90,90);
-        getWorld().spawnEntity(e);
-        getWorld().setBlockState(getPos(), Blocks.AIR.getDefaultState());
+        if (!getWorld().isRemote) {
+            EntityLiving e = (EntityLiving) getEntity();
+            e.setLocationAndAngles(pos.getX(), pos.getY(), pos.getZ(), 90, 0);
+            world.spawnEntity(e);
+        }
     }
 
     @Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
-        entity = compound.getString("entity_name");
+        //    this.entity = compound.getString("entity_name");
+        this.tick = compound.getInteger("tick");
     }
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
-        compound.setString("entity_name", entity);
+        //   compound.setString("entity_name", this.entity);
+        compound.setInteger("tick", tick);
         return compound;
     }
 
     @Override
     public void update() {
         tick++;
-        if (tick == 1200)
-            world.setBlockState(pos, Blocks.AIR.getDefaultState());
+        if (tick == 1200) world.setBlockState(pos, Blocks.AIR.getDefaultState());
     }
 }
