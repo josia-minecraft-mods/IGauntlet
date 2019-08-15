@@ -1,10 +1,10 @@
 package com.jmteam.igauntlet.util.helpers;
 
-import com.jmteam.igauntlet.common.init.InfinityBlocks;
 import com.jmteam.igauntlet.common.damage.IDamageSource;
 import com.jmteam.igauntlet.common.entity.EntityLaser;
+import com.jmteam.igauntlet.common.init.InfinityBlocks;
 import com.jmteam.igauntlet.common.tileentity.TileAshPile;
-import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
@@ -20,12 +20,12 @@ public class GauntletHelper {
         worldIn.spawnEntity(laser);
     }
 
-    public static void makeAshPile(World world, BlockPos pos, Entity entity) {
+    public static void makeAshPile(World world, BlockPos pos, EntityLiving entity) {
         world.setBlockState(pos, InfinityBlocks.ash_pile.getDefaultState());
         WriteAsh(pos, world, entity);
     }
 
-    public static void WriteAsh(BlockPos pos, World world, Entity entity) {
+    public static void WriteAsh(BlockPos pos, World world, EntityLiving entity) {
         TileEntity ash_te = world.getTileEntity(pos);
         if (ash_te != null && ash_te instanceof TileAshPile) {
             TileAshPile ash_te_f = (TileAshPile) ash_te;

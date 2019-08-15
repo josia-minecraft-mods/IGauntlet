@@ -68,7 +68,7 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
                         }
 
                         BlockPos pos0 = new BlockPos(result.entityHit.posX, result.entityHit.posY, result.entityHit.posZ);
-                        GauntletHelper.makeAshPile(world, pos0, entity);
+                        GauntletHelper.makeAshPile(world, pos0, (EntityLiving) entity);
                     }
                 }
             }
