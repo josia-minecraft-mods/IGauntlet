@@ -50,19 +50,18 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
             if(!(entity instanceof EntityHanging)) {
 
                 if(entity instanceof EntityLiving) {
-                    if(!entity.getIsInvulnerable()) return;
+                    if(entity.getIsInvulnerable()) return;
                 }
 
                 if(entity instanceof EntityPlayer) {
                     EntityPlayer p = (EntityPlayer) entity;
                     if(p.isCreative()) return;
-
-
                 }
 
 
                 EntityHelper.AttackBySource(entity, DamageSource.causeThrownDamage(this, getThrower()), damage);
                 GauntletHelper.makeAshPile(world, entity.getPosition(), (EntityLiving) entity);
+                this.setDead();
             }
 
 
