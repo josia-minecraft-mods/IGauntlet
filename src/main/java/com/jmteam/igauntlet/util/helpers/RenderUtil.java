@@ -15,6 +15,9 @@ import java.awt.*;
 import static net.minecraft.client.renderer.OpenGlHelper.lastBrightnessX;
 import static net.minecraft.client.renderer.OpenGlHelper.lastBrightnessY;
 
+/**
+ * Credits to Lucraft for allowing us to use this
+ */
 public class RenderUtil {
     public static void setupRenderLightning() {
         GlStateManager.pushMatrix();
