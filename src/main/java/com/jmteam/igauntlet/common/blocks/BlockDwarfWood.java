@@ -10,7 +10,7 @@ public class BlockDwarfWood extends Block implements IHaveItem {
     public BlockDwarfWood(Material material) {
         super(material);
         setSoundType(SoundType.STONE);
-        setHarvestLevel("pickaxe", 2);
+        setHarvestLevel("axe", 1);
         setHardness(15.0F);
         setResistance(15.0F);
     }

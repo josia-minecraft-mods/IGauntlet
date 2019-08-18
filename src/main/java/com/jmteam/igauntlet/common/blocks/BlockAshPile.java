@@ -19,7 +19,6 @@ public class BlockAshPile extends BlockFalling implements IHaveItem {
 
     public static final AxisAlignedBB DUST_AABB = new AxisAlignedBB(0.296875, 0, 0.296875, 0.6900, 0.1875 / 2, 0.6900);
 
-
     public BlockAshPile(Material material) {
         super(material);
         setSoundType(SoundType.SAND);
