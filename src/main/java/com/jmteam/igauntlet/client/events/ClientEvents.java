@@ -1,4 +1,4 @@
-package com.jmteam.igauntlet.util.handlers.client;
+package com.jmteam.igauntlet.client.events;
 
 import com.jmteam.igauntlet.client.init.InfinityKeyBinds;
 import com.jmteam.igauntlet.common.capability.CapabilityInfinity;

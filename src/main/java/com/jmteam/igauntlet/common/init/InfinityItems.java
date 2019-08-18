@@ -5,8 +5,6 @@ import com.jmteam.igauntlet.common.items.*;
 import com.jmteam.igauntlet.common.items.clothing.ItemEyeOfAgamotto;
 import com.jmteam.igauntlet.common.items.stones.*;
 import com.jmteam.igauntlet.common.items.tools.ItemDwarfhammer;
-import com.jmteam.igauntlet.tabs.InfinityTabs;
-import com.jmteam.igauntlet.util.handlers.SoundsHandler;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
@@ -23,7 +21,7 @@ public class InfinityItems {
     public static final List<Item> ITEMS = new ArrayList<Item>();
 
     public static Item infinity_gauntlet = registerItem(new ItemInfinityGauntlet(), "infinity_gauntlet").setCreativeTab(InfinityTabs.infinityTabs);
-    public static Item mixtape = registerItem(new ItemMixTape("awesome_mix", SoundsHandler.AWESOMEMIX), "awesome_mix").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Item mixtape = registerItem(new ItemMixTape("awesome_mix", InfinitySounds.AWESOMEMIX), "awesome_mix").setCreativeTab(InfinityTabs.infinityTabs);
     public static Item uru_ingot = registerItem(new ItemBase(), "uru_ingot").setCreativeTab(InfinityTabs.infinityTabs);
     public static Item mind_stone = registerItem(new ItemMindStone(), "mind_stone").setCreativeTab(InfinityTabs.infinityTabs);
     public static Item reality_stone = registerItem(new ItemRealityStone(), "reality_stone").setCreativeTab(InfinityTabs.infinityTabs);

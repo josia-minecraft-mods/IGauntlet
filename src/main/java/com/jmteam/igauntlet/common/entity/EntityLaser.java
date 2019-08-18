@@ -1,21 +1,16 @@
 package com.jmteam.igauntlet.common.entity;
 
-import com.jmteam.igauntlet.common.init.InfinityBlocks;
+import com.jmteam.igauntlet.util.helpers.EntityHelper;
 import com.jmteam.igauntlet.util.helpers.GauntletHelper;
 import io.netty.buffer.ByteBuf;
-import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityHanging;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.boss.EntityDragon;
-import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.RayTraceResult.Type;
 import net.minecraft.util.math.Vec3d;
@@ -23,18 +18,19 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
 
+import java.awt.*;
+
 public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpawnData {
 
     public float damage;
     private DamageSource source;
-    public Vec3d color;
-
+    public Color color;
 
     public EntityLaser(World worldIn) {
         super(worldIn);
     }
 
-    public EntityLaser(World worldIn, EntityLivingBase throwerIn, float damage, DamageSource source, Vec3d color) {
+    public EntityLaser(World worldIn, EntityLivingBase throwerIn, float damage, DamageSource source, Color color) {
         super(worldIn, throwerIn);
         this.damage = damage;
         this.color = color;
@@ -48,31 +44,27 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
             return;
 
         if (result.typeOfHit == Type.ENTITY) {
-            if (result.entityHit == this.thrower) return;
             Entity entity = result.entityHit;
+            if (entity == this.thrower) return;
 
-            if (result.entityHit instanceof EntityPlayer) {
-                if (!((EntityPlayer) result.entityHit).capabilities.isCreativeMode) {
-                    Block blk = InfinityBlocks.ash_pile;
-                    BlockPos pos0 = new BlockPos(result.entityHit.posX, result.entityHit.posY, result.entityHit.posZ);
-                    IBlockState state0 = blk.getDefaultState();
-                    world.setBlockState(pos0, state0);
+            if(!(entity instanceof EntityHanging)) {
+
+                if(entity instanceof EntityLiving) {
+                    if(!entity.getIsInvulnerable()) return;
                 }
-            } else {
-                if (result.entityHit instanceof EntityLiving) {
-                    if (result.entityHit.getIsInvulnerable()) return;
 
-                    if (!(result.entityHit instanceof EntityHanging)) {
-                        if (result.entityHit instanceof EntityEnderman || result.entityHit instanceof EntityDragon) {
-                            result.entityHit.setDead();
-                        }
+                if(entity instanceof EntityPlayer) {
+                    EntityPlayer p = (EntityPlayer) entity;
+                    if(p.isCreative()) return;
 
-                        BlockPos pos0 = new BlockPos(result.entityHit.posX, result.entityHit.posY, result.entityHit.posZ);
-                        GauntletHelper.makeAshPile(world, pos0, (EntityLiving) entity);
-                    }
+
                 }
+
+
+                EntityHelper.AttackBySource(entity, DamageSource.causeThrownDamage(this, getThrower()), damage);
+                GauntletHelper.makeAshPile(world, entity.getPosition(), (EntityLiving) entity);
             }
-            result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), damage);
+
 
         } else if (result.typeOfHit == RayTraceResult.Type.BLOCK) {
             this.setDead();
@@ -100,16 +92,16 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
     public void writeEntityToNBT(NBTTagCompound compound) {
         super.writeEntityToNBT(compound);
         compound.setFloat("Damage", damage);
-        compound.setDouble("Color_R", color.x);
-        compound.setDouble("Color_G", color.y);
-        compound.setDouble("Color_B", color.z);
+        compound.setDouble("Color_R", color.getRed());
+        compound.setDouble("Color_G", color.getGreen());
+        compound.setDouble("Color_B", color.getBlue());
     }
 
     @Override
     public void readEntityFromNBT(NBTTagCompound compound) {
         super.readEntityFromNBT(compound);
         this.damage = compound.getFloat("Damage");
-        this.color = new Vec3d(compound.getDouble("Color_R"), compound.getDouble("Color_G"), compound.getDouble("Color_B"));
+        this.color = new Color(compound.getInteger("Color_R"), compound.getInteger("Color_G"), compound.getInteger("Color_B"));
     }
 
     @Override

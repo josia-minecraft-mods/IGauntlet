@@ -1,15 +1,11 @@
 package com.jmteam.igauntlet.util.handlers;
 
 import com.jmteam.igauntlet.Infinity;
-import com.jmteam.igauntlet.common.commands.DimensionTeleport;
 import com.jmteam.igauntlet.common.entity.EntityLaser;
 import com.jmteam.igauntlet.common.entity.EntityPortal;
 import com.jmteam.igauntlet.common.entity.EntitySquirrelGirl;
 import com.jmteam.igauntlet.common.init.InfinityBlocks;
 import com.jmteam.igauntlet.common.init.InfinityItems;
-import com.jmteam.igauntlet.world.InfinityBiomes;
-import com.jmteam.igauntlet.world.InfinityDimensions;
-import com.jmteam.igauntlet.world.WorldGeneration;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -18,10 +14,6 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.EntityEntryBuilder;
@@ -29,7 +21,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 
 @EventBusSubscriber
-public class RegistryHandler {
+public class InfinityRegistries {
 
     @SubscribeEvent
     public static void onModelRegister(ModelRegistryEvent event) {
@@ -37,24 +29,6 @@ public class RegistryHandler {
         for (Block block : InfinityBlocks.BLOCKS) {
             ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(block.getRegistryName(), "normal"));
         }
-    }
-
-    public static void preInitRegistries(FMLPreInitializationEvent event) {
-        TileRegister.PreInit();
-        InfinityDimensions.registerDimensions();
-    }
-
-    public static void postInitRegistries(FMLPostInitializationEvent event) {
-    }
-
-    public static void OtherRegistries() {
-        SoundsHandler.registerSounds();
-        GameRegistry.registerWorldGenerator(new WorldGeneration(), 3);
-        InfinityBiomes.registerBiomes();
-    }
-
-    public static void serverRegistries(FMLServerStartingEvent event) {
-        event.registerServerCommand(new DimensionTeleport());
     }
 
     @SubscribeEvent

@@ -9,7 +9,10 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class RenderLaser extends Render<EntityLaser> {
     public RenderLaser(RenderManager renderManager) {
         super(renderManager);
@@ -22,6 +25,8 @@ public class RenderLaser extends Render<EntityLaser> {
 
     @Override
     public void doRender(EntityLaser entity, double x, double y, double z, float entityYaw, float partialTicks) {
+        double movingspeed = new Vec3d(entity.posX, entity.posY, entity.posZ).distanceTo(new Vec3d(entity.prevPosX, entity.prevPosY, entity.prevPosZ));
+        if(!(movingspeed > 0)) return;
 
         RenderUtil.setupRenderLightning();
         GlStateManager.translate(x, y, z);

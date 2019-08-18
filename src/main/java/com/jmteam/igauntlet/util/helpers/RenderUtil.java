@@ -10,7 +10,10 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import org.lwjgl.opengl.GL11;
 
-import static net.minecraft.client.renderer.OpenGlHelper.*;
+import java.awt.*;
+
+import static net.minecraft.client.renderer.OpenGlHelper.lastBrightnessX;
+import static net.minecraft.client.renderer.OpenGlHelper.lastBrightnessY;
 
 public class RenderUtil {
     public static void setupRenderLightning() {
@@ -21,7 +24,7 @@ public class RenderUtil {
         GlStateManager.enableBlend();
         GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_CONSTANT_ALPHA);
         GlStateManager.alphaFunc(GL11.GL_GREATER, 0.003921569F);
-        setLightmapTextureCoords(240, 240, 0);
+        setLightmapTextureCoords(240, 240);
     }
 
     public static void finishRenderLightning() {
@@ -33,15 +36,24 @@ public class RenderUtil {
         GlStateManager.popMatrix();
     }
 
+
+    public static void setLightmapTextureCoords(float x, float y) {
+        lastBrightnessX = OpenGlHelper.lastBrightnessX;
+        lastBrightnessY = OpenGlHelper.lastBrightnessY;
+        OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, x, y);
+    }
+
     public static void restoreLightmapTextureCoords() {
         OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, lastBrightnessX, lastBrightnessY);
     }
 
-    public static void drawGlowingLine(Vec3d start, Vec3d end, float thickness, Vec3d color) {
+
+
+    public static void drawGlowingLine(Vec3d start, Vec3d end, float thickness, Color color) {
         drawGlowingLine(start, end, thickness, color, 1F);
     }
 
-    public static void drawGlowingLine(Vec3d start, Vec3d end, float thickness, Vec3d color, float alpha) {
+    public static void drawGlowingLine(Vec3d start, Vec3d end, float thickness, Color color, float alpha) {
         if (start == null || end == null)
             return;
 
@@ -70,7 +82,7 @@ public class RenderUtil {
 
         for (int layer = 0; layer <= layers; ++layer) {
             if (layer < layers) {
-                GlStateManager.color((float) color.x, (float) color.y, (float) color.z, 1.0F / layers / 2);
+                GlStateManager.color(color.getRed() / 255F, color.getGreen() / 255F, color.getBlue() / 255F, 1.0F / layers / 2);
                 GlStateManager.depthMask(false);
             } else {
                 GlStateManager.color(1.0F, 1.0F, 1.0F, alpha);
@@ -109,7 +121,7 @@ public class RenderUtil {
             bb.pos(-width, -height, -d).endVertex();
             tessellator.draw();
         }
+
         GlStateManager.popMatrix();
     }
-
 }

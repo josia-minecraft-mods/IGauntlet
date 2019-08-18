@@ -1,6 +1,6 @@
 package com.jmteam.igauntlet.common.items;
 
-import com.jmteam.igauntlet.util.handlers.SoundsHandler;
+import com.jmteam.igauntlet.common.init.InfinitySounds;
 import net.minecraft.item.ItemRecord;
 import net.minecraft.util.SoundEvent;
 
@@ -14,6 +14,6 @@ public class ItemMixTape extends ItemRecord {
 
     @Override
     public SoundEvent getSound() {
-        return SoundsHandler.AWESOMEMIX;
+        return InfinitySounds.AWESOMEMIX;
     }
 }

@@ -1,4 +1,4 @@
-package com.jmteam.igauntlet.util.handlers;
+package com.jmteam.igauntlet.common.events;
 
 import com.jmteam.igauntlet.Infinity;
 import com.jmteam.igauntlet.common.capability.CapabilityInfinity;
@@ -21,14 +21,14 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 public class EventHandler {
 
    /* @SubscribeEvent
-    public static void CancelEnemy(LivingSetAttackTargetEvent event) {
-        EntityLivingBase entity = event.getEntityLiving();
+    public static void CancelEnemy(LivingSetAttackTargetEvent events) {
+        EntityLivingBase entity = events.getEntityLiving();
 
         if (entity != null && entity.getEntityData().getBoolean("isfriend")) {
-            if(event.getTarget() instanceof EntityPlayer) {
+            if(events.getTarget() instanceof EntityPlayer) {
                 entity.setRevengeTarget(null);
             }
-                if(entity instanceof EntityLiving && event.getTarget().getRevengeTarget() instanceof EntityPlayer)
+                if(entity instanceof EntityLiving && events.getTarget().getRevengeTarget() instanceof EntityPlayer)
                ((EntityLiving) entity).setAttackTarget(null);
             }
         }

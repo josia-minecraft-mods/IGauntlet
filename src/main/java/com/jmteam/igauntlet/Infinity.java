@@ -3,11 +3,15 @@ package com.jmteam.igauntlet;
 import com.jmteam.igauntlet.common.capability.CapInfinityStorage;
 import com.jmteam.igauntlet.common.capability.CapabilityInfinity;
 import com.jmteam.igauntlet.common.capability.IInfinityCap;
+import com.jmteam.igauntlet.common.commands.DimensionTeleport;
+import com.jmteam.igauntlet.common.init.InfinityRecipes;
+import com.jmteam.igauntlet.common.init.InfinitySounds;
+import com.jmteam.igauntlet.common.init.InfinityTileentities;
 import com.jmteam.igauntlet.network.NetworkHandler;
 import com.jmteam.igauntlet.proxy.IProxy;
-import com.jmteam.igauntlet.util.InfinityRecipes;
-import com.jmteam.igauntlet.util.handlers.RegistryHandler;
-import com.jmteam.igauntlet.util.handlers.SoundsHandler;
+import com.jmteam.igauntlet.world.InfinityBiomes;
+import com.jmteam.igauntlet.world.InfinityDimensions;
+import com.jmteam.igauntlet.world.WorldGeneration;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -15,10 +19,11 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid = Infinity.MODID, name = Infinity.NAME, version = Infinity.VERSION, dependencies = Infinity.DEPENDENCY,updateJSON = Infinity.UPDATEURL)
+@Mod(modid = Infinity.MODID, name = Infinity.NAME, version = Infinity.VERSION, dependencies = Infinity.DEPENDENCY, updateJSON = Infinity.UPDATEURL)
 public class Infinity {
 
     //TODO Rewrite the whole mod when the mod is fully released. Easier for debugging and stuff later
@@ -39,10 +44,13 @@ public class Infinity {
     @Mod.EventHandler
     public static void PreInit(FMLPreInitializationEvent event) {
         proxy.preInit(event);
-        RegistryHandler.OtherRegistries();
+        InfinitySounds.registerSounds();
+        GameRegistry.registerWorldGenerator(new WorldGeneration(), 3);
+        InfinityBiomes.registerBiomes();
         NetworkHandler.init();
+        InfinityTileentities.PreInit();
+        InfinityDimensions.registerDimensions();
         CapabilityManager.INSTANCE.register(IInfinityCap.class, new CapInfinityStorage(), CapabilityInfinity::new);
-        RegistryHandler.preInitRegistries(event);
     }
 
     @Mod.EventHandler
@@ -57,7 +65,7 @@ public class Infinity {
 
     @Mod.EventHandler
     public static void serverInit(FMLServerStartingEvent event) {
-        RegistryHandler.serverRegistries(event);
+        event.registerServerCommand(new DimensionTeleport());
     }
 }
 

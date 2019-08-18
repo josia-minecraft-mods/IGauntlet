@@ -5,8 +5,9 @@ import com.jmteam.igauntlet.common.capability.IInfinityCap;
 import com.jmteam.igauntlet.common.damage.IDamageSource;
 import com.jmteam.igauntlet.common.function.gems.GemTime;
 import com.jmteam.igauntlet.common.init.InfinityBlocks;
+import com.jmteam.igauntlet.common.init.InfinitySounds;
 import com.jmteam.igauntlet.util.InfinityConfig;
-import com.jmteam.igauntlet.util.handlers.SoundsHandler;
+import com.jmteam.igauntlet.util.helpers.EntityHelper;
 import com.jmteam.igauntlet.util.helpers.GauntletHelper;
 import com.jmteam.igauntlet.util.helpers.PlayerHelper;
 import io.netty.buffer.ByteBuf;
@@ -74,21 +75,19 @@ public class PacketSnap implements IMessage {
                             }
                         } else {
                             if (entities.size() > 1) {
-
                                 for (int i = 0; i < (entities.size() / 2); i++) {
                                     EntityLiving e = entities.get(i);
                                     if (!e.getIsInvulnerable()) {
-                                        e.setDropItemsWhenDead(false);
-                                        e.attackEntityFrom(IDamageSource.SNAP, Float.POSITIVE_INFINITY);
+                                        EntityHelper.AttackBySource(e, IDamageSource.SNAP, Float.POSITIVE_INFINITY);
                                         GauntletHelper.makeAshPile(e.world, e.getPosition(), e);
                                     }
                                 }
 
                                 if (!tick) {
                                     cap.setSnapCooldown(InfinityConfig.Gauntlet.SnapCooldown);
-                                    player.world.playSound(null, player.getPosition(), SoundsHandler.SNAP, SoundCategory.HOSTILE, 1F, 1F);
+                                    player.world.playSound(null, player.getPosition(), InfinitySounds.SNAP, SoundCategory.HOSTILE, 1F, 1F);
                                     if (rn.nextInt(10) == 3)
-                                        player.world.playSound(null, player.getPosition(), SoundsHandler.IDONTFEELGOOD, SoundCategory.AMBIENT, 1F, 1F);
+                                        player.world.playSound(null, player.getPosition(), InfinitySounds.IDONTFEELGOOD, SoundCategory.AMBIENT, 1F, 1F);
                                     tick = !tick;
                                 }
                             } else {

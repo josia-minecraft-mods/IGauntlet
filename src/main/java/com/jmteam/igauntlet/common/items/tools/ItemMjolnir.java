@@ -1,6 +1,6 @@
 package com.jmteam.igauntlet.common.items.tools;
 
-import com.jmteam.igauntlet.tabs.InfinityTabs;
+import com.jmteam.igauntlet.common.init.InfinityTabs;
 import net.minecraft.item.Item;
 
 

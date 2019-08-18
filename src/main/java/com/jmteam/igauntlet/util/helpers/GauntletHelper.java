@@ -11,11 +11,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
+import java.awt.*;
+
 public class GauntletHelper {
 
-    public static void ShootLaser(EntityPlayer entityplayer, World worldIn, float damage, int r, int g, int b) {
-        Vec3d v = entityplayer.getLook(1);
-        EntityLaser laser = new EntityLaser(worldIn, entityplayer, damage, IDamageSource.LASER, new Vec3d(r, g, b));
+    public static void ShootLaser(EntityPlayer entityplayer, World worldIn, float damage, Color color) {
+        Vec3d v = entityplayer.getLookVec();
+        EntityLaser laser = new EntityLaser(worldIn, entityplayer, damage, IDamageSource.LASER, color);
+        laser.setRotationYawHead(entityplayer.rotationYawHead);
         laser.shoot(v.x, v.y, v.z, 1.5F, 0F);
         worldIn.spawnEntity(laser);
     }

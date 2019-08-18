@@ -29,6 +29,7 @@ public class PlayerHelper {
         }
     }
 
+    // This is all temporary data
     public static int getPDataInt(EntityPlayer player, String name) {
         return player.getEntityData().getInteger(name);
     }

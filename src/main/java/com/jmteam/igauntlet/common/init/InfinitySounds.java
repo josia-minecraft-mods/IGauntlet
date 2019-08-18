@@ -1,4 +1,4 @@
-package com.jmteam.igauntlet.util.handlers;
+package com.jmteam.igauntlet.common.init;
 
 import com.jmteam.igauntlet.Infinity;
 import net.minecraft.util.ResourceLocation;
@@ -6,14 +6,13 @@ import net.minecraft.util.SoundEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Mod.EventBusSubscriber(modid = Infinity.MODID)
-public class SoundsHandler {
+public class InfinitySounds {
 
     private static final List<SoundEvent> SOUND_EVENTS = new ArrayList<>();
     public static SoundEvent GAUNTLET_HUM, SNAP, AWESOMEMIX, IDONTFEELGOOD;
