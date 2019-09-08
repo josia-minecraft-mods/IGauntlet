@@ -7,6 +7,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityHanging;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.boss.EntityDragon;
+import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.nbt.NBTTagCompound;
@@ -47,15 +49,19 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
             Entity entity = result.entityHit;
             if (entity == this.thrower) return;
 
-            if(!(entity instanceof EntityHanging)) {
+            if (!(entity instanceof EntityHanging)) {
 
-                if(entity instanceof EntityLiving) {
-                    if(entity.getIsInvulnerable()) return;
+                if (entity instanceof EntityLiving) {
+                    if (entity.getIsInvulnerable()) return;
+
+                    if (entity instanceof EntityEnderman || entity instanceof EntityDragon) {
+                        entity.setDead();
+                    }
                 }
 
-                if(entity instanceof EntityPlayer) {
+                if (entity instanceof EntityPlayer) {
                     EntityPlayer p = (EntityPlayer) entity;
-                    if(p.isCreative()) return;
+                    if (p.isCreative()) return;
                 }
 
 
@@ -110,6 +116,8 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
 
     @Override
     public void onEntityUpdate() {
+        if (world.isRemote) return;
+
         double movingspeed = new Vec3d(posX, posY, posZ).distanceTo(new Vec3d(prevPosX, prevPosY, prevPosZ));
         if (this.ticksExisted == 400 || movingspeed < 0.01) {
             this.setDead();
