@@ -25,8 +25,8 @@ public class RenderLaser extends Render<EntityLaser> {
 
     @Override
     public void doRender(EntityLaser entity, double x, double y, double z, float entityYaw, float partialTicks) {
-        double movingspeed = new Vec3d(entity.posX, entity.posY, entity.posZ).distanceTo(new Vec3d(entity.prevPosX, entity.prevPosY, entity.prevPosZ));
-        if(!(movingspeed > 0)) return;
+
+        if(entity.ticksExisted < 2) return;
 
         RenderUtil.setupRenderLightning();
         GlStateManager.translate(x, y, z);

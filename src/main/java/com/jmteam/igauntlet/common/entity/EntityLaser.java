@@ -119,7 +119,7 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
         if (world.isRemote) return;
 
         double movingspeed = new Vec3d(posX, posY, posZ).distanceTo(new Vec3d(prevPosX, prevPosY, prevPosZ));
-        if (this.ticksExisted == 400 || movingspeed < 0.01) {
+        if (this.ticksExisted >= 400 || movingspeed < 0.01) {
             this.setDead();
         }
     }

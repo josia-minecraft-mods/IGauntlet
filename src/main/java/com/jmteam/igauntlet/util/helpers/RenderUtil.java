@@ -51,7 +51,6 @@ public class RenderUtil {
     }
 
 
-
     public static void drawGlowingLine(Vec3d start, Vec3d end, float thickness, Color color) {
         drawGlowingLine(start, end, thickness, color, 1F);
     }
@@ -125,6 +124,26 @@ public class RenderUtil {
             tessellator.draw();
         }
 
+        GlStateManager.popMatrix();
+    }
+
+    public static void drawOutline(Vec3d size, Color color) {
+        GlStateManager.pushMatrix();
+        GL11.glEnable(GL11.GL_BLEND);
+        GL11.glDisable(GL11.GL_TEXTURE_2D);
+        OpenGlHelper.glBlendFunc(770, 771, 1, 0);
+        GlStateManager.color(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, color.getAlpha() / 255f);
+        Tessellator tes = Tessellator.getInstance();
+        BufferBuilder buf = tes.getBuffer();
+        buf.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
+        buf.pos(0, 0, 0).tex(0, 0).endVertex();
+        buf.pos(0, size.y, 0).tex(0, 1).endVertex();
+        buf.pos(size.x, size.y, 0).tex(1, 1).endVertex();
+        buf.pos(size.x, 0, 0).tex(1, 0).endVertex();
+        tes.draw();
+        GlStateManager.color(1, 1, 1, 1);
+        GL11.glEnable(GL11.GL_TEXTURE_2D);
+        GL11.glDisable(GL11.GL_BLEND);
         GlStateManager.popMatrix();
     }
 }
