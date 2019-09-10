@@ -4,6 +4,7 @@ package com.jmteam.igauntlet.client.models;//Made by Josia50
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelBox;
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 
 public class SModelBiped extends ModelBiped {
@@ -37,6 +38,15 @@ public class SModelBiped extends ModelBiped {
 
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+
+		head.render(f5);
+		body.render(f5);
+		arms.render(f5);
+		legs.render(f5);
+	}
+
+	public void render(float f, float f1, float f2, float f3, float f4, float f5) {
+
 		head.render(f5);
 		body.render(f5);
 		arms.render(f5);

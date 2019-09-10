@@ -17,9 +17,7 @@ import java.awt.*;
 public class GauntletHelper {
 
     public static void ShootLaser(EntityPlayer player, World world, float damage, Color color) {
-        if(!world.isRemote) {
-            ShootLaser(player, world, damage, color, 1, false);
-        }
+        if (!world.isRemote) ShootLaser(player, world, damage, color, 1, false);
     }
 
     public static void ShootLaser(EntityPlayer entityplayer, World worldIn, float damage, Color color, double size, boolean constant) {
@@ -32,9 +30,9 @@ public class GauntletHelper {
 
     public static void shootConstantLaser(EntityPlayer player, World world, float damage, Color color) {
         RayTraceResult mop = player.rayTrace(100, 1.0f);
-        Vec3d res =  new Vec3d(mop.getBlockPos().getX(), mop.getBlockPos().getY(), mop.getBlockPos().getZ());
+        Vec3d res = new Vec3d(mop.getBlockPos().getX(), mop.getBlockPos().getY(), mop.getBlockPos().getZ());
         Vec3d curr = new Vec3d(player.posX, player.posY, player.posZ);
-        double dist =  curr.distanceTo(res);
+        double dist = curr.distanceTo(res);
         ShootLaser(player, world, damage, color, dist, true);
     }
 

@@ -6,6 +6,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.client.shader.Framebuffer;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import org.lwjgl.opengl.GL11;
@@ -19,6 +20,9 @@ import static net.minecraft.client.renderer.OpenGlHelper.lastBrightnessY;
  * Credits to Lucraft for allowing us to use this
  */
 public class RenderUtil {
+
+    public static Minecraft mc = Minecraft.getMinecraft();
+
     public static void setupRenderLightning() {
         GlStateManager.pushMatrix();
         GlStateManager.disableTexture2D();
@@ -124,26 +128,6 @@ public class RenderUtil {
             tessellator.draw();
         }
 
-        GlStateManager.popMatrix();
-    }
-
-    public static void drawOutline(Vec3d size, Color color) {
-        GlStateManager.pushMatrix();
-        GL11.glEnable(GL11.GL_BLEND);
-        GL11.glDisable(GL11.GL_TEXTURE_2D);
-        OpenGlHelper.glBlendFunc(770, 771, 1, 0);
-        GlStateManager.color(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, color.getAlpha() / 255f);
-        Tessellator tes = Tessellator.getInstance();
-        BufferBuilder buf = tes.getBuffer();
-        buf.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
-        buf.pos(0, 0, 0).tex(0, 0).endVertex();
-        buf.pos(0, size.y, 0).tex(0, 1).endVertex();
-        buf.pos(size.x, size.y, 0).tex(1, 1).endVertex();
-        buf.pos(size.x, 0, 0).tex(1, 0).endVertex();
-        tes.draw();
-        GlStateManager.color(1, 1, 1, 1);
-        GL11.glEnable(GL11.GL_TEXTURE_2D);
-        GL11.glDisable(GL11.GL_BLEND);
         GlStateManager.popMatrix();
     }
 }
