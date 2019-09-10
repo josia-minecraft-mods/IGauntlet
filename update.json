@@ -2,8 +2,8 @@
   "homepage": "https://minecraft.curseforge.com/projects/igauntlet",
 
   "promos": {
-    "1.12.2-latest": "3.8",
-    "1.12.2-recommended": "3.8"
+    "1.12.2-latest": "3.9",
+    "1.12.2-recommended": "3.9"
   },
 
   "1.12.2": {
@@ -23,6 +23,7 @@
     "3.6": "Soul Stone!!!! Control entities",
     "3.6.1": "Posess Fix & Crash Fix (Disabled Soul on Server)",
     "3.7": "Recipe Update",
-    "3.8": "MP Posession"
+    "3.8": "MP Posession",
+    "3.9": "Bug Fixes for multiplayer"
   }
 }
