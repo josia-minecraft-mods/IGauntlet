@@ -32,7 +32,7 @@ public class Infinity {
     public static Infinity instance;
 
     public static final String NAME = "IGauntlet Mod";
-    public static final String VERSION = "3.9";
+    public static final String VERSION = "4.0";
     public static final String MODID = "igauntlet";
     public static final String DEPENDENCY = "required-after:forge@[14.23.2.2638,)";
     public static final String UPDATEURL = "https://raw.githubusercontent.com/josia-minecraft-mods/IGauntlet/master/update.json";
