@@ -1,4 +1,4 @@
-package com.jmteam.igauntlet.client.render;
+package com.jmteam.igauntlet.client.render.entity;
 
 import com.jmteam.igauntlet.Infinity;
 import com.jmteam.igauntlet.client.models.ModelPortal;

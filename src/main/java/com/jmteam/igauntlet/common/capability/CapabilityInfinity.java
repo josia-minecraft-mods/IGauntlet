@@ -29,7 +29,8 @@ public class CapabilityInfinity implements IInfinityCap {
     private int snap_cooldown = 0;
 
 
-    public CapabilityInfinity() {}
+    public CapabilityInfinity() {
+    }
 
 
     public CapabilityInfinity(EntityPlayer player) {
@@ -38,22 +39,22 @@ public class CapabilityInfinity implements IInfinityCap {
 
     @Override
     public void update() {
-        if(snap_cooldown > 0) snap_cooldown--;
+        if (snap_cooldown > 0) snap_cooldown--;
     }
 
     @Override
     public void sync() {
-        if(player.world.isRemote) return;
-        NetworkHandler.NETWORK.sendToAll(new PacketCapSync(player, serializeNBT()));
+        if (!player.world.isRemote)
+            NetworkHandler.NETWORK.sendToAll(new PacketCapSync(player, serializeNBT()));
     }
 
     @Override
     public void setPosessing(boolean posessing) {
         this.isPosessing = posessing;
 
-        if(posessing) {
+        if (posessing) {
             this.last_eyeheight = player.getEyeHeight();
-          //  player.eyeHeight = getPosessedEntity().getEyeHeight();
+            //  player.eyeHeight = getPosessedEntity().getEyeHeight();
         }
     }
 
@@ -74,8 +75,8 @@ public class CapabilityInfinity implements IInfinityCap {
 
     @Override
     public void setPosessedEntity(Entity posessedEntity) {
-        if(!isPosessing())
-        this.possesionentity = posessedEntity.getEntityId();
+        if (!isPosessing())
+            this.possesionentity = posessedEntity.getEntityId();
     }
 
     @Override
@@ -88,7 +89,7 @@ public class CapabilityInfinity implements IInfinityCap {
         setPosessing(false);
         player.setEntityInvulnerable(false);
         sync();
-       // player.eyeHeight = last_eyeheight;
+        // player.eyeHeight = last_eyeheight;
     }
 
     @Override
@@ -169,7 +170,6 @@ public class CapabilityInfinity implements IInfinityCap {
     }
 
 
-
     @SubscribeEvent
     public static void onPlayerChangedDimension(net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerChangedDimensionEvent event) {
         get(event.player).sync();
@@ -187,6 +187,6 @@ public class CapabilityInfinity implements IInfinityCap {
         if (player.hasCapability(CapInfinityStorage.CAPABILITY, null)) {
             return player.getCapability(CapInfinityStorage.CAPABILITY, null);
         }
-        throw new IllegalStateException("Missing Cap - IGauntlet");
+        throw new IllegalStateException("Missing Capability - IGauntlet");
     }
 }

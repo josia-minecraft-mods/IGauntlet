@@ -9,7 +9,6 @@ import com.jmteam.igauntlet.network.packets.PacketSnap;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraftforge.client.ForgeHooksClient;
 import net.minecraftforge.client.event.InputUpdateEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
@@ -68,15 +67,15 @@ public class ClientEvents {
         if (InfinityKeyBinds.SNAP.isPressed())
             NetworkHandler.NETWORK.sendToServer(new PacketSnap(e.getEntityPlayer().isSneaking()));
 
-        if(cap.isPosessing()) {
-            if(InfinityKeyBinds.SPECIAL.isPressed()) func = "special";
-            if(set.keyBindForward.isKeyDown()) func = "forward";
-            if(set.keyBindBack.isKeyDown()) func = "back";
-            if(set.keyBindSprint.isKeyDown()) func = "sprint";
-            if(set.keyBindSneak.isKeyDown()) func = "clear";
-            if(set.keyBindJump.isKeyDown()) func = "jump";
+        if (cap.isPosessing()) {
+            if (InfinityKeyBinds.SPECIAL.isPressed()) func = "special";
+            if (set.keyBindForward.isKeyDown()) func = "forward";
+            if (set.keyBindBack.isKeyDown()) func = "back";
+            if (set.keyBindSprint.isKeyDown()) func = "sprint";
+            if (set.keyBindSneak.isKeyDown()) func = "clear";
+            if (set.keyBindJump.isKeyDown()) func = "jump";
 
-            if(!func.equals("")) NetworkHandler.NETWORK.sendToServer(new PacketPosessFunction(func));
+            if (!func.equals("")) NetworkHandler.NETWORK.sendToServer(new PacketPosessFunction(func));
         }
     }
 
@@ -84,7 +83,7 @@ public class ClientEvents {
     public static void renderPlayer(RenderPlayerEvent.Pre e) {
         EntityPlayer player = Minecraft.getMinecraft().player;
 
-        if(!e.isCanceled()) {
+        if (!e.isCanceled()) {
             if (player != null) {
                 if (CapabilityInfinity.get(player).isPosessing()) {
                     e.setCanceled(true);

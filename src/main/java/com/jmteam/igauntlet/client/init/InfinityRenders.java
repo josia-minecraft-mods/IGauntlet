@@ -1,8 +1,8 @@
 package com.jmteam.igauntlet.client.init;
 
-import com.jmteam.igauntlet.client.render.RenderLaser;
-import com.jmteam.igauntlet.client.render.RenderPortal;
-import com.jmteam.igauntlet.client.render.RenderSquirrelGirl;
+import com.jmteam.igauntlet.client.render.entity.RenderLaser;
+import com.jmteam.igauntlet.client.render.entity.RenderPortal;
+import com.jmteam.igauntlet.client.render.entity.RenderSquirrelGirl;
 import com.jmteam.igauntlet.common.entity.EntityLaser;
 import com.jmteam.igauntlet.common.entity.EntityPortal;
 import com.jmteam.igauntlet.common.entity.EntitySquirrelGirl;
