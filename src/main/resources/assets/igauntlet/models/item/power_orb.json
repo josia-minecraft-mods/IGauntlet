@@ -1,8 +1,8 @@
 {
 	"credit": "UKMinecrafted 2019",
 	"textures": {
-		"0": "block/texture",
-		"particle": "block/texture"
+		"0": "igauntlet:block/power_orb",
+		"particle": "igauntlet:block/power_orb"
 	},
 	"elements": [
 		{
