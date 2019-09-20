@@ -62,7 +62,6 @@ public class ItemInfinityGauntlet extends Item {
         return TextFormatting.BOLD + "Infinity Gauntlet";
     }
 
-
     public int getMaxItemUseDuration(ItemStack stack) {
         return 72000;
     }
@@ -234,9 +233,7 @@ public class ItemInfinityGauntlet extends Item {
                                 nbt.setInteger(CURRENTSTONE, 0);
                                 stack.setTagCompound(nbt);
                             }
-
                         }
-
                     }
                 }
             }

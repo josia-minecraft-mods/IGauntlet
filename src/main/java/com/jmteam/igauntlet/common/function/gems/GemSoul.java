@@ -18,7 +18,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentTranslation;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class GemSoul {
+
+    public static Map<EntityLiving, EntityPlayer> posessed = new HashMap<>();
 
     public static void ProcessTakenSoul(EntityPlayer player) {
         IInfinityCap cap = CapabilityInfinity.get(player);
@@ -126,14 +131,17 @@ public class GemSoul {
     }
 
     public static void startPosessing(EntityPlayer player, EntityLiving e, IInfinityCap cap) {
-        cap.setPosessedEntity(e);
-        cap.setLastPos(player.getPosition());
-        cap.setPosessing(true);
-        player.setEntityInvulnerable(true);
-        player.startRiding(e);
+        if(cap.isPosessing()) {
+            cap.setPosessedEntity(e);
+            cap.setLastPos(player.getPosition());
+            cap.setPosessing(true);
+            player.setEntityInvulnerable(true);
+            player.startRiding(e);
+            posessed.put(e, player);
 
-        if(player.world.isRemote)
-            Minecraft.getMinecraft().gameSettings.thirdPersonView = 1;
+            if (player.world.isRemote)
+                Minecraft.getMinecraft().gameSettings.thirdPersonView = 1;
+        }
     }
 
 
@@ -144,6 +152,7 @@ public class GemSoul {
         p.dismountRidingEntity();
         p.setPositionAndUpdate(cap.getLastPos().getX(), cap.getLastPos().getY(), cap.getLastPos().getZ());
         p.sendStatusMessage(new TextComponentTranslation("gauntlet.soul.tpback"), true);
+        posessed.remove(cap.getPosessedEntity());
         NetworkHandler.NETWORK.sendToAll(new PacketChangePOV(p, 0));
     }
 }
