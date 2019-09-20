@@ -1,7 +1,6 @@
 package com.jmteam.igauntlet.common.entity;
 
-import com.jmteam.igauntlet.network.NetworkHandler;
-import com.jmteam.igauntlet.network.packets.PacketTeleport;
+import com.jmteam.igauntlet.util.helpers.PlayerHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -34,7 +33,7 @@ public class EntityPortal extends Entity {
         super.onCollideWithPlayer(player);
 
         if (init) {
-            NetworkHandler.NETWORK.sendToServer(new PacketTeleport(pos, player.getEntityId()));
+            PlayerHelper.teleportToPosSafe(player, pos);
             init = !init;
         }
     }
