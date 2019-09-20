@@ -10,26 +10,22 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 public class PacketTeleport implements IMessage {
 
     public BlockPos pos;
-    public int id;
 
     public PacketTeleport() {
     }
 
-    public PacketTeleport(BlockPos pos, int id) {
+    public PacketTeleport(BlockPos pos) {
         this.pos = pos;
-        this.id = id;
     }
 
     @Override
     public void fromBytes(ByteBuf buf) {
         this.pos = BlockPos.fromLong(buf.readLong());
-        this.id = buf.readInt();
     }
 
     @Override
     public void toBytes(ByteBuf buf) {
         buf.writeLong(pos.toLong());
-        buf.writeInt(this.id);
     }
 
     public static class Handler implements IMessageHandler<PacketTeleport, IMessage> {
