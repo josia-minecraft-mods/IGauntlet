@@ -4,6 +4,7 @@ import com.jmteam.igauntlet.Infinity;
 import com.jmteam.igauntlet.common.capability.CapabilityInfinity;
 import com.jmteam.igauntlet.common.capability.IInfinityCap;
 import com.jmteam.igauntlet.common.damage.IDamageSource;
+import com.jmteam.igauntlet.common.function.gems.GemSoul;
 import com.jmteam.igauntlet.util.InfinityConfig;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.text.TextComponentString;
@@ -11,6 +12,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.event.ClickEvent;
 import net.minecraft.util.text.event.HoverEvent;
 import net.minecraftforge.common.ForgeVersion;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
@@ -49,12 +51,23 @@ public class EventHandler {
         }
     }*/
 
-   @SubscribeEvent
-   public static void DropEvent(LivingDropsEvent e) {
-       if(e.getSource() == IDamageSource.SNAP) {
-           e.getDrops().clear();
-       }
-   }
+   //TODO Add PosessionEvent so i can control things from there
+
+
+    @SubscribeEvent
+    public static void onDeath(LivingDeathEvent e) {
+        if (GemSoul.posessed.containsValue(e.getEntityLiving())) {
+            IInfinityCap cap = CapabilityInfinity.get(GemSoul.posessed.get(e.getEntityLiving()));
+            cap.clearPosessing();
+        }
+    }
+
+    @SubscribeEvent
+    public static void DropEvent(LivingDropsEvent e) {
+        if (e.getSource() == IDamageSource.SNAP) {
+            e.getDrops().clear();
+        }
+    }
 
     @SubscribeEvent
     public static void PlayerJoinWorld(PlayerEvent.PlayerLoggedInEvent playerEvent) {
@@ -78,6 +91,7 @@ public class EventHandler {
             cap.setPosessing(false);
             if (playerEvent.player.isRiding())
                 playerEvent.player.dismountRidingEntity();
+            GemSoul.posessed.remove(cap.getPosessedEntity());
         }
     }
 }
