@@ -11,7 +11,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class TileAshPile extends TileEntity implements ITickable {
 
-    public String entity = "";
+    private String entity = "";
     private int tick = 0;
 
     public void setEntity(EntityLiving entity) {
@@ -33,21 +33,21 @@ public class TileAshPile extends TileEntity implements ITickable {
     @Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
-        //    this.entity = compound.getString("entity_name");
+        this.entity = compound.getString("entity_name");
         this.tick = compound.getInteger("tick");
     }
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
-        //   compound.setString("entity_name", this.entity);
         compound.setInteger("tick", tick);
+        compound.setString("entity_name", entity);
         return compound;
     }
 
     @Override
     public void update() {
-        tick++;
+        if (tick < 1200) tick++;
         if (tick == 1200) world.setBlockState(pos, Blocks.AIR.getDefaultState());
     }
 }

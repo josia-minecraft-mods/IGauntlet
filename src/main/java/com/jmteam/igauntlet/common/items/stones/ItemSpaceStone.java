@@ -11,13 +11,12 @@ import net.minecraft.world.World;
 
 public class ItemSpaceStone extends Item {
 
+   private int timeout = 0;
+
     public ItemSpaceStone() {
         setMaxStackSize(1);
         setMaxDamage(4500);
     }
-
-
-    int timeout = 0;
 
     @Override
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
