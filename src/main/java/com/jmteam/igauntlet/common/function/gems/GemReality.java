@@ -12,7 +12,7 @@ import net.minecraft.util.math.BlockPos;
 public class GemReality {
 
     public static void makeBubbles(EntityPlayer player) {
-        if(!player.world.isRemote) {
+        if (!player.world.isRemote) {
             for (Entity e : player.world.getEntitiesWithinAABB(Entity.class, player.getEntityBoundingBox().grow(20, 20, 20))) {
                 if (e instanceof IProjectile) {
                     BlockPos pos = new BlockPos(e.posX, e.posY, e.posZ);

@@ -28,8 +28,8 @@ public class RenderPortal extends Render<EntityPortal> {
         GlStateManager.pushMatrix();
         GlStateManager.translate(x, y, z);
         Minecraft.getMinecraft().getTextureManager().bindTexture(TEXTURES);
-        GlStateManager.rotate(entity.rotationYaw, 0,1,0);
-        portal.render(entity, 0,0,0,0,0,0.0625f);
+        GlStateManager.rotate(entity.rotationYaw, 0, 1, 0);
+        portal.render(entity, 0, 0, 0, 0, 0, 0.0625f);
         GlStateManager.popMatrix();
     }
 

@@ -23,7 +23,8 @@ public class TileTesseract extends TileEntity {
     public void RemoveStone(EntityPlayer player) {
         if (stone == 1) {
             world.spawnEntity(new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, new ItemStack(InfinityItems.space_stone)));
-            stone = 0; world.setBlockState(pos, Blocks.AIR.getDefaultState());
+            stone = 0;
+            world.setBlockState(pos, Blocks.AIR.getDefaultState());
         }
     }
 

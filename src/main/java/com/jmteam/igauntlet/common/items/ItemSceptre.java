@@ -5,4 +5,5 @@ import net.minecraft.item.Item;
 public class ItemSceptre extends Item {
 
     public ItemSceptre() {}
+
 }

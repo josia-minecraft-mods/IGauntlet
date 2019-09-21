@@ -21,8 +21,7 @@ public class RenderSquirrelGirl extends RenderLiving<EntitySquirrelGirl> {
     }
 
     @Override
-    protected void applyRotations(EntitySquirrelGirl entityLiving, float p_77043_2_, float rotationYaw, float partialTicks)
-    {
+    protected void applyRotations(EntitySquirrelGirl entityLiving, float p_77043_2_, float rotationYaw, float partialTicks) {
         super.applyRotations(entityLiving, p_77043_2_, rotationYaw, partialTicks);
     }
 

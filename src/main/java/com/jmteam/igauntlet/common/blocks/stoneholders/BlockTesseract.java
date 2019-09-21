@@ -63,7 +63,7 @@ public class BlockTesseract extends Block implements IHaveItem, ITileEntityProvi
                 if (stack.getItem() != null) {
                     if (stack.getItem() == InfinityItems.space_stone) {
                         if (tess.AddStone()) {
-                            stack.setCount(0);
+                            stack.setCount(0); // TODO Change with a holds stone boolean
                             return true;
                         }
                     }

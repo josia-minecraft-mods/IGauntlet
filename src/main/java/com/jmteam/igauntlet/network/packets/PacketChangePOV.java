@@ -41,9 +41,10 @@ public class PacketChangePOV implements IMessage {
         public IMessage onMessage(PacketChangePOV message, MessageContext ctx) {
             Minecraft.getMinecraft().addScheduledTask(new Runnable() {
                 EntityPlayer player = message.player;
+
                 @Override
                 public void run() {
-                    if(player != null)
+                    if (player != null)
                         Minecraft.getMinecraft().gameSettings.thirdPersonView = message.pov;
                 }
             });

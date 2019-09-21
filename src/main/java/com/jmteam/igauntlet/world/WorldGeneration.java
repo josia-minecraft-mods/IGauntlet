@@ -26,7 +26,7 @@ public class WorldGeneration implements IWorldGenerator {
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-        if(world.provider.getDimension() == DWARFID) {
+        if (world.provider.getDimension() == DWARFID) {
             runGenerator(uru_ore, world, random, chunkX, chunkZ, 20, 20, 60);
         }
     }

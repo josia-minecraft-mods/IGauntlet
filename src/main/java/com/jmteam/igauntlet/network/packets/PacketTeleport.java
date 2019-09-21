@@ -34,12 +34,12 @@ public class PacketTeleport implements IMessage {
         public IMessage onMessage(PacketTeleport message, MessageContext ctx) {
             ctx.getServerHandler().player.getServerWorld().addScheduledTask(new Runnable() {
 
-                    @Override
-                    public void run() {
-                        WorldServer world = ctx.getServerHandler().player.getServerWorld();
-                        BlockPos pos = world.getTopSolidOrLiquidBlock(message.pos);
-                        ctx.getServerHandler().player.connection.setPlayerLocation(pos.getX(), pos.getY(), pos.getZ(), 0, 0);
-                    }
+                @Override
+                public void run() {
+                    WorldServer world = ctx.getServerHandler().player.getServerWorld();
+                    BlockPos pos = world.getTopSolidOrLiquidBlock(message.pos);
+                    ctx.getServerHandler().player.connection.setPlayerLocation(pos.getX(), pos.getY(), pos.getZ(), 0, 0);
+                }
             });
             return null;
         }

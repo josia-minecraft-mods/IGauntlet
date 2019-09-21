@@ -16,7 +16,7 @@ public class EntityPortal extends Entity {
         super(world);
     }
 
-    public EntityPortal(World worldIn, int X, int Y, int Z, float rot,boolean init) {
+    public EntityPortal(World worldIn, int X, int Y, int Z, float rot, boolean init) {
         super(worldIn);
         this.pos = new BlockPos(X, Y, Z);
         this.rotationYaw = rot;
@@ -42,10 +42,6 @@ public class EntityPortal extends Entity {
     protected void readEntityFromNBT(NBTTagCompound compound) {
     }
 
-    public void setRotation(float rotation) {
-
-    }
-
     @Override
     protected void writeEntityToNBT(NBTTagCompound compound) {
     }
@@ -54,6 +50,6 @@ public class EntityPortal extends Entity {
     public void onUpdate() {
         super.onUpdate();
 
-       if (this.ticksExisted >= 70 || !init) this.setDead();
+        if (this.ticksExisted >= 70 || !init) this.setDead();
     }
 }

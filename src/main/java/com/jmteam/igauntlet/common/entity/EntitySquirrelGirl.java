@@ -9,7 +9,7 @@ public class EntitySquirrelGirl extends EntityMob {
 
     public EntitySquirrelGirl(World worldIn) {
         super(worldIn);
-        setSize(1,1);
+        setSize(1, 1);
     }
 
     @Override

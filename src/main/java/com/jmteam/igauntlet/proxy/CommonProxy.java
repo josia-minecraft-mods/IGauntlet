@@ -6,12 +6,8 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 public class CommonProxy implements IProxy {
 
     @Override
-    public void preInit(FMLPreInitializationEvent event) {
-
-    }
+    public void preInit(FMLPreInitializationEvent event) {}
 
     @Override
-    public void init(FMLInitializationEvent e) {
-
-    }
+    public void init(FMLInitializationEvent e) {}
 }

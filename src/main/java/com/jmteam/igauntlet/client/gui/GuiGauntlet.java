@@ -3,7 +3,6 @@ package com.jmteam.igauntlet.client.gui;
 import com.jmteam.igauntlet.Infinity;
 import com.jmteam.igauntlet.util.InfinityConfig;
 import com.jmteam.igauntlet.util.helpers.GemHelper;
-import com.jmteam.igauntlet.util.helpers.PlayerHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;

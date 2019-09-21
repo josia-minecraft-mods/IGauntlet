@@ -22,7 +22,7 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public class BlockQuickSand extends BlockFalling implements IHaveItem,ITileEntityProvider{
+public class BlockQuickSand extends BlockFalling implements IHaveItem, ITileEntityProvider {
 
     public BlockQuickSand(Material material) {
         super(material);
@@ -58,7 +58,7 @@ public class BlockQuickSand extends BlockFalling implements IHaveItem,ITileEntit
     @Override
     public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
         super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
-        if(placer instanceof EntityPlayer) {
+        if (placer instanceof EntityPlayer) {
             TileQuickSand tileQuickSand = (TileQuickSand) worldIn.getTileEntity(pos);
             tileQuickSand.setplacedMethod(0);
         }

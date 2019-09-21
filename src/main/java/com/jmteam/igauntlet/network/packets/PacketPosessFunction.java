@@ -41,10 +41,10 @@ public class PacketPosessFunction implements IMessage {
                     IInfinityCap cap = CapabilityInfinity.get(player);
                     String f = message.func;
 
-                    if(f.equalsIgnoreCase("special"))
+                    if (f.equalsIgnoreCase("special"))
                         GemSoul.useSpecialFunction(cap.getPosessedEntity(), player);
 
-                    if(f.equalsIgnoreCase("clear")) GemSoul.clearPosessing(player);
+                    if (f.equalsIgnoreCase("clear")) GemSoul.clearPosessing(player);
 
                     GemSoul.processGeneral(cap.getPosessedEntity(), player, f);
                 }

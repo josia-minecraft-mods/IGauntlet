@@ -45,7 +45,7 @@ public class GuiSpace extends GuiScreen {
     protected void actionPerformed(GuiButton button) throws IOException {
         if (button == this.warp) {
             BlockPos tpPos = new BlockPos(getInt(xCoord.getText(), XYZ.X), getInt(yCoord.getText(), XYZ.Y), getInt(zCoord.getText(), XYZ.Z));
-           // NetworkHandler.NETWORK.sendToServer(new PacketTeleport(tpPos, mc.player.getEntityId()));
+            // NetworkHandler.NETWORK.sendToServer(new PacketTeleport(tpPos, mc.player.getEntityId()));
             NetworkHandler.NETWORK.sendToServer(new PacketWritePortal(tpPos.getX(), tpPos.getY(), tpPos.getZ()));
             Minecraft.getMinecraft().displayGuiScreen(null);
         }

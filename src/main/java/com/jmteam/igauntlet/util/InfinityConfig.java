@@ -45,12 +45,12 @@ public class InfinityConfig {
         public static class RealityStone {
             @Config.LangKey("igauntlet.config.reality.quicksandtimer")
             @Config.Comment("The Timer for putting QuickSand back to Sand")
-            @Config.RangeInt(min = 50, max= 200)
+            @Config.RangeInt(min = 50, max = 200)
             public int SandTimer = 200;
 
             @Config.LangKey("igauntlet.config.reality.quicksandrange")
             @Config.Comment("The Ranger for putting Sand to QuickSand")
-            @Config.RangeInt(min = 5, max= 50)
+            @Config.RangeInt(min = 5, max = 50)
             public int SandRange = 20;
         }
 
