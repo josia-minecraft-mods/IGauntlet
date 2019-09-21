@@ -20,7 +20,6 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 @Mod(modid = Infinity.MODID, name = Infinity.NAME, version = Infinity.VERSION, dependencies = Infinity.DEPENDENCY, updateJSON = Infinity.UPDATEURL)
@@ -36,14 +35,15 @@ public class Infinity {
     public static final String MODID = "igauntlet";
     public static final String DEPENDENCY = "required-after:forge@[14.23.2.2638,)";
     public static final String UPDATEURL = "https://raw.githubusercontent.com/josia-minecraft-mods/IGauntlet/master/update.json";
+    public static Logger log;
 
     @SidedProxy(clientSide = "com.jmteam.igauntlet.proxy.ClientProxy", serverSide = "com.jmteam.igauntlet.proxy.CommonProxy")
     public static IProxy proxy;
-    public static Logger log = LogManager.getLogger(NAME);
 
     @Mod.EventHandler
     public static void PreInit(FMLPreInitializationEvent event) {
         proxy.preInit(event);
+        log = event.getModLog();
         InfinitySounds.registerSounds();
         GameRegistry.registerWorldGenerator(new WorldGeneration(), 3);
         InfinityBiomes.registerBiomes();
