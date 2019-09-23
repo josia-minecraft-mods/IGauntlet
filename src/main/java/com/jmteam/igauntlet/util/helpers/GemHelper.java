@@ -17,11 +17,11 @@ public class GemHelper {
     public static int ActiveGem(EntityPlayer player) {
         ItemStack stack = player.getActiveItemStack();
         NBTTagCompound nbt = stack.getTagCompound();
-        return nbt.getInteger(CURRENTSTONE);
+        return nbt != null ? nbt.getInteger(CURRENTSTONE) : 0;
     }
 
     public static int ActiveGem(ItemStack stack) {
         NBTTagCompound nbt = stack.getTagCompound();
-        return nbt.getInteger(CURRENTSTONE);
+        return nbt != null ? nbt.getInteger(CURRENTSTONE) : 0;
     }
 }

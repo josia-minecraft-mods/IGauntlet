@@ -14,7 +14,7 @@ import static com.jmteam.igauntlet.common.init.InfinityNbtKeys.CURRENTSTONE;
 
 public class PacketStone implements IMessage {
 
-    public static int stone;
+    public  int stone;
 
     public PacketStone() {
     }
@@ -42,10 +42,10 @@ public class PacketStone implements IMessage {
                 if (stack.getItem() == InfinityItems.infinity_gauntlet) {
                     if (stack.getTagCompound() == null) {
                         NBTTagCompound nbt = new NBTTagCompound();
-                        nbt.setInteger(CURRENTSTONE, stone);
+                        nbt.setInteger(CURRENTSTONE, message.stone);
                         stack.setTagCompound(nbt);
                     } else {
-                        stack.getTagCompound().setInteger(CURRENTSTONE, stone);
+                        stack.getTagCompound().setInteger(CURRENTSTONE, message.stone);
                     }
                 }
             });

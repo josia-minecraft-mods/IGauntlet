@@ -9,9 +9,9 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public class PacketWritePortal implements IMessage {
 
-    public static int X;
-    public static int Y;
-    public static int Z;
+    public int X;
+    public int Y;
+    public int Z;
 
     public PacketWritePortal() {
     }
@@ -40,7 +40,7 @@ public class PacketWritePortal implements IMessage {
         public IMessage onMessage(PacketWritePortal message, MessageContext ctx) {
             ctx.getServerHandler().player.getServerWorld().addScheduledTask(() -> {
                 EntityPlayer player = ctx.getServerHandler().player;
-                EntityPortal portal = new EntityPortal(player.world, X, Y, Z, player.rotationYaw, true);
+                EntityPortal portal = new EntityPortal(player.world, message.X, message.Y, message.Z, player.rotationYaw, true);
                 portal.setNoGravity(true);
                 portal.setEntityInvulnerable(true);
                 portal.setPosition(player.posX + 0.5, player.posY, player.posZ + 0.5);
