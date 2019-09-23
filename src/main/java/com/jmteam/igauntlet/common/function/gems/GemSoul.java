@@ -131,7 +131,7 @@ public class GemSoul {
     }
 
     public static void startPosessing(EntityPlayer player, EntityLiving e, IInfinityCap cap) {
-        if(cap.isPosessing()) {
+        if(!cap.isPosessing()) {
             cap.setPosessedEntity(e);
             cap.setLastPos(player.getPosition());
             cap.setPosessing(true);

@@ -81,7 +81,7 @@ public class ClientEvents {
 
     @SubscribeEvent
     public static void renderPlayer(RenderPlayerEvent.Pre e) {
-        EntityPlayer player = Minecraft.getMinecraft().player;
+        EntityPlayer player = e.getEntityPlayer();
 
         if (!e.isCanceled()) {
             if (player != null) {
