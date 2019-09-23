@@ -1,6 +1,5 @@
 package com.jmteam.igauntlet.common.entity;
 
-import com.jmteam.igauntlet.util.helpers.EntityHelper;
 import com.jmteam.igauntlet.util.helpers.GauntletHelper;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.Entity;
@@ -65,7 +64,7 @@ public class EntityLaser extends EntityThrowable implements IEntityAdditionalSpa
                 }
 
 
-                EntityHelper.AttackBySource(entity, DamageSource.causeThrownDamage(this, getThrower()), damage);
+                result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), damage);
                 if (!(entity instanceof EntityPlayer) && entity instanceof EntityLiving)
                     GauntletHelper.makeAshPile(world, entity.getPosition(), (EntityLiving) entity);
                 this.setDead();
