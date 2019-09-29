@@ -11,7 +11,9 @@ import com.jmteam.igauntlet.util.helpers.EntityHelper;
 import com.jmteam.igauntlet.util.helpers.GauntletHelper;
 import com.jmteam.igauntlet.util.helpers.PlayerHelper;
 import io.netty.buffer.ByteBuf;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
@@ -55,7 +57,7 @@ public class PacketSnap implements IMessage {
                     IInfinityCap cap = CapabilityInfinity.get(player);
                     int extend = InfinityConfig.Gauntlet.ExtensionRange;
                     boolean tick = false;
-                    List<EntityLiving> entities = player.world.getEntitiesWithinAABB(EntityLiving.class, player.getEntityBoundingBox().grow(extend, extend, extend));
+                    List<Entity> entities = EntityHelper.filterSnap(player.world.getEntitiesWithinAABB(Entity.class, player.getEntityBoundingBox().grow(extend, extend, extend)));
 
                     if (CanSnap && cap.getSnapCooldown() <= 0) {
 
@@ -76,10 +78,20 @@ public class PacketSnap implements IMessage {
                         } else {
                             if (entities.size() > 1) {
                                 for (int i = 0; i < (entities.size() / 2); i++) {
-                                    EntityLiving e = entities.get(i);
-                                    if (!e.getIsInvulnerable()) {
-                                        EntityHelper.AttackBySource(e, IDamageSource.SNAP, Float.POSITIVE_INFINITY);
-                                        GauntletHelper.makeAshPile(e.world, e.getPosition(), e);
+                                    if (entities.get(i) instanceof EntityLiving) {
+                                        EntityLiving e = (EntityLiving) entities.get(i);
+                                        if (!e.getIsInvulnerable()) {
+                                            EntityHelper.AttackBySource(e, IDamageSource.SNAP, Float.POSITIVE_INFINITY);
+                                            GauntletHelper.makeAshPile(e.world, e.getPosition(), e);
+                                        }
+                                    }
+
+                                    if(entities.get(i) instanceof EntityPlayer && InfinityConfig.Gauntlet.SnapKillPlayers) {
+                                        EntityPlayer e = (EntityPlayer) entities.get(i);
+
+                                        if(!e.isCreative()) {
+                                            EntityHelper.AttackBySource(e, IDamageSource.SNAP, Float.POSITIVE_INFINITY);
+                                        }
                                     }
                                 }
 
