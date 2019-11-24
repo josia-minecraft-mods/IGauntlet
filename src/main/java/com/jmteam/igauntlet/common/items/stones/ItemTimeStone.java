@@ -22,11 +22,13 @@ public class ItemTimeStone extends Item {
 
         if (isSelected && InfinityConfig.AllowedGems.TimeStone) {
             worldIn.getWorldInfo().setWorldTime(worldIn.getWorldTime() + InfinityConfig.Gauntlet.TimeStone.TimeSpeed);
+
             time++;
-            if (time >= 200)
+
+            if (time >= 200) {
                 EntityHelper.AttackBySource(entityIn, IDamageSource.HOLDING, 0.001F);
-            if (time == 201)
                 time = 0;
+            }
         }
     }
 }

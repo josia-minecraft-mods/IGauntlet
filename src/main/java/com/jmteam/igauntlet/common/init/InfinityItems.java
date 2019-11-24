@@ -1,7 +1,9 @@
 package com.jmteam.igauntlet.common.init;
 
 import com.jmteam.igauntlet.Infinity;
-import com.jmteam.igauntlet.common.items.*;
+import com.jmteam.igauntlet.common.items.ItemBase;
+import com.jmteam.igauntlet.common.items.ItemInfinityGauntlet;
+import com.jmteam.igauntlet.common.items.ItemMixTape;
 import com.jmteam.igauntlet.common.items.clothing.ItemEyeOfAgamotto;
 import com.jmteam.igauntlet.common.items.stones.*;
 import com.jmteam.igauntlet.common.items.tools.ItemDwarfhammer;
@@ -18,7 +20,7 @@ import java.util.List;
 
 @Mod.EventBusSubscriber
 public class InfinityItems {
-    public static final List<Item> ITEMS = new ArrayList<Item>();
+    public static List<Item> ITEMS = new ArrayList<>();
 
     public static Item infinity_gauntlet = registerItem(new ItemInfinityGauntlet(), "infinity_gauntlet").setCreativeTab(InfinityTabs.infinityTabs);
     public static Item mixtape = registerItem(new ItemMixTape("awesome_mix", InfinitySounds.AWESOMEMIX), "awesome_mix").setCreativeTab(InfinityTabs.infinityTabs);
@@ -31,8 +33,8 @@ public class InfinityItems {
     public static Item soul_stone = registerItem(new ItemSoulStone(), "soul_stone").setCreativeTab(InfinityTabs.infinityTabs);
     public static Item dwarf_hammer = registerItem(new ItemDwarfhammer(), "dwarf_hammer").setCreativeTab(InfinityTabs.infinityTabs);
     public static Item necklace = registerItem(new ItemEyeOfAgamotto(), "eye_agamotto").setCreativeTab(InfinityTabs.infinityTabs);
-    public static Item walkman = registerItem(new ItemWalkman(), "walkman").setCreativeTab(InfinityTabs.infinityTabs);
-    public static Item sceptre = registerItem(new ItemSceptre(), "sceptre").setCreativeTab(InfinityTabs.infinityTabs);
+    //public static Item walkman = registerItem(new ItemWalkman(), "walkman").setCreativeTab(InfinityTabs.infinityTabs);
+   // public static Item sceptre = registerItem(new ItemSceptre(), "sceptre").setCreativeTab(InfinityTabs.infinityTabs);
 
     public static void registerRenders() {
         for (Item i : ITEMS) {

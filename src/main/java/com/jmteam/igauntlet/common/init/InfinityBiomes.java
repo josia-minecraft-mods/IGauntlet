@@ -1,4 +1,4 @@
-package com.jmteam.igauntlet.world;
+package com.jmteam.igauntlet.common.init;
 
 import com.jmteam.igauntlet.world.dimension.dwarf.BiomeDwarf;
 import net.minecraft.world.biome.Biome;

@@ -1,4 +1,4 @@
-package com.jmteam.igauntlet.world;
+package com.jmteam.igauntlet.world.gen;
 
 import com.jmteam.igauntlet.common.init.InfinityBlocks;
 import net.minecraft.block.state.pattern.BlockMatcher;
@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 
 import java.util.Random;
 
-import static com.jmteam.igauntlet.world.InfinityDimensions.DWARFID;
+import static com.jmteam.igauntlet.common.init.InfinityDimensions.DWARFID;
 
 
 public class WorldGeneration implements IWorldGenerator {
