@@ -179,9 +179,6 @@ public class ItemInfinityGauntlet extends Item {
 
     @Override
     public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-        EntityPlayer entityplayer = (EntityPlayer) entityLiving;
-
-
         super.onPlayerStoppedUsing(stack, worldIn, entityLiving, timeLeft);
     }
 
