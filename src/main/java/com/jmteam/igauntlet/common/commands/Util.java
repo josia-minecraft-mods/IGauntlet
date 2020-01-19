@@ -35,7 +35,7 @@ public class Util extends Teleporter {
         EntityPlayerMP entityPlayerMP = (EntityPlayerMP) player;
         MinecraftServer server = player.getEntityWorld().getMinecraftServer();
         WorldServer worldServer = server.getWorld(dimension);
-        player.addExperienceLevel(0);
+        player.addExperienceLevel(0); // Keep XP
 
         if (worldServer == null || worldServer.getMinecraftServer() == null) {
             throw new IllegalArgumentException("Dimension: " + dimension + " doesn't exist!");

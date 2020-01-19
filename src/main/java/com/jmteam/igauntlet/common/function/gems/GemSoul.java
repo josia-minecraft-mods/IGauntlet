@@ -98,9 +98,7 @@ public class GemSoul {
     }
 
     public static boolean isFlyingEntity(EntityLiving e) {
-        if (e instanceof EntityFlying) return true;
-        if (e instanceof EntityBat) return true;
-        return false;
+        return e instanceof EntityBat || e instanceof EntityFlying;
     }
 
 

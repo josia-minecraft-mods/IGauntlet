@@ -1,6 +1,6 @@
 package com.jmteam.igauntlet.common.init;
 
-import com.jmteam.igauntlet.world.dimension.dwarf.BiomeDwarf;
+import com.jmteam.igauntlet.common.world.dimension.dwarf.BiomeDwarf;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;

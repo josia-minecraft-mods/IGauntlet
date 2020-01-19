@@ -24,7 +24,7 @@ public class TileAshPile extends TileEntity implements ITickable {
 
     public void summonEntity() {
         if (!getWorld().isRemote) {
-            EntityLiving e = (EntityLiving) getEntity();
+            EntityLiving e = getEntity();
             e.setLocationAndAngles(pos.getX(), pos.getY(), pos.getZ(), 90, 0);
             world.spawnEntity(e);
         }

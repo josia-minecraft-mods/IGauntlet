@@ -1,4 +1,4 @@
-package com.jmteam.igauntlet.world.dimension;
+package com.jmteam.igauntlet.common.world.dimension;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;

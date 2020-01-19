@@ -1,4 +1,4 @@
-package com.jmteam.igauntlet.world.gen;
+package com.jmteam.igauntlet.common.world.gen;
 
 import com.jmteam.igauntlet.common.init.InfinityBlocks;
 import net.minecraft.block.state.pattern.BlockMatcher;

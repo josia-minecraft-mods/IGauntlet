@@ -1,4 +1,4 @@
-package com.jmteam.igauntlet.world.dimension.dwarf;
+package com.jmteam.igauntlet.common.world.dimension.dwarf;
 
 import com.jmteam.igauntlet.util.helpers.IChunkGenerator;
 import net.minecraft.init.Blocks;

@@ -23,11 +23,7 @@ public class ItemRealityStone extends Item {
         EntityPlayer player = (EntityPlayer) entityIn;
 
         if (player.isCreative()) return;
-        if (isSelected || player.getHeldItemOffhand().getItem() == InfinityItems.reality_stone) {
-            player.capabilities.allowFlying = true;
-        } else {
-            player.capabilities.allowFlying = false;
-        }
+        player.capabilities.allowFlying = isSelected || player.getHeldItemOffhand().getItem() == InfinityItems.reality_stone;
         player.sendPlayerAbilities();
     }
 }
