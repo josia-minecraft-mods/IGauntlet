@@ -1,4 +1,4 @@
-package com.jmteam.igauntlet.common.commands;
+package com.jmteam.igauntlet.util.helpers;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -8,11 +8,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Teleporter;
 import net.minecraft.world.WorldServer;
 
-public class Util extends Teleporter {
+public class TeleportUtil extends Teleporter {
     private final WorldServer world;
     private double x, y, z;
 
-    public Util(WorldServer world, double x, double y, double z) {
+    public TeleportUtil(WorldServer world, double x, double y, double z) {
         super(world);
         this.world = world;
         this.x = x;
@@ -41,7 +41,7 @@ public class Util extends Teleporter {
             throw new IllegalArgumentException("Dimension: " + dimension + " doesn't exist!");
         }
 
-        worldServer.getMinecraftServer().getPlayerList().transferPlayerToDimension(entityPlayerMP, dimension, new Util(worldServer, x, y, z));
+        worldServer.getMinecraftServer().getPlayerList().transferPlayerToDimension(entityPlayerMP, dimension, new TeleportUtil(worldServer, x, y, z));
         player.setPositionAndUpdate(x, y, z);
     }
 }

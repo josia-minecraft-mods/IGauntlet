@@ -64,7 +64,7 @@ public class RenderUtil {
 
         Tessellator tessellator = Tessellator.getInstance();
         BufferBuilder bb = tessellator.getBuffer();
-        int smoothFactor = Minecraft.getMinecraft().gameSettings.ambientOcclusion;
+        int smoothFactor = mc.gameSettings.ambientOcclusion;
         int layers = 10 + smoothFactor * 20;
 
         GlStateManager.pushMatrix();

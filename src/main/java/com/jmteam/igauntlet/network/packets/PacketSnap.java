@@ -48,11 +48,12 @@ public class PacketSnap implements IMessage {
         @Override
         public IMessage onMessage(PacketSnap message, MessageContext ctx) {
             ctx.getServerHandler().player.getServerWorld().addScheduledTask(new Runnable() {
+
                 @Override
                 public void run() {
                     EntityPlayerMP player = ctx.getServerHandler().player;
                     BlockPos p = player.getPosition();
-                    Random rn = new Random();
+                    Random rn = player.world.rand;
                     boolean CanSnap = InfinityConfig.Gauntlet.Snap;
                     IInfinityCap cap = CapabilityInfinity.get(player);
                     int extend = InfinityConfig.Gauntlet.ExtensionRange;
@@ -86,10 +87,10 @@ public class PacketSnap implements IMessage {
                                         }
                                     }
 
-                                    if(entities.get(i) instanceof EntityPlayer && InfinityConfig.Gauntlet.SnapKillPlayers) {
+                                    if (entities.get(i) instanceof EntityPlayer && InfinityConfig.Gauntlet.SnapKillPlayers) {
                                         EntityPlayer e = (EntityPlayer) entities.get(i);
 
-                                        if(!e.isCreative()) {
+                                        if (!e.isCreative()) {
                                             EntityHelper.AttackBySource(e, IDamageSource.SNAP, Float.POSITIVE_INFINITY);
                                         }
                                     }
