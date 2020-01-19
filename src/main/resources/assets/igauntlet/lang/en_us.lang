@@ -31,6 +31,8 @@ tile.dwarf_wood.name=Dwarven Planks
 tile.forge.name=Dwarven Forge
 tile.manipulator.name=Manipulator
 tile.quick_sand.name=Quick Sand
+tile.power_orb.name=Power Orb
+tile.aether.name=Aether
 
 //Entity
 entity.ray.name=Laser

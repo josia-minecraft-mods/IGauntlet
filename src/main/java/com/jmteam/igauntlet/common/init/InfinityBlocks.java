@@ -1,6 +1,7 @@
 package com.jmteam.igauntlet.common.init;
 
 import com.jmteam.igauntlet.common.blocks.*;
+import com.jmteam.igauntlet.common.blocks.stoneholders.BlockOrb;
 import com.jmteam.igauntlet.common.blocks.stoneholders.BlockTesseract;
 import com.jmteam.igauntlet.util.helpers.IHaveItem;
 import net.minecraft.block.Block;
@@ -28,9 +29,9 @@ public class InfinityBlocks {
     public static Block forge = RegisterBlock(new BlockForge(Material.ANVIL), "forge").setCreativeTab(InfinityTabs.infinityTabs);
     public static Block manipulator = RegisterBlock(new BlockManipulator(Material.IRON), "manipulator").setCreativeTab(InfinityTabs.infinityTabs);
     public static Block quick_sand = RegisterBlock(new BlockQuickSand(Material.SAND), "quick_sand").setCreativeTab(InfinityTabs.infinityTabs);
- //   public static Block aether = RegisterBlock(new BlockAether(Material.SPONGE), "aether").setCreativeTab(InfinityTabs.infinityTabs);
-   // public static Block power_orb = RegisterBlock(new BlockOrb(Material.ROCK), "power_orb").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Block power_orb = RegisterBlock(new BlockOrb(Material.ROCK), "power_orb").setCreativeTab(InfinityTabs.infinityTabs);
 
+ //   public static Block aether = RegisterBlock(new BlockAether(Material.SPONGE), "aether").setCreativeTab(InfinityTabs.infinityTabs);
 
     public static Block RegisterBlock(Block block, String name) {
         block.setRegistryName(name);
