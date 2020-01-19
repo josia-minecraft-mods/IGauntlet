@@ -2,6 +2,7 @@ package com.jmteam.igauntlet.common.commands;
 
 import com.google.common.collect.Lists;
 import com.jmteam.igauntlet.Infinity;
+import com.jmteam.igauntlet.util.helpers.TeleportUtil;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
@@ -14,7 +15,7 @@ import net.minecraft.util.text.TextFormatting;
 import java.util.Collections;
 import java.util.List;
 
-public class DimensionTeleport extends CommandBase {
+public class CommandDimensionTeleport extends CommandBase {
     private final List<String> aliases = Lists.newArrayList(Infinity.MODID, "TP", "tp", "tpdim", "tpdimension", "teleport");
 
     @Override
@@ -32,7 +33,7 @@ public class DimensionTeleport extends CommandBase {
         }
 
         if (sender instanceof EntityPlayer) {
-            Util.teleportToDimension((EntityPlayer) sender, dimension, 0, 100, 0);
+            TeleportUtil.teleportToDimension((EntityPlayer) sender, dimension, 0, 100, 0);
         }
     }
 

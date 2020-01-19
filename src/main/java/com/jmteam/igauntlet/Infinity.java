@@ -3,7 +3,9 @@ package com.jmteam.igauntlet;
 import com.jmteam.igauntlet.common.capability.CapInfinityStorage;
 import com.jmteam.igauntlet.common.capability.CapabilityInfinity;
 import com.jmteam.igauntlet.common.capability.IInfinityCap;
-import com.jmteam.igauntlet.common.commands.DimensionTeleport;
+import com.jmteam.igauntlet.common.commands.CommandCreateSchematic;
+import com.jmteam.igauntlet.common.commands.CommandDimensionTeleport;
+import com.jmteam.igauntlet.common.commands.CommandPasteSchematic;
 import com.jmteam.igauntlet.common.init.*;
 import com.jmteam.igauntlet.common.world.gen.WorldGeneration;
 import com.jmteam.igauntlet.network.NetworkHandler;
@@ -61,7 +63,9 @@ public class Infinity {
 
     @Mod.EventHandler
     public static void serverInit(FMLServerStartingEvent event) {
-        event.registerServerCommand(new DimensionTeleport());
+        event.registerServerCommand(new CommandDimensionTeleport());
+        event.registerServerCommand(new CommandCreateSchematic());
+        event.registerServerCommand(new CommandPasteSchematic());
     }
 }
 
