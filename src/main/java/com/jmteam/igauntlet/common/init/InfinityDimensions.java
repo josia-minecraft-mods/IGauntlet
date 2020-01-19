@@ -7,13 +7,11 @@ import net.minecraftforge.common.DimensionManager;
 
 public class InfinityDimensions {
 
-    public static int DWARFID;
+    public static int DWARFID = InfinityConfig.Dimensions.DwarfDimensionID;
     public static DimensionType DWARF;
 
     public static void registerDimensions() {
-        if (InfinityConfig.Dimensions.CustomDimensionID) {
-            DWARFID = InfinityConfig.Dimensions.DwarfDimensionID;
-        } else {
+        if (!InfinityConfig.Dimensions.CustomDimensionID) {
             DWARFID = DimensionManager.getNextFreeDimId();
         }
 
