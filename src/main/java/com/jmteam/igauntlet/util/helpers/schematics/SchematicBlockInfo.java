@@ -8,7 +8,7 @@ import net.minecraft.util.math.BlockPos;
 public class SchematicBlockInfo {
 
     public IBlockState blockState;
-    public NBTTagCompound tileTag;
+    public NBTTagCompound tileTag = new NBTTagCompound();
     public boolean isTileEntity = false;
     public BlockPos reference;
 
@@ -19,7 +19,11 @@ public class SchematicBlockInfo {
 
         if(tileEntity != null) {
             isTileEntity = true;
-            tileTag = tileEntity.serializeNBT();
+            NBTTagCompound tagCompound = tileEntity.serializeNBT();
+
+            if(tagCompound != null) {
+                tileTag = tagCompound;
+            }
         }
     }
 
