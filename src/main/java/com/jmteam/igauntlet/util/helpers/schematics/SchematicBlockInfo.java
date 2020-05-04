@@ -1,5 +1,6 @@
 package com.jmteam.igauntlet.util.helpers.schematics;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -7,32 +8,33 @@ import net.minecraft.util.math.BlockPos;
 
 public class SchematicBlockInfo {
 
-    public IBlockState blockState;
-    public NBTTagCompound tileTag = new NBTTagCompound();
+    public int blockState;
+    public String nbtTag;
+    public transient NBTTagCompound compound;
     public boolean isTileEntity = false;
-    public BlockPos reference;
+    public long reference;
 
 
     public SchematicBlockInfo(IBlockState state, TileEntity tileEntity, BlockPos referencePos) {
-        this.blockState = state;
-        this.reference = referencePos;
+        this.blockState = Block.getStateId(state);
+        this.reference = referencePos.toImmutable().toLong();
 
-        if(tileEntity != null) {
+        if (tileEntity != null) {
             isTileEntity = true;
             NBTTagCompound tagCompound = tileEntity.serializeNBT();
 
-            if(tagCompound != null) {
-                tileTag = tagCompound;
+            if (tagCompound != null) {
+                nbtTag = tagCompound.toString();
             }
         }
     }
 
     public IBlockState getBlockState() {
-        return blockState;
+        return Block.getStateById(blockState);
     }
 
     public NBTTagCompound getTileTag() {
-        return tileTag;
+        return compound;
     }
 
     public boolean isTileEntity() {
@@ -40,7 +42,7 @@ public class SchematicBlockInfo {
     }
 
     public BlockPos getReference() {
-        return reference;
+        return BlockPos.fromLong(reference);
     }
 }
 

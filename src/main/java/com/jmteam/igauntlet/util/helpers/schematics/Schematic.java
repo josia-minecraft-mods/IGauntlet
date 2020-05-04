@@ -27,6 +27,6 @@ public class Schematic {
     }
 
     public void generate(World world, BlockPos pos, boolean ignoreAir) {
-        SchematicUtil.generateSchematic(this, pos, world, ignoreAir);
+       SchematicUtil.generateSchematic(this, pos, world, ignoreAir);
     }
 }

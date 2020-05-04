@@ -51,8 +51,6 @@ public class EventHandler {
         }
     }*/
 
-    //TODO Add PosessionEvent so i can control things from there
-
 
     @SubscribeEvent
     public static void onDeath(LivingDeathEvent e) {

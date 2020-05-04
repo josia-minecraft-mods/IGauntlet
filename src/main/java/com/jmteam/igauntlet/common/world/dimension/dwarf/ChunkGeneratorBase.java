@@ -1,6 +1,7 @@
 package com.jmteam.igauntlet.common.world.dimension.dwarf;
 
 import com.jmteam.igauntlet.util.helpers.IChunkGenerator;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
@@ -9,20 +10,18 @@ import net.minecraft.world.gen.ChunkGeneratorOverworld;
 
 import java.util.Random;
 
-public class ChunkGeneratorDwarf extends ChunkGeneratorOverworld {
+public class ChunkGeneratorBase extends ChunkGeneratorOverworld {
 
     World world;
     Random rand = new Random();
     IChunkGenerator pop;
 
-    public ChunkGeneratorDwarf(World worldIn, long seed) {
+    public IBlockState surface_block;
+    public IBlockState filler_block;
+
+    public ChunkGeneratorBase(World worldIn, long seed) {
         super(worldIn, seed, false, "");
         world = worldIn;
-    }
-
-    public ChunkGeneratorDwarf(World worldIn, long seed, IChunkGenerator pop) {
-        this(worldIn, seed);
-        this.pop = pop;
     }
 
     @Override

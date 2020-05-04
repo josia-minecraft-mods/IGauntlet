@@ -24,6 +24,7 @@ public class BiomeDwarf extends Biome {
 
     @Override
     public void decorate(World worldIn, Random rand, BlockPos pos) {
+
     }
 
 }

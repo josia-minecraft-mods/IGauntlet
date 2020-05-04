@@ -15,34 +15,11 @@ public class CommandPasteSchematic extends CommandBase {
 
     @Override
     public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
-        if (args.length < 1 && sender.getEntityWorld().isRemote) return;
 
-
-        int X1 = 0, Y1 = 0, Z1 = 0;
-        int X2 = 0, Y2 = 0, Z2 = 0;
-        String name = "schematic_" + System.currentTimeMillis();
-
-
-       /*     if (args.length > 5) {
-                X1 = Integer.parseInt(args[0]);
-                Y1 = Integer.parseInt(args[1]);
-                Z1 = Integer.parseInt(args[2]);
-
-                X2 = Integer.parseInt(args[3]);
-                Y2 = Integer.parseInt(args[4]);
-                Z2 = Integer.parseInt(args[5]);
-            }else{
-                sender.sendMessage(new TextComponentString(TextFormatting.RED + "Define Coords"));
-            }
-
-            if (args.length > 6)
-                name = args[6];*/
-
-
+        if (args.length < 1 || sender.getEntityWorld().isRemote) return;
 
         if (sender instanceof EntityPlayer) {
-
-            SchematicUtil.generateSchematic(SchematicUtil.schematics.get(0), sender.getPosition(), ((EntityPlayer) sender).world);
+            SchematicUtil.generateSchematic(SchematicUtil.schematics.get(0), sender.getPosition(), ((EntityPlayer) sender).world, false);
         }
     }
 

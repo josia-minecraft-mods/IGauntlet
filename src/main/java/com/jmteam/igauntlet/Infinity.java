@@ -1,5 +1,7 @@
 package com.jmteam.igauntlet;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.jmteam.igauntlet.common.capability.CapInfinityStorage;
 import com.jmteam.igauntlet.common.capability.CapabilityInfinity;
 import com.jmteam.igauntlet.common.capability.IInfinityCap;
@@ -10,6 +12,7 @@ import com.jmteam.igauntlet.common.init.*;
 import com.jmteam.igauntlet.common.world.gen.WorldGeneration;
 import com.jmteam.igauntlet.network.NetworkHandler;
 import com.jmteam.igauntlet.proxy.IProxy;
+import net.minecraft.launchwrapper.Launch;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -33,7 +36,10 @@ public class Infinity {
     public static final String MODID = "igauntlet";
     public static final String DEPENDENCY = "required-after:forge@[14.23.2.2638,)";
     public static final String UPDATEURL = "https://raw.githubusercontent.com/josia-minecraft-mods/IGauntlet/master/update.json";
+    public static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     public static Logger log;
+
+    public static boolean isDevEnv = (Boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
 
     @SidedProxy(clientSide = "com.jmteam.igauntlet.proxy.ClientProxy", serverSide = "com.jmteam.igauntlet.proxy.CommonProxy")
     public static IProxy proxy;
@@ -63,9 +69,11 @@ public class Infinity {
 
     @Mod.EventHandler
     public static void serverInit(FMLServerStartingEvent event) {
-        event.registerServerCommand(new CommandDimensionTeleport());
-        event.registerServerCommand(new CommandCreateSchematic());
-        event.registerServerCommand(new CommandPasteSchematic());
+        if(isDevEnv) {
+            event.registerServerCommand(new CommandDimensionTeleport());
+            event.registerServerCommand(new CommandCreateSchematic());
+            event.registerServerCommand(new CommandPasteSchematic());
+        }
     }
 }
 

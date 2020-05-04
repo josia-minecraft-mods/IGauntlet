@@ -13,7 +13,9 @@ import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.entity.passive.EntityFlying;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
+import net.minecraft.network.play.server.SPacketEntityVelocity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -90,6 +92,7 @@ public class GemSoul {
 
         p.rotationYaw = player.rotationYawHead;
         p.rotationPitch = player.rotationPitch;
+        ((EntityPlayerMP) player).connection.sendPacket(new SPacketEntityVelocity(p));
     }
 
     public static void useSpecialFunction(EntityLiving l, EntityPlayer player) {

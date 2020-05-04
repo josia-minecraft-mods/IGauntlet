@@ -20,7 +20,6 @@ public class WorldProviderDwarf extends WorldProvider {
         return InfinityDimensions.DWARF;
     }
 
-
     @Override
     public BiomeProvider getBiomeProvider() {
         return biomeP;
