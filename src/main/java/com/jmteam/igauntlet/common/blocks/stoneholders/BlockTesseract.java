@@ -98,13 +98,6 @@ public class BlockTesseract extends BlockBase implements ITileEntityProvider {
     }
 
     @Override
-    public void onPlayerDestroy(World worldIn, BlockPos pos, IBlockState state) {
-
-
-        super.onPlayerDestroy(worldIn, pos, state);
-    }
-
-    @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
         return Items.AIR;
     }
