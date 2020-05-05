@@ -2,6 +2,7 @@ package com.jmteam.igauntlet.common.blocks.stoneholders;
 
 import com.jmteam.igauntlet.common.blocks.BlockBase;
 import com.jmteam.igauntlet.common.init.InfinityItems;
+import com.jmteam.igauntlet.common.init.InfinityNbtKeys;
 import com.jmteam.igauntlet.common.tileentity.TileTesseract;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
@@ -88,7 +89,7 @@ public class BlockTesseract extends BlockBase implements ITileEntityProvider {
 
         if (tileTesseract != null) {
             NBTTagCompound compound = new NBTTagCompound();
-            compound.setBoolean("has_stone", tileTesseract.has_stone);
+            compound.setBoolean(InfinityNbtKeys.HAS_STONE, tileTesseract.has_stone);
             stack.setTagCompound(compound);
             worldIn.spawnEntity(new EntityItem(worldIn, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, stack));
         }
@@ -98,8 +99,6 @@ public class BlockTesseract extends BlockBase implements ITileEntityProvider {
 
     @Override
     public void onPlayerDestroy(World worldIn, BlockPos pos, IBlockState state) {
-
-
 
 
         super.onPlayerDestroy(worldIn, pos, state);
@@ -118,12 +117,12 @@ public class BlockTesseract extends BlockBase implements ITileEntityProvider {
 
         if (stack != null) {
 
-            if(stack.getTagCompound() != null) {
+            if (stack.getTagCompound() != null) {
                 TileEntity te = worldIn.getTileEntity(pos);
 
-                if(te != null && te instanceof TileTesseract) {
+                if (te != null && te instanceof TileTesseract) {
                     TileTesseract tileTesseract = (TileTesseract) te;
-                    tileTesseract.setHas_stone(stack.getTagCompound().getBoolean("has_stone"));
+                    tileTesseract.setHas_stone(stack.getTagCompound().getBoolean(InfinityNbtKeys.HAS_STONE));
                 }
             }
         }
