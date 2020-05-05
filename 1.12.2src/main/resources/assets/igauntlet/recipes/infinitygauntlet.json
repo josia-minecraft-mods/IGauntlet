@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "U U",
+    "UUU",
+    "UHU"
+  ],
+  "key": {
+    "U": {
+      "item": "igauntlet:uru_ingot"
+    },
+    "H": {
+      "item": "igauntlet:dwarf_hammer"
+    }
+  },
+  "result": {
+    "item": "igauntlet:infinity_gauntlet",
+    "count": 1
+  }
+}

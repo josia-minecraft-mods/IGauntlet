@@ -1,0 +1,82 @@
+// Turkish by Mert
+
+//Items
+item.infinity_gauntlet.name=Sonsuzluk Eldiveni
+item.mind_stone.name=Zihin Taþý
+item.space_stone.name=Uzay Taþý
+item.time_stone.name=Zaman Taþý
+item.reality_stone.name=Gerçeklik Taþý
+item.power_stone.name=Güç Taþý
+item.soul_stone.name=Ruh Taþý
+item.uru_ingot.name=Uru Külçesi
+item.dwarf_hammer.name=Cüce Çekici
+item.awesome_mix.name=Harika Karýþým
+item.eye_agamotto.name=Agamotto'nun Gözü
+
+//Records
+item.record.awesome_mix.desc=Harika Karýþým
+
+ // Tab
+itemGroup.infinityitems=ÝEldiveni
+
+ //Blocks
+tile.ash_pile.name=Kül Kazýk
+tile.uru_ore.name=Uru Madeni
+tile.tesseract.name=Teserakt
+tile.dwarf_stone.name=Cüce Taþý
+tile.dwarf_dirt.name=Cüce Topraðý
+tile.dwarf_cobble.name=Cüce Kýrýktaþý
+tile.dwarf_wood.name=Cüce Kalasý
+tile.forge.name=Cüce Demirhanesi
+tile.manipulator.name=Manipülatör
+tile.quick_sand.name=Bataklýk
+
+ //Entity
+entity.ray.name=Lazer
+
+ //DeathSource
+damagesource.igauntlet.laser=Bir lazer!
+
+ //Messages
+stones.space.drifted=Drift Yaptýn!
+stones.space.donthold=Çok uzun süre tutma!
+stones.time.frozen=Canlýlar Donsun!
+stones.time.unfrozen=Canlýlar Çözünsün!
+gauntlet.snap.notenough=Menzilde birden fazla canlý olmasý lazým!
+gauntlet.snap.cantsnap.cooldown=Soðuma henüz geçmedi!
+gauntlet.snap.cantsnap.disabled=Þýklatma ayarlarda kapatýldý!
+gui.gauntlet.stone.notadded =Bu Taþ henüz eklenmedi! Taþ :
+gauntlet.selected.null=Taþ seçmedin!
+stones.power.spaired= Baðýþlandýn!
+
+ //Config
+ igauntlet.config.updatechecker=Güncelleme Kontroledicisi
+igauntlet.config.drift_timeout=Drift Zamaný
+igauntlet.config.rangeteleportminimum=En az Drift Mesafesi
+igauntlet.config.rangeteleportmaximum=En fazla Drift Mesafesi
+igauntlet.config.extensionrange=Uzantý Alaný
+igauntlet.config.cooldown=Soðuma
+igauntlet.config.snap=Þýklatma
+igauntlet.config.snap.playerkill=Þýklatma Oyuncu Öldürme
+igauntlet.config.dwarfid=Cüce Boyutu ID
+igauntlet.config.time.freezerange=Dondurma Alaný
+igauntlet.config.allow.space=Uzay Taþý
+igauntlet.config.allow.time=Zaman Taþý
+igauntlet.config.allow.reality=Gerçeklik Taþý
+igauntlet.config.allow.mind=Zihin Taþý
+igauntlet.config.allow.power=Güç Taþý
+igauntlet.config.allow.soul=Ruh Taþý
+igauntlet.config.reality.explode=Bloklarýn Patlamasý
+igauntlet.config.time.movetimespeed=Zaman Hýzý
+igauntlet.config.reality.quicksandtimer=Bataklýk Zamanlayýcýs
+igauntlet.config.reality.quicksandrange=Bataklýk Alaný
+
+
+//Sound Subtitle
+sound.awesomemix1=Harika Karýþým 1
+sound.snap=Þýklatma
+sound.gauntlet=Eldiven Uðultusu
+sound.nofeelgood=Bay Stark Ben iyi hissetmiyorum!
+
+//KeyBinds
+igauntlet.keybinds.snap=Þýklatma

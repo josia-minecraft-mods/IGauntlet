@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GGG",
+    "GTG",
+    "GGG"
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:obsidian"
+    },
+    "T": {
+      "item": "minecraft:end_crystal"
+    }
+  },
+  "result": {
+    "item": "igauntlet:power_stone",
+    "count": 1
+  }
+}

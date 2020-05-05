@@ -1,0 +1,43 @@
+{
+  "gauntlethum": {
+    "category": "master",
+    "subtitle": "sound.gauntlet",
+    "sounds": [
+      {
+        "name": "igauntlet:gauntlet/gauntlethum",
+        "stream": false
+      }
+    ]
+  },
+  "snap": {
+    "category": "master",
+    "subtitle": "sound.snap",
+    "sounds": [
+      {
+        "name": "igauntlet:gauntlet/snap/snap",
+        "stream": false
+      }
+    ]
+  },
+  "awesome_mix": {
+    "category": "master",
+    "subtitle": "sound.awesomemix1",
+    "sounds": [
+      {
+        "name": "igauntlet:awesomemix/awesome_mix_1",
+        "stream": true
+      }
+    ]
+  },
+  "feelgood": {
+    "category": "master",
+    "subtitle": "sound.nofeelgood",
+    "sounds": [
+      {
+        "name": "igauntlet:gauntlet/snap/nofeelgood",
+        "stream": true
+      }
+    ]
+  }
+}
+

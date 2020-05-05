@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GGG",
+    "GTG",
+    "GGG"
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "T": {
+      "item": "igauntlet:time_stone"
+    }
+  },
+  "result": {
+    "item": "igauntlet:eye_agamotto",
+    "count": 1
+  }
+}

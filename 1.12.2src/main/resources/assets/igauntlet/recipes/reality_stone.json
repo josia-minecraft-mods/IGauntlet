@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GGG",
+    "GTG",
+    "GGG"
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:redstone_block"
+    },
+    "T": {
+      "item": "minecraft:emerald"
+    }
+  },
+  "result": {
+    "item": "igauntlet:reality_stone",
+    "count": 1
+  }
+}
