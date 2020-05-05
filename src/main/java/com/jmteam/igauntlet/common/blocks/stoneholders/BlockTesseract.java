@@ -1,15 +1,19 @@
 package com.jmteam.igauntlet.common.blocks.stoneholders;
 
+import com.jmteam.igauntlet.common.blocks.BlockBase;
 import com.jmteam.igauntlet.common.init.InfinityItems;
 import com.jmteam.igauntlet.common.tileentity.TileTesseract;
-import com.jmteam.igauntlet.util.helpers.IHaveItem;
-import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -19,8 +23,9 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
+import java.util.Random;
 
-public class BlockTesseract extends Block implements IHaveItem, ITileEntityProvider {
+public class BlockTesseract extends BlockBase implements ITileEntityProvider {
 
     public static final AxisAlignedBB TESS_AABB = new AxisAlignedBB(0.34375, 0, 0.34375, 0.65625, 0.3125, 0.65625);
 
@@ -56,24 +61,73 @@ public class BlockTesseract extends Block implements IHaveItem, ITileEntityProvi
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         if (!worldIn.isRemote) {
-            ItemStack stack = playerIn.getHeldItemMainhand();
+            ItemStack stack = playerIn.getHeldItem(hand);
             TileEntity te = worldIn.getTileEntity(pos);
+
             if (te instanceof TileTesseract) {
-                TileTesseract tess = (TileTesseract) te;
+                TileTesseract tileTesseract = (TileTesseract) te;
                 if (stack.getItem() != null) {
                     if (stack.getItem() == InfinityItems.space_stone) {
-                        if (tess.AddStone()) {
+                        if (tileTesseract.addStone()) {
                             stack.setCount(0); // TODO Change with a holds stone boolean
                             return true;
                         }
                     }
                 }
-                tess.RemoveStone(playerIn);
+                tileTesseract.removeStone(playerIn);
             }
         }
         return true;
     }
 
+    @Override
+    public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
+
+        TileTesseract tileTesseract = (TileTesseract) worldIn.getTileEntity(pos);
+        ItemStack stack = new ItemStack(this, 1);
+
+        if (tileTesseract != null) {
+            NBTTagCompound compound = new NBTTagCompound();
+            compound.setBoolean("has_stone", tileTesseract.has_stone);
+            stack.setTagCompound(compound);
+            worldIn.spawnEntity(new EntityItem(worldIn, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, stack));
+        }
+
+        super.breakBlock(worldIn, pos, state);
+    }
+
+    @Override
+    public void onPlayerDestroy(World worldIn, BlockPos pos, IBlockState state) {
+
+
+
+
+        super.onPlayerDestroy(worldIn, pos, state);
+    }
+
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+        return Items.AIR;
+    }
+
+
+    @Override
+    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+        super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
+
+
+        if (stack != null) {
+
+            if(stack.getTagCompound() != null) {
+                TileEntity te = worldIn.getTileEntity(pos);
+
+                if(te != null && te instanceof TileTesseract) {
+                    TileTesseract tileTesseract = (TileTesseract) te;
+                    tileTesseract.setHas_stone(stack.getTagCompound().getBoolean("has_stone"));
+                }
+            }
+        }
+    }
 
     @Nullable
     @Override
@@ -82,7 +136,7 @@ public class BlockTesseract extends Block implements IHaveItem, ITileEntityProvi
     }
 
     @Override
-    public boolean hasItem() {
-        return true;
+    public int getMaxStackSize() {
+        return 1;
     }
 }

@@ -31,7 +31,7 @@ public class InfinityBlocks {
     public static Block quick_sand = RegisterBlock(new BlockQuickSand(Material.SAND), "quick_sand").setCreativeTab(InfinityTabs.infinityTabs);
     public static Block power_orb = RegisterBlock(new BlockOrb(Material.ROCK), "power_orb").setCreativeTab(InfinityTabs.infinityTabs);
 
- //   public static Block aether = RegisterBlock(new BlockAether(Material.SPONGE), "aether").setCreativeTab(InfinityTabs.infinityTabs);
+    //   public static Block aether = RegisterBlock(new BlockAether(Material.SPONGE), "aether").setCreativeTab(InfinityTabs.infinityTabs);
 
     public static Block RegisterBlock(Block block, String name) {
         block.setRegistryName(name);
@@ -39,12 +39,10 @@ public class InfinityBlocks {
         InfinityBlocks.BLOCKS.add(block);
 
         if (block instanceof IHaveItem) {
-            if (((IHaveItem) block).hasItem()) {
-                ItemBlock itemBlock = (ItemBlock) new ItemBlock(block).setRegistryName(name);
-
-                InfinityItems.ITEMS.add(itemBlock);
-            }
+            ItemBlock itemBlock = (ItemBlock) new ItemBlock(block).setRegistryName(name).setMaxDamage(((IHaveItem) block).getMaxStackSize());
+            InfinityItems.ITEMS.add(itemBlock);
         }
+
         return block;
     }
 

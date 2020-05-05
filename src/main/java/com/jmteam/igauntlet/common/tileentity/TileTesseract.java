@@ -3,46 +3,48 @@ package com.jmteam.igauntlet.common.tileentity;
 import com.jmteam.igauntlet.common.init.InfinityItems;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 
 public class TileTesseract extends TileEntity {
 
-    private int stone = 1;
+    public boolean has_stone = true;
 
-    public boolean AddStone() {
-        if (stone == 0) {
-            stone = 1;
+    public boolean addStone() {
+        if (!has_stone) {
+            has_stone = true;
             return true;
         }
         return false;
     }
 
-    public void RemoveStone(EntityPlayer player) {
-        if (stone == 1) {
+    public void removeStone(EntityPlayer player) {
+        if (has_stone) {
             world.spawnEntity(new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, new ItemStack(InfinityItems.space_stone)));
-            stone = 0;
-            world.setBlockState(pos, Blocks.AIR.getDefaultState());
+            has_stone = false;
         }
     }
 
-    public int GetStone() {
-        return this.stone;
+    public boolean GetStone() {
+        return has_stone;
+    }
+
+    public void setHas_stone(boolean has_stone) {
+        this.has_stone = has_stone;
     }
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
-        compound.setInteger("stone", this.stone);
+        compound.setBoolean("has_stone", this.has_stone);
         return compound;
     }
 
     @Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
-        this.stone = compound.getInteger("stone");
+        this.has_stone = compound.getBoolean("has_stone");
     }
 
 

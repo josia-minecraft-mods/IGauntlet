@@ -15,6 +15,7 @@ public class InfinityTileentities {
         registerTileEntity(TileQuickSand.class, "quicksand");
     }
 
+    @Deprecated
     private static void registerTileEntity(Class<? extends TileEntity> clazz, String name) {
         GameRegistry.registerTileEntity(clazz, Infinity.MODID + ":" + name);
     }

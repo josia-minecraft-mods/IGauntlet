@@ -1,11 +1,9 @@
 package com.jmteam.igauntlet.common.blocks;
 
-import com.jmteam.igauntlet.util.helpers.IHaveItem;
-import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 
-public class BlockDwarfDirt extends Block implements IHaveItem {
+public class BlockDwarfDirt extends BlockBase {
 
     public BlockDwarfDirt(Material material) {
         super(material);
@@ -13,10 +11,5 @@ public class BlockDwarfDirt extends Block implements IHaveItem {
         setHarvestLevel("shovel", 1);
         setHardness(15.0F);
         setResistance(15.0F);
-    }
-
-    @Override
-    public boolean hasItem() {
-        return true;
     }
 }

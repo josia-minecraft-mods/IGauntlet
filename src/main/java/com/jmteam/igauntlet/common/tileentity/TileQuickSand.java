@@ -8,7 +8,7 @@ import net.minecraft.util.ITickable;
 
 public class TileQuickSand extends TileEntity implements ITickable {
 
-    public int timer;
+    public int timer = 0;
     public int placed = 1;
 
     public void setplacedMethod(int placed) {

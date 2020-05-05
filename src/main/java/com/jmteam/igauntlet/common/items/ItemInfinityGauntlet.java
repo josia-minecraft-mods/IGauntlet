@@ -126,12 +126,7 @@ public class ItemInfinityGauntlet extends Item {
                         stack.getTagCompound().setBoolean("freeze", false);
                     }
                     GemTime.FreezeTime(playerIn, worldIn, stack.getTagCompound().getBoolean("freeze"), InfinityConfig.Gauntlet.TimeStone.FreezeRange);
-                } /*else {
-                    for (BlockPos b : BlockPos.getAllInBox((int) playerIn.posX - 20, (int) playerIn.posY - 10, (int) playerIn.posZ - 20, (int) playerIn.posX + 20, (int) playerIn.posY + 10, (int) playerIn.posZ + 20)) {
-                        GemTime.ReviveAsh(b, worldIn);
-                    }
                 }
-                */
             }
 
             if (worldIn.isRemote && SpaceOn && current == SPACE) {

@@ -1,7 +1,5 @@
 package com.jmteam.igauntlet.common.blocks;
 
-import com.jmteam.igauntlet.util.helpers.IHaveItem;
-import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
@@ -12,7 +10,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockManipulator extends Block implements IHaveItem {
+public class BlockManipulator extends BlockBase {
 
     public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
@@ -55,8 +53,4 @@ public class BlockManipulator extends Block implements IHaveItem {
         return new BlockStateContainer(this, FACING);
     }
 
-    @Override
-    public boolean hasItem() {
-        return true;
-    }
 }

@@ -1,7 +1,5 @@
 package com.jmteam.igauntlet.common.blocks;
 
-import com.jmteam.igauntlet.util.helpers.IHaveItem;
-import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -11,7 +9,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockForge extends Block implements IHaveItem {
+public class BlockForge extends BlockBase {
 
     public BlockForge(Material material) {
         super(material);
@@ -29,8 +27,4 @@ public class BlockForge extends Block implements IHaveItem {
         super.onEntityWalk(worldIn, pos, entityIn);
     }
 
-    @Override
-    public boolean hasItem() {
-        return true;
-    }
 }

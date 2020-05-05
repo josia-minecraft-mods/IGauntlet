@@ -11,7 +11,7 @@ public class BlockBase extends Block implements IHaveItem {
     }
 
     @Override
-    public boolean hasItem() {
-        return true;
+    public int getMaxStackSize() {
+        return 64;
     }
 }
