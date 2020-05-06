@@ -1,4 +1,4 @@
-package com.jmteam.igauntlet.common.world.dimension.dwarf;
+package com.jmteam.igauntlet.common.world.dimension;
 
 import com.jmteam.igauntlet.util.helpers.IChunkGenerator;
 import net.minecraft.block.state.IBlockState;
@@ -32,6 +32,10 @@ public class ChunkGeneratorBase extends ChunkGeneratorOverworld {
                 for (int y = 0; y < world.getHeight(); ++y) {
                     if (primer.getBlockState(x, y, z).getBlock() == Blocks.WATER) {
                         primer.setBlockState(x, y, z, Blocks.AIR.getDefaultState());
+                    }
+
+                    if(primer.getBlockState(x, y, z).getBlock() == Blocks.STONE) {
+                        primer.setBlockState(x, y, z, filler_block);
                     }
                 }
             }
