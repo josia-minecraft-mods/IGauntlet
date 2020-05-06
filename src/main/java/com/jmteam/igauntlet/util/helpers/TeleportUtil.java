@@ -35,6 +35,7 @@ public class TeleportUtil extends Teleporter {
         EntityPlayerMP entityPlayerMP = (EntityPlayerMP) player;
         MinecraftServer server = player.getEntityWorld().getMinecraftServer();
         WorldServer worldServer = server.getWorld(dimension);
+        worldServer.getChunk((int) x >> 4, (int) z >> 4);
         player.addExperienceLevel(0); // Keep XP
 
         if (worldServer == null || worldServer.getMinecraftServer() == null) {

@@ -26,10 +26,13 @@ public class GemReality {
     }
 
     public static void QuickSand(EntityPlayer player) {
-        int r = InfinityConfig.Gauntlet.RealityStone.SandRange;
-        for (BlockPos b : BlockPos.getAllInBox((int) player.posX - r, (int) player.posY - 10, (int) player.posZ - r, (int) player.posX + r, (int) player.posY + r, (int) player.posZ + r)) {
-            if (player.world.getBlockState(b).getBlock() instanceof BlockSand) {
-                player.world.setBlockState(b, InfinityBlocks.quick_sand.getDefaultState());
+        if(!player.world.isRemote) {
+            int r = InfinityConfig.Gauntlet.RealityStone.SandRange;
+
+            for (BlockPos b : BlockPos.getAllInBox((int) player.posX - r, (int) player.posY - 10, (int) player.posZ - r, (int) player.posX + r, (int) player.posY + r, (int) player.posZ + r)) {
+                if (player.world.getBlockState(b).getBlock() instanceof BlockSand) {
+                    player.world.setBlockState(b, InfinityBlocks.quick_sand.getDefaultState());
+                }
             }
         }
     }

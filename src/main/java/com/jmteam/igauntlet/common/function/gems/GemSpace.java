@@ -11,7 +11,10 @@ public class GemSpace {
 
     @SideOnly(Side.CLIENT)
     public static void OpenSpaceGui(EntityPlayer playerIn) {
-        if (playerIn.getHeldItemOffhand().getItem() != InfinityItems.infinity_gauntlet)
-            Minecraft.getMinecraft().displayGuiScreen(new GuiSpace());
+        if(playerIn.world.isRemote) {
+            if (playerIn.getHeldItemOffhand().getItem() != InfinityItems.infinity_gauntlet) {
+                Minecraft.getMinecraft().displayGuiScreen(new GuiSpace());
+            }
+        }
     }
 }

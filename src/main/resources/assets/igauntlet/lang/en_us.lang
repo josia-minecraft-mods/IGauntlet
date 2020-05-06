@@ -17,10 +17,10 @@ item.walkman.name=Walkman
 //Records
 item.record.awesome_mix.desc=Awesome Mix
 
-// Tab
+//Tab
 itemGroup.infinityitems=IGauntlet Tab
 
- //Blocks
+//Blocks
 tile.ash_pile.name=Ash Pile
 tile.uru_ore.name=Uru Ore
 tile.tesseract.name=Tesseract
@@ -51,11 +51,11 @@ gauntlet.soul.tpback=You have been teleported back!
 gauntlet.snap.notenough=There needs to be more than one entity in range!
 gauntlet.snap.cantsnap.cooldown=The cooldown hasn't passed yet!
 gauntlet.snap.cantsnap.disabled=Snap is disabled in config!
-gui.gauntlet.stone.notadded =This stone hasn't been added yet! Stone :
 gauntlet.selected.null=You haven't selected a stone yet!
 snap.revivedash=Revived Ash Piles!
 snap.revivedashfail=Couldn't revive any ash piles!
-stones.power.spaired= You have been spaired!
+stones.power.spaired=You have been spaired!
+stones.power.couldie=You can die while holding this!
 
 //Config
 igauntlet.config.updatechecker=Update Checker

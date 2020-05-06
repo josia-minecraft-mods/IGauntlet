@@ -54,13 +54,13 @@ public class PacketSnap implements IMessage {
                     EntityPlayerMP player = ctx.getServerHandler().player;
                     BlockPos p = player.getPosition();
                     Random rn = player.world.rand;
-                    boolean CanSnap = InfinityConfig.Gauntlet.Snap;
+                    boolean canSnap = InfinityConfig.Gauntlet.Snap;
                     IInfinityCap cap = CapabilityInfinity.get(player);
                     int extend = InfinityConfig.Gauntlet.ExtensionRange;
                     boolean tick = false;
                     List<Entity> entities = EntityHelper.filterSnap(player.world.getEntitiesWithinAABB(Entity.class, player.getEntityBoundingBox().grow(extend, extend, extend)));
 
-                    if (CanSnap && cap.getSnapCooldown() <= 0) {
+                    if (canSnap && cap.getSnapCooldown() <= 0) {
 
                         if (message.reverse) {
                             boolean canRevive = InfinityConfig.Gauntlet.ReviveAsh;
@@ -70,7 +70,7 @@ public class PacketSnap implements IMessage {
                                 String status = "snap.revivedashfail";
                                 for (BlockPos bp : BlockPos.getAllInBox(p.getX() - r, p.getY() - r, p.getZ() - r, p.getX() + r, p.getY() + r, p.getZ() + r)) {
                                     if (player.world.getBlockState(bp).getBlock() == InfinityBlocks.ash_pile) {
-                                        GemTime.SummonCreature(player.world, bp);
+                                        GemTime.reviveAsh(bp, player.world);
                                         status = "snap.revivedash";
                                     }
                                 }
@@ -106,6 +106,7 @@ public class PacketSnap implements IMessage {
                             } else {
                                 PlayerHelper.sendMessage(player, "gauntlet.snap.notenough", true);
                             }
+
                             entities.clear();
                         }
                     }

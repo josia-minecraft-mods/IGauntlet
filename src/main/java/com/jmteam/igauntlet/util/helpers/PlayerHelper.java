@@ -45,14 +45,14 @@ public class PlayerHelper {
         return EnumHand.MAIN_HAND;
     }
 
-    public static void teleportToPos(EntityPlayer player, BlockPos p) {
+    public static void teleportToPosition(EntityPlayer player, BlockPos p) {
         if (player instanceof EntityPlayerMP) {
             EntityPlayerMP playerMP = (EntityPlayerMP) player;
             playerMP.connection.setPlayerLocation(p.getX(), p.getY(), p.getZ(), player.rotationYaw, player.rotationPitch);
         }
     }
 
-    public static void teleportToPosSafe(EntityPlayer player, BlockPos bp) {
+    public static void teleportToSafePosition(EntityPlayer player, BlockPos bp) {
         if (player instanceof EntityPlayerMP) {
             EntityPlayerMP playerMP = (EntityPlayerMP) player;
             BlockPos p = player.world.getTopSolidOrLiquidBlock(bp);

@@ -28,10 +28,8 @@ public class CapabilityInfinity implements IInfinityCap {
     private BlockPos last_pos = BlockPos.ORIGIN;
     private int snap_cooldown = 0;
 
-
     public CapabilityInfinity() {
     }
-
 
     public CapabilityInfinity(EntityPlayer player) {
         this.player = player;
@@ -44,8 +42,7 @@ public class CapabilityInfinity implements IInfinityCap {
 
     @Override
     public void sync() {
-        if (!player.world.isRemote)
-            NetworkHandler.NETWORK.sendToAll(new PacketCapSync(player, serializeNBT()));
+        if (!player.world.isRemote) NetworkHandler.NETWORK.sendToAll(new PacketCapSync(player, serializeNBT()));
     }
 
     @Override
@@ -110,6 +107,7 @@ public class CapabilityInfinity implements IInfinityCap {
         nbt.setBoolean("is_posessing", isPosessing);
         nbt.setLong("last_pos", last_pos.toLong());
         nbt.setInteger("snap_cooldown", snap_cooldown);
+
         return nbt;
     }
 

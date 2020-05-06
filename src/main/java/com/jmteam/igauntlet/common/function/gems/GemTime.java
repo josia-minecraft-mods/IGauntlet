@@ -1,7 +1,7 @@
 package com.jmteam.igauntlet.common.function.gems;
 
 import com.jmteam.igauntlet.common.blocks.BlockAshPile;
-import com.jmteam.igauntlet.common.tileentity.TileAshPile;
+import com.jmteam.igauntlet.common.tileentity.TileEntityAshPile;
 import com.jmteam.igauntlet.util.InfinityConfig;
 import com.jmteam.igauntlet.util.helpers.PlayerHelper;
 import net.minecraft.block.state.IBlockState;
@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 
 public class GemTime {
 
-    public static void ReviveAsh(BlockPos p, World worldIn) {
+    public static void reviveAsh(BlockPos p, World worldIn) {
         IBlockState block = worldIn.getBlockState(p);
         boolean canRevive = InfinityConfig.Gauntlet.ReviveAsh;
 
@@ -26,10 +26,12 @@ public class GemTime {
     }
 
     public static void SummonCreature(World worldIn, BlockPos pos) {
-        TileAshPile ash_te = (TileAshPile) worldIn.getTileEntity(pos);
-        if (ash_te != null && ash_te instanceof TileAshPile) {
-            ash_te.summonEntity();
-            worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());
+        if(!worldIn.isRemote) {
+            TileEntityAshPile ash_te = (TileEntityAshPile) worldIn.getTileEntity(pos);
+            if (ash_te != null && ash_te instanceof TileEntityAshPile) {
+                ash_te.summonEntity();
+                worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());
+            }
         }
     }
 

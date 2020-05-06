@@ -6,7 +6,7 @@ import java.io.*;
 
 public class IOUtil {
 
-    public static void ObjectToFile(Object object, String filePath) {
+    public static void objectToFile(Object object, String filePath) {
         File file = new File(filePath.substring(0, filePath.lastIndexOf("/")));
 
         if (!file.exists()) {
@@ -25,7 +25,7 @@ public class IOUtil {
         }
     }
 
-    public static Object ObjectFromFile(String filePath, Class c) {
+    public static Object objectFromFile(String filePath, Class c) {
         File file = new File(filePath);
 
         if (!file.exists()) {
