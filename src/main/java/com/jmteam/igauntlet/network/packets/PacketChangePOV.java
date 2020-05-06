@@ -44,8 +44,9 @@ public class PacketChangePOV implements IMessage {
 
                 @Override
                 public void run() {
-                    if (player != null)
+                    if (player != null) {
                         Minecraft.getMinecraft().gameSettings.thirdPersonView = message.pov;
+                    }
                 }
             });
             return null;

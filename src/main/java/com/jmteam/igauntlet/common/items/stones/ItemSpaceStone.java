@@ -25,9 +25,10 @@ public class ItemSpaceStone extends Item {
 
         EntityPlayer player = (EntityPlayer) entityIn;
         int maxtimeout = InfinityConfig.Gauntlet.SpaceStone.SpaceDriftTimeout * 20;
-
         if (isSelected) {
             timeout++;
+
+            System.out.println( 50 % maxtimeout);
 
             if (timeout == 50 % maxtimeout)
                 PlayerHelper.sendMessageClient(player, "stones.space.donthold", true);
@@ -44,7 +45,7 @@ public class ItemSpaceStone extends Item {
             int random = (int) (Math.random() * max + min);
             BlockPos pos1 = new BlockPos(random, random, random);
             BlockPos pos2 = worldIn.getTopSolidOrLiquidBlock(pos1);
-            PlayerHelper.teleportToPos(player, pos2);
+            PlayerHelper.teleportToPosition(player, pos2);
         }
     }
 }

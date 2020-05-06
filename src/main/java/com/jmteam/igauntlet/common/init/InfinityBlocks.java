@@ -39,7 +39,7 @@ public class InfinityBlocks {
         InfinityBlocks.BLOCKS.add(block);
 
         if (block instanceof IHaveItem) {
-            ItemBlock itemBlock = (ItemBlock) new ItemBlock(block).setRegistryName(name).setMaxDamage(((IHaveItem) block).getMaxStackSize());
+            ItemBlock itemBlock = (ItemBlock) new ItemBlock(block).setRegistryName(name).setMaxStackSize(((IHaveItem) block).getMaxStackSize());
             InfinityItems.ITEMS.add(itemBlock);
         }
 

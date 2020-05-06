@@ -6,36 +6,37 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 
-public class TileQuickSand extends TileEntity implements ITickable {
+public class TileEntityQuickSand extends TileEntity implements ITickable {
 
-    public int timer = 0;
-    public int placed = 1;
+    public long created = 0;
+    public boolean placed = false;
 
-    public void setplacedMethod(int placed) {
-        this.placed = placed;
+    public void setManuallyPlaced() {
+        this.placed = true;
     }
 
     @Override
     public void update() {
-        if (placed == 1 && timer < InfinityConfig.Gauntlet.RealityStone.SandTimer)
-            timer++;
 
-
-        if (timer >= InfinityConfig.Gauntlet.RealityStone.SandTimer)
+        if (((System.currentTimeMillis() - created) / 1000L) >= InfinityConfig.Gauntlet.RealityStone.SandTimer && getWorld().getWorldTime() % 20 == 0 && !placed) {
             world.setBlockState(pos, Blocks.SAND.getDefaultState());
+        }
 
     }
 
     @Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
-        this.timer = compound.getInteger("timer");
+        this.created = compound.getLong("created");
+        this.placed = compound.getBoolean("placed");
     }
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
-        compound.setInteger("timer", this.timer);
+        compound.setLong("created", created);
+        compound.setBoolean("placed", placed);
+
         return compound;
     }
 }

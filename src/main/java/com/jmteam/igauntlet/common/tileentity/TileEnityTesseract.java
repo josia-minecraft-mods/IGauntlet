@@ -2,12 +2,11 @@ package com.jmteam.igauntlet.common.tileentity;
 
 import com.jmteam.igauntlet.common.init.InfinityItems;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileTesseract extends TileEntity {
+public class TileEnityTesseract extends TileEntity {
 
     public boolean has_stone = true;
 
@@ -19,7 +18,7 @@ public class TileTesseract extends TileEntity {
         return false;
     }
 
-    public void removeStone(EntityPlayer player) {
+    public void removeStone() {
         if (has_stone) {
             world.spawnEntity(new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, new ItemStack(InfinityItems.space_stone)));
             has_stone = false;

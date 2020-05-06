@@ -7,8 +7,10 @@ import com.jmteam.igauntlet.common.function.gems.*;
 import com.jmteam.igauntlet.common.init.InfinityItems;
 import com.jmteam.igauntlet.util.InfinityConfig;
 import com.jmteam.igauntlet.util.helpers.GemHelper;
+import com.jmteam.igauntlet.util.helpers.GemHelper.StoneType;
 import com.jmteam.igauntlet.util.helpers.PlayerHelper;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -59,7 +61,7 @@ public class ItemInfinityGauntlet extends Item {
     }
 
     public String getItemStackDisplayName(ItemStack stack) {
-        return TextFormatting.BOLD + "Infinity Gauntlet";
+        return TextFormatting.BOLD + I18n.format("item.infinity_gauntlet.name");
     }
 
     public int getMaxItemUseDuration(ItemStack stack) {
@@ -72,97 +74,87 @@ public class ItemInfinityGauntlet extends Item {
     }
 
     @Override
-    public boolean isFull3D() {
-        return true;
-    }
-
-    @Override
     public Item setFull3D() {
         return super.setFull3D();
     }
-
 
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
     }
 
-
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
         playerIn.setActiveHand(handIn);
         ItemStack stack = playerIn.getActiveItemStack();
+        StoneType current = GemHelper.ActiveGem(playerIn, handIn);
 
-        int current = GemHelper.ActiveGem(playerIn);
-
+        // Open Stone Selection GUI
         if (worldIn.isRemote && playerIn.getHeldItemOffhand().getItem() == InfinityItems.infinity_gauntlet) {
             OpenInfinityGui();
         }
 
-        if (current == NONE) {
-            PlayerHelper.sendMessageClient(playerIn, "gauntlet.selected.null", true);
-        }
-
         if (playerIn.getHeldItemOffhand().getItem() != InfinityItems.infinity_gauntlet) {
+            switch (current) {
+                case NONE:
+                    PlayerHelper.sendMessageClient(playerIn, "gauntlet.selected.null", true);
+                    break;
 
+                case POWER:
+                    if (PowerOn) GemPower.Laser(playerIn, worldIn, stack);
+                    break;
 
-            if (PowerOn && current == POWER) {
-                GemPower.Laser(playerIn, worldIn, stack);
-            }
+                case REALITY:
+                    if (RealityOn) GemReality.QuickSand(playerIn);
+                    break;
 
-            if (RealityOn && current == REALITY) {
-                if (!playerIn.isSneaking()) {
-                    //  GemReality.makeBubbles(playerIn);
-                } else {
-                    GemReality.QuickSand(playerIn);
-                }
-            }
-
-            if (TimeOn && current == TIME && !worldIn.isRemote) {
-
-                if (!playerIn.isSneaking()) {
-                    if (!stack.getTagCompound().getBoolean("freeze")) {
-                        stack.getTagCompound().setBoolean("freeze", true);
-                    } else {
-                        stack.getTagCompound().setBoolean("freeze", false);
+                case TIME:
+                    if (TimeOn && !worldIn.isRemote) {
+                        if (stack.getTagCompound().hasKey("freeze")) {
+                            stack.getTagCompound().setBoolean("freeze", !stack.getTagCompound().getBoolean("freeze"));
+                            stack.getTagCompound().setBoolean("freeze", !stack.getTagCompound().getBoolean("freeze"));
+                            // TODO Add arraylist with all frozen , so they can be unfrozen later
+                            GemTime.FreezeTime(playerIn, worldIn, stack.getTagCompound().getBoolean("freeze"), InfinityConfig.Gauntlet.TimeStone.FreezeRange);
+                        } else {
+                            stack.getTagCompound().setBoolean("freeze", true);
+                        }
                     }
-                    GemTime.FreezeTime(playerIn, worldIn, stack.getTagCompound().getBoolean("freeze"), InfinityConfig.Gauntlet.TimeStone.FreezeRange);
-                }
-            }
+                    break;
 
-            if (worldIn.isRemote && SpaceOn && current == SPACE) {
-                GemSpace.OpenSpaceGui(playerIn);
+                case SPACE:
+                    GemSpace.OpenSpaceGui(playerIn);
+                    break;
             }
         }
-
 
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
 
     @Override
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-        int current = GemHelper.ActiveGem(stack);
-        EntityPlayer player = (EntityPlayer) attacker;
         return true;
     }
 
     @Override
     public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
         IInfinityCap cap = CapabilityInfinity.get(playerIn);
-        int current = GemHelper.ActiveGem(stack);
+        StoneType current = GemHelper.ActiveGem(stack);
 
-        if (!cap.isPosessing() && current == SOUL && SoulOn && !playerIn.isSneaking()) {
-            if (target instanceof EntityLiving) GemSoul.startPosessing(playerIn, (EntityLiving) target, cap);
+        if (playerIn.world.isRemote) return false;
+
+        switch (current) {
+            case SOUL:
+                if (!cap.isPosessing() && SoulOn && !playerIn.isSneaking()) {
+                    if (target instanceof EntityLiving) GemSoul.startPosessing(playerIn, (EntityLiving) target, cap);
+                }
+                break;
+
+            case MIND:
+                if (playerIn.isSneaking()) {
+                    if (!(target instanceof EntityPlayer) && MindOn) GemMind.Attack(playerIn, (EntityLiving) target);
+                }
         }
 
-        if (current == MIND && MindOn) {
 
-            if (playerIn.isSneaking()) {
-                if (!(target instanceof EntityPlayer))
-                    GemMind.Attack(playerIn, (EntityLiving) target);
-            } else {
-                // GemMind.MakeFriendly(target);
-            }
-        }
         return super.itemInteractionForEntity(stack, playerIn, target, hand);
     }
 
@@ -179,18 +171,6 @@ public class ItemInfinityGauntlet extends Item {
 
     @Override
     public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
-        if ((entityLiving instanceof EntityPlayer)) {
-
-            EntityPlayer playerIn = (EntityPlayer) entityLiving;
-            playerIn.setActiveHand(EnumHand.MAIN_HAND);
-            int extend = InfinityConfig.Gauntlet.ExtensionRange;
-            NBTTagCompound nbt = stack.getTagCompound();
-            int current = GemHelper.ActiveGem(playerIn);
-
-
-            EnumHand hand = playerIn.getActiveHand();
-            playerIn.setActiveHand(hand);
-        }
         return super.onEntitySwing(entityLiving, stack);
     }
 
@@ -207,6 +187,7 @@ public class ItemInfinityGauntlet extends Item {
     @Override
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
         super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
+
         NBTTagCompound nbt = stack.getTagCompound();
         EntityPlayer player = (EntityPlayer) entityIn;
 
@@ -222,7 +203,7 @@ public class ItemInfinityGauntlet extends Item {
                         if (!worldIn.isRemote) {
                             if (nbt == null) {
                                 nbt = new NBTTagCompound();
-                                nbt.setInteger(CURRENTSTONE, 0);
+                                nbt.setString(CURRENTSTONE, String.valueOf(StoneType.NONE));
                                 stack.setTagCompound(nbt);
                             }
                         }

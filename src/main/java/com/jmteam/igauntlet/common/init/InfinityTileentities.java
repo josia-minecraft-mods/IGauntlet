@@ -1,18 +1,18 @@
 package com.jmteam.igauntlet.common.init;
 
 import com.jmteam.igauntlet.Infinity;
-import com.jmteam.igauntlet.common.tileentity.TileAshPile;
-import com.jmteam.igauntlet.common.tileentity.TileQuickSand;
-import com.jmteam.igauntlet.common.tileentity.TileTesseract;
+import com.jmteam.igauntlet.common.tileentity.TileEnityTesseract;
+import com.jmteam.igauntlet.common.tileentity.TileEntityAshPile;
+import com.jmteam.igauntlet.common.tileentity.TileEntityQuickSand;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class InfinityTileentities {
 
     public static final void PreInit() {
-        registerTileEntity(TileAshPile.class, "ash_pile");
-        registerTileEntity(TileTesseract.class, "tesseract");
-        registerTileEntity(TileQuickSand.class, "quicksand");
+        registerTileEntity(TileEntityAshPile.class, "ash_pile");
+        registerTileEntity(TileEnityTesseract.class, "tesseract");
+        registerTileEntity(TileEntityQuickSand.class, "quicksand");
     }
 
     @Deprecated

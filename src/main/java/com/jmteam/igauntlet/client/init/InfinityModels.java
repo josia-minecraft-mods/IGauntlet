@@ -16,6 +16,7 @@ public class InfinityModels {
     @SubscribeEvent
     public static void onModelRegister(ModelRegistryEvent event) {
         InfinityItems.registerRenders();
+
         for (Block block : InfinityBlocks.BLOCKS) {
             ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(block.getRegistryName(), "normal"));
         }

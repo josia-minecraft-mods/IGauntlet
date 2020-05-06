@@ -33,7 +33,7 @@ public class EntityPortal extends Entity {
         super.onCollideWithPlayer(player);
 
         if (init) {
-            PlayerHelper.teleportToPosSafe(player, pos);
+            PlayerHelper.teleportToSafePosition(player, pos);
             init = !init;
         }
     }

@@ -1,6 +1,6 @@
 package com.jmteam.igauntlet.common.blocks;
 
-import com.jmteam.igauntlet.common.tileentity.TileAshPile;
+import com.jmteam.igauntlet.common.tileentity.TileEntityAshPile;
 import com.jmteam.igauntlet.util.helpers.IHaveItem;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.SoundType;
@@ -62,7 +62,7 @@ public class BlockAshPile extends BlockFalling implements IHaveItem {
     @Nullable
     @Override
     public TileEntity createTileEntity(World world, IBlockState state) {
-        return new TileAshPile();
+        return new TileEntityAshPile();
     }
 
     @Override

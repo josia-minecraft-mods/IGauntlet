@@ -9,7 +9,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public class ItemTimeStone extends Item {
-    private int time = 0;
 
     public ItemTimeStone() {
         setMaxStackSize(1);
@@ -20,14 +19,12 @@ public class ItemTimeStone extends Item {
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
         super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
 
-        if (isSelected && InfinityConfig.AllowedGems.TimeStone) {
+        if (isSelected && InfinityConfig.AllowedGems.TimeStone && !worldIn.isRemote) {
             worldIn.getWorldInfo().setWorldTime(worldIn.getWorldTime() + InfinityConfig.Gauntlet.TimeStone.TimeSpeed);
 
-            time++;
 
-            if (time >= 200) {
+            if (worldIn.getWorldTime() % 200 == 0) {
                 EntityHelper.AttackBySource(entityIn, IDamageSource.HOLDING, 0.001F);
-                time = 0;
             }
         }
     }

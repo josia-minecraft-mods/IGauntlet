@@ -1,6 +1,6 @@
 package com.jmteam.igauntlet.common.blocks;
 
-import com.jmteam.igauntlet.common.tileentity.TileQuickSand;
+import com.jmteam.igauntlet.common.tileentity.TileEntityQuickSand;
 import com.jmteam.igauntlet.util.helpers.IHaveItem;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.ITileEntityProvider;
@@ -59,8 +59,8 @@ public class BlockQuickSand extends BlockFalling implements IHaveItem, ITileEnti
     public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
         super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
         if (placer instanceof EntityPlayer) {
-            TileQuickSand tileQuickSand = (TileQuickSand) worldIn.getTileEntity(pos);
-            tileQuickSand.setplacedMethod(0);
+            TileEntityQuickSand tileQuickSand = (TileEntityQuickSand) worldIn.getTileEntity(pos);
+            tileQuickSand.setManuallyPlaced();
         }
     }
 
@@ -77,7 +77,7 @@ public class BlockQuickSand extends BlockFalling implements IHaveItem, ITileEnti
     @Nullable
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return new TileQuickSand();
+        return new TileEntityQuickSand();
     }
 
     @Override
