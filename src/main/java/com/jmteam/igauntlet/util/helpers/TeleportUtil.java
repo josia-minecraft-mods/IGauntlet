@@ -10,7 +10,9 @@ import net.minecraft.world.WorldServer;
 
 public class TeleportUtil extends Teleporter {
     private final WorldServer world;
-    private double x, y, z;
+    private final double x;
+    private final double y;
+    private final double z;
 
     public TeleportUtil(WorldServer world, double x, double y, double z) {
         super(world);

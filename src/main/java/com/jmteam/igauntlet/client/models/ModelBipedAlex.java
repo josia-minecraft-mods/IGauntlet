@@ -11,7 +11,7 @@ public class ModelBipedAlex extends ModelBiped {
     private final ModelRenderer body;
     private final ModelRenderer arms;
     private final ModelRenderer legs;
-    private ModelBiped modelBiped;
+    private final ModelBiped modelBiped;
 
     public ModelBipedAlex(ModelBiped biped) {
         textureWidth = 64;

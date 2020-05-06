@@ -7,8 +7,8 @@ import net.minecraft.util.text.TextComponentTranslation;
 
 public class ISource extends DamageSource {
 
-    private String message;
-    private boolean blockable;
+    private final String message;
+    private final boolean blockable;
 
     public ISource(String name, boolean blockable) {
         super(name);

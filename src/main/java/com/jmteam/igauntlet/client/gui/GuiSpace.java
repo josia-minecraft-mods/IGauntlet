@@ -33,8 +33,8 @@ public class GuiSpace extends GuiScreen {
     public static final ResourceLocation TEXTURE = new ResourceLocation(Infinity.MODID, "textures/gui/gui_gauntlet_space.png");
 
 
-    private Minecraft mc;
-    private FontRenderer fr;
+    private final Minecraft mc;
+    private final FontRenderer fr;
 
     public GuiSpace() {
         mc = Minecraft.getMinecraft();

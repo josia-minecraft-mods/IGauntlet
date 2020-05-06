@@ -10,7 +10,7 @@ import net.minecraft.world.gen.IChunkGenerator;
 
 public class WorldProviderDwarf extends WorldProvider {
 
-    private static BiomeProviderSingle biomeP = new BiomeProviderSingle(InfinityBiomes.DWARF_DIMENSION);
+    private static final BiomeProviderSingle biomeP = new BiomeProviderSingle(InfinityBiomes.DWARF_DIMENSION);
 
     public WorldProviderDwarf() {
 

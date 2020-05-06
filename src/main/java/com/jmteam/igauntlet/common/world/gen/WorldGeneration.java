@@ -17,7 +17,7 @@ import static com.jmteam.igauntlet.common.init.InfinityDimensions.DWARFID;
 
 
 public class WorldGeneration implements IWorldGenerator {
-    private WorldGenerator uru_ore;
+    private final WorldGenerator uru_ore;
 
 
     public WorldGeneration() {
