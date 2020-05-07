@@ -46,7 +46,7 @@ public class InfinityConfig {
             @Config.LangKey("igauntlet.config.reality.quicksandtimer")
             @Config.Comment("The Timer for putting QuickSand back to Sand")
             @Config.RangeInt(min = 50, max = 200)
-            public int SandTimer = 200;
+            public int SandTimer = 20;
 
             @Config.LangKey("igauntlet.config.reality.quicksandrange")
             @Config.Comment("The Ranger for putting Sand to QuickSand")

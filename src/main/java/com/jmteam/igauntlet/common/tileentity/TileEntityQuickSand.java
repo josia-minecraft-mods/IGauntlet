@@ -8,7 +8,7 @@ import net.minecraft.util.ITickable;
 
 public class TileEntityQuickSand extends TileEntity implements ITickable {
 
-    public long created = 0;
+    public long created = System.currentTimeMillis();
     public boolean placed = false;
 
     public void setManuallyPlaced() {
@@ -18,8 +18,10 @@ public class TileEntityQuickSand extends TileEntity implements ITickable {
     @Override
     public void update() {
 
-        if (((System.currentTimeMillis() - created) / 1000L) >= InfinityConfig.Gauntlet.RealityStone.SandTimer && getWorld().getWorldTime() % 20 == 0 && !placed) {
-            world.setBlockState(pos, Blocks.SAND.getDefaultState());
+        if (!placed) {
+            if (created != 0 && ((System.currentTimeMillis() - created) / 1000L) >= InfinityConfig.Gauntlet.RealityStone.SandTimer && getWorld().getWorldTime() % 20 == 0 && !placed) {
+                world.setBlockState(pos, Blocks.SAND.getDefaultState());
+            }
         }
 
     }
