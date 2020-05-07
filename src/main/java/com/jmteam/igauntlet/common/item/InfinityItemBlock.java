@@ -14,6 +14,10 @@ public class InfinityItemBlock extends BlockItem {
         super(blockIn, new Properties());
     }
 
+    public InfinityItemBlock(Block blockIn, int stackSize) {
+        super(blockIn, new Properties().maxStackSize(stackSize));
+    }
+
     public InfinityItemBlock setGroup(ItemGroup... groups) {
         this.groups = new ArrayList<ItemGroup>();
 

@@ -19,7 +19,6 @@ public class InfinityBlocks {
         BLOCKS.add(block);
 
         Item itemBlock = new BlockItem(block, new Item.Properties()).setRegistryName(name);
-
         InfinityItems.ITEMS.add(itemBlock);
 
         return block;
@@ -29,7 +28,7 @@ public class InfinityBlocks {
         block.setRegistryName(name);
         BLOCKS.add(block);
 
-        InfinityItemBlock itemBlock = (InfinityItemBlock) new InfinityItemBlock(block).setRegistryName(name);
+        InfinityItemBlock itemBlock = (InfinityItemBlock) new InfinityItemBlock(block, block.getMaxSize()).setRegistryName(name);
         block.setBlockItem(itemBlock);
         InfinityItems.ITEMS.add(itemBlock);
 
