@@ -2,7 +2,9 @@
   "homepage": "https://minecraft.curseforge.com/projects/igauntlet",
   "promos": {
     "1.12.2-latest": "3.9.1",
-    "1.12.2-recommended": "3.9.1"
+    "1.12.2-recommended": "3.9.1",
+    "1.15.2-latest": "0.0.1",
+    "1.15.2-recommended": "0.0.1"
   },
   "1.12.2": {
     "0.0.1": "First Release",
@@ -24,5 +26,8 @@
     "3.8": "MP Posession",
     "3.9": "Bug Fixes for multiplayer",
     "3.9.1": "Laser Crash Fix"
+  },
+  "1.15.2": {
+    "0.0.1": "First 1.15.2 Update"
   }
 }
