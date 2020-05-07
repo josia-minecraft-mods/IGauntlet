@@ -18,8 +18,8 @@ public class TileEntityQuickSand extends TileEntity implements ITickable {
     @Override
     public void update() {
 
-        if (!placed) {
-            if (created != 0 && ((System.currentTimeMillis() - created) / 1000L) >= InfinityConfig.Gauntlet.RealityStone.SandTimer && getWorld().getWorldTime() % 20 == 0 && !placed) {
+        if (!placed && !world.isRemote) {
+            if (created != 0 && ((System.currentTimeMillis() - created) / 1000L) >= InfinityConfig.Gauntlet.RealityStone.SandTimer && getWorld().getWorldTime() % 20 == 0) {
                 world.setBlockState(pos, Blocks.SAND.getDefaultState());
             }
         }
