@@ -1,5 +1,5 @@
 {
   "variants": {
-    "normal": { "model": "igauntlet:dwarf_dirt" }
+    "": { "model": "igauntlet:block/dwarf_dirt" }
   }
 }

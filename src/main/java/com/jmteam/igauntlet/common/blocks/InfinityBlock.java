@@ -4,6 +4,7 @@ import com.jmteam.igauntlet.common.item.InfinityItemBlock;
 import com.jmteam.igauntlet.util.IHaveItem;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraftforge.common.ToolType;
@@ -13,7 +14,7 @@ public class InfinityBlock extends Block implements IHaveItem {
     private InfinityItemBlock blockItem;
 
     public InfinityBlock(Material material) {
-        super(Properties.create(material).harvestLevel(0).harvestTool(ToolType.PICKAXE));
+        super(Properties.create(material).harvestLevel(0).hardnessAndResistance(15.0f).harvestTool(ToolType.PICKAXE));
     }
 
     public InfinityBlock(Properties properties) {
@@ -37,11 +38,15 @@ public class InfinityBlock extends Block implements IHaveItem {
     }
 
     @Override
-    public Item setGroup(ItemGroup group) {
+    public void setItem(BlockItem item) {
+        this.blockItem = (InfinityItemBlock) item;
+    }
+
+    public Block setGroup(ItemGroup group) {
         if (blockItem != null) {
             blockItem.setGroup(group);
         }
 
-        return blockItem;
+        return this;
     }
 }

@@ -1,6 +1,8 @@
 package com.jmteam.igauntlet.common.item;
 
 import com.jmteam.igauntlet.util.IHaveItem;
+import jdk.nashorn.internal.ir.Block;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -49,6 +51,9 @@ public class ItemBase extends Item implements IHaveItem {
     }
 
     @Override
+    public void setItem(BlockItem item) {
+    }
+
     public Item setGroup(ItemGroup group) {
         groups = new ArrayList<>();
 

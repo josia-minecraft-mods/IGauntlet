@@ -2,9 +2,9 @@ package com.jmteam.igauntlet.common.item.stones;
 
 import com.jmteam.igauntlet.common.item.ItemBase;
 
-public class ItemRealityStone extends ItemStoneBase {
+public abstract class ItemStoneBase extends ItemBase {
 
-    public ItemRealityStone() {
-        super();
+    public ItemStoneBase() {
+        super(1);
     }
 }

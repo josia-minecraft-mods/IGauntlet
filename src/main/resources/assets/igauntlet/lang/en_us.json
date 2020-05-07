@@ -16,16 +16,17 @@
   "itemGroup.infinityTab": "IGauntlet Tab",
 
   "block.igauntlet.ash_pile": "Ash Pile",
-  "block.uru_ore": "Uru Ore",
-  "block.tesseract": "Tesseract",
-  "block.dwarf_stone": "Dwarven Stone",
-  "block.dwarf_dirt": "Dwarven Dirt",
-  "block.dwarf_cobble": "Dwarven Cobblestone",
-  "block.dwarf_wood": "Dwarven Planks",
-  "block.forge": "Dwarven Forge",
-  "block.manipulator": "Manipulator",
-  "block.quick_sand": "Quick Sand",
-  "block.power_orb": "Power Orb",
-  "block.aether": "Aether",
+  "block.igauntlet.uru_ore": "Uru Ore",
+  "block.igauntlet.tesseract": "Tesseract",
+  "block.igauntlet.dwarf_stone": "Dwarven Stone",
+  "block.igauntlet.dwarf_dirt": "Dwarven Dirt",
+  "block.igauntlet.dwarf_cobble": "Dwarven Cobblestone",
+  "block.igauntlet.dwarf_wood": "Dwarven Planks",
+  "block.igauntlet.forge": "Dwarven Forge",
+  "block.igauntlet.manipulator": "Manipulator",
+  "block.igauntlet.quick_sand": "Quick Sand",
+  "block.igauntlet.power_orb": "Power Orb",
+  "block.igauntlet.aether": "Aether",
+
   "entity.ray": "Laser"
 }

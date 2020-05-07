@@ -1,5 +1,5 @@
 {
   "variants": {
-    "normal": { "model": "igauntlet:quick_sand" }
+    "": { "model": "igauntlet:block/quick_sand" }
   }
 }

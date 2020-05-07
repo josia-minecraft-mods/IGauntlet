@@ -1,5 +1,5 @@
 {
   "variants": {
-    "normal": { "model": "igauntlet:tesseract" }
+    "": { "model": "igauntlet:block/tesseract" }
   }
 }

@@ -1,5 +1,5 @@
 {
   "variants": {
-    "normal": { "model": "igauntlet:dwarf_cobble" }
+    "": { "model": "igauntlet:block/dwarf_cobble" }
   }
 }

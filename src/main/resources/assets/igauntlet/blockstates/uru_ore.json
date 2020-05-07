@@ -1,5 +1,5 @@
 {
   "variants": {
-    "normal": { "model": "igauntlet:uru_ore" }
+    "": { "model": "igauntlet:block/uru_ore" }
   }
 }

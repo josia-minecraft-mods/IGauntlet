@@ -1,5 +1,5 @@
 {
   "variants": {
-    "normal": { "model": "igauntlet:forge" }
+    "": { "model": "igauntlet:block/forge" }
   }
 }
