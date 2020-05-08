@@ -30,6 +30,7 @@ public class InfinityBlocks {
     public static Block manipulator = RegisterBlock(new BlockManipulator(Material.IRON), "manipulator").setCreativeTab(InfinityTabs.infinityTabs);
     public static Block quick_sand = RegisterBlock(new BlockQuickSand(Material.SAND), "quick_sand").setCreativeTab(InfinityTabs.infinityTabs);
     public static Block power_orb = RegisterBlock(new BlockOrb(Material.ROCK), "power_orb").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Block overworld_uru_ore = RegisterBlock(new BlockUruOre(Material.ROCK), "overworld_uru_ore").setCreativeTab(InfinityTabs.infinityTabs);
 
     //   public static Block aether = RegisterBlock(new BlockAether(Material.SPONGE), "aether").setCreativeTab(InfinityTabs.infinityTabs);
 

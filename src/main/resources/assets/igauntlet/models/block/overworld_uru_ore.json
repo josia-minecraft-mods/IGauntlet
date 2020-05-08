@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "igauntlet:blocks/overworld_uru_ore"
+  }
+}

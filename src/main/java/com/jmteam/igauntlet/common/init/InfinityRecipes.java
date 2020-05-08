@@ -7,5 +7,6 @@ public class InfinityRecipes {
 
     public static void init() {
         GameRegistry.addSmelting(InfinityBlocks.uru_ore, new ItemStack(InfinityItems.uru_ingot, 1), 1.5f);
+        GameRegistry.addSmelting(InfinityBlocks.overworld_uru_ore, new ItemStack(InfinityItems.uru_ingot, 1), 1.5f);
     }
 }
