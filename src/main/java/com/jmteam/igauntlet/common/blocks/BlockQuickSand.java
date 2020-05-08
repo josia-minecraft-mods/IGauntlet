@@ -54,7 +54,7 @@ public class BlockQuickSand extends FallingBlock implements IHaveItem {
 
         if (!worldIn.isRemote) {
             if (te != null && te instanceof TileEntityQuickSand) {
-               //  ((TileEntityQuickSand) te).setPlaced();
+                 ((TileEntityQuickSand) te).setPlaced();
             }
         }
     }
