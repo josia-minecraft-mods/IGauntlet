@@ -4,6 +4,7 @@ import com.jmteam.igauntlet.common.blocks.*;
 import com.jmteam.igauntlet.common.blocks.stoneholders.BlockOrb;
 import com.jmteam.igauntlet.common.blocks.stoneholders.BlockTesseract;
 import com.jmteam.igauntlet.common.item.InfinityItemBlock;
+import com.jmteam.igauntlet.common.tileentity.TileEntityAshPile;
 import com.jmteam.igauntlet.common.tileentity.TileEntityQuickSand;
 import com.jmteam.igauntlet.common.tileentity.TileEntityTesseract;
 import com.jmteam.igauntlet.util.IHaveItem;
@@ -22,7 +23,7 @@ public class InfinityBlocks {
     public static List<Block> BLOCKS = new ArrayList<>();
 
 
-    public static Block ash_pile = registerBlock(new BlockAshPile(Material.SAND), "ash_pile").setGroup(InfinityGroups.infinityTab);
+    public static Block ash_pile = addTileEntity(new BlockAshPile(Material.SAND), "ash_pile", TileEntityAshPile::new).setGroup(InfinityGroups.infinityTab);
     public static Block uru_ore = registerBlock(new BlockUruOre(Material.ROCK), "uru_ore").setGroup(InfinityGroups.infinityTab);
     public static Block tesseract = addTileEntity(new BlockTesseract(TileEntityTesseract::new), "tesseract").setGroup(InfinityGroups.infinityTab);
     public static Block dwarf_stone = registerBlock(new BlockDwarfStone(Material.ORGANIC), "dwarf_stone").setGroup(InfinityGroups.infinityTab);

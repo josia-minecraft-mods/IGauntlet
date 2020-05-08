@@ -1,5 +1,6 @@
 package com.jmteam.igauntlet.common.blocks;
 
+import com.jmteam.igauntlet.common.tileentity.TileEntityAshPile;
 import com.jmteam.igauntlet.util.IHaveItem;
 import com.jmteam.igauntlet.util.registry.RegistryHelper;
 import net.minecraft.block.Block;
@@ -9,11 +10,14 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
+
+import javax.annotation.Nullable;
 
 public class BlockAshPile extends FallingBlock implements IHaveItem {
 
@@ -43,6 +47,17 @@ public class BlockAshPile extends FallingBlock implements IHaveItem {
     @Override
     public void setItem(BlockItem item) {
         this.itemBlock = item;
+    }
+
+    @Override
+    public boolean hasTileEntity(BlockState state) {
+        return true;
+    }
+
+    @Nullable
+    @Override
+    public TileEntity createTileEntity(BlockState state, IBlockReader world) {
+        return new TileEntityAshPile();
     }
 
     public Block setGroup(ItemGroup group) {
