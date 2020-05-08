@@ -4,6 +4,7 @@ import com.jmteam.igauntlet.common.init.InfinityBlocks;
 import com.jmteam.igauntlet.common.init.InfinityEntities;
 import com.jmteam.igauntlet.common.init.InfinityItems;
 import com.jmteam.igauntlet.common.init.InfinityTileEntities;
+import com.jmteam.igauntlet.network.Networkhandler;
 import com.jmteam.igauntlet.proxy.ClientProxy;
 import com.jmteam.igauntlet.proxy.ServerProxy;
 import net.minecraft.block.Block;
@@ -46,6 +47,7 @@ public class IGauntlet {
 
     private void commonSetup(FMLCommonSetupEvent event) {
         PROXY.doServerStuff(event);
+        Networkhandler.register();
     }
 
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
