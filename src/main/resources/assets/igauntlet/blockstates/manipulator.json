@@ -1,10 +1,8 @@
 {
   "variants": {
-    "": { "model": "igauntlet:block/manipulator" },
-    "facing=up":  { "model": "igauntlet:block/manipulator" },
-    "facing=east":  { "model": "igauntlet:block/manipulator", "y": 270 },
-    "facing=south":  { "model": "igauntlet:block/:manipulator"},
-    "facing=west":  { "model": "igauntlet:block/manipulator", "y": 90 },
-    "facing=north":  { "model": "igauntlet:block/manipulator", "y": 180 }
+    "facing=west":  { "model": "igauntlet:block/manipulator"},
+    "facing=north": { "model": "igauntlet:block/manipulator", "y": 90 },
+    "facing=east":  { "model": "igauntlet:block/manipulator", "y": 180 },
+    "facing=south": { "model": "igauntlet:block/manipulator", "y": 270}
   }
 }

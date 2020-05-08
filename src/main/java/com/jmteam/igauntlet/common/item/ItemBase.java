@@ -1,11 +1,9 @@
 package com.jmteam.igauntlet.common.item;
 
-import com.jmteam.igauntlet.util.IHaveItem;
-import jdk.nashorn.internal.ir.Block;
+import com.jmteam.igauntlet.util.registry.IHaveItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;

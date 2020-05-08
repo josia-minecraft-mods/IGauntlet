@@ -30,7 +30,7 @@ public class BlockInfinityTileEntityBase extends InfinityBlock {
 
     @Override
     public BlockRenderType getRenderType(BlockState p_149645_1_) {
-       return BlockRenderType.INVISIBLE;
+        return BlockRenderType.INVISIBLE;
     }
 
     @Override

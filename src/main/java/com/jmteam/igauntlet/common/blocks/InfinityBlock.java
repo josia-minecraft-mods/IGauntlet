@@ -1,11 +1,10 @@
 package com.jmteam.igauntlet.common.blocks;
 
 import com.jmteam.igauntlet.common.item.InfinityItemBlock;
-import com.jmteam.igauntlet.util.IHaveItem;
+import com.jmteam.igauntlet.util.registry.IHaveItem;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraftforge.common.ToolType;
 

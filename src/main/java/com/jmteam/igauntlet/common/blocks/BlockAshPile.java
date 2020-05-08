@@ -1,7 +1,7 @@
 package com.jmteam.igauntlet.common.blocks;
 
 import com.jmteam.igauntlet.common.tileentity.TileEntityAshPile;
-import com.jmteam.igauntlet.util.IHaveItem;
+import com.jmteam.igauntlet.util.registry.IHaveItem;
 import com.jmteam.igauntlet.util.registry.RegistryHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
