@@ -13,7 +13,7 @@ public class BlockForge extends BlockBase {
 
     public BlockForge(Material material) {
         super(material);
-        setSoundType(SoundType.STONE);
+        setSoundType(SoundType.ANVIL);
         setHarvestLevel("pickaxe", 2);
         setHardness(15.0F);
         setResistance(15.0F);

@@ -7,7 +7,7 @@ public class BlockDwarfWood extends BlockBase {
 
     public BlockDwarfWood(Material material) {
         super(material);
-        setSoundType(SoundType.STONE);
+        setSoundType(SoundType.WOOD);
         setHarvestLevel("axe", 1);
         setHardness(15.0F);
         setResistance(15.0F);
