@@ -35,7 +35,7 @@ public class WorldGeneration implements IWorldGenerator {
             runGenerator(uru_ore, world, random, chunkX, chunkZ, 20, 20, 60);
         }
         if (world.provider.getDimension() == 0) {
-            runGenerator(overworld_uru_ore, world, random, chunkX, chunkZ, 5, 3, 15);
+            runGenerator(overworld_uru_ore, world, random, chunkX, chunkZ, 1, 10, 15);
         }
     }
 
