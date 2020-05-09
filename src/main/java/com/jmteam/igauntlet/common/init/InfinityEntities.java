@@ -1,7 +1,9 @@
 package com.jmteam.igauntlet.common.init;
 
 import com.jmteam.igauntlet.IGauntlet;
+import com.jmteam.igauntlet.common.entity.EntityGauntlet;
 import com.jmteam.igauntlet.util.registry.EntityBuilder;
+import net.minecraft.command.impl.SummonCommand;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.ResourceLocation;
@@ -14,13 +16,12 @@ public class InfinityEntities {
 
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = new DeferredRegister<>(ForgeRegistries.ENTITIES, IGauntlet.MODID);
 
-  //  public static RegistryObject<EntityType<EntityTest>> TEST;
+    public static RegistryObject<EntityType<EntityGauntlet>> GAUNTLET;
 
     public static void init(IEventBus eventBus) {
         IGauntlet.LOGGER.info("Registering Entities");
 
-       // TEST = create("test").entity(EntityTest::new, EntityClassification.MONSTER).size(0.8F, 1.8F).build();
-
+        GAUNTLET = create("gauntlet").entity(EntityGauntlet::new, EntityClassification.MONSTER).size(1, 1F).build();
 
         ENTITY_TYPES.register(eventBus);
     }

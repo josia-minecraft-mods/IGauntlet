@@ -1,6 +1,7 @@
 package com.jmteam.igauntlet.network.packets;
 
 import com.jmteam.igauntlet.common.init.InfinityItems;
+import com.jmteam.igauntlet.common.init.InfinityNBT;
 import com.jmteam.igauntlet.util.gauntlet.GemHelper.StoneType;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -40,11 +41,10 @@ public class PacketSetStone {
                     ItemStack stack = player.getHeldItem(Hand.OFF_HAND);
                     if (stack.getItem() == InfinityItems.infinity_gauntlet) {
 
-
                         if (stack.getTag() == null) stack.setTag(new CompoundNBT());
 
                         if (stack.getTag() != null) {
-                            stack.getTag().putString("selected_stone", packet.type.name());
+                            stack.getTag().putString(InfinityNBT.SELECTED_STONE, packet.type.name());
                         }
                     }
                 }

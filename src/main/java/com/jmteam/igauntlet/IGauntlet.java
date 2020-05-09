@@ -1,5 +1,6 @@
 package com.jmteam.igauntlet;
 
+import com.jmteam.igauntlet.common.events.ServerEvents;
 import com.jmteam.igauntlet.common.init.InfinityBlocks;
 import com.jmteam.igauntlet.common.init.InfinityEntities;
 import com.jmteam.igauntlet.common.init.InfinityItems;
@@ -16,6 +17,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
@@ -36,9 +38,11 @@ public class IGauntlet {
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(this::doClientStuff);
         bothSideSetup(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(ServerEvents.class);
     }
 
     private void bothSideSetup(IEventBus modEventBus) {
@@ -48,6 +52,10 @@ public class IGauntlet {
     private void commonSetup(FMLCommonSetupEvent event) {
         PROXY.doServerStuff(event);
         Networkhandler.register();
+    }
+
+    private void doClientStuff(final FMLClientSetupEvent event) {
+        PROXY.doClientStuff(event);
     }
 
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
