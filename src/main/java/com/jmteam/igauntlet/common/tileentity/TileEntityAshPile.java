@@ -33,7 +33,7 @@ public class TileEntityAshPile extends InfinityTileEntityBase implements ITickab
 
     public LivingEntity getEntity() {
         try {
-            if (!entity.isEmpty()) {
+           if (!entity.isEmpty()) {
                 CompoundNBT compoundNBT = JsonToNBT.getTagFromJson(this.entity);
                 return (LivingEntity) EntityHelper.createEntityFromNBT(compoundNBT, world);
             }
