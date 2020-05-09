@@ -25,7 +25,6 @@ public class GuiGauntlet extends GuiScreen {
     @Override
     public void initGui() {
         buttonList.clear();
-        boolean b = InfinityConfig.Gauntlet.GuiText;
         int id = -1;
 
         buttonList.add(new ButtonStones(id++, (width / 2) - 80, (height / 2) - 105, " Time", StoneType.TIME));
@@ -80,8 +79,8 @@ public class GuiGauntlet extends GuiScreen {
 
             this.width = BUTTON_WIDTH;
             this.height = BUTTON_HEIGHT;
-            if (InfinityConfig.Gauntlet.GuiText) {
 
+            if (InfinityConfig.Gauntlet.GuiText) {
                 FontRenderer fontrenderer = mc.fontRenderer;
                 mc.getTextureManager().bindTexture(BUTTON_TEXTURES);
                 this.hovered = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
