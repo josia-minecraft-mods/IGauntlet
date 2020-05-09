@@ -14,6 +14,7 @@ public class GauntletHelper {
         }else{
             if(nbt == null) {
                 stack.setTag(new CompoundNBT());
+                stack.getTag().putString(InfinityNBT.SELECTED_STONE, GemHelper.StoneType.NONE.name());
             }
         }
 
