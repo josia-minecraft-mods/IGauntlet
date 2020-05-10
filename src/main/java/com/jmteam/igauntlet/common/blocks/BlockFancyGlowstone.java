@@ -11,6 +11,7 @@ public class BlockFancyGlowstone extends BlockBase {
         setHarvestLevel("pickaxe", 0);
         setHardness(15.0F);
         setResistance(15.0F);
-        setLightLevel(16f);
+        setLightLevel(1f);
+        setLightOpacity(1);
     }
 }
