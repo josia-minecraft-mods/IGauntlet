@@ -1,6 +1,7 @@
 package com.jmteam.igauntlet.common.init;
 
 import com.jmteam.igauntlet.common.blocks.*;
+import com.jmteam.igauntlet.common.blocks.stoneholders.BlockAether;
 import com.jmteam.igauntlet.common.blocks.stoneholders.BlockOrb;
 import com.jmteam.igauntlet.common.blocks.stoneholders.BlockTesseract;
 import com.jmteam.igauntlet.common.item.InfinityItemBlock;
