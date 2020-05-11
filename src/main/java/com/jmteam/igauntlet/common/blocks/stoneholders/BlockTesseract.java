@@ -3,7 +3,7 @@ package com.jmteam.igauntlet.common.blocks.stoneholders;
 import com.jmteam.igauntlet.common.blocks.BlockBase;
 import com.jmteam.igauntlet.common.init.InfinityItems;
 import com.jmteam.igauntlet.common.init.InfinityNbtKeys;
-import com.jmteam.igauntlet.common.tileentity.TileEnityTesseract;
+import com.jmteam.igauntlet.common.tileentity.TileEntityTesseract;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -65,8 +65,8 @@ public class BlockTesseract extends BlockBase implements ITileEntityProvider {
             ItemStack stack = playerIn.getHeldItem(hand);
             TileEntity te = worldIn.getTileEntity(pos);
 
-            if (te instanceof TileEnityTesseract) {
-                TileEnityTesseract tileTesseract = (TileEnityTesseract) te;
+            if (te instanceof TileEntityTesseract) {
+                TileEntityTesseract tileTesseract = (TileEntityTesseract) te;
                 if (stack.getItem() != null) {
                     if (stack.getItem() == InfinityItems.space_stone) {
                         if (tileTesseract.addStone()) {
@@ -84,7 +84,7 @@ public class BlockTesseract extends BlockBase implements ITileEntityProvider {
     @Override
     public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
 
-        TileEnityTesseract tileTesseract = (TileEnityTesseract) worldIn.getTileEntity(pos);
+        TileEntityTesseract tileTesseract = (TileEntityTesseract) worldIn.getTileEntity(pos);
         ItemStack stack = new ItemStack(this, 1);
 
         if (tileTesseract != null) {
@@ -113,8 +113,8 @@ public class BlockTesseract extends BlockBase implements ITileEntityProvider {
             if (stack.getTagCompound() != null) {
                 TileEntity te = worldIn.getTileEntity(pos);
 
-                if (te != null && te instanceof TileEnityTesseract) {
-                    TileEnityTesseract tileTesseract = (TileEnityTesseract) te;
+                if (te != null && te instanceof TileEntityTesseract) {
+                    TileEntityTesseract tileTesseract = (TileEntityTesseract) te;
                     tileTesseract.setHas_stone(stack.getTagCompound().getBoolean(InfinityNbtKeys.HAS_STONE));
                 }
             }
@@ -124,7 +124,7 @@ public class BlockTesseract extends BlockBase implements ITileEntityProvider {
     @Nullable
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return new TileEnityTesseract();
+        return new TileEntityTesseract();
     }
 
     @Override

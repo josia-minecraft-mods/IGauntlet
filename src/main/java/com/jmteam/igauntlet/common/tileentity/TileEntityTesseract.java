@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileEnityTesseract extends TileEntity {
+public class TileEntityTesseract extends TileEntity {
 
     public boolean has_stone = true;
 
