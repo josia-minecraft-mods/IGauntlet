@@ -34,6 +34,7 @@ public class InfinityBlocks {
     public static Block manipulator = registerBlock(new BlockManipulator(Material.IRON), "manipulator").setGroup(InfinityGroups.infinityTab);
     public static Block quick_sand = addTileEntity(new BlockQuickSand(Material.SAND),"quick_sand", TileEntityQuickSand::new).setGroup(InfinityGroups.infinityTab);
     public static Block power_orb = registerBlock(new BlockOrb(Material.ROCK), "power_orb").setGroup(InfinityGroups.infinityTab);
+    public static Block aether = registerBlock(new BlockAether(Material.BARRIER), "aether");
 
     public static <T extends Block> T registerBlock(T block, String name) {
         block.setRegistryName(name);

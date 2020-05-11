@@ -1,16 +1,13 @@
 package com.jmteam.igauntlet.client.init;
 
 import com.jmteam.igauntlet.IGauntlet;
-import com.jmteam.igauntlet.client.render.RenderEntityGauntlet;
-import com.jmteam.igauntlet.common.entity.EntityGauntlet;
+import com.jmteam.igauntlet.client.render.entity.RenderEntityGauntlet;
 import com.jmteam.igauntlet.common.init.InfinityEntities;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
-
-import java.util.function.Supplier;
 
 public class EntityRenderRegistry {
 
