@@ -17,7 +17,7 @@ public class EntityRenderRegistry {
         registerRender(InfinityEntities.GAUNTLET, RenderEntityGauntlet::new);
     }
 
-    public static <T extends Entity> void registerRender(RegistryObject<EntityType<T>> entityClass, IRenderFactory<? super T> renderFactory) {
-        RenderingRegistry.registerEntityRenderingHandler(entityClass.get(), renderFactory);
+    public static <T extends Entity> void registerRender(EntityType<T> entityClass, IRenderFactory<? super T> renderFactory) {
+        RenderingRegistry.registerEntityRenderingHandler(entityClass, renderFactory);
     }
 }

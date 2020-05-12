@@ -3,27 +3,29 @@ package com.jmteam.igauntlet.common.init;
 import com.jmteam.igauntlet.IGauntlet;
 import com.jmteam.igauntlet.common.entity.EntityGauntlet;
 import com.jmteam.igauntlet.util.registry.EntityBuilder;
-import net.minecraft.command.impl.SummonCommand;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.RegistryObject;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.ObjectHolder;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class InfinityEntities {
 
-    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = new DeferredRegister<>(ForgeRegistries.ENTITIES, IGauntlet.MODID);
+    public static List<EntityType<?>> ENTITY_TYPES = new ArrayList<>();
 
-    public static RegistryObject<EntityType<EntityGauntlet>> GAUNTLET;
+    @ObjectHolder("igauntlet:gauntlet")
+    public static EntityType<EntityGauntlet> GAUNTLET;
 
-    public static void init(IEventBus eventBus) {
-        IGauntlet.LOGGER.info("Registering Entities");
+    public static void init() {
 
-        GAUNTLET = create("gauntlet").entity(EntityGauntlet::new, EntityClassification.MONSTER).size(1, 1F).build();
+        EntityType<?>[] entityTypes = new EntityType[]{
+                create("gauntlet").entity(EntityGauntlet::new, EntityClassification.MONSTER).size(1, 1F).build()
+        };
 
-        ENTITY_TYPES.register(eventBus);
+        ENTITY_TYPES.addAll(Arrays.asList(entityTypes));
     }
 
     public static EntityBuilder create(String name) {

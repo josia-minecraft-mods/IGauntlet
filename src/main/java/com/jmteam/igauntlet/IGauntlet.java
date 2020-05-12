@@ -9,6 +9,7 @@ import com.jmteam.igauntlet.network.Networkhandler;
 import com.jmteam.igauntlet.proxy.ClientProxy;
 import com.jmteam.igauntlet.proxy.ServerProxy;
 import net.minecraft.block.Block;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.common.MinecraftForge;
@@ -46,7 +47,7 @@ public class IGauntlet {
     }
 
     private void bothSideSetup(IEventBus modEventBus) {
-        InfinityEntities.init(modEventBus);
+        InfinityEntities.init();
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
@@ -80,6 +81,12 @@ public class IGauntlet {
         public static void registerItems(RegistryEvent.Register<Item> event) {
             LOGGER.info("Registering Items");
             event.getRegistry().registerAll(InfinityItems.ITEMS.toArray(new Item[InfinityItems.ITEMS.size()]));
+        }
+
+        @SubscribeEvent
+        public static void onEntityRegistryEvent(RegistryEvent.Register<EntityType<?>> event) {
+            LOGGER.info("Registering Entities");
+            event.getRegistry().registerAll(InfinityEntities.ENTITY_TYPES.toArray(new EntityType[InfinityEntities.ENTITY_TYPES.size()]));
         }
     }
 }

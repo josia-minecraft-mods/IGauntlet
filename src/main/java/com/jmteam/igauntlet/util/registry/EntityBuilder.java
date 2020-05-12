@@ -7,7 +7,6 @@ import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.Vec2f;
-import net.minecraftforge.fml.RegistryObject;
 
 /**
  * Does Entity Creation but simplified
@@ -60,14 +59,15 @@ public class EntityBuilder {
         return this;
     }
 
-    public <T extends Entity> RegistryObject<EntityType<T>> build() {
+    public <T extends Entity> EntityType<T> build() {
         if (factoryIn == null || classification == null) {
             IGauntlet.LOGGER.warn("[Incorrect Builder]" + "Couldn't register entity :" + name);
             return null;
         }
 
-        RegistryObject<? extends EntityType<? extends Entity>> registryObject = InfinityEntities.ENTITY_TYPES.register(name, () -> builder.build(id.toString()));
+        EntityType<? extends Entity> EntityType = builder.build(id.toString());
+        EntityType.setRegistryName(id);
 
-        return (RegistryObject<EntityType<T>>) registryObject;
+        return (EntityType<T>) EntityType;
     }
 }

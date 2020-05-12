@@ -1,7 +1,7 @@
 package com.jmteam.igauntlet.util.registry;
 
+import com.jmteam.igauntlet.common.item.InfinityItemBlock;
 import com.jmteam.igauntlet.util.helpers.ReflectionHelper;
-import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -9,22 +9,20 @@ import net.minecraft.item.ItemGroup;
 public class RegistryHelper {
 
     public static Item setCreativeTab(Item i, ItemGroup group) {
-        BlockItem item = (BlockItem) i;
+        if (i != null) {
 
-        if (item != null) {
-            ReflectionHelper.setValuePrivateDeclaredField("group", ReflectionHelper.getClassFromSuperClasses(item, Item.class), item, group);
+            if(i instanceof InfinityItemBlock) {
+                ((InfinityItemBlock) i).setGroup(group);
+                return i;
+            }
+
+            if(i instanceof BlockItem) {
+                BlockItem item = (BlockItem) i;
+                ReflectionHelper.setValuePrivateDeclaredField("group", ReflectionHelper.getClassFromSuperClasses(item, Item.class), item, group);
+            }
         }
 
         return i;
     }
 
-    public static Block setCreativeTab(Block b, ItemGroup group) {
-        BlockItem item = (BlockItem) b.asItem();
-
-        if (item != null) {
-            ReflectionHelper.setValuePrivateDeclaredField("group", ReflectionHelper.getClassFromSuperClasses(item, Item.class), item, group);
-        }
-
-        return b;
-    }
 }

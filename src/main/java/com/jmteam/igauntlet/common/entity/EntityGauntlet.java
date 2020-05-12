@@ -23,7 +23,7 @@ public class EntityGauntlet extends Entity {
     }
 
     public EntityGauntlet(ItemStack i, World worldIn) {
-        super(InfinityEntities.GAUNTLET.get(), worldIn);
+        super(InfinityEntities.GAUNTLET, worldIn);
         stack = i;
     }
 
