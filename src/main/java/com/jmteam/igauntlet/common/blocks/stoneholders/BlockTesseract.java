@@ -41,7 +41,6 @@ public class BlockTesseract extends BlockInfinityTileEntityBase {
         if (!worldIn.isRemote) {
             TileEntity te = worldIn.getTileEntity(pos);
 
-
             if (te != null && te instanceof TileEntityTesseract) {
                 TileEntityTesseract tileEntityTesseract = (TileEntityTesseract) te;
                 ItemStack stack = player.getHeldItem(handIn);

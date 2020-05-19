@@ -2,6 +2,7 @@ package com.jmteam.igauntlet.network;
 
 import com.jmteam.igauntlet.IGauntlet;
 import com.jmteam.igauntlet.network.packets.PacketSetStone;
+import com.jmteam.igauntlet.network.packets.PacketSnap;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
@@ -28,6 +29,7 @@ public class Networkhandler {
     public static void register() {
         IGauntlet.LOGGER.info("Registering Packets");
         INSTANCE.registerMessage(id++, PacketSetStone.class, PacketSetStone::encode, PacketSetStone::decode, PacketSetStone.Handler::handle);
+        INSTANCE.registerMessage(id++, PacketSnap.class, PacketSnap::encode, PacketSnap::decode, PacketSnap.Handler::handle);
     }
 
     public static void sendToAllClients(Object packet, World world) {

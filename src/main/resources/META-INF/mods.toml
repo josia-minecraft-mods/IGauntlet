@@ -3,9 +3,9 @@ loaderVersion="[31,)"
 
 [[mods]]
 modId="igauntlet"
-version="${file.jarVersion}"
+version="0.0.1"
 displayName="IGauntlet Mod"
-updateJSONURL="https://minecraft.curseforge.com/projects/igauntlet" #optional
+updateJSONURL="https://raw.githubusercontent.com/josia-minecraft-mods/IGauntlet/1.15/update.json" #optional
 displayURL="https://discord.gg/pQkRKKN" #optional
 logoFile="gauntlet.png" #optional
 credits="JMTeam"

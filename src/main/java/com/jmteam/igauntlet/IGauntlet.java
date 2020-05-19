@@ -5,10 +5,12 @@ import com.jmteam.igauntlet.common.init.InfinityBlocks;
 import com.jmteam.igauntlet.common.init.InfinityEntities;
 import com.jmteam.igauntlet.common.init.InfinityItems;
 import com.jmteam.igauntlet.common.init.InfinityTileEntities;
+import com.jmteam.igauntlet.config.InfinityConfig;
 import com.jmteam.igauntlet.network.Networkhandler;
 import com.jmteam.igauntlet.proxy.ClientProxy;
 import com.jmteam.igauntlet.proxy.ServerProxy;
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntityType;
@@ -17,7 +19,9 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -44,6 +48,7 @@ public class IGauntlet {
 
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(ServerEvents.class);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, InfinityConfig.CLIENT_SPEC);
     }
 
     private void bothSideSetup(IEventBus modEventBus) {

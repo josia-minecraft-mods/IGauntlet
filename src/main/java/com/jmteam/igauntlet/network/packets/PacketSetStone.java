@@ -17,7 +17,6 @@ public class PacketSetStone {
     public StoneType type;
 
     public PacketSetStone(StoneType type) {
-        super();
         this.type = type;
     }
 
