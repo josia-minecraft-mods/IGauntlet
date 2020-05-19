@@ -38,9 +38,8 @@ public class ItemInfinityGauntlet extends ItemBase {
             openStoneSelectionGUI();
         }else if(!worldIn.isRemote && main_hand){
 
-            if(GauntletHelper.getActiveStone(stack) == StoneType.NONE) {
-                playerIn.sendStatusMessage(new TranslationTextComponent("msg.gauntlet.nostone"), true);
-                return ActionResult.resultPass(stack);
+            if(GauntletHelper.invalidStone(playerIn, stack)) {
+                return ActionResult.resultFail(stack);
             }
 
             GauntletHelper.getActiveStone(stack).getGem().handleRightClick(playerIn);
