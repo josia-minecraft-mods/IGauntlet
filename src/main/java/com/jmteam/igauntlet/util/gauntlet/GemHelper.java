@@ -62,13 +62,18 @@ public class GemHelper {
     }
 
     public static void notSetupMessage(PlayerEntity player) {
-        if(!player.world.isRemote) {
+        if (!player.world.isRemote) {
             player.sendStatusMessage(new TranslationTextComponent("msg.stone.notsetup"), true);
         }
     }
 
     public enum StoneType {
-        NONE, MIND(GemMind::new), REALITY(GemReality::new), TIME(GemTime::new), SPACE(GemSpace::new), POWER(GemPower::new), SOUL(GemSoul::new);
+        NONE,
+        MIND(GemMind::new),
+        TIME(GemTime::new),
+        SPACE(GemSpace::new),
+        POWER(GemPower::new),
+        SOUL(GemSoul::new);
 
         GemBase gem;
 
