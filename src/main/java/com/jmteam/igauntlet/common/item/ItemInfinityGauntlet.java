@@ -6,6 +6,7 @@ import com.jmteam.igauntlet.util.gauntlet.GauntletHelper;
 import com.jmteam.igauntlet.util.gauntlet.GemHelper;
 import com.jmteam.igauntlet.util.gauntlet.GemHelper.StoneType;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.PigEntity;
@@ -14,6 +15,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -33,9 +38,12 @@ public class ItemInfinityGauntlet extends ItemBase {
             openStoneSelectionGUI();
         }else if(!worldIn.isRemote && main_hand){
 
-            switch (GauntletHelper.getActiveStone(stack)) {
-                // TODO Stone functionality
+            if(GauntletHelper.getActiveStone(stack) == StoneType.NONE) {
+                playerIn.sendStatusMessage(new TranslationTextComponent("msg.gauntlet.nostone"), true);
+                return ActionResult.resultPass(stack);
             }
+
+            GauntletHelper.getActiveStone(stack).getGem().handleRightClick(playerIn);
         }
 
         return super.onItemRightClick(worldIn, playerIn, handIn);
@@ -50,12 +58,15 @@ public class ItemInfinityGauntlet extends ItemBase {
     public void inventoryTick(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
         super.inventoryTick(stack, worldIn, entityIn, itemSlot, isSelected);
 
-
         if(stack.getTag() == null && stack.getItem() == this) {
             CompoundNBT nbt = new CompoundNBT();
             nbt.putString(InfinityNBT.SELECTED_STONE, StoneType.NONE.name());
-            stack.setTag(new CompoundNBT());
+            stack.setTag(nbt);
         }
     }
 
+    @Override
+    public ITextComponent getDisplayName(ItemStack stack) {
+        return new StringTextComponent(TextFormatting.GOLD + "" + TextFormatting.BOLD + I18n.format("item.igauntlet.infinity_gauntlet"));
+    }
 }

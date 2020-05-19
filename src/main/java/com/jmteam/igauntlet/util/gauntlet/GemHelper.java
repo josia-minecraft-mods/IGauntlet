@@ -1,5 +1,6 @@
 package com.jmteam.igauntlet.util.gauntlet;
 
+import com.jmteam.igauntlet.common.gems.*;
 import com.jmteam.igauntlet.common.init.InfinityBlocks;
 import com.jmteam.igauntlet.common.tileentity.TileEntityAshPile;
 import net.minecraft.block.BlockState;
@@ -9,9 +10,11 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
 import java.util.Iterator;
+import java.util.function.Supplier;
 
 public class GemHelper {
 
@@ -58,7 +61,26 @@ public class GemHelper {
         return false;
     }
 
+    public static void notSetupMessage(PlayerEntity player) {
+        if(!player.world.isRemote) {
+            player.sendStatusMessage(new TranslationTextComponent("msg.stone.notsetup"), true);
+        }
+    }
+
     public enum StoneType {
-        NONE, MIND, REALITY, TIME, SPACE, POWER, SOUL
+        NONE, MIND(GemMind::new), REALITY(GemReality::new), TIME(GemTime::new), SPACE(GemSpace::new), POWER(GemPower::new), SOUL(GemSoul::new);
+
+        GemBase gem;
+
+        StoneType() {
+        }
+
+        StoneType(Supplier<GemBase> gem) {
+            this.gem = gem.get();
+        }
+
+        public GemBase getGem() {
+            return gem;
+        }
     }
 }

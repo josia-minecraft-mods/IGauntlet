@@ -4,6 +4,7 @@ import com.jmteam.igauntlet.util.gauntlet.GemHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkEvent;
 
@@ -43,13 +44,18 @@ public class PacketSnap {
                             // TODO add config value
                             List<LivingEntity> entities = world.getEntitiesWithinAABB(LivingEntity.class, player.getBoundingBox().grow(20));
 
-                            for (int x = 0; x < entities.size(); x++) {
-                                LivingEntity entity = entities.get(x);
+                            if (entities.size() > 1) {
 
-                                if (!entity.isInvulnerable() && x % 2 == 0) {
-                                    entity.onKillCommand();
-                                    GemHelper.createAshPile(world, entity.getPosition(), entity);
+                                for (int x = 0; x < entities.size(); x++) {
+                                    LivingEntity entity = entities.get(x);
+
+                                    if (!entity.isInvulnerable() && x % 2 == 0) {
+                                        entity.onKillCommand();
+                                        GemHelper.createAshPile(world, entity.getPosition(), entity);
+                                    }
                                 }
+                            } else {
+                                player.sendStatusMessage(new TranslationTextComponent("msg.snap.notenough"), true);
                             }
 
                             break;

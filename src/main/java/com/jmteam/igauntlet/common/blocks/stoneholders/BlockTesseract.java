@@ -2,6 +2,7 @@ package com.jmteam.igauntlet.common.blocks.stoneholders;
 
 import com.jmteam.igauntlet.common.blocks.BlockInfinityTileEntityBase;
 import com.jmteam.igauntlet.common.init.InfinityItems;
+import com.jmteam.igauntlet.common.init.InfinityNBT;
 import com.jmteam.igauntlet.common.tileentity.TileEntityTesseract;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
@@ -72,7 +73,7 @@ public class BlockTesseract extends BlockInfinityTileEntityBase {
                     TileEntityTesseract tileEntityTesseract = (TileEntityTesseract) te;
                     ItemStack stack = new ItemStack(this, 1);
                     CompoundNBT compoundNBT = new CompoundNBT();
-                    compoundNBT.putBoolean("has_stone", tileEntityTesseract.hasStone());
+                    compoundNBT.putBoolean(InfinityNBT.HAS_STONE, tileEntityTesseract.hasStone());
                     stack.setTag(compoundNBT);
                     world.addEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 0.2, pos.getZ() + 0.5, stack));
                 }
@@ -88,9 +89,9 @@ public class BlockTesseract extends BlockInfinityTileEntityBase {
         if(!worldIn.isRemote) {
             TileEntity te = worldIn.getTileEntity(pos);
 
-            if (stack.getTag() != null && stack.getTag().contains("has_stone")) {
+            if (stack.getTag() != null && stack.getTag().contains(InfinityNBT.HAS_STONE)) {
                 if (te != null && te instanceof TileEntityTesseract) {
-                    ((TileEntityTesseract) te).setHas_stone(stack.getTag().getBoolean("has_stone"));
+                    ((TileEntityTesseract) te).setHas_stone(stack.getTag().getBoolean(InfinityNBT.HAS_STONE));
                 }
             }
         }
