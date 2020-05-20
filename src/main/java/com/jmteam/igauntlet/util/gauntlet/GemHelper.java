@@ -22,7 +22,7 @@ public class GemHelper {
         World world = player.world;
         Iterator<BlockPos> blockPosIterator = BlockPos.getAllInBox(player.getPosition().subtract(new Vec3i(range, range, range)), player.getPosition().add(new Vec3i(range, range, range))).iterator();
 
-        if (blockPosIterator.hasNext()) {
+        while (blockPosIterator.hasNext()) {
             BlockPos pos = blockPosIterator.next();
             BlockState state = world.getBlockState(pos);
 
@@ -31,8 +31,13 @@ public class GemHelper {
 
                 if (te != null && te instanceof TileEntityAshPile) {
                     TileEntityAshPile ashPile = (TileEntityAshPile) te;
-                    world.addEntity(ashPile.getEntity());
-                    world.setBlockState(pos, Blocks.AIR.getDefaultState());
+                    LivingEntity entity = ashPile.getEntity();
+
+                    if (entity != null) {
+                        entity.setHealth(entity.getMaxHealth());
+                        world.addEntity(entity);
+                        world.setBlockState(pos, Blocks.AIR.getDefaultState());
+                    }
                 }
             }
         }

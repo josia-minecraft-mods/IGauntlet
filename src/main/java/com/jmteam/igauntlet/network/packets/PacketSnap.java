@@ -4,6 +4,7 @@ import com.jmteam.igauntlet.util.gauntlet.GemHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkEvent;
@@ -50,9 +51,8 @@ public class PacketSnap {
                                 for (int x = 0; x < entities.size(); x++) {
                                     LivingEntity entity = entities.get(x);
 
-                                    System.out.println(x % 2);
                                     if (!entity.isInvulnerable() && (x % 2 == 0 && x != 0)) {
-                                        entity.onKillCommand();
+                                        entity.attackEntityFrom(DamageSource.MAGIC, entity.getMaxHealth());
                                         GemHelper.createAshPile(world, entity.getPosition(), entity);
                                     }
                                 }
@@ -62,6 +62,8 @@ public class PacketSnap {
 
                             break;
                         case REVIVE:
+                            // TODO add config value
+                            GemHelper.reviveAshPiles(player, 20);
                             break;
                     }
                 }
