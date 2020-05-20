@@ -71,6 +71,7 @@ public class GemHelper {
         NONE,
         MIND(GemMind::new),
         TIME(GemTime::new),
+        REALITY(GemReality::new),
         SPACE(GemSpace::new),
         POWER(GemPower::new),
         SOUL(GemSoul::new);

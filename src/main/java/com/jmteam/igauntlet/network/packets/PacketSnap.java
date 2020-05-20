@@ -43,13 +43,15 @@ public class PacketSnap {
                         case SNAP:
                             // TODO add config value
                             List<LivingEntity> entities = world.getEntitiesWithinAABB(LivingEntity.class, player.getBoundingBox().grow(20));
+                            entities.remove(player);
 
                             if (entities.size() > 1) {
 
                                 for (int x = 0; x < entities.size(); x++) {
                                     LivingEntity entity = entities.get(x);
 
-                                    if (!entity.isInvulnerable() && x % 2 == 0) {
+                                    System.out.println(x % 2);
+                                    if (!entity.isInvulnerable() && (x % 2 == 0 && x != 0)) {
                                         entity.onKillCommand();
                                         GemHelper.createAshPile(world, entity.getPosition(), entity);
                                     }
@@ -68,7 +70,7 @@ public class PacketSnap {
         }
     }
 
-    enum SnapType {
+    public enum SnapType {
         SNAP, REVIVE
     }
 }
