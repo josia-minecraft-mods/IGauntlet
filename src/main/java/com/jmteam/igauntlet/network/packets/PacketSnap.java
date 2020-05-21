@@ -1,10 +1,12 @@
 package com.jmteam.igauntlet.network.packets;
 
 import com.jmteam.igauntlet.util.gauntlet.GemHelper;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkEvent;
@@ -45,6 +47,7 @@ public class PacketSnap {
                             // TODO add config value
                             List<LivingEntity> entities = world.getEntitiesWithinAABB(LivingEntity.class, player.getBoundingBox().grow(20));
                             entities.remove(player);
+                            int snappped = 0;
 
                             if (entities.size() > 1) {
 
@@ -52,10 +55,12 @@ public class PacketSnap {
                                     LivingEntity entity = entities.get(x);
 
                                     if (!entity.isInvulnerable() && (x % 2 == 0 && x != 0)) {
+                                        snappped++;
                                         entity.attackEntityFrom(DamageSource.MAGIC, entity.getMaxHealth());
                                         GemHelper.createAshPile(world, entity.getPosition(), entity);
                                     }
                                 }
+                                player.sendStatusMessage(new StringTextComponent(I18n.format("msg.snapped.amount").replaceAll("&a", String.valueOf(snappped))), true);
                             } else {
                                 player.sendStatusMessage(new TranslationTextComponent("msg.snap.notenough"), true);
                             }
