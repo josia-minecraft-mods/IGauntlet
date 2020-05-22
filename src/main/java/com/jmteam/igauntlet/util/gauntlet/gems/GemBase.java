@@ -1,28 +1,24 @@
-package com.jmteam.igauntlet.common.gems;
+package com.jmteam.igauntlet.util.gauntlet.gems;
 
+import com.jmteam.igauntlet.util.gauntlet.GemHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 
-public class GemSoul extends GemBase {
+public abstract class GemBase {
 
-
-    @Override
     public void handleRightClick(PlayerEntity player) {
-        super.handleRightClick(player);
+        GemHelper.notSetupMessage(player);
     }
 
-    @Override
     public void handleLeftClick(PlayerEntity player) {
-        super.handleLeftClick(player);
+        GemHelper.notSetupMessage(player);
     }
 
-    @Override
     public void handleEntityInteraction(PlayerEntity player, Entity entity) {
-        super.handleEntityInteraction(player, entity);
+        GemHelper.notSetupMessage(player);
     }
 
-    @Override
     public void handleItemAction(PlayerEntity player) {
-        super.handleItemAction(player);
+        GemHelper.notSetupMessage(player);
     }
 }

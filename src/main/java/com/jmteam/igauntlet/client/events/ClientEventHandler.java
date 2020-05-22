@@ -2,11 +2,15 @@ package com.jmteam.igauntlet.client.events;
 
 import com.jmteam.igauntlet.IGauntlet;
 import com.jmteam.igauntlet.client.init.InfinityKeyBinds;
-import com.jmteam.igauntlet.network.Networkhandler;
-import com.jmteam.igauntlet.network.packets.PacketSnap;
-import com.jmteam.igauntlet.network.packets.PacketSnap.SnapType;
+import com.jmteam.igauntlet.common.capability.CapabilityInfinity;
+import com.jmteam.igauntlet.common.capability.IInfinityCap;
+import com.jmteam.igauntlet.common.init.InfinityItems;
+import com.jmteam.igauntlet.network.NetworkHandler;
+import com.jmteam.igauntlet.network.packets.server.PacketSnap;
+import com.jmteam.igauntlet.network.packets.server.PacketSnap.SnapType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.Hand;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -21,8 +25,10 @@ public class ClientEventHandler {
 
         if (event.phase != TickEvent.Phase.END || player == null) return;
 
-        if (InfinityKeyBinds.SNAP.isPressed()) {
-            Networkhandler.sendServerPacket(new PacketSnap(player.isCrouching() ? SnapType.REVIVE : SnapType.SNAP));
+        if (InfinityKeyBinds.SNAP.isPressed() && player.getHeldItem(Hand.MAIN_HAND).getItem() == InfinityItems.infinity_gauntlet) {
+            if ((CapabilityInfinity.get(player)).canSnap()) {
+                NetworkHandler.sendServerPacket(new PacketSnap(player.isCrouching() ? SnapType.REVIVE : SnapType.SNAP));
+            }
         }
     }
 }

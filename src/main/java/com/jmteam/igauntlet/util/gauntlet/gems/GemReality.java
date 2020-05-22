@@ -1,4 +1,4 @@
-package com.jmteam.igauntlet.common.gems;
+package com.jmteam.igauntlet.util.gauntlet.gems;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;

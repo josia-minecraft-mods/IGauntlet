@@ -1,10 +1,9 @@
-package com.jmteam.igauntlet.common.gems;
+package com.jmteam.igauntlet.util.gauntlet.gems;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 
-public class GemTime extends GemBase {
-
+public class GemSpace extends GemBase {
 
     @Override
     public void handleRightClick(PlayerEntity player) {

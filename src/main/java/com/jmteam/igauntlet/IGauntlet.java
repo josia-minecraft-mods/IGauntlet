@@ -1,20 +1,24 @@
 package com.jmteam.igauntlet;
 
+import com.jmteam.igauntlet.common.capability.CapabilityInfinity;
+import com.jmteam.igauntlet.common.capability.IInfinityCap;
+import com.jmteam.igauntlet.common.capability.InfinityCapProvider;
+import com.jmteam.igauntlet.common.capability.InfinityCapStorage;
 import com.jmteam.igauntlet.common.events.ServerEvents;
 import com.jmteam.igauntlet.common.init.InfinityBlocks;
 import com.jmteam.igauntlet.common.init.InfinityEntities;
 import com.jmteam.igauntlet.common.init.InfinityItems;
 import com.jmteam.igauntlet.common.init.InfinityTileEntities;
 import com.jmteam.igauntlet.config.InfinityConfig;
-import com.jmteam.igauntlet.network.Networkhandler;
+import com.jmteam.igauntlet.network.NetworkHandler;
 import com.jmteam.igauntlet.proxy.ClientProxy;
 import com.jmteam.igauntlet.proxy.ServerProxy;
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -57,7 +61,8 @@ public class IGauntlet {
 
     private void commonSetup(FMLCommonSetupEvent event) {
         PROXY.doServerStuff(event);
-        Networkhandler.register();
+        NetworkHandler.register();
+        CapabilityManager.INSTANCE.register(IInfinityCap.class, new InfinityCapStorage(), CapabilityInfinity::new);
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {

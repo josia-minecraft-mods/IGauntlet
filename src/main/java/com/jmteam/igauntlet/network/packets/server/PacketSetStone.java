@@ -1,4 +1,4 @@
-package com.jmteam.igauntlet.network.packets;
+package com.jmteam.igauntlet.network.packets.server;
 
 import com.jmteam.igauntlet.common.init.InfinityItems;
 import com.jmteam.igauntlet.common.init.InfinityNBT;
@@ -14,7 +14,7 @@ import java.util.function.Supplier;
 
 public class PacketSetStone {
 
-    public StoneType type;
+    private StoneType type;
 
     public PacketSetStone(StoneType type) {
         this.type = type;
@@ -27,7 +27,6 @@ public class PacketSetStone {
     public static PacketSetStone decode(PacketBuffer buf) {
         return new PacketSetStone(StoneType.valueOf(buf.readString()));
     }
-
 
     public static class Handler {
         public static void handle(PacketSetStone packet, Supplier<NetworkEvent.Context> ctx) {

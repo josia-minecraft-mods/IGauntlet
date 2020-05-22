@@ -1,7 +1,7 @@
 package com.jmteam.igauntlet.client.gui.buttons;
 
-import com.jmteam.igauntlet.network.Networkhandler;
-import com.jmteam.igauntlet.network.packets.PacketSetStone;
+import com.jmteam.igauntlet.network.NetworkHandler;
+import com.jmteam.igauntlet.network.packets.server.PacketSetStone;
 import com.jmteam.igauntlet.util.gauntlet.GemHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.widget.Widget;
@@ -41,7 +41,7 @@ public class ButtonStones extends ExtendedButton {
 
     @Override
     public void onPress() {
-        Networkhandler.sendServerPacket(new PacketSetStone(type));
+        NetworkHandler.sendServerPacket(new PacketSetStone(type));
         Minecraft.getInstance().displayGuiScreen(null);
     }
 

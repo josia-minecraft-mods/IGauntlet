@@ -1,6 +1,6 @@
 package com.jmteam.igauntlet.util.gauntlet;
 
-import com.jmteam.igauntlet.common.gems.*;
+import com.jmteam.igauntlet.util.gauntlet.gems.*;
 import com.jmteam.igauntlet.common.init.InfinityBlocks;
 import com.jmteam.igauntlet.common.tileentity.TileEntityAshPile;
 import net.minecraft.block.BlockState;
