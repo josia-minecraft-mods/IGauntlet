@@ -1,6 +1,7 @@
 package com.jmteam.igauntlet.common.entity;
 
 import com.jmteam.igauntlet.common.init.InfinityEntities;
+import com.jmteam.igauntlet.common.init.InfinityItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.MoverType;
@@ -55,7 +56,7 @@ public class EntityGauntlet extends Entity {
             this.move(MoverType.SELF, this.getMotion());
         } else {
             if (!world.isRemote) {
-                if (stack == null) onKillCommand();
+                if (stack == null || stack.getItem() != InfinityItems.infinity_gauntlet) onKillCommand();
             }
         }
     }
@@ -66,7 +67,6 @@ public class EntityGauntlet extends Entity {
             player.inventory.addItemStackToInventory(stack);
             onKillCommand();
         }
-
 
         return super.applyPlayerInteraction(player, vec, hand);
     }
