@@ -12,5 +12,6 @@ public class InfinityGroups {
         public ItemStack createIcon() {
             return new ItemStack(InfinityItems.infinity_gauntlet);
         }
+
     };
 }

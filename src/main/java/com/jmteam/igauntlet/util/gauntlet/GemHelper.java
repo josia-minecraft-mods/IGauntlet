@@ -21,6 +21,7 @@ public class GemHelper {
     public static void reviveAshPiles(PlayerEntity player, int range) {
         World world = player.world;
         Iterator<BlockPos> blockPosIterator = BlockPos.getAllInBox(player.getPosition().subtract(new Vec3i(range, range, range)), player.getPosition().add(new Vec3i(range, range, range))).iterator();
+        boolean revivedAny = false;
 
         while (blockPosIterator.hasNext()) {
             BlockPos pos = blockPosIterator.next();
@@ -32,6 +33,7 @@ public class GemHelper {
                 if (te != null && te instanceof TileEntityAshPile) {
                     TileEntityAshPile ashPile = (TileEntityAshPile) te;
                     LivingEntity entity = ashPile.getEntity();
+                    revivedAny = true;
 
                     if (entity != null) {
                         entity.setHealth(entity.getMaxHealth());
@@ -40,6 +42,10 @@ public class GemHelper {
                     }
                 }
             }
+        }
+
+        if(!revivedAny) {
+            player.sendStatusMessage(new TranslationTextComponent("msg.revive.notfound"), true);
         }
     }
 
@@ -83,8 +89,7 @@ public class GemHelper {
 
         GemBase gem;
 
-        StoneType() {
-        }
+        StoneType() {}
 
         StoneType(Supplier<GemBase> gem) {
             this.gem = gem.get();
