@@ -1,7 +1,6 @@
 package com.jmteam.igauntlet.common.tileentity;
 
 import net.minecraft.block.Blocks;
-import net.minecraft.client.renderer.texture.ITickable;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 
@@ -17,10 +16,10 @@ public class TileEntityQuickSand extends InfinityTileEntityBase implements ITick
     @Override
     public void tick() {
 
-        if(!placed) {
+        if (!placed) {
 
             // TODO Replace with a config value for max sand time
-            if(!world.isRemote && created != 0 && ((System.currentTimeMillis() - created) / 1000L)  >= 20 && getWorld().getGameTime() % 20 == 0) {
+            if (!world.isRemote && created != 0 && ((System.currentTimeMillis() - created) / 1000L) >= 20 && getWorld().getGameTime() % 20 == 0) {
                 world.setBlockState(pos, Blocks.SAND.getDefaultState());
             }
         }

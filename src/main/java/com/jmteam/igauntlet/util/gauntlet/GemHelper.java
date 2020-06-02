@@ -1,8 +1,11 @@
 package com.jmteam.igauntlet.util.gauntlet;
 
-import com.jmteam.igauntlet.util.gauntlet.gems.*;
+import com.jmteam.igauntlet.common.blocks.InfinityBlock;
 import com.jmteam.igauntlet.common.init.InfinityBlocks;
 import com.jmteam.igauntlet.common.tileentity.TileEntityAshPile;
+import com.jmteam.igauntlet.util.gauntlet.gems.*;
+import com.jmteam.igauntlet.util.helpers.WorldUtil;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
@@ -13,14 +16,17 @@ import net.minecraft.util.math.Vec3i;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 public class GemHelper {
 
     public static void reviveAshPiles(PlayerEntity player, int range) {
         World world = player.world;
-        Iterator<BlockPos> blockPosIterator = BlockPos.getAllInBox(player.getPosition().subtract(new Vec3i(range, range, range)), player.getPosition().add(new Vec3i(range, range, range))).iterator();
+        Iterator<BlockPos> blockPosIterator = BlockPos.getAllInBox(player.getPosition().add(-range, -range, -range), player.getPosition().add(range, range, range)).iterator();
         boolean revivedAny = false;
 
         while (blockPosIterator.hasNext()) {
@@ -38,13 +44,13 @@ public class GemHelper {
                     if (entity != null) {
                         entity.setHealth(entity.getMaxHealth());
                         world.addEntity(entity);
-                        world.setBlockState(pos, Blocks.AIR.getDefaultState());
+                        WorldUtil.setBlockState(world, Blocks.AIR.getDefaultState(), pos);
                     }
                 }
             }
         }
 
-        if(!revivedAny) {
+        if (!revivedAny) {
             player.sendStatusMessage(new TranslationTextComponent("msg.revive.notfound"), true);
         }
     }
@@ -59,17 +65,34 @@ public class GemHelper {
                 placePos = pos.up();
             }
 
-            world.setBlockState(placePos, InfinityBlocks.ash_pile.getDefaultState());
+            WorldUtil.setBlockState(world, InfinityBlocks.ash_pile.getDefaultState(), placePos);
             TileEntity te = world.getTileEntity(placePos);
 
             if (te != null && te instanceof TileEntityAshPile) {
                 TileEntityAshPile ashPile = (TileEntityAshPile) te;
                 ashPile.setEntity(entity);
+                ashPile.markDirty();
                 return true;
             }
         }
 
         return false;
+    }
+
+    public static List<BlockPos> getAllBlocksRanged(World world, BlockPos pos) {
+        Block b = world.getBlockState(pos).getBlock();
+        Iterator<BlockPos> blockPosIterator = BlockPos.getAllInBox(pos.add(-20, -20, -20), pos.add(20, 20, 20)).iterator();
+        List<BlockPos> posList = new ArrayList<>();
+
+
+        while (blockPosIterator.hasNext()) {
+            BlockPos blockPos = blockPosIterator.next();
+            if(world.getBlockState(blockPos).getBlock() == b) {
+                posList.add(blockPos.toImmutable());
+            }
+        }
+
+        return posList;
     }
 
     public static void notSetupMessage(PlayerEntity player) {
@@ -87,11 +110,11 @@ public class GemHelper {
         POWER(GemPower::new),
         SOUL(GemSoul::new);
 
-        GemBase gem;
+        private GemBase gem;
 
         StoneType() {}
 
-        StoneType(Supplier<GemBase> gem) {
+       StoneType(Supplier<GemBase> gem) {
             this.gem = gem.get();
         }
 

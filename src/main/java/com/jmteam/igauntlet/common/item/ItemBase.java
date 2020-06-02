@@ -24,7 +24,7 @@ public class ItemBase extends Item implements IHaveItem {
     }
 
     public ItemBase setGroup(ItemGroup... groups) {
-        this.groups = new ArrayList<ItemGroup>();
+        this.groups = new ArrayList<>();
 
         for (ItemGroup group : groups) {
             this.groups.add(group);

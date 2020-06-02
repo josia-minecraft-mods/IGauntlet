@@ -25,6 +25,7 @@ public class GauntletHelper {
             }
         }
 
+
         return GemHelper.StoneType.NONE;
     }
 

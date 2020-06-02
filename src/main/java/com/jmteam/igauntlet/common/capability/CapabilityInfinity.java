@@ -24,7 +24,6 @@ public class CapabilityInfinity implements IInfinityCap {
     private PlayerEntity player;
     private long snap_cooldown = 0;
 
-
     public CapabilityInfinity() {
     }
 

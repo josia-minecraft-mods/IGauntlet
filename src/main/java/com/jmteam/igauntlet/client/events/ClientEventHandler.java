@@ -3,7 +3,6 @@ package com.jmteam.igauntlet.client.events;
 import com.jmteam.igauntlet.IGauntlet;
 import com.jmteam.igauntlet.client.init.InfinityKeyBinds;
 import com.jmteam.igauntlet.common.capability.CapabilityInfinity;
-import com.jmteam.igauntlet.common.capability.IInfinityCap;
 import com.jmteam.igauntlet.common.init.InfinityItems;
 import com.jmteam.igauntlet.network.NetworkHandler;
 import com.jmteam.igauntlet.network.packets.server.PacketSnap;
