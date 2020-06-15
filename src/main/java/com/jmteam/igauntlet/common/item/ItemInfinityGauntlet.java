@@ -74,7 +74,6 @@ public class ItemInfinityGauntlet extends ItemBase {
 
     @Override
     public void inventoryTick(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-        super.inventoryTick(stack, worldIn, entityIn, itemSlot, isSelected);
 
         if (stack.getTag() == null && stack.getItem() == this) {
             CompoundNBT nbt = new CompoundNBT();
