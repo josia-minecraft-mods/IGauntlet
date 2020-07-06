@@ -23,7 +23,6 @@ public class InfinityBlocks {
 
     public static List<Block> BLOCKS = new ArrayList<>();
 
-
     public static Block ash_pile = addTileEntity(new BlockAshPile(Material.SAND), "ash_pile", TileEntityAshPile::new).setGroup(InfinityGroups.infinityTab);
     public static Block uru_ore = registerBlock(new BlockUruOre(Material.ROCK), "uru_ore").setGroup(InfinityGroups.infinityTab);
     public static Block tesseract = addTileEntity(new BlockTesseract(TileEntityTesseract::new), "tesseract").setGroup(InfinityGroups.infinityTab);

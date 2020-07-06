@@ -22,7 +22,7 @@ public class InfinityEntities {
     public static void init() {
 
         EntityType<?>[] entityTypes = new EntityType[]{
-                create("gauntlet").entity(EntityGauntlet::new, EntityClassification.MONSTER).size(1, 1F).build()
+                create("gauntlet").entity(EntityGauntlet::new, EntityClassification.MONSTER).size(1, 1).build()
         };
 
         ENTITY_TYPES.addAll(Arrays.asList(entityTypes));
