@@ -2,12 +2,16 @@ package com.jmteam.igauntlet.common.events;
 
 import com.jmteam.igauntlet.common.entity.EntityGauntlet;
 import com.jmteam.igauntlet.common.init.InfinityItems;
+import com.jmteam.igauntlet.network.packets.server.PacketSnap;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.world.dimension.OverworldDimension;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -29,6 +33,12 @@ public class ServerEvents {
                     event.setCanceled(true);
                 }
             }
+        }
+    }
+
+    @SubscribeEvent
+    public static void worldTickEvent(TickEvent.WorldTickEvent event) {
+        if(event.side == LogicalSide.SERVER) {
         }
     }
 }
