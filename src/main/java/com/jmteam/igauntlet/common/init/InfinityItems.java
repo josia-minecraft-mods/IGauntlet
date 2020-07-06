@@ -1,5 +1,6 @@
 package com.jmteam.igauntlet.common.init;
 
+import com.jmteam.igauntlet.common.item.ItemBackInBlack;
 import com.jmteam.igauntlet.common.item.ItemBase;
 import com.jmteam.igauntlet.common.item.ItemInfinityGauntlet;
 import com.jmteam.igauntlet.common.item.ItemMixtape;
@@ -27,6 +28,7 @@ public class InfinityItems {
     public static Item dwarf_hammer = addItem(new ItemDwarfhammer(ItemTier.DIAMOND, 4, 1, new Item.Properties().group(InfinityGroups.infinityTab)), "dwarf_hammer");
     public static Item dwarf_sword = addItem(new ItemSword(ItemTier.DIAMOND, 4, 1, new Item.Properties().group(InfinityGroups.infinityTab)), "dwarf_sword");
     public static Item mixtape = addItem(new ItemMixtape(InfinitySounds.AWESOMEMIX), "awesome_mix").setGroup(InfinityGroups.infinityTab);
+    public static Item backinblack = addItem(new ItemBackInBlack(InfinitySounds.BACKINBLACK),"backinblack").setGroup(InfinityGroups.infinityTab);
 
     //  public static Item necklace = addItem(new ItemEyeOfAgamotto(), "eye_agamotto").setGroup(InfinityTabs.infinityTab);
 

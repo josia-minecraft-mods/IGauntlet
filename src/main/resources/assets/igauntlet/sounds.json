@@ -38,6 +38,16 @@
         "stream": true
       }
     ]
+  },
+  "backinblack": {
+    "category": "master",
+    "subtitle": "sound.backinblack",
+    "sounds": [
+      {
+        "name": "igauntlet:awesomemix/backinblack",
+        "stream": true
+      }
+    ]
   }
 }
 

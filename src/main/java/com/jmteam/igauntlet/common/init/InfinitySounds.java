@@ -12,6 +12,7 @@ public class InfinitySounds {
     public static List<SoundEvent> SOUNDS = new ArrayList<>();
 
     public static SoundEvent AWESOMEMIX = addSound("awesome_mix");
+    public static SoundEvent BACKINBLACK = addSound("backinblack");
 
     private static SoundEvent addSound(String name) {
         SoundEvent soundEvent = new SoundEvent(new ResourceLocation(IGauntlet.MODID, name)).setRegistryName(name);
