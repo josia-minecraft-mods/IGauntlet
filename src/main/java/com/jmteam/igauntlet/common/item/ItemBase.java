@@ -23,6 +23,7 @@ public class ItemBase extends Item implements IHaveItem {
         super(new Item.Properties().maxStackSize(maxSize));
     }
 
+
     public ItemBase setGroup(ItemGroup... groups) {
         this.groups = new ArrayList<>();
 

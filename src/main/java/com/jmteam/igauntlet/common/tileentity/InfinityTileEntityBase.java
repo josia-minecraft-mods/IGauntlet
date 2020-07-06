@@ -9,6 +9,6 @@ public class InfinityTileEntityBase extends TileEntity {
 
     public InfinityTileEntityBase() {
         super(null);
-        ReflectionHelper.setValuePrivateDeclaredField("type", ReflectionHelper.getClassFromSuperClasses(this, TileEntity.class), this, InfinityTileEntities.getTypeFromClass(getClass()));
+        ReflectionHelper.setValuePrivateDeclaredField(TileEntity.class.getDeclaredFields()[1].getName(), ReflectionHelper.getClassFromSuperClasses(this, TileEntity.class), this, InfinityTileEntities.getTypeFromClass(getClass()));
     }
 }

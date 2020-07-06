@@ -2,13 +2,9 @@ package com.jmteam.igauntlet;
 
 import com.jmteam.igauntlet.common.capability.CapabilityInfinity;
 import com.jmteam.igauntlet.common.capability.IInfinityCap;
-import com.jmteam.igauntlet.common.capability.InfinityCapProvider;
 import com.jmteam.igauntlet.common.capability.InfinityCapStorage;
 import com.jmteam.igauntlet.common.events.ServerEvents;
-import com.jmteam.igauntlet.common.init.InfinityBlocks;
-import com.jmteam.igauntlet.common.init.InfinityEntities;
-import com.jmteam.igauntlet.common.init.InfinityItems;
-import com.jmteam.igauntlet.common.init.InfinityTileEntities;
+import com.jmteam.igauntlet.common.init.*;
 import com.jmteam.igauntlet.config.InfinityConfig;
 import com.jmteam.igauntlet.network.NetworkHandler;
 import com.jmteam.igauntlet.proxy.ClientProxy;
@@ -17,6 +13,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntityType;
+import net.minecraft.util.SoundEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.event.RegistryEvent;
@@ -97,6 +94,12 @@ public class IGauntlet {
         public static void onEntityRegistryEvent(RegistryEvent.Register<EntityType<?>> event) {
             LOGGER.info("Registering Entities");
             event.getRegistry().registerAll(InfinityEntities.ENTITY_TYPES.toArray(new EntityType[InfinityEntities.ENTITY_TYPES.size()]));
+        }
+
+        @SubscribeEvent
+        public static void onSoundRegistryEvent(RegistryEvent.Register<SoundEvent> event) {
+            LOGGER.info("Registering Sounds");
+            event.getRegistry().registerAll(InfinitySounds.SOUNDS.toArray(new SoundEvent[InfinitySounds.SOUNDS.size()]));
         }
     }
 }
