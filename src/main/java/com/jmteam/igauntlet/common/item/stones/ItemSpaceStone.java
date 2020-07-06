@@ -13,7 +13,6 @@ public class ItemSpaceStone extends ItemStoneBase {
         super();
     }
 
-
     @Override
     public void inventoryTick(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
 
