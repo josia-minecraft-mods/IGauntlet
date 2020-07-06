@@ -1,5 +1,4 @@
 {
-	"credit": "UKMinecrafted 2019",
 	"textures": {
 		"0": "igauntlet:blocks/power_orb",
 		"particle": "igauntlet:blocks/power_orb"
@@ -147,5 +146,34 @@
 				"down": {"uv": [3, 11, 2, 12], "texture": "#0"}
 			}
 		}
-	]
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"scale": [0.44, 0.44, 0.44]
+		},
+		"thirdperson_lefthand": {
+			"scale": [0.44, 0.43, 0.42]
+		},
+		"firstperson_righthand": {
+			"scale": [0.74, 0.73, 0.73]
+		},
+		"firstperson_lefthand": {
+			"translation": [0, 1.25, 0],
+			"scale": [0.73, 0.73, 0.74]
+		},
+		"ground": {
+			"translation": [0, 3.75, 0],
+			"scale": [0.65, 0.67, 0.67]
+		},
+		"gui": {
+			"rotation": [0, -20, 0],
+			"translation": [0, 2, 0]
+		},
+		"head": {
+			"translation": [0, 8, 0]
+		},
+		"fixed": {
+			"translation": [-0.5, 1.75, 0]
+		}
+	}
 }

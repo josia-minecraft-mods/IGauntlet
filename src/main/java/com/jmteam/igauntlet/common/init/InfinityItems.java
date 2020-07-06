@@ -2,6 +2,7 @@ package com.jmteam.igauntlet.common.init;
 
 import com.jmteam.igauntlet.common.item.ItemBase;
 import com.jmteam.igauntlet.common.item.ItemInfinityGauntlet;
+import com.jmteam.igauntlet.common.item.ItemMixtape;
 import com.jmteam.igauntlet.common.item.stones.*;
 import com.jmteam.igauntlet.common.item.tools.ItemDwarfhammer;
 import com.jmteam.igauntlet.common.item.tools.ItemSword;
@@ -25,9 +26,9 @@ public class InfinityItems {
     public static Item soul_stone = addItem(new ItemSoulStone(), "soul_stone").setGroup(InfinityGroups.infinityTab);
     public static Item dwarf_hammer = addItem(new ItemDwarfhammer(ItemTier.DIAMOND, 4, 1, new Item.Properties().group(InfinityGroups.infinityTab)), "dwarf_hammer");
     public static Item dwarf_sword = addItem(new ItemSword(ItemTier.DIAMOND, 4, 1, new Item.Properties().group(InfinityGroups.infinityTab)), "dwarf_sword");
+    public static Item mixtape = addItem(new ItemMixtape(InfinitySounds.AWESOMEMIX), "awesome_mix").setGroup(InfinityGroups.infinityTab);
 
     //  public static Item necklace = addItem(new ItemEyeOfAgamotto(), "eye_agamotto").setGroup(InfinityTabs.infinityTab);
-    //   public static Item mixtape = addItem(new ItemMixTape("awesome_mix", InfinitySounds.AWESOMEMIX), "awesome_mix").setGroup(InfinityTabs.infinityTab);
 
     public static <T extends Item> T addItem(T item, String name) {
         item.setRegistryName(name);
