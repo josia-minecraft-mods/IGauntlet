@@ -44,7 +44,7 @@
     "subtitle": "sound.backinblack",
     "sounds": [
       {
-        "name": "igauntlet:awesomemix/backinblack",
+        "name": "igauntlet:misc/backinblack",
         "stream": true
       }
     ]
