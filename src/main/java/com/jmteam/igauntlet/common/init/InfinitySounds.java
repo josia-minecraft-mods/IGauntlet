@@ -15,6 +15,7 @@ public class InfinitySounds {
     public static SoundEvent SNAP = addSound("snap");
     public static SoundEvent GAUNTLET_HUM  = addSound("gauntlethum");
     public static SoundEvent IDONTFEELGOOD = addSound("feelgood");
+    public static SoundEvent BACKINBLACK = addSound("backinblack");
 
     private static SoundEvent addSound(String name) {
         SoundEvent soundEvent = new SoundEvent(new ResourceLocation(IGauntlet.MODID, name)).setRegistryName(name);
