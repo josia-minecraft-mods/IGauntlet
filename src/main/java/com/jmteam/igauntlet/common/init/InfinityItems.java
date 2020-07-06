@@ -4,7 +4,11 @@ import com.jmteam.igauntlet.common.item.ItemBase;
 import com.jmteam.igauntlet.common.item.ItemInfinityGauntlet;
 import com.jmteam.igauntlet.common.item.stones.*;
 import com.jmteam.igauntlet.common.item.tools.ItemDwarfhammer;
+import com.jmteam.igauntlet.common.item.tools.ItemSword;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemTier;
+import net.minecraft.item.PickaxeItem;
+import net.minecraft.item.SwordItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +25,8 @@ public class InfinityItems {
     public static Item space_stone = addItem(new ItemSpaceStone(), "space_stone").setGroup(InfinityGroups.infinityTab);
     public static Item power_stone = addItem(new ItemPowerStone(), "power_stone").setGroup(InfinityGroups.infinityTab);
     public static Item soul_stone = addItem(new ItemSoulStone(), "soul_stone").setGroup(InfinityGroups.infinityTab);
-    public static Item dwarf_hammer = addItem(new ItemDwarfhammer(), "dwarf_hammer").setGroup(InfinityGroups.infinityTab);
+    public static Item dwarf_hammer = addItem(new ItemDwarfhammer(ItemTier.DIAMOND, 4, 1, new Item.Properties()), "dwarf_hammer");
+    public static Item dwarf_sword = addItem(new ItemSword(ItemTier.DIAMOND, 4, 1, new Item.Properties()), "dwarf_sword");
 
     //  public static Item necklace = addItem(new ItemEyeOfAgamotto(), "eye_agamotto").setGroup(InfinityTabs.infinityTab);
     //   public static Item mixtape = addItem(new ItemMixTape("awesome_mix", InfinitySounds.AWESOMEMIX), "awesome_mix").setGroup(InfinityTabs.infinityTab);
