@@ -1,11 +1,10 @@
 package com.jmteam.igauntlet.common.init;
 
 import com.jmteam.igauntlet.common.item.ItemBase;
-import com.jmteam.igauntlet.common.item.ItemInfinityGauntlet;
 import com.jmteam.igauntlet.common.item.ItemDisc;
+import com.jmteam.igauntlet.common.item.ItemInfinityGauntlet;
 import com.jmteam.igauntlet.common.item.stones.*;
-import com.jmteam.igauntlet.common.item.tools.ItemDwarfhammer;
-import com.jmteam.igauntlet.common.item.tools.ItemSword;
+import com.jmteam.igauntlet.common.item.tools.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemTier;
 
@@ -28,8 +27,15 @@ public class InfinityItems {
     public static Item dwarf_sword = addItem(new ItemSword(ItemTier.DIAMOND, 4, 1, new Item.Properties().group(InfinityGroups.infinityTab)), "dwarf_sword");
     public static Item mixtape = addItem(new ItemDisc(InfinitySounds.AWESOMEMIX), "awesome_mix").setGroup(InfinityGroups.infinityTab);
 
-   // TODO APRIL FIRST
+    // TODO APRIL FIRST
     public static Item backinblack = addItem(new ItemDisc(InfinitySounds.BACKINBLACK),"backinblack").setGroup(InfinityGroups.infinityTab);
+
+    public static Item uru_pickaxe = addItem(new ItemPickaxe(ItemTier.DIAMOND, 4, 1, new Item.Properties().group(InfinityGroups.infinityTab)), "uru_pickaxe");
+    public static Item uru_sword = addItem(new ItemSword(ItemTier.DIAMOND,4, 1, new Item.Properties().group(InfinityGroups.infinityTab)), "uru_sword");
+    public static Item uru_axe = addItem(new ItemAxe(ItemTier.DIAMOND, 4, 1, new Item.Properties().group(InfinityGroups.infinityTab)), "uru_axe");
+    public static Item uru_shovel = addItem(new ItemShovel(ItemTier.DIAMOND, 4, 1, new Item.Properties().group(InfinityGroups.infinityTab)), "uru_shovel");
+    public static Item uru_hoe = addItem(new ItemHoe(ItemTier.DIAMOND, 4, new Item.Properties().group(InfinityGroups.infinityTab)), "uru_hoe");
+
 
     //  public static Item necklace = addItem(new ItemEyeOfAgamotto(), "eye_agamotto").setGroup(InfinityTabs.infinityTab);
 
