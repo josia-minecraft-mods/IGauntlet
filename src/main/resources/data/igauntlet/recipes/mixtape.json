@@ -7,15 +7,13 @@
   ],
   "key": {
     "W": {
-      "item": "minecraft:concrete",
-      "data": 0
+      "item": "minecraft:white_concrete"
     },
     "I": {
       "item": "minecraft:iron_ingot"
     },
     "B": {
-      "item": "minecraft:concrete",
-      "data": 15
+      "item": "minecraft:black_concrete"
     }
   },
   "result": {
