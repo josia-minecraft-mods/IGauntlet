@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "uuu",
+    " s ",
+    " s "
+  ],
+  "key":
+  {
+    "u":
+    {
+      "item": "igauntlet:uru_ingot"
+    },
+    "s":
+    {
+      "item": "minecraft:stick"
+    }
+  },
+  "result":
+  {
+    "item": "igauntlet:uru_pickaxe",
+    "count": 1
+  }
+}
