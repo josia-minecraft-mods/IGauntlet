@@ -5,6 +5,7 @@ import com.jmteam.igauntlet.common.init.InfinityItems;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
+import net.minecraft.client.renderer.Quaternion;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Vector3f;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -27,7 +28,7 @@ public class RenderEntityGauntlet extends EntityRenderer<EntityGauntlet> {
         super.render(entityIn, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
 
         matrixStackIn.push();
-        matrixStackIn.rotate(Vector3f.YP.rotation(entityYaw - 135));
+        matrixStackIn.rotate(new Quaternion(Vector3f.YP, 180 - entityYaw, true));
         RenderHelper.enableStandardItemLighting();
         matrixStackIn.translate(0, 0.5, 0);
         Minecraft.getInstance().getItemRenderer().renderItem(new ItemStack(InfinityItems.infinity_gauntlet), ItemCameraTransforms.TransformType.NONE, packedLightIn, packedLightIn, matrixStackIn, bufferIn);
