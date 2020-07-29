@@ -38,8 +38,9 @@ public class CapabilityInfinity implements IInfinityCap {
 
     @Override
     public void sync() {
-        if (!player.world.isRemote)
+        if (!player.world.isRemote) {
             NetworkHandler.sendTo((ServerPlayerEntity) player, new PacketSyncCapability(player.getUniqueID(), serializeNBT()));
+        }
     }
 
     @Override

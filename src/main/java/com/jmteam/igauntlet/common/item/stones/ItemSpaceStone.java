@@ -5,6 +5,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
 public class ItemSpaceStone extends ItemStoneBase {
@@ -28,6 +29,7 @@ public class ItemSpaceStone extends ItemStoneBase {
 
                         // TODO Config
                         if (counter < 15) {
+                            if(counter == 7) ((PlayerEntity) entityIn).sendStatusMessage(new TranslationTextComponent("msg.stones.space.neardrift"), true);
                             stack.getTag().putInt("timer", counter + 1);
                         } else {
                             stack.getTag().putInt("timer", 0);

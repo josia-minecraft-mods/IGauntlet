@@ -34,9 +34,7 @@ public class InfinityItems {
     public static Item uru_hoe = addItem(new ItemHoe(ItemTier.DIAMOND, 4, new Item.Properties().group(InfinityGroups.infinityTab)), "uru_hoe");
 
 
-
-    // TODO APRIL FIRST
-    //public static Item backinblack = addItem(new ItemDisc(InfinitySounds.BACKINBLACK),"backinblack").setGroup(InfinityGroups.infinityTab);
+    //  public static Item backinblack = addItem(new ItemDisc(InfinitySounds.BACKINBLACK),"backinblack").setGroup(InfinityGroups.infinityTab);
 
     //  public static Item necklace = addItem(new ItemEyeOfAgamotto(), "eye_agamotto").setGroup(InfinityTabs.infinityTab);
 

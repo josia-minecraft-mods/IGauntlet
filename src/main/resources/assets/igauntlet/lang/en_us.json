@@ -42,6 +42,9 @@
   "msg.snapped.amount": "You snapped &a entity!",
   "msg.snapped.amount.multiple": "You snapped &a entities!",
 
+  "msg.stones.space.neardrift": "Don't hold the stone for too long!",
+  "msg.stones.space.drifted": "You have drifted!",
+
 
   "damagesource.igauntlet.laser": "%1$s got hit by a laser!",
   "damagesource.igauntlet.snap": "%1$s turned to ashes!",
