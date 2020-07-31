@@ -9,6 +9,7 @@ import com.jmteam.igauntlet.config.InfinityConfig;
 import com.jmteam.igauntlet.network.NetworkHandler;
 import com.jmteam.igauntlet.proxy.ClientProxy;
 import com.jmteam.igauntlet.proxy.ServerProxy;
+import com.jmteam.igauntlet.util.generation.OreGeneration;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
@@ -59,6 +60,7 @@ public class IGauntlet {
     private void commonSetup(FMLCommonSetupEvent event) {
         PROXY.doServerStuff(event);
         NetworkHandler.register();
+        OreGeneration.init();
         CapabilityManager.INSTANCE.register(IInfinityCap.class, new InfinityCapStorage(), CapabilityInfinity::new);
     }
 

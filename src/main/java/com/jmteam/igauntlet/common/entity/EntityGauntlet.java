@@ -69,7 +69,8 @@ public class EntityGauntlet extends Entity {
             player.inventory.addItemStackToInventory(stack);
             onKillCommand();
         } else if (!world.isRemote) {
-          if(!hasEmptySlot) player.sendStatusMessage(new TranslationTextComponent("msg.inventoryfull"), true);
+            if (!hasEmptySlot) player.sendStatusMessage(new TranslationTextComponent("msg.inventoryfull"), true);
+            if (stack == null) onKillCommand();
         }
 
         return super.applyPlayerInteraction(player, vec, hand);
