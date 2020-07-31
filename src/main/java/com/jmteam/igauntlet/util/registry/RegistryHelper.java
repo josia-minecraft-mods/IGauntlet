@@ -8,6 +8,7 @@ import net.minecraft.item.ItemGroup;
 
 public class RegistryHelper {
 
+    /* Use reflection to set Creative Tab after initialize */
     public static Item setCreativeTab(Item i, ItemGroup group) {
         if (i != null) {
 

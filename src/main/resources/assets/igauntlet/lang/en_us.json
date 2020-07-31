@@ -41,6 +41,7 @@
   "msg.revive.notfound": "Didn't find any Ash Piles to revive!",
   "msg.snapped.amount": "You snapped &a entity!",
   "msg.snapped.amount.multiple": "You snapped &a entities!",
+  "msg.inventoryfull": "Your inventory is full!",
 
   "msg.stones.space.neardrift": "Don't hold the stone for too long!",
   "msg.stones.space.drifted": "You have drifted!",

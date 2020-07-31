@@ -67,7 +67,8 @@ public class PacketSnap {
                                         if (!entity.isInvulnerable() && (x % 2 == 1 && x != 0) && entity.isAlive()) {
                                             snapped++;
 
-                                            if (GauntletHelper.filterSnap(entity, false)) {
+                                            // Prevent setting Entities removed when they shouldn't be
+                                            if (GauntletHelper.filterSnap(entity, true)) {
                                                 entity.removed = true;
                                             }
 
@@ -78,6 +79,7 @@ public class PacketSnap {
                                         }
                                     }
 
+                                    // Infinity War (I don't feel so good) easter egg sound
                                     if(world.rand.nextInt(15) == 5) {
                                         player.getServerWorld().playSound(null, player.getPosition(), InfinitySounds.IDONTFEELGOOD, SoundCategory.PLAYERS, 1,1);
                                     }

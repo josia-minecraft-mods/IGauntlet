@@ -1,5 +1,6 @@
 package com.jmteam.igauntlet.common.tileentity;
 
+import com.jmteam.igauntlet.common.init.InfinityNBT;
 import net.minecraft.block.Blocks;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
@@ -7,11 +8,7 @@ import net.minecraft.tileentity.ITickableTileEntity;
 public class TileEntityQuickSand extends InfinityTileEntityBase implements ITickableTileEntity {
 
     public boolean placed = false;
-    public long created = System.currentTimeMillis();
-
-    public TileEntityQuickSand() {
-        super();
-    }
+    private int timer;
 
     @Override
     public void tick() {
@@ -19,8 +16,12 @@ public class TileEntityQuickSand extends InfinityTileEntityBase implements ITick
         if (!placed) {
 
             // TODO Replace with a config value for max sand time
-            if (!world.isRemote && created != 0 && ((System.currentTimeMillis() - created) / 1000L) >= 20 && getWorld().getGameTime() % 20 == 0) {
-                world.setBlockState(pos, Blocks.SAND.getDefaultState());
+            if (!world.isRemote && getWorld().getGameTime() % 20 == 0) {
+                if (timer >= 60)  {
+                    world.setBlockState(pos, Blocks.SAND.getDefaultState());
+                    timer = 0;
+                }
+                timer++;
             }
         }
     }
@@ -33,14 +34,14 @@ public class TileEntityQuickSand extends InfinityTileEntityBase implements ITick
     public void read(CompoundNBT compound) {
         super.read(compound);
         placed = compound.getBoolean("placed");
-        created = compound.getLong("created");
+        timer = compound.getInt(InfinityNBT.TIMER);
     }
 
     @Override
     public CompoundNBT write(CompoundNBT compound) {
         super.write(compound);
         compound.putBoolean("placed", placed);
-        compound.putLong("created", created);
+        compound.putInt(InfinityNBT.TIMER, timer);
 
         return compound;
     }

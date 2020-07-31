@@ -25,7 +25,6 @@ public class GauntletHelper {
             }
         }
 
-
         return GemHelper.StoneType.NONE;
     }
 
@@ -41,15 +40,15 @@ public class GauntletHelper {
         return false;
     }
 
-    public static boolean filterSnap(LivingEntity entity, boolean global) {
+    public static boolean filterSnap(LivingEntity entity, boolean inSnap) {
 
-        if (entity instanceof PlayerEntity && !global) {
+        // global boolean value is used for checking if inside snap or not
+
+        if (entity instanceof PlayerEntity && inSnap) {
             return false;
         }
 
-
         if (entity instanceof ArmorStandEntity) {
-
             return false;
         }
 
@@ -62,7 +61,8 @@ public class GauntletHelper {
         for (int x = 0; x < livingEntities.size(); x++) {
             LivingEntity e = livingEntities.get(x);
 
-            if (!GauntletHelper.filterSnap(e, true)) {
+            // If it's not inside snap, it'll only clear the unwanted entities
+            if (!GauntletHelper.filterSnap(e, false)) {
                 removeList.add(e);
             }
         }

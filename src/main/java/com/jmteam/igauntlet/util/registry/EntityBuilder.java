@@ -12,6 +12,7 @@ import net.minecraft.util.math.Vec2f;
  * Does Entity Creation but simplified
  * Made by Josia50
  */
+
 public class EntityBuilder {
 
     private String name = "";

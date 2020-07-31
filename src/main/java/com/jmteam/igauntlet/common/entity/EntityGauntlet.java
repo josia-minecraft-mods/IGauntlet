@@ -12,6 +12,7 @@ import net.minecraft.network.IPacket;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
@@ -63,9 +64,12 @@ public class EntityGauntlet extends Entity {
 
     @Override
     public ActionResultType applyPlayerInteraction(PlayerEntity player, Vec3d vec, Hand hand) {
-        if (!world.isRemote && player.inventory.getFirstEmptyStack() != -1 && stack != null) {
+        boolean hasEmptySlot = player.inventory.getFirstEmptyStack() != -1;
+        if (!world.isRemote && hasEmptySlot && stack != null) {
             player.inventory.addItemStackToInventory(stack);
             onKillCommand();
+        } else if (!world.isRemote) {
+          if(!hasEmptySlot) player.sendStatusMessage(new TranslationTextComponent("msg.inventoryfull"), true);
         }
 
         return super.applyPlayerInteraction(player, vec, hand);

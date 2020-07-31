@@ -17,8 +17,10 @@ public class InfinitySounds {
     public static SoundEvent IDONTFEELGOOD = addSound("feelgood");
     public static SoundEvent BACKINBLACK = addSound("backinblack");
 
+    /* Register Sound with name that is defined in sounds.json */
     private static SoundEvent addSound(String name) {
-        SoundEvent soundEvent = new SoundEvent(new ResourceLocation(IGauntlet.MODID, name)).setRegistryName(name);
+        ResourceLocation location = new ResourceLocation(IGauntlet.MODID, name);
+        SoundEvent soundEvent = new SoundEvent(location).setRegistryName(location);
         SOUNDS.add(soundEvent);
         return soundEvent;
     }

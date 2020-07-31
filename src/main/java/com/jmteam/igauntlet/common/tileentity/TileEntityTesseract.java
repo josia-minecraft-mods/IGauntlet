@@ -10,10 +10,6 @@ public class TileEntityTesseract extends InfinityTileEntityBase {
 
     public boolean has_stone = true;
 
-    public TileEntityTesseract() {
-        super();
-    }
-
     public boolean addStone() {
         if (!has_stone) {
             has_stone = true;
@@ -44,6 +40,7 @@ public class TileEntityTesseract extends InfinityTileEntityBase {
     public void read(CompoundNBT compound) {
         super.read(compound);
         has_stone = compound.getBoolean(InfinityNBT.HAS_STONE);
+
     }
 
     @Override

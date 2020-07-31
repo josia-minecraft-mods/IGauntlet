@@ -10,10 +10,12 @@ import com.jmteam.igauntlet.common.tileentity.TileEntityQuickSand;
 import com.jmteam.igauntlet.common.tileentity.TileEntityTesseract;
 import com.jmteam.igauntlet.util.registry.IHaveItem;
 import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.common.ToolType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,10 +28,10 @@ public class InfinityBlocks {
     public static Block ash_pile = addTileEntity(new BlockAshPile(Material.SAND), "ash_pile", TileEntityAshPile::new).setGroup(InfinityGroups.infinityTab);
     public static Block uru_ore = registerBlock(new BlockUruOre(Material.ROCK), "uru_ore").setGroup(InfinityGroups.infinityTab);
     public static Block tesseract = addTileEntity(new BlockTesseract(TileEntityTesseract::new), "tesseract").setGroup(InfinityGroups.infinityTab);
-    public static Block dwarf_stone = registerBlock(new BlockDwarfStone(Material.ORGANIC), "dwarf_stone").setGroup(InfinityGroups.infinityTab);
-    public static Block dwarf_dirt = registerBlock(new BlockDwarfDirt(Material.ORGANIC), "dwarf_dirt").setGroup(InfinityGroups.infinityTab);
-    public static Block dwarf_cobble = registerBlock(new BlockDwarfCobble(Material.ORGANIC), "dwarf_cobble").setGroup(InfinityGroups.infinityTab);
-    public static Block dwarf_wood = registerBlock(new BlockDwarfWood(Material.WOOD), "dwarf_wood").setGroup(InfinityGroups.infinityTab);
+    public static Block dwarf_stone = registerBlock(new InfinityBlock(Material.ORGANIC), "dwarf_stone").setGroup(InfinityGroups.infinityTab);
+    public static Block dwarf_dirt = registerBlock(new InfinityBlock(Block.Properties.create(Material.PLANTS).hardnessAndResistance(15).harvestTool(ToolType.SHOVEL).harvestLevel(1).sound(SoundType.WET_GRASS)), "dwarf_dirt").setGroup(InfinityGroups.infinityTab);
+    public static Block dwarf_cobble = registerBlock(new InfinityBlock(Material.ORGANIC), "dwarf_cobble").setGroup(InfinityGroups.infinityTab);
+    public static Block dwarf_wood = registerBlock(new InfinityBlock(Material.WOOD), "dwarf_wood").setGroup(InfinityGroups.infinityTab);
     public static Block forge = registerBlock(new BlockForge(Material.ANVIL), "forge").setGroup(InfinityGroups.infinityTab);
     public static Block manipulator = registerBlock(new BlockManipulator(Material.IRON), "manipulator").setGroup(InfinityGroups.infinityTab);
     public static Block quick_sand = addTileEntity(new BlockQuickSand(Material.SAND), "quick_sand", TileEntityQuickSand::new).setGroup(InfinityGroups.infinityTab);

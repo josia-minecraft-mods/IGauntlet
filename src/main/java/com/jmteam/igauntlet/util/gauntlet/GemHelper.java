@@ -1,6 +1,5 @@
 package com.jmteam.igauntlet.util.gauntlet;
 
-import com.jmteam.igauntlet.common.blocks.InfinityBlock;
 import com.jmteam.igauntlet.common.init.InfinityBlocks;
 import com.jmteam.igauntlet.common.tileentity.TileEntityAshPile;
 import com.jmteam.igauntlet.util.gauntlet.gems.*;
@@ -12,7 +11,6 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3i;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
@@ -20,31 +18,32 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 public class GemHelper {
 
     public static void reviveAshPiles(PlayerEntity player, int range) {
         World world = player.world;
-        Iterator<BlockPos> blockPosIterator = BlockPos.getAllInBox(player.getPosition().add(-range, -range, -range), player.getPosition().add(range, range, range)).iterator();
+        Object[] blockPosObjects = BlockPos.getAllInBox(player.getPosition().add(-range, -range, -range), player.getPosition().add(range, range, range)).toArray();
         boolean revivedAny = false;
 
-        while (blockPosIterator.hasNext()) {
-            BlockPos pos = blockPosIterator.next();
-            BlockState state = world.getBlockState(pos);
+        for (Object object : blockPosObjects) {
+            if (object instanceof BlockPos) {
+                BlockPos pos = (BlockPos) object;
+                BlockState state = world.getBlockState(pos);
 
-            if (state.getBlock() == InfinityBlocks.ash_pile) {
-                TileEntity te = world.getTileEntity(pos);
+                if (state.getBlock() == InfinityBlocks.ash_pile) {
+                    TileEntity te = world.getTileEntity(pos);
 
-                if (te != null && te instanceof TileEntityAshPile) {
-                    TileEntityAshPile ashPile = (TileEntityAshPile) te;
-                    LivingEntity entity = ashPile.getEntity();
-                    revivedAny = true;
+                    if (te != null && te instanceof TileEntityAshPile) {
+                        TileEntityAshPile ashPile = (TileEntityAshPile) te;
+                        LivingEntity entity = ashPile.getEntity();
+                        revivedAny = true;
 
-                    if (entity != null) {
-                        entity.setHealth(entity.getMaxHealth());
-                        world.addEntity(entity);
-                        WorldUtil.setBlockState(world, Blocks.AIR.getDefaultState(), pos);
+                        if (entity != null) {
+                            entity.setHealth(entity.getMaxHealth());
+                            world.addEntity(entity);
+                            WorldUtil.setBlockState(world, Blocks.AIR.getDefaultState(), pos);
+                        }
                     }
                 }
             }
@@ -79,17 +78,19 @@ public class GemHelper {
         return false;
     }
 
-    public static List<BlockPos> getAllBlocksRanged(World world, BlockPos pos) {
+    public static List<BlockPos> getAllBlockRangedFromPos(World world, BlockPos pos) {
         Block b = world.getBlockState(pos).getBlock();
-        Iterator<BlockPos> blockPosIterator = BlockPos.getAllInBox(pos.add(-20, -20, -20), pos.add(20, 20, 20)).iterator();
+        Object[] blockPosList = BlockPos.getAllInBox(pos.add(-20, -20, -20), pos.add(20, 20, 20)).toArray();
         List<BlockPos> posList = new ArrayList<>();
 
 
-        while (blockPosIterator.hasNext()) {
-            BlockPos blockPos = blockPosIterator.next();
-            if(world.getBlockState(blockPos).getBlock() == b) {
-                posList.add(blockPos.toImmutable());
-            }
+       for(Object o : blockPosList) {
+           if(o instanceof BlockPos) {
+               BlockPos blockPos = (BlockPos) o;
+               if (world.getBlockState(blockPos).getBlock() == b) {
+                   posList.add(blockPos.toImmutable());
+               }
+           }
         }
 
         return posList;
@@ -112,9 +113,10 @@ public class GemHelper {
 
         private GemBase gem;
 
-        StoneType() {}
+        StoneType() {
+        }
 
-       StoneType(Supplier<GemBase> gem) {
+        StoneType(Supplier<GemBase> gem) {
             this.gem = gem.get();
         }
 

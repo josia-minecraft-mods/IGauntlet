@@ -1,6 +1,8 @@
 package com.jmteam.igauntlet.common.tileentity;
 
+import com.jmteam.igauntlet.common.init.InfinityNBT;
 import com.jmteam.igauntlet.util.helpers.EntityHelper;
+import com.jmteam.igauntlet.util.helpers.WorldUtil;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
@@ -11,17 +13,17 @@ import net.minecraft.tileentity.ITickableTileEntity;
 public class TileEntityAshPile extends InfinityTileEntityBase implements ITickableTileEntity {
 
     public String entity = "";
-    public long created = System.currentTimeMillis();
-
-    public TileEntityAshPile() {
-        super();
-    }
+    private int timer;
 
     @Override
     public void tick() {
         // TODO Config for ash pile fade
-        if(!world.isRemote && created != 0 && ((System.currentTimeMillis() - created) / 1000L) >= 60 && getWorld().getGameTime() % 20 == 0) {
-            world.setBlockState(pos, Blocks.AIR.getDefaultState());
+        if (!world.isRemote && getWorld().getGameTime() % 20 == 0) {
+            if (timer >= 60)  {
+                WorldUtil.setBlockState(world, Blocks.AIR.getDefaultState(), pos);
+                timer = 0;
+            }
+            timer++;
         }
     }
 
@@ -33,7 +35,7 @@ public class TileEntityAshPile extends InfinityTileEntityBase implements ITickab
 
     public LivingEntity getEntity() {
         try {
-           if (!entity.isEmpty()) {
+            if (!entity.isEmpty()) {
                 CompoundNBT compoundNBT = JsonToNBT.getTagFromJson(this.entity);
                 return (LivingEntity) EntityHelper.createEntityFromNBT(compoundNBT, world);
             }
@@ -53,7 +55,7 @@ public class TileEntityAshPile extends InfinityTileEntityBase implements ITickab
     public void read(CompoundNBT compound) {
         super.read(compound);
         entity = compound.getString("entity_data");
-        created = compound.getLong("created");
+        timer = compound.getInt(InfinityNBT.TIMER);
     }
 
     @Override
@@ -61,7 +63,7 @@ public class TileEntityAshPile extends InfinityTileEntityBase implements ITickab
         super.write(compound);
 
         compound.putString("entity_data", entity);
-        compound.putLong("created", created);
+        compound.putInt(InfinityNBT.TIMER, timer);
 
         return compound;
     }
