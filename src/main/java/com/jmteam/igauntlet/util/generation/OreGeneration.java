@@ -14,11 +14,11 @@ public class OreGeneration {
 
     public static void init() {
         for(Biome biome : ForgeRegistries.BIOMES) {
-            setupOreForGen(biome, OreFeatureConfig.FillerBlockType.NATURAL_STONE, InfinityBlocks.uru_ore.getDefaultState(), 7, 20,0,40);
+            addOreGen(biome, OreFeatureConfig.FillerBlockType.NATURAL_STONE, InfinityBlocks.uru_ore.getDefaultState(), 7, 20,0,40);
         }
     }
 
-    public static void setupOreForGen(Biome biome, OreFeatureConfig.FillerBlockType baseBlock, BlockState blockState, int chance, int offsetBottom, int offsetTop, int maxHeight)
+    public static void addOreGen(Biome biome, OreFeatureConfig.FillerBlockType baseBlock, BlockState blockState, int chance, int offsetBottom, int offsetTop, int maxHeight)
     {
         biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(baseBlock, blockState, 8))
                 .withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(chance, offsetBottom, offsetTop, maxHeight))));
