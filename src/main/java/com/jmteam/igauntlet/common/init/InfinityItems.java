@@ -59,7 +59,7 @@ public class InfinityItems {
 
     @SubscribeEvent
     public static void onItemRegister(RegistryEvent.Register<Item> event) {
-        event.getRegistry().registerAll(InfinityItems.ITEMS.toArray(new Item[0]));
+        event.getRegistry().registerAll(InfinityItems.ITEMS.toArray(new Item[InfinityItems.ITEMS.size()]));
     }
 }
 

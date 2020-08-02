@@ -20,28 +20,28 @@ public class InfinityBlocks {
 
     public static List<Block> BLOCKS = new ArrayList<>();
 
-    public static Block ash_pile = RegisterBlock(new BlockAshPile(Material.SAND), "ash_pile").setCreativeTab(InfinityTabs.infinityTabs);
-    public static Block uru_ore = RegisterBlock(new BlockUruOre(Material.ROCK), "uru_ore").setCreativeTab(InfinityTabs.infinityTabs);
-    public static Block tesseract = RegisterBlock(new BlockTesseract(Material.CLAY), "tesseract").setCreativeTab(InfinityTabs.infinityTabs);
-    public static Block dwarf_stone = RegisterBlock(new BlockDwarfStone(Material.GROUND), "dwarf_stone").setCreativeTab(InfinityTabs.infinityTabs);
-    public static Block chiseled_dwarf_stone = RegisterBlock(new BlockDwarfStone(Material.ROCK), "chiseled_dwarf_stone").setCreativeTab(InfinityTabs.infinityTabs);
-    public static Block dwarf_dirt = RegisterBlock(new BlockDwarfDirt(Material.GRASS), "dwarf_dirt").setCreativeTab(InfinityTabs.infinityTabs);
-    public static Block dwarf_cobble = RegisterBlock(new BlockDwarfCobble(Material.GROUND), "dwarf_cobble").setCreativeTab(InfinityTabs.infinityTabs);
-    public static Block dwarf_wood = RegisterBlock(new BlockDwarfWood(Material.WOOD), "dwarf_wood").setCreativeTab(InfinityTabs.infinityTabs);
-    public static Block forge = RegisterBlock(new BlockForge(Material.ANVIL), "forge").setCreativeTab(InfinityTabs.infinityTabs);
-    public static Block manipulator = RegisterBlock(new BlockManipulator(Material.IRON), "manipulator").setCreativeTab(InfinityTabs.infinityTabs);
-    public static Block quick_sand = RegisterBlock(new BlockQuickSand(Material.SAND), "quick_sand").setCreativeTab(InfinityTabs.infinityTabs);
-    public static Block power_orb = RegisterBlock(new BlockOrb(Material.ROCK), "power_orb").setCreativeTab(InfinityTabs.infinityTabs);
-    public static Block overworld_uru_ore = RegisterBlock(new BlockUruOre(Material.ROCK), "overworld_uru_ore").setCreativeTab(InfinityTabs.infinityTabs);
-    public static Block leatherwood = RegisterBlock(new BlockLeatherwood(Material.WOOD), "leatherwood").setCreativeTab(InfinityTabs.infinityTabs);
-    public static Block beveled_leatherwood = RegisterBlock(new BlockLeatherwood(Material.WOOD), "beveled_leatherwood").setCreativeTab(InfinityTabs.infinityTabs);
-    public static Block gold_crusted_leatherwood = RegisterBlock(new BlockLeatherwood(Material.WOOD), "gold_crusted_leatherwood").setCreativeTab(InfinityTabs.infinityTabs);
-    public static Block gold_crusted_leatherwood0 = RegisterBlock(new BlockLeatherwood(Material.WOOD), "gold_crusted_leatherwood0").setCreativeTab(InfinityTabs.infinityTabs);
-    public static Block fancy_glowstone = RegisterBlock(new BlockFancyGlowstone(Material.GLASS), "fancy_glowstone").setCreativeTab(InfinityTabs.infinityTabs);
-    public static Block fancy_patterned_wood = RegisterBlock(new BlockLeatherwood(Material.WOOD), "fancy_patterned_wood").setCreativeTab(InfinityTabs.infinityTabs);
-    public static Block aether = RegisterBlock(new BlockAether(Material.WOOD), "aether").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Block ash_pile = registerBlock(new BlockAshPile(Material.SAND), "ash_pile").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Block uru_ore = registerBlock(new BlockUruOre(Material.ROCK), "uru_ore").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Block tesseract = registerBlock(new BlockTesseract(Material.CLAY), "tesseract").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Block dwarf_stone = registerBlock(new BlockDwarfStone(Material.GROUND), "dwarf_stone").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Block chiseled_dwarf_stone = registerBlock(new BlockDwarfStone(Material.ROCK), "chiseled_dwarf_stone").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Block dwarf_dirt = registerBlock(new BlockDwarfDirt(Material.GRASS), "dwarf_dirt").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Block dwarf_cobble = registerBlock(new BlockDwarfCobble(Material.GROUND), "dwarf_cobble").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Block dwarf_wood = registerBlock(new BlockDwarfWood(Material.WOOD), "dwarf_wood").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Block forge = registerBlock(new BlockForge(Material.ANVIL), "forge").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Block manipulator = registerBlock(new BlockManipulator(Material.IRON), "manipulator").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Block quick_sand = registerBlock(new BlockQuickSand(Material.SAND), "quick_sand").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Block power_orb = registerBlock(new BlockOrb(Material.ROCK), "power_orb").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Block overworld_uru_ore = registerBlock(new BlockUruOre(Material.ROCK), "overworld_uru_ore").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Block leatherwood = registerBlock(new BlockLeatherwood(Material.WOOD), "leatherwood").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Block beveled_leatherwood = registerBlock(new BlockLeatherwood(Material.WOOD), "beveled_leatherwood").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Block gold_crusted_leatherwood = registerBlock(new BlockLeatherwood(Material.WOOD), "gold_crusted_leatherwood").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Block gold_crusted_leatherwood0 = registerBlock(new BlockLeatherwood(Material.WOOD), "gold_crusted_leatherwood0").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Block fancy_glowstone = registerBlock(new BlockFancyGlowstone(Material.GLASS), "fancy_glowstone").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Block fancy_patterned_wood = registerBlock(new BlockLeatherwood(Material.WOOD), "fancy_patterned_wood").setCreativeTab(InfinityTabs.infinityTabs);
+    public static Block aether = registerBlock(new BlockAether(Material.WOOD), "aether").setCreativeTab(InfinityTabs.infinityTabs);
 
-    public static Block RegisterBlock(Block block, String name) {
+    public static Block registerBlock(Block block, String name) {
         block.setRegistryName(name);
         block.setTranslationKey(name);
         InfinityBlocks.BLOCKS.add(block);
@@ -56,6 +56,6 @@ public class InfinityBlocks {
 
     @SubscribeEvent
     public static void onBlockRegister(RegistryEvent.Register<Block> event) {
-        event.getRegistry().registerAll(InfinityBlocks.BLOCKS.toArray(new Block[0]));
+        event.getRegistry().registerAll(InfinityBlocks.BLOCKS.toArray(new Block[InfinityBlocks.BLOCKS.size()]));
     }
 }
