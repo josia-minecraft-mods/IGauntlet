@@ -15,7 +15,7 @@ public class InfinityTabs {
 
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(com.jmteam.igauntlet.common.init.InfinityItems.infinity_gauntlet);
+            return new ItemStack(InfinityItems.infinity_gauntlet);
         }
     };
 }

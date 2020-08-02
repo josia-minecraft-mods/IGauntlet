@@ -52,7 +52,7 @@ public class Infinity {
         GameRegistry.registerWorldGenerator(new WorldGeneration(), 3);
         InfinityBiomes.registerBiomes();
         NetworkHandler.init();
-        InfinityTileentities.PreInit();
+        InfinityTileEntities.PreInit();
         InfinityDimensions.registerDimensions();
         CapabilityManager.INSTANCE.register(IInfinityCap.class, new CapInfinityStorage(), CapabilityInfinity::new);
     }

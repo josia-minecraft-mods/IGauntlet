@@ -150,7 +150,7 @@ public class ItemInfinityGauntlet extends Item {
 
             case MIND:
                 if (playerIn.isSneaking()) {
-                    if (!(target instanceof EntityPlayer) && MindOn) GemMind.Attack(playerIn, (EntityLiving) target);
+                    if (!(target instanceof EntityPlayer) && MindOn) GemMind.attack(playerIn, (EntityLiving) target);
                 }
         }
 
