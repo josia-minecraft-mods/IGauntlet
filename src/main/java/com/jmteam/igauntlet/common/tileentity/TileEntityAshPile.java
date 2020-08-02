@@ -13,7 +13,7 @@ import net.minecraft.util.ITickable;
 public class TileEntityAshPile extends TileEntity implements ITickable {
 
     private String entity = "";
-    private long created = System.currentTimeMillis();
+    private int timer = 0;
 
     public void setEntity(EntityLiving entity) {
         NBTTagCompound tagCompound = entity.serializeNBT();
@@ -47,22 +47,26 @@ public class TileEntityAshPile extends TileEntity implements ITickable {
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
         this.entity = compound.getString("entity_data");
-        this.created = compound.getLong("created");
+        this.timer = compound.getInteger("timer");
     }
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
         compound.setString("entity_data", entity);
-        compound.setLong("created", created);
+        compound.setInteger("timer", timer);
 
         return compound;
     }
 
     @Override
     public void update() {
-        if (((System.currentTimeMillis() - created) / 1000L) >= 60 && getWorld().getWorldTime() % 20 == 0) {
-            world.setBlockState(pos, Blocks.AIR.getDefaultState());
+        if (!world.isRemote && getWorld().getWorldTime() % 20 == 0) {
+           if(timer >= 60) {
+               timer = 0;
+               world.setBlockState(pos, Blocks.AIR.getDefaultState());
+           }
+           timer++;
         }
     }
 }

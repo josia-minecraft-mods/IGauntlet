@@ -2,7 +2,6 @@ package com.jmteam.igauntlet.util.helpers;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
 
 import java.util.List;
@@ -17,7 +16,7 @@ public class EntityHelper {
 
         for (Entity e : entities) {
 
-            if (e instanceof EntityLiving && e instanceof EntityPlayer) {
+            if (!(e instanceof EntityLiving)) {
                 entities.remove(e);
             }
         }

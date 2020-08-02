@@ -8,7 +8,7 @@ import net.minecraft.util.ITickable;
 
 public class TileEntityQuickSand extends TileEntity implements ITickable {
 
-    public long created = System.currentTimeMillis();
+    public int timer = 0;
     public boolean placed = false;
 
     public void setManuallyPlaced() {
@@ -18,10 +18,13 @@ public class TileEntityQuickSand extends TileEntity implements ITickable {
     @Override
     public void update() {
 
-        if (!placed && !world.isRemote) {
-            if (created != 0 && ((System.currentTimeMillis() - created) / 1000L) >= InfinityConfig.Gauntlet.RealityStone.SandTimer && getWorld().getWorldTime() % 20 == 0) {
+        if (!placed && !world.isRemote && getWorld().getWorldTime() % 20 == 0) {
+
+            if (timer >= InfinityConfig.Gauntlet.RealityStone.SandTimer) {
+                timer = 0;
                 world.setBlockState(pos, Blocks.SAND.getDefaultState());
             }
+            timer++;
         }
 
     }
@@ -29,14 +32,14 @@ public class TileEntityQuickSand extends TileEntity implements ITickable {
     @Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
-        this.created = compound.getLong("created");
+        this.timer = compound.getInteger("timer");
         this.placed = compound.getBoolean("placed");
     }
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
-        compound.setLong("created", created);
+        compound.setInteger("timer", timer);
         compound.setBoolean("placed", placed);
 
         return compound;
