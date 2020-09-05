@@ -13,7 +13,7 @@ import net.minecraft.tileentity.ITickableTileEntity;
 public class TileEntityAshPile extends InfinityTileEntityBase implements ITickableTileEntity {
 
     public String entity = "";
-    private int timer;
+    private int timer = 0;
 
     @Override
     public void tick() {

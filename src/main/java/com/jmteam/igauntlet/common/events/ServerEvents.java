@@ -19,6 +19,7 @@ public class ServerEvents {
         if (event.getEntity() instanceof ItemEntity) {
             ItemEntity itemEntity = (ItemEntity) event.getEntity();
 
+            // Spawn Gauntlet
             if (itemEntity.getItem().getItem() == InfinityItems.infinity_gauntlet) {
                 EntityGauntlet gauntlet = new EntityGauntlet(itemEntity.getItem(), event.getWorld());
                 PlayerEntity player = itemEntity.world.getServer().getPlayerList().getPlayerByUUID(itemEntity.getThrowerId());
@@ -36,6 +37,7 @@ public class ServerEvents {
     @SubscribeEvent
     public static void worldTickEvent(TickEvent.WorldTickEvent event) {
         if (event.side == LogicalSide.SERVER) {
+
         }
     }
 }

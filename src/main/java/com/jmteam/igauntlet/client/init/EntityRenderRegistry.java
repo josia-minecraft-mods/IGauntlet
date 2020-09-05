@@ -14,6 +14,7 @@ public class EntityRenderRegistry {
     @SuppressWarnings("unchecked")
     public static void registryEntityRenders() {
         IGauntlet.LOGGER.info("Registering Entity Renders");
+
         registerRender(InfinityEntities.GAUNTLET, RenderEntityGauntlet::new);
     }
 

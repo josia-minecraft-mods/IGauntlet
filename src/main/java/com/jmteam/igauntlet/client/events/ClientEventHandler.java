@@ -26,7 +26,7 @@ public class ClientEventHandler {
 
         if (InfinityKeyBinds.SNAP.isPressed() && player.getHeldItem(Hand.MAIN_HAND).getItem() == InfinityItems.infinity_gauntlet) {
             if ((CapabilityInfinity.get(player)).canSnap()) {
-                NetworkHandler.sendServerPacket(new PacketSnap(player.isCrouching() ? SnapType.REVIVE : SnapType.SNAP));
+                NetworkHandler.sendServerPacket(new PacketSnap());
             }
         }
     }

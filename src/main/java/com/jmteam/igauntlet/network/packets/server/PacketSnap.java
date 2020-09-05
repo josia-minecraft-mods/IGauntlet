@@ -22,18 +22,16 @@ import java.util.function.Supplier;
 
 public class PacketSnap {
 
-    private SnapType type;
+    public PacketSnap() {
 
-    public PacketSnap(SnapType type) {
-        this.type = type;
     }
 
     public static void encode(PacketSnap packet, PacketBuffer buf) {
-        buf.writeString(packet.type.name());
+
     }
 
     public static PacketSnap decode(PacketBuffer buf) {
-        return new PacketSnap(SnapType.valueOf(buf.readString()));
+        return new PacketSnap();
     }
 
     public static class Handler {
@@ -46,10 +44,11 @@ public class PacketSnap {
                 if (player != null) {
                     World world = player.getEntityWorld();
                     IInfinityCap capability = CapabilityInfinity.get(player);
+                    SnapType type = player.isCrouching() ? SnapType.REVIVE : SnapType.SNAP;
 
                     // TODO Config
                     if (capability.canSnap()) {
-                        switch (packet.type) {
+                        switch (type) {
 
                             case SNAP:
                                 // TODO add config value

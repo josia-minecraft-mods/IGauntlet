@@ -8,7 +8,7 @@ import net.minecraft.tileentity.ITickableTileEntity;
 public class TileEntityQuickSand extends InfinityTileEntityBase implements ITickableTileEntity {
 
     public boolean placed = false;
-    private int timer;
+    private int timer = 0;
 
     @Override
     public void tick() {
