@@ -48,11 +48,7 @@ public class GauntletHelper {
             return false;
         }
 
-        if (entity instanceof ArmorStandEntity) {
-            return false;
-        }
-
-        return true;
+        return !(entity instanceof ArmorStandEntity);
     }
 
     public static void filterSnapList(PlayerEntity playerEntity, List<LivingEntity> livingEntities) {

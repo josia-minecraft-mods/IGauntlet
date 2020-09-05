@@ -14,7 +14,7 @@ import java.util.function.Supplier;
 
 public class PacketSetStone {
 
-    private StoneType type;
+    private final StoneType type;
 
     public PacketSetStone(StoneType type) {
         this.type = type;

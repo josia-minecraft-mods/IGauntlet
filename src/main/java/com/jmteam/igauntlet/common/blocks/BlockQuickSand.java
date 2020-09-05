@@ -34,7 +34,7 @@ public class BlockQuickSand extends FallingBlock implements IHaveItem {
 
     @Override
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
-        entityIn.setMotionMultiplier(state, new Vec3d(0.25D, (double) 0.05F, 0.25D));
+        entityIn.setMotionMultiplier(state, new Vec3d(0.25D, 0.05F, 0.25D));
     }
 
     @Override
@@ -44,7 +44,7 @@ public class BlockQuickSand extends FallingBlock implements IHaveItem {
 
     @Override
     public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
-        return Arrays.asList(new ItemStack[]{new ItemStack(Blocks.SAND, 1)});
+        return Arrays.asList(new ItemStack(Blocks.SAND, 1));
     }
 
     @Override
