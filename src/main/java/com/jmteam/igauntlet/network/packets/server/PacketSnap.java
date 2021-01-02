@@ -58,7 +58,7 @@ public class PacketSnap {
 
 
                                 if (entities.size() > 1) {
-                                    player.getServerWorld().playSound(null, player.getPosition(), InfinitySounds.SNAP, SoundCategory.PLAYERS, 1,1);
+                                    player.getServerWorld().playSound(null, player.getPosition(), InfinitySounds.SNAP.get(), SoundCategory.PLAYERS, 1,1);
 
                                     for (int x = 0; x < entities.size(); x++) {
                                         LivingEntity entity = entities.get(x);
@@ -80,7 +80,7 @@ public class PacketSnap {
 
                                     // Infinity War (I don't feel so good) easter egg sound
                                     if(world.rand.nextInt(15) == 5) {
-                                        player.getServerWorld().playSound(null, player.getPosition(), InfinitySounds.IDONTFEELGOOD, SoundCategory.PLAYERS, 1,1);
+                                        player.getServerWorld().playSound(null, player.getPosition(), InfinitySounds.IDONTFEELGOOD.get(), SoundCategory.PLAYERS, 1,1);
                                     }
 
                                     capability.setSnapTimeout(System.currentTimeMillis());

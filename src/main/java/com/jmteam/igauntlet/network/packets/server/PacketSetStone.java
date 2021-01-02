@@ -37,7 +37,7 @@ public class PacketSetStone {
 
                 if (player != null) {
                     ItemStack stack = player.getHeldItem(Hand.OFF_HAND);
-                    if (stack.getItem() == InfinityItems.infinity_gauntlet) {
+                    if (stack.getItem() == InfinityItems.INFINITY_GAUNTLET.get()) {
 
                         if (stack.getTag() == null) stack.setTag(new CompoundNBT());
 

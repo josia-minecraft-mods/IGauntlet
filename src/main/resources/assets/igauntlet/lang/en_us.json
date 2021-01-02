@@ -20,8 +20,6 @@
   "item.igauntlet.record.awesome_mix.desc": "Awesome Mix",
   "item.igauntlet.record.backinblack.desc": "Back In Black Vinyl",
 
-  "itemGroup.infinityTab": "IGauntlet Tab",
-
   "block.igauntlet.ash_pile": "Ash Pile",
   "block.igauntlet.uru_ore": "Uru Ore",
   "block.igauntlet.tesseract": "Tesseract",
@@ -35,6 +33,10 @@
   "block.igauntlet.power_orb": "Power Orb",
   "block.igauntlet.aether": "Aether",
 
+  "entity.ray": "Laser",
+
+  "itemGroup.infinity_tab": "IGauntlet Tab",
+
   "msg.gauntlet.nostone": "No stone selected!",
   "msg.stone.notsetup": "This stone has no function yet!",
   "msg.snap.notenough": "Not enough entities near!",
@@ -42,14 +44,11 @@
   "msg.snapped.amount": "You snapped &a entity!",
   "msg.snapped.amount.multiple": "You snapped &a entities!",
   "msg.inventoryfull": "Your inventory is full!",
-
   "msg.stones.space.neardrift": "Don't hold the stone for too long!",
   "msg.stones.space.drifted": "You have drifted!",
 
 
   "damagesource.igauntlet.laser": "%1$s got hit by a laser!",
   "damagesource.igauntlet.snap": "%1$s turned to ashes!",
-  "damagesource.igauntlet.powerstone": "%1$s felt the power!",
-
-  "entity.ray": "Laser"
+  "damagesource.igauntlet.powerstone": "%1$s felt the power!"
 }

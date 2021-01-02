@@ -1,8 +1,7 @@
 package com.jmteam.igauntlet.common.blocks;
 
 import com.jmteam.igauntlet.common.tileentity.TileEntityQuickSand;
-import com.jmteam.igauntlet.util.registry.IHaveItem;
-import com.jmteam.igauntlet.util.registry.RegistryHelper;
+import com.jmteam.igauntlet.util.registry.InfinityRegistry;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -24,7 +23,7 @@ import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.List;
 
-public class BlockQuickSand extends FallingBlock implements IHaveItem {
+public class BlockQuickSand extends FallingBlock {
 
     public BlockItem item;
 
@@ -57,21 +56,6 @@ public class BlockQuickSand extends FallingBlock implements IHaveItem {
                  ((TileEntityQuickSand) te).setPlaced();
             }
         }
-    }
-
-    @Override
-    public int getMaxSize() {
-        return 64;
-    }
-
-    @Override
-    public void setItem(BlockItem item) {
-        this.item = item;
-    }
-
-    public Block setGroup(ItemGroup group) {
-        RegistryHelper.setCreativeTab(item, group);
-        return this;
     }
 
     @Override

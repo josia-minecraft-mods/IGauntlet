@@ -14,7 +14,7 @@ public class OreGeneration {
 
     public static void init() {
         for(Biome biome : ForgeRegistries.BIOMES) {
-            addOreGen(biome, OreFeatureConfig.FillerBlockType.NATURAL_STONE, InfinityBlocks.uru_ore.getDefaultState(), 7, 20,0,40);
+            addOreGen(biome, OreFeatureConfig.FillerBlockType.NATURAL_STONE, InfinityBlocks.URU_ORE.get().getDefaultState(), 7, 20,0,40);
         }
     }
 

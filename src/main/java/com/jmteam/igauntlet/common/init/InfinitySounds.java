@@ -1,27 +1,26 @@
 package com.jmteam.igauntlet.common.init;
 
 import com.jmteam.igauntlet.IGauntlet;
+import com.jmteam.igauntlet.util.registry.InfinityRegistry;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
+import net.minecraftforge.fml.RegistryObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class InfinitySounds {
 
-    public static List<SoundEvent> SOUNDS = new ArrayList<>();
+    public static void init() {}
 
-    public static SoundEvent AWESOMEMIX = addSound("awesome_mix");
-    public static SoundEvent SNAP = addSound("snap");
-    public static SoundEvent GAUNTLET_HUM  = addSound("gauntlethum");
-    public static SoundEvent IDONTFEELGOOD = addSound("feelgood");
-    public static SoundEvent BACKINBLACK = addSound("backinblack");
+    public static RegistryObject<SoundEvent> AWESOMEMIX = addSound("awesome_mix");
+    public static RegistryObject<SoundEvent> SNAP = addSound("snap");
+    public static RegistryObject<SoundEvent> GAUNTLET_HUM  = addSound("gauntlet_hum");
+    public static RegistryObject<SoundEvent> IDONTFEELGOOD = addSound("feel_good");
 
-    /* Register Sound with name that is defined in sounds.json */
-    private static SoundEvent addSound(String name) {
+    public static RegistryObject<SoundEvent> addSound(String name) {
         ResourceLocation location = new ResourceLocation(IGauntlet.MODID, name);
-        SoundEvent soundEvent = new SoundEvent(location).setRegistryName(location);
-        SOUNDS.add(soundEvent);
-        return soundEvent;
+        SoundEvent soundEvent = new SoundEvent(location);
+        return InfinityRegistry.SOUNDS.register(name, () -> soundEvent);
     }
 }

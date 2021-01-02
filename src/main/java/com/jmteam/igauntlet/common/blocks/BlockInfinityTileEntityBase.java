@@ -23,9 +23,9 @@ public class BlockInfinityTileEntityBase extends InfinityBlock {
 
     public Supplier<TileEntity> tileEntitySupplier;
 
-    public BlockInfinityTileEntityBase(Supplier<TileEntity> tileEntitySupplier) {
+    public BlockInfinityTileEntityBase(Supplier<TileEntity> TESupplier) {
         super(Block.Properties.create(Material.BARRIER));
-        this.tileEntitySupplier = tileEntitySupplier;
+        this.tileEntitySupplier = TESupplier;
     }
 
     @Override

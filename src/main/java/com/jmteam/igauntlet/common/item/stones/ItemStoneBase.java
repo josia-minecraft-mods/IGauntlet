@@ -1,12 +1,15 @@
 package com.jmteam.igauntlet.common.item.stones;
 
+import com.jmteam.igauntlet.common.init.InfinityGroups;
 import com.jmteam.igauntlet.common.item.ItemBase;
+import com.jmteam.igauntlet.util.registry.InfinityRegistry;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public abstract class ItemStoneBase extends ItemBase {
 
     public ItemStoneBase() {
-        super(1);
+        super(new Item.Properties().maxStackSize(1).group(InfinityGroups.INFINITY));
     }
 
     @Override

@@ -23,7 +23,7 @@ public class TileEntityTesseract extends InfinityTileEntityBase {
         if (has_stone) {
 
             has_stone = false;
-            ItemEntity itemEntity = new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 0.2f, pos.getZ() + 0.5, new ItemStack(InfinityItems.space_stone, 1));
+            ItemEntity itemEntity = new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 0.2f, pos.getZ() + 0.5, new ItemStack(InfinityItems.SPACE_STONE.get(), 1));
             world.addEntity(itemEntity);
         }
     }

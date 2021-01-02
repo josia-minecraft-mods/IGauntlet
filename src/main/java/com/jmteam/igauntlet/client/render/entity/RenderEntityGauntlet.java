@@ -31,7 +31,7 @@ public class RenderEntityGauntlet extends EntityRenderer<EntityGauntlet> {
         matrixStackIn.rotate(new Quaternion(Vector3f.YP, 180 - entityYaw, true));
         RenderHelper.enableStandardItemLighting();
         matrixStackIn.translate(0, 0.5, 0);
-        Minecraft.getInstance().getItemRenderer().renderItem(new ItemStack(InfinityItems.infinity_gauntlet), ItemCameraTransforms.TransformType.NONE, packedLightIn, packedLightIn, matrixStackIn, bufferIn);
+        Minecraft.getInstance().getItemRenderer().renderItem(new ItemStack(InfinityItems.INFINITY_GAUNTLET.get()), ItemCameraTransforms.TransformType.NONE, packedLightIn, packedLightIn, matrixStackIn, bufferIn);
         RenderHelper.disableStandardItemLighting();
         matrixStackIn.pop();
     }

@@ -20,7 +20,7 @@ public class ServerEvents {
             ItemEntity itemEntity = (ItemEntity) event.getEntity();
 
             // Spawn Gauntlet
-            if (itemEntity.getItem().getItem() == InfinityItems.infinity_gauntlet) {
+            if (itemEntity.getItem().getItem() == InfinityItems.INFINITY_GAUNTLET.get()) {
                 EntityGauntlet gauntlet = new EntityGauntlet(itemEntity.getItem(), event.getWorld());
                 PlayerEntity player = itemEntity.world.getServer().getPlayerList().getPlayerByUUID(itemEntity.getThrowerId());
 

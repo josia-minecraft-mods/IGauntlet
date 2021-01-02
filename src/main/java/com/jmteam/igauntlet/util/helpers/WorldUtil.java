@@ -7,6 +7,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class WorldUtil {
 
     public static void setBlockState(World world, BlockState state, BlockPos pos) {
@@ -36,5 +39,21 @@ public class WorldUtil {
         }
 
         return finalPos;
+    }
+
+    public static List<BlockPos> getAllInBounds(BlockPos pos1, BlockPos pos2) {
+        List<BlockPos> posList = new ArrayList<>();
+        BlockPos blockPos1 = new BlockPos(Math.min(pos1.getX(), pos2.getX()), Math.min(pos1.getY(), pos2.getY()), Math.min(pos1.getZ(), pos2.getZ()));
+        BlockPos blockPos2 = new BlockPos(Math.max(pos1.getX(), pos2.getX()), Math.max(pos1.getY(), pos2.getY()), Math.max(pos1.getZ(), pos2.getZ()));
+
+        for(int x = blockPos1.getX(); x < blockPos2.getX(); x++) {
+            for(int y = blockPos1.getY(); y < blockPos2.getY(); y++) {
+                for(int z = blockPos1.getZ(); z < blockPos2.getZ(); z++) {
+                    posList.add(new BlockPos(x, y, z));
+                }
+            }
+        }
+
+        return posList;
     }
 }

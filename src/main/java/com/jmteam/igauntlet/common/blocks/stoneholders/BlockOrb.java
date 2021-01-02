@@ -19,11 +19,6 @@ public class BlockOrb extends InfinityBlock {
     }
 
     @Override
-    public int getMaxSize() {
-        return 1;
-    }
-
-    @Override
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         return POWERORBAAB;
     }

@@ -57,7 +57,7 @@ public class EntityGauntlet extends Entity {
             this.move(MoverType.SELF, this.getMotion());
         } else {
             if (!world.isRemote) {
-                if (stack == null || stack.getItem() != InfinityItems.infinity_gauntlet) onKillCommand();
+                if (stack == null || stack.getItem() != InfinityItems.INFINITY_GAUNTLET.get()) onKillCommand();
             }
         }
     }

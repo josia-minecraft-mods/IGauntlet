@@ -15,7 +15,6 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -23,27 +22,26 @@ public class GemHelper {
 
     public static void reviveAshPiles(PlayerEntity player, int range) {
         World world = player.world;
-        Object[] blockPosObjects = BlockPos.getAllInBox(player.getPosition().add(-range, -range, -range), player.getPosition().add(range, range, range)).toArray();
+        List<BlockPos> blockPosObjects = WorldUtil.getAllInBounds(player.getPosition().add(-range, -range, -range), player.getPosition().add(range, range, range));
+
         boolean revivedAny = false;
 
-        for (Object object : blockPosObjects) {
-            if (object instanceof BlockPos) {
-                BlockPos pos = (BlockPos) object;
-                BlockState state = world.getBlockState(pos);
+        for (int i = 0; i < blockPosObjects.size(); i++) {
+            BlockPos pos = blockPosObjects.get(i);
+            BlockState state = world.getBlockState(pos);
 
-                if (state.getBlock() == InfinityBlocks.ash_pile) {
-                    TileEntity te = world.getTileEntity(pos);
+            if (state.getBlock() == InfinityBlocks.ASH_PILE.get()) {
+                TileEntity te = world.getTileEntity(pos);
 
-                    if (te != null && te instanceof TileEntityAshPile) {
-                        TileEntityAshPile ashPile = (TileEntityAshPile) te;
-                        LivingEntity entity = ashPile.getEntity();
-                        revivedAny = true;
+                if (te != null && te instanceof TileEntityAshPile) {
+                    TileEntityAshPile ashPile = (TileEntityAshPile) te;
+                    LivingEntity entity = ashPile.getEntity();
+                    revivedAny = true;
 
-                        if (entity != null) {
-                            entity.setHealth(entity.getMaxHealth());
-                            world.addEntity(entity);
-                            WorldUtil.setBlockState(world, Blocks.AIR.getDefaultState(), pos);
-                        }
+                    if (entity != null) {
+                        entity.setHealth(entity.getMaxHealth());
+                        world.addEntity(entity);
+                        WorldUtil.setBlockState(world, Blocks.AIR.getDefaultState(), pos);
                     }
                 }
             }
@@ -64,7 +62,7 @@ public class GemHelper {
                 placePos = pos.up();
             }
 
-            WorldUtil.setBlockState(world, InfinityBlocks.ash_pile.getDefaultState(), placePos);
+            WorldUtil.setBlockState(world, InfinityBlocks.ASH_PILE.get().getDefaultState(), placePos);
             TileEntity te = world.getTileEntity(placePos);
 
             if (te != null && te instanceof TileEntityAshPile) {
@@ -84,13 +82,13 @@ public class GemHelper {
         List<BlockPos> posList = new ArrayList<>();
 
 
-       for(Object o : blockPosList) {
-           if(o instanceof BlockPos) {
-               BlockPos blockPos = (BlockPos) o;
-               if (world.getBlockState(blockPos).getBlock() == b) {
-                   posList.add(blockPos.toImmutable());
-               }
-           }
+        for (Object o : blockPosList) {
+            if (o instanceof BlockPos) {
+                BlockPos blockPos = (BlockPos) o;
+                if (world.getBlockState(blockPos).getBlock() == b) {
+                    posList.add(blockPos.toImmutable());
+                }
+            }
         }
 
         return posList;

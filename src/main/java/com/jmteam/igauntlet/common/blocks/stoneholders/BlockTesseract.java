@@ -46,7 +46,7 @@ public class BlockTesseract extends BlockInfinityTileEntityBase {
                 TileEntityTesseract tileEntityTesseract = (TileEntityTesseract) te;
                 ItemStack stack = player.getHeldItem(handIn);
 
-                if (stack.getItem() == InfinityItems.space_stone) {
+                if (stack.getItem() == InfinityItems.SPACE_STONE.get()) {
 
                     if (tileEntityTesseract.addStone()) {
                         stack.setCount(0);
@@ -60,7 +60,6 @@ public class BlockTesseract extends BlockInfinityTileEntityBase {
 
         return ActionResultType.SUCCESS;
     }
-
 
         @Override
         public boolean removedByPlayer(BlockState state, World world, BlockPos pos, PlayerEntity player, boolean willHarvest, IFluidState fluid) {
@@ -110,10 +109,5 @@ public class BlockTesseract extends BlockInfinityTileEntityBase {
     @Override
     public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         return TESSERACT_SHAPE;
-    }
-
-    @Override
-    public int getMaxSize() {
-        return 1;
     }
 }

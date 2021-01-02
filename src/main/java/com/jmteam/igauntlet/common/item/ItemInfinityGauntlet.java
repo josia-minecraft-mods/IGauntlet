@@ -1,6 +1,7 @@
 package com.jmteam.igauntlet.common.item;
 
 import com.jmteam.igauntlet.client.gui.GuiGauntlet;
+import com.jmteam.igauntlet.common.init.InfinityGroups;
 import com.jmteam.igauntlet.common.init.InfinityNBT;
 import com.jmteam.igauntlet.util.gauntlet.GauntletHelper;
 import com.jmteam.igauntlet.util.gauntlet.GemHelper.StoneType;
@@ -8,6 +9,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
 import net.minecraft.nbt.CompoundNBT;
@@ -24,7 +26,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class ItemInfinityGauntlet extends ItemBase {
 
     public ItemInfinityGauntlet() {
-        super(1);
+        super(new Item.Properties().group(InfinityGroups.INFINITY));
     }
 
     @Override

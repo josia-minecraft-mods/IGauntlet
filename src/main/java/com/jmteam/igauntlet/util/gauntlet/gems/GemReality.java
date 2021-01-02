@@ -30,7 +30,7 @@ public class GemReality extends GemBase {
 
             if (b instanceof SandBlock) {
                 for (BlockPos p : GemHelper.getAllBlockRangedFromPos(world, pos)) {
-                    WorldUtil.setBlockState(world, InfinityBlocks.quick_sand.getDefaultState(), p);
+                    WorldUtil.setBlockState(world, InfinityBlocks.QUICK_SAND.get().getDefaultState(), p);
                 }
             }
         }

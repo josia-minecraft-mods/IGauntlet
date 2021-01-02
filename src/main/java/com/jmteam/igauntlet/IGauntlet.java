@@ -10,6 +10,7 @@ import com.jmteam.igauntlet.network.NetworkHandler;
 import com.jmteam.igauntlet.proxy.ClientProxy;
 import com.jmteam.igauntlet.proxy.ServerProxy;
 import com.jmteam.igauntlet.util.generation.OreGeneration;
+import com.jmteam.igauntlet.util.registry.InfinityRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
@@ -45,6 +46,7 @@ public class IGauntlet {
         INSTANCE = this;
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        InfinityRegistry.register();
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::doClientStuff);
         bothSideSetup(modEventBus);
@@ -82,27 +84,9 @@ public class IGauntlet {
         }
 
         @SubscribeEvent
-        public static void onBlocksRegistry(RegistryEvent.Register<Block> blockRegistryEvent) {
-            LOGGER.info("Registering Blocks");
-            blockRegistryEvent.getRegistry().registerAll(InfinityBlocks.BLOCKS.toArray(new Block[0]));
-        }
-
-        @SubscribeEvent
-        public static void registerItems(RegistryEvent.Register<Item> event) {
-            LOGGER.info("Registering Items");
-            event.getRegistry().registerAll(InfinityItems.ITEMS.toArray(new Item[InfinityItems.ITEMS.size()]));
-        }
-
-        @SubscribeEvent
         public static void onEntityRegistryEvent(RegistryEvent.Register<EntityType<?>> event) {
             LOGGER.info("Registering Entities");
             event.getRegistry().registerAll(InfinityEntities.ENTITY_TYPES.toArray(new EntityType[InfinityEntities.ENTITY_TYPES.size()]));
-        }
-
-        @SubscribeEvent
-        public static void onSoundRegistryEvent(RegistryEvent.Register<SoundEvent> event) {
-            LOGGER.info("Registering Sounds");
-            event.getRegistry().registerAll(InfinitySounds.SOUNDS.toArray(new SoundEvent[InfinitySounds.SOUNDS.size()]));
         }
     }
 }

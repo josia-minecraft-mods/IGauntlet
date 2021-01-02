@@ -1,51 +1,16 @@
 package com.jmteam.igauntlet.common.blocks;
 
-import com.jmteam.igauntlet.common.item.InfinityItemBlock;
-import com.jmteam.igauntlet.util.registry.IHaveItem;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.ItemGroup;
 import net.minecraftforge.common.ToolType;
 
-public class InfinityBlock extends Block implements IHaveItem {
-
-    private InfinityItemBlock blockItem;
+public class InfinityBlock extends Block {
 
     public InfinityBlock(Material material) {
-        super(Properties.create(material).harvestLevel(0).hardnessAndResistance(15.0f).harvestTool(ToolType.PICKAXE));
+        super(Block.Properties.create(material).harvestLevel(0).hardnessAndResistance(15.0f).harvestTool(ToolType.PICKAXE));
     }
 
     public InfinityBlock(Properties properties) {
-        super(properties);
-    }
-
-    public Block setGroup(ItemGroup... groups) {
-        if (blockItem != null) {
-            blockItem.setGroup(groups);
-        }
-        return this;
-    }
-
-    public void setBlockItem(InfinityItemBlock blockItem) {
-        this.blockItem = blockItem;
-    }
-
-    @Override
-    public int getMaxSize() {
-        return 64;
-    }
-
-    @Override
-    public void setItem(BlockItem item) {
-        this.blockItem = (InfinityItemBlock) item;
-    }
-
-    public Block setGroup(ItemGroup group) {
-        if (blockItem != null) {
-            blockItem.setGroup(group);
-        }
-
-        return this;
+        super(properties.harvestLevel(0).hardnessAndResistance(15.0f).harvestTool(ToolType.PICKAXE));
     }
 }
