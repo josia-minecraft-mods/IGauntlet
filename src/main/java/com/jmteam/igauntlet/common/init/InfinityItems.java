@@ -15,7 +15,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class InfinityItems {
 
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, IGauntlet.MODID);
+    public static void init() {}
 
     // Gauntlet + Stones
     public static RegistryObject<Item> INFINITY_GAUNTLET = addItem(new ItemInfinityGauntlet(), "infinity_gauntlet");
@@ -41,6 +41,6 @@ public class InfinityItems {
     //  public static RegistryObject<Item>  necklace = addItem(new ItemEyeOfAgamotto(), "eye_agamotto").setGroup(InfinityTabs.infinityTab);
 
     public static <T extends Item> RegistryObject<T> addItem(T item, String name) {
-        return ITEMS.register(name, () -> item);
+        return InfinityRegistry.ITEMS.register(name, () -> item);
     }
 }

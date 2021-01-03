@@ -19,23 +19,24 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class InfinityRegistry {
 
-
-
-
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, IGauntlet.MODID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, IGauntlet.MODID);
+    public static final DeferredRegister<TileEntityType<?>> TILE_ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, IGauntlet.MODID);
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITIES, IGauntlet.MODID);
     public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, IGauntlet.MODID);
 
     public static void register() {
-       // InfinityBlocks.init(); // Either this or we initialize a with // new InfinityBlocks(); either way would work
-        InfinityEntities.init();
-        InfinitySounds.init();
-
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        InfinityBlocks.BLOCKS.register(bus);
-        InfinityItems.ITEMS.register(bus);
+        InfinityBlocks.init(); // Either this or we initialize a with // new InfinityBlocks(); either way would work
+        InfinityEntities.init();
+        InfinitySounds.init();
+        InfinityTileEntities.init();
+
+        BLOCKS.register(bus);
+        ITEMS.register(bus);
         ENTITY_TYPES.register(bus);
-        InfinityTileEntities.TILE_ENTITY_TYPES.register(bus);
+        TILE_ENTITY_TYPES.register(bus);
         SOUNDS.register(bus);
     }
 }

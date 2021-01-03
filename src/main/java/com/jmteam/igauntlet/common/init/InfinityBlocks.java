@@ -19,8 +19,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class InfinityBlocks {
 
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, IGauntlet.MODID);
-
+    public static void init() {}
 
     public static RegistryObject<Block> ASH_PILE = registerBlock(new BlockAshPile(Material.SAND), "ash_pile", InfinityGroups.INFINITY, true);
     public static RegistryObject<Block> URU_ORE = registerBlock(new BlockOre(Material.ROCK, InfinityItems.URU_INGOT, 1, 1), "uru_ore", InfinityGroups.INFINITY, true);
@@ -42,7 +41,7 @@ public class InfinityBlocks {
             InfinityItems.addItem(itemBlock, name);
         }
 
-        return BLOCKS.register(name, () -> block);
+        return InfinityRegistry.BLOCKS.register(name, () -> block);
     }
 
     public static <T extends Block> RegistryObject<T> registerBlock(T block, String name, ItemGroup group, boolean item) {
