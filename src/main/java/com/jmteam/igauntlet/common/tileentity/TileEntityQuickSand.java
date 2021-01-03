@@ -2,6 +2,7 @@ package com.jmteam.igauntlet.common.tileentity;
 
 import com.jmteam.igauntlet.common.init.InfinityNBT;
 import com.jmteam.igauntlet.common.init.InfinityTileEntities;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
@@ -37,8 +38,8 @@ public class TileEntityQuickSand extends InfinityTileEntityBase implements ITick
     }
 
     @Override
-    public void read(CompoundNBT compound) {
-        super.read(compound);
+    public void read(BlockState state, CompoundNBT compound) {
+        super.read(state, compound);
         placed = compound.getBoolean("placed");
         timer = compound.getInt(InfinityNBT.TIMER);
     }

@@ -5,6 +5,7 @@ import com.jmteam.igauntlet.client.gui.buttons.ButtonStones;
 import com.jmteam.igauntlet.config.InfinityConfig;
 import com.jmteam.igauntlet.util.Graphics;
 import com.jmteam.igauntlet.util.gauntlet.GemHelper.StoneType;
+import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.util.ResourceLocation;
@@ -45,13 +46,12 @@ public class GuiGauntlet extends Screen {
     }
 
     @Override
-    public void render(int p_render_1_, int p_render_2_, float p_render_3_) {
-
-        this.renderBackground();
+    public void render(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks) {
+        renderBackground(matrixStack);
         Minecraft.getInstance().getTextureManager().bindTexture(TEXTURE);
         int x = (width - GUI_WIDTH) / 2;
         int y = (height - GUI_HEIGHT) / 2;
         Graphics.drawTexturedModalRect(x, y, 0, 0, GUI_WIDTH, GUI_HEIGHT);
-        super.render(p_render_1_, p_render_2_, p_render_3_);
+        super.render(matrixStack, mouseX, mouseY, partialTicks);
     }
 }

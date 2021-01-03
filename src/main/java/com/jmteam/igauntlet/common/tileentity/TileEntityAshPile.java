@@ -5,6 +5,7 @@ import com.jmteam.igauntlet.common.init.InfinityTileEntities;
 import com.jmteam.igauntlet.util.helpers.EntityHelper;
 import com.jmteam.igauntlet.util.helpers.WorldHelper;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.nbt.CompoundNBT;
@@ -58,8 +59,8 @@ public class TileEntityAshPile extends InfinityTileEntityBase implements ITickab
     }
 
     @Override
-    public void read(CompoundNBT compound) {
-        super.read(compound);
+    public void read(BlockState state, CompoundNBT compound) {
+        super.read(state, compound);
         entity = compound.getString("entity_data");
         timer = compound.getInt(InfinityNBT.TIMER);
     }

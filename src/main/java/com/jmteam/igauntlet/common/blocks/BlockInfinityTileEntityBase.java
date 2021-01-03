@@ -9,17 +9,12 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.IBlockReader;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.RegistryObject;
 
 import javax.annotation.Nullable;
-import java.util.function.Supplier;
 
 public class BlockInfinityTileEntityBase extends InfinityBlock {
 
@@ -40,13 +35,13 @@ public class BlockInfinityTileEntityBase extends InfinityBlock {
 
     @Override
     public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
-        if(placer != null) {
+        if (placer != null) {
             worldIn.setBlockState(pos, state.with(BlockStateProperties.FACING, getFacingFromEntity(pos, placer)));
         }
     }
 
     public static Direction getFacingFromEntity(BlockPos clickedBlock, LivingEntity entity) {
-        Vec3d vec = entity.getPositionVec();
+        Vector3d vec = entity.getPositionVec();
         return Direction.getFacingFromVector((float) (vec.x - clickedBlock.getX()), (float) (vec.y - clickedBlock.getY()), (float) (vec.z - clickedBlock.getZ()));
     }
 

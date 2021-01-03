@@ -52,7 +52,7 @@ public class IGauntlet {
         bothSideSetup(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
-        MinecraftForge.EVENT_BUS.register(ServerEvents.class);
+        MinecraftForge.EVENT_BUS.register(new ServerEvents());
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, InfinityConfig.CLIENT_SPEC);
     }
 
@@ -69,10 +69,5 @@ public class IGauntlet {
 
     private void doClientStuff(final FMLClientSetupEvent event) {
         PROXY.doClientStuff(event);
-    }
-
-    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-    public static class RegistryEvents {
-
     }
 }

@@ -11,11 +11,11 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+
 public class ServerEvents {
 
     @SubscribeEvent
-    public static void onEntityJoinWorld(EntityJoinWorldEvent event) {
+    public void onEntityJoinWorld(EntityJoinWorldEvent event) {
         if (event.getEntity() instanceof ItemEntity) {
             ItemEntity itemEntity = (ItemEntity) event.getEntity();
 
@@ -31,13 +31,6 @@ public class ServerEvents {
                     event.setCanceled(true);
                 }
             }
-        }
-    }
-
-    @SubscribeEvent
-    public static void worldTickEvent(TickEvent.WorldTickEvent event) {
-        if (event.side == LogicalSide.SERVER) {
-
         }
     }
 }

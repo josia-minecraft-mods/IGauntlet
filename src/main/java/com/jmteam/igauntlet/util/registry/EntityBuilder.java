@@ -1,12 +1,11 @@
 package com.jmteam.igauntlet.util.registry;
 
 import com.jmteam.igauntlet.IGauntlet;
-import com.jmteam.igauntlet.common.init.InfinityEntities;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.Vec2f;
+import net.minecraft.util.math.vector.Vector2f;
 import net.minecraftforge.fml.RegistryObject;
 
 /**
@@ -21,7 +20,7 @@ public class EntityBuilder {
     private EntityType.Builder<? extends Entity> builder;
     private EntityClassification classification = EntityClassification.AMBIENT;
     private EntityType.IFactory<?> factoryIn;
-    private Vec2f size;
+    private Vector2f size;
 
     public static EntityBuilder create() {
         return new EntityBuilder();
@@ -56,7 +55,7 @@ public class EntityBuilder {
     }
 
     public EntityBuilder size(float width, float height) {
-        this.size = new Vec2f(width, height);
+        this.size = new Vector2f(width, height);
         builder.size(width, height);
         return this;
     }

@@ -11,6 +11,6 @@ public class InfinityBlock extends Block {
     }
 
     public InfinityBlock(Properties properties) {
-        super(properties.harvestLevel(0).hardnessAndResistance(15.0f).harvestTool(ToolType.PICKAXE));
+        super(properties.harvestLevel(0));
     }
 }

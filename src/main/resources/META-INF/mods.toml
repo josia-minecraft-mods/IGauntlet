@@ -1,5 +1,6 @@
 modLoader="javafml"
-loaderVersion="[31,)"
+loaderVersion="[35,)"
+license="All rights reserved"
 
 [[mods]]
 modId="igauntlet"
@@ -16,13 +17,13 @@ Control Reality, Space, Power, Time and Mind!
 [[dependencies.igauntlet]]
     modId="forge"
     mandatory=true
-    versionRange="[31,)"
+    versionRange="[35,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.igauntlet]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.15.2]"
+    versionRange="[1.16.4,1.17)"
     ordering="NONE"
     side="BOTH"

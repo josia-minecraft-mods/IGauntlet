@@ -25,11 +25,6 @@ public class BlockManipulator extends InfinityBlock {
         super(Properties.create(material).harvestLevel(0).hardnessAndResistance(15.0f).harvestTool(ToolType.PICKAXE).notSolid());
     }
 
-    @Override
-    public boolean isNormalCube(BlockState state, IBlockReader worldIn, BlockPos pos) {
-        return false;
-    }
-
     public BlockState getStateForPlacement(BlockItemUseContext context) {
         return this.getDefaultState().with(FACING, context.getPlacementHorizontalFacing().rotateY());
     }

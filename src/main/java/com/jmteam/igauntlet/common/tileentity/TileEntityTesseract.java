@@ -3,6 +3,7 @@ package com.jmteam.igauntlet.common.tileentity;
 import com.jmteam.igauntlet.common.init.InfinityItems;
 import com.jmteam.igauntlet.common.init.InfinityNBT;
 import com.jmteam.igauntlet.common.init.InfinityTileEntities;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
@@ -43,16 +44,14 @@ public class TileEntityTesseract extends InfinityTileEntityBase {
     }
 
     @Override
-    public void read(CompoundNBT compound) {
-        super.read(compound);
+    public void read(BlockState state, CompoundNBT compound) {
+        super.read(state, compound);
         has_stone = compound.getBoolean(InfinityNBT.HAS_STONE);
-
     }
 
     @Override
     public CompoundNBT write(CompoundNBT compound) {
         super.write(compound);
-
         compound.putBoolean(InfinityNBT.HAS_STONE, has_stone);
 
         return compound;
