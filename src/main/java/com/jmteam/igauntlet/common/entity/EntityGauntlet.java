@@ -25,7 +25,7 @@ public class EntityGauntlet extends Entity {
     }
 
     public EntityGauntlet(ItemStack i, World worldIn) {
-        super(InfinityEntities.GAUNTLET, worldIn);
+        super(InfinityEntities.GAUNTLET.get(), worldIn);
         stack = i;
     }
 

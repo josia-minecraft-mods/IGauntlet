@@ -1,5 +1,6 @@
 package com.jmteam.igauntlet.common.blocks;
 
+import com.jmteam.igauntlet.common.init.InfinityTileEntities;
 import com.jmteam.igauntlet.common.tileentity.TileEntityAshPile;
 import com.jmteam.igauntlet.util.registry.InfinityRegistry;
 import net.minecraft.block.Block;

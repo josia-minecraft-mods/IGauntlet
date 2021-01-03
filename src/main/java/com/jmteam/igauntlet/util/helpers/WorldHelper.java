@@ -10,7 +10,7 @@ import net.minecraft.world.chunk.Chunk;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WorldUtil {
+public class WorldHelper {
 
     public static void setBlockState(World world, BlockState state, BlockPos pos) {
         BlockState old = world.getBlockState(pos);

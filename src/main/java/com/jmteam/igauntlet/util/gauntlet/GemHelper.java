@@ -3,7 +3,7 @@ package com.jmteam.igauntlet.util.gauntlet;
 import com.jmteam.igauntlet.common.init.InfinityBlocks;
 import com.jmteam.igauntlet.common.tileentity.TileEntityAshPile;
 import com.jmteam.igauntlet.util.gauntlet.gems.*;
-import com.jmteam.igauntlet.util.helpers.WorldUtil;
+import com.jmteam.igauntlet.util.helpers.WorldHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -22,7 +22,7 @@ public class GemHelper {
 
     public static void reviveAshPiles(PlayerEntity player, int range) {
         World world = player.world;
-        List<BlockPos> blockPosObjects = WorldUtil.getAllInBounds(player.getPosition().add(-range, -range, -range), player.getPosition().add(range, range, range));
+        List<BlockPos> blockPosObjects = WorldHelper.getAllInBounds(player.getPosition().add(-range, -range, -range), player.getPosition().add(range, range, range));
 
         boolean revivedAny = false;
 
@@ -41,7 +41,7 @@ public class GemHelper {
                     if (entity != null) {
                         entity.setHealth(entity.getMaxHealth());
                         world.addEntity(entity);
-                        WorldUtil.setBlockState(world, Blocks.AIR.getDefaultState(), pos);
+                        WorldHelper.setBlockState(world, Blocks.AIR.getDefaultState(), pos);
                     }
                 }
             }
@@ -62,7 +62,7 @@ public class GemHelper {
                 placePos = pos.up();
             }
 
-            WorldUtil.setBlockState(world, InfinityBlocks.ASH_PILE.get().getDefaultState(), placePos);
+            WorldHelper.setBlockState(world, InfinityBlocks.ASH_PILE.get().getDefaultState(), placePos);
             TileEntity te = world.getTileEntity(placePos);
 
             if (te != null && te instanceof TileEntityAshPile) {

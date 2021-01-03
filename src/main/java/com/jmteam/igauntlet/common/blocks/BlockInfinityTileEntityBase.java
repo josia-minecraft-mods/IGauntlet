@@ -10,22 +10,22 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.RegistryObject;
 
 import javax.annotation.Nullable;
 import java.util.function.Supplier;
 
 public class BlockInfinityTileEntityBase extends InfinityBlock {
 
-    public Supplier<TileEntity> tileEntitySupplier;
 
-    public BlockInfinityTileEntityBase(Supplier<TileEntity> TESupplier) {
+    public BlockInfinityTileEntityBase() {
         super(Block.Properties.create(Material.BARRIER));
-        this.tileEntitySupplier = TESupplier;
     }
 
     @Override
@@ -36,12 +36,6 @@ public class BlockInfinityTileEntityBase extends InfinityBlock {
     @Override
     public boolean hasTileEntity(BlockState state) {
         return true;
-    }
-
-    @Nullable
-    @Override
-    public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-        return tileEntitySupplier.get();
     }
 
     @Override

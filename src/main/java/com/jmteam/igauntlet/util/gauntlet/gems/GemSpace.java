@@ -1,6 +1,6 @@
 package com.jmteam.igauntlet.util.gauntlet.gems;
 
-import com.jmteam.igauntlet.util.helpers.WorldUtil;
+import com.jmteam.igauntlet.util.helpers.WorldHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
@@ -37,7 +37,7 @@ public class GemSpace extends GemBase {
 
             // TODO Config Values
             BlockPos calculcatedPosition = new BlockPos(player.getPosX() + xR, player.getPosY(), player.getPosZ() + zR);
-            int y = WorldUtil.getTopSolidOrLiquidBlock(player.world, calculcatedPosition).getY() + 1;
+            int y = WorldHelper.getTopSolidOrLiquidBlock(player.world, calculcatedPosition).getY() + 1;
             player.setPositionAndUpdate(calculcatedPosition.getX(), y, calculcatedPosition.getZ());
             player.sendStatusMessage(new TranslationTextComponent("msg.stones.space.drifted"), true);
         }

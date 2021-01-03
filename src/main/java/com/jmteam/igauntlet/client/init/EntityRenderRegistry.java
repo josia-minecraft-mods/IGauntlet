@@ -15,7 +15,7 @@ public class EntityRenderRegistry {
     public static void registryEntityRenders() {
         IGauntlet.LOGGER.info("Registering Entity Renders");
 
-        registerRender(InfinityEntities.GAUNTLET, RenderEntityGauntlet::new);
+        registerRender(InfinityEntities.GAUNTLET.get(), RenderEntityGauntlet::new);
     }
 
     public static <T extends Entity> void registerRender(EntityType<T> entityClass, IRenderFactory<? super T> renderFactory) {

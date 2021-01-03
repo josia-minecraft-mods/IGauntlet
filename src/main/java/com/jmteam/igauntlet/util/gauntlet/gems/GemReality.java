@@ -2,7 +2,7 @@ package com.jmteam.igauntlet.util.gauntlet.gems;
 
 import com.jmteam.igauntlet.common.init.InfinityBlocks;
 import com.jmteam.igauntlet.util.gauntlet.GemHelper;
-import com.jmteam.igauntlet.util.helpers.WorldUtil;
+import com.jmteam.igauntlet.util.helpers.WorldHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.SandBlock;
 import net.minecraft.entity.Entity;
@@ -30,7 +30,7 @@ public class GemReality extends GemBase {
 
             if (b instanceof SandBlock) {
                 for (BlockPos p : GemHelper.getAllBlockRangedFromPos(world, pos)) {
-                    WorldUtil.setBlockState(world, InfinityBlocks.QUICK_SAND.get().getDefaultState(), p);
+                    WorldHelper.setBlockState(world, InfinityBlocks.QUICK_SAND.get().getDefaultState(), p);
                 }
             }
         }

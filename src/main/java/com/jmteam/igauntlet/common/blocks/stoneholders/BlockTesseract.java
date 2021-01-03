@@ -3,6 +3,7 @@ package com.jmteam.igauntlet.common.blocks.stoneholders;
 import com.jmteam.igauntlet.common.blocks.BlockInfinityTileEntityBase;
 import com.jmteam.igauntlet.common.init.InfinityItems;
 import com.jmteam.igauntlet.common.init.InfinityNBT;
+import com.jmteam.igauntlet.common.init.InfinityTileEntities;
 import com.jmteam.igauntlet.common.tileentity.TileEntityTesseract;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
@@ -14,6 +15,7 @@ import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
@@ -24,6 +26,7 @@ import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.common.extensions.IForgeBlock;
+import net.minecraftforge.fml.RegistryObject;
 
 import javax.annotation.Nullable;
 import java.util.function.Supplier;
@@ -32,8 +35,7 @@ public class BlockTesseract extends BlockInfinityTileEntityBase {
 
     public static final VoxelShape TESSERACT_SHAPE = VoxelShapes.create(0.34375, 0, 0.34375, 0.65625, 0.3125, 0.65625);
 
-    public BlockTesseract(Supplier<TileEntity> tileEntitySupplier) {
-        super(tileEntitySupplier);
+    public BlockTesseract() {
     }
 
     @Override
@@ -109,5 +111,11 @@ public class BlockTesseract extends BlockInfinityTileEntityBase {
     @Override
     public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         return TESSERACT_SHAPE;
+    }
+
+    @Nullable
+    @Override
+    public TileEntity createTileEntity(BlockState state, IBlockReader world) {
+        return InfinityTileEntities.TESSERACT.get().create();
     }
 }

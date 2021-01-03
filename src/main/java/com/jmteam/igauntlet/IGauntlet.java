@@ -57,7 +57,7 @@ public class IGauntlet {
     }
 
     private void bothSideSetup(IEventBus modEventBus) {
-        InfinityEntities.init();
+
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
@@ -74,19 +74,5 @@ public class IGauntlet {
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents {
 
-        @SubscribeEvent
-        public static void registerTypes(RegistryEvent.Register<TileEntityType<?>> event) {
-            LOGGER.info("Registering TileEntities");
-
-            for (Map.Entry<Class, TileEntityType> entityTypeEntry : InfinityTileEntities.TILE_ENTITY_TYPES.entrySet()) {
-                event.getRegistry().register(entityTypeEntry.getValue());
-            }
-        }
-
-        @SubscribeEvent
-        public static void onEntityRegistryEvent(RegistryEvent.Register<EntityType<?>> event) {
-            LOGGER.info("Registering Entities");
-            event.getRegistry().registerAll(InfinityEntities.ENTITY_TYPES.toArray(new EntityType[InfinityEntities.ENTITY_TYPES.size()]));
-        }
     }
 }

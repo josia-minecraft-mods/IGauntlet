@@ -1,5 +1,6 @@
 package com.jmteam.igauntlet.common.init;
 
+import com.jmteam.igauntlet.IGauntlet;
 import com.jmteam.igauntlet.common.item.ItemBase;
 import com.jmteam.igauntlet.common.item.ItemDisc;
 import com.jmteam.igauntlet.common.item.ItemInfinityGauntlet;
@@ -9,10 +10,12 @@ import com.jmteam.igauntlet.util.registry.InfinityRegistry;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemTier;
 import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class InfinityItems {
 
-    public static void init() {}
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, IGauntlet.MODID);
 
     // Gauntlet + Stones
     public static RegistryObject<Item> INFINITY_GAUNTLET = addItem(new ItemInfinityGauntlet(), "infinity_gauntlet");
@@ -38,6 +41,6 @@ public class InfinityItems {
     //  public static RegistryObject<Item>  necklace = addItem(new ItemEyeOfAgamotto(), "eye_agamotto").setGroup(InfinityTabs.infinityTab);
 
     public static <T extends Item> RegistryObject<T> addItem(T item, String name) {
-        return InfinityRegistry.ITEMS.register(name, () -> item);
+        return ITEMS.register(name, () -> item);
     }
 }

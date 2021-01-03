@@ -1,14 +1,20 @@
 package com.jmteam.igauntlet.common.tileentity;
 
 import com.jmteam.igauntlet.common.init.InfinityNBT;
+import com.jmteam.igauntlet.common.init.InfinityTileEntities;
 import net.minecraft.block.Blocks;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
+import net.minecraft.tileentity.TileEntityType;
 
 public class TileEntityQuickSand extends InfinityTileEntityBase implements ITickableTileEntity {
 
     public boolean placed = false;
     private int timer = 0;
+
+    public TileEntityQuickSand() {
+        super(InfinityTileEntities.QUICK_SAND.get());
+    }
 
     @Override
     public void tick() {

@@ -16,6 +16,7 @@ import net.minecraftforge.fml.network.simple.SimpleChannel;
  */
 public class NetworkHandler {
 
+    public static int id = 0;
     private static final String PROTOCOL_VERSION = Integer.toString(1);
     private static final SimpleChannel INSTANCE = NetworkRegistry.ChannelBuilder
             .named(new ResourceLocation(IGauntlet.MODID, "main_channel"))
@@ -25,7 +26,6 @@ public class NetworkHandler {
             .simpleChannel();
 
 
-    public static int id = 0;
 
     public static void register() {
         IGauntlet.LOGGER.info("Registering Packets");

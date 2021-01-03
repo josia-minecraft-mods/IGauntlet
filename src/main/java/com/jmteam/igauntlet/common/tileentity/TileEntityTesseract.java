@@ -2,13 +2,19 @@ package com.jmteam.igauntlet.common.tileentity;
 
 import com.jmteam.igauntlet.common.init.InfinityItems;
 import com.jmteam.igauntlet.common.init.InfinityNBT;
+import com.jmteam.igauntlet.common.init.InfinityTileEntities;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.tileentity.TileEntityType;
 
 public class TileEntityTesseract extends InfinityTileEntityBase {
 
     public boolean has_stone = true;
+
+    public TileEntityTesseract() {
+        super(InfinityTileEntities.TESSERACT.get());
+    }
 
     public boolean addStone() {
         if (!has_stone) {
