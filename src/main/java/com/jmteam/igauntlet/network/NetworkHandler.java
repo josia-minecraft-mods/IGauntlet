@@ -25,8 +25,6 @@ public class NetworkHandler {
             .networkProtocolVersion(() -> PROTOCOL_VERSION)
             .simpleChannel();
 
-
-
     public static void register() {
         IGauntlet.LOGGER.info("Registering Packets");
         INSTANCE.registerMessage(id++, PacketSetStone.class, PacketSetStone::encode, PacketSetStone::decode, PacketSetStone.Handler::handle);
