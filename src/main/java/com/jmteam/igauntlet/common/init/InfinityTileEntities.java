@@ -21,7 +21,7 @@ public class InfinityTileEntities {
     public static final RegistryObject<TileEntityType<TileEntity>> TESSERACT = addType("tesseract", TileEntityAshPile::new, InfinityBlocks.TESSERACT);
 
     public static <T extends TileEntity> RegistryObject<TileEntityType<T>> addType(String name, Supplier<T> tileEntitySupplier, RegistryObject<? extends Block> block) {
-        return InfinityRegistry.TILE_ENTITY_TYPES.register(name, () -> TileEntityType.Builder.create(tileEntitySupplier, block.get()).build(null));
+        return InfinityRegistry.TILE_ENTITY_TYPE_REGISTRY.register(name, () -> TileEntityType.Builder.create(tileEntitySupplier, block.get()).build(null));
     }
 
 }

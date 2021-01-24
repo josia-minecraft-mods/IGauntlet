@@ -1,14 +1,14 @@
-# IGauntlet Mod ![](https://img.shields.io/badge/Creator-Josia50-orange.svg) ![](https://img.shields.io/badge/Minecraft-1.15.2-blue.svg) ![](https://img.shields.io/badge/Owner-JMTeam-blue.svg) ![](https://img.shields.io/badge/Mod%20Status-Incomplete-red.svg)
+# IGauntlet Mod ![](https://img.shields.io/badge/Creator-Josia50-orange.svg) ![](https://img.shields.io/badge/Minecraft-1.16.5-blue.svg) ![](https://img.shields.io/badge/Owner-JMTeam-blue.svg) ![](https://img.shields.io/badge/Mod%20Status-Incomplete-red.svg)
 
 Makes your Minecraft Worlds better.
 
 ## Getting Started
 
 This is info about the mod!
-If you need more help join out [Discord](https://discord.gg/aqf25uP)
+If you need more help join out [Discord](https://discord.gg/pQkRKKN)
 
 ### Prerequisite
-The Latest Version of [Minecraft  Forge 1.15.2](https://www.minecraftforge.net)
+The Latest Version of [Minecraft Forge 1.16.5](https://www.minecraftforge.net)
 
 ## Install
 
@@ -27,4 +27,4 @@ and click play and enjoy
 ## Contact
 You can contact us at the following below
 * jm.minecraftmods@gmail.com
-* and on our [Discord](https://discord.gg/aqf25uP), @Josia50
+* and on our [Discord](https://discord.gg/pQkRKKN), @Josia50

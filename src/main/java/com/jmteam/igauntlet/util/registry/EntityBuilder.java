@@ -68,6 +68,6 @@ public class EntityBuilder {
 
         EntityType<? extends Entity> entityType = builder.build(id.toString());
 
-        return InfinityRegistry.ENTITY_TYPES.register(name, () -> (EntityType<T>) entityType);
+        return InfinityRegistry.ENTITY_TYPE_REGISTRY.register(name, () -> (EntityType<T>) entityType);
     }
 }

@@ -21,6 +21,6 @@ public class InfinitySounds {
     public static RegistryObject<SoundEvent> addSound(String name) {
         ResourceLocation location = new ResourceLocation(IGauntlet.MODID, name);
         SoundEvent soundEvent = new SoundEvent(location);
-        return InfinityRegistry.SOUNDS.register(name, () -> soundEvent);
+        return InfinityRegistry.SOUND_REGISTRY.register(name, () -> soundEvent);
     }
 }

@@ -41,7 +41,7 @@ public class InfinityBlocks {
             InfinityItems.addItem(itemBlock, name);
         }
 
-        return InfinityRegistry.BLOCKS.register(name, () -> block);
+        return InfinityRegistry.BLOCK_REGISTRY.register(name, () -> block);
     }
 
     public static <T extends Block> RegistryObject<T> registerBlock(T block, String name, ItemGroup group, boolean item) {

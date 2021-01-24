@@ -46,7 +46,7 @@ public class IGauntlet {
         INSTANCE = this;
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        InfinityRegistry.register();
+        InfinityRegistry.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::doClientStuff);
         bothSideSetup(modEventBus);

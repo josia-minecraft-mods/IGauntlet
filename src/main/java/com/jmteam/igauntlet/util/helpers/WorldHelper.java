@@ -1,11 +1,10 @@
 package com.jmteam.igauntlet.util.helpers;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.LeavesBlock;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.chunk.Chunk;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,11 +45,27 @@ public class WorldHelper {
         BlockPos blockPos1 = new BlockPos(Math.min(pos1.getX(), pos2.getX()), Math.min(pos1.getY(), pos2.getY()), Math.min(pos1.getZ(), pos2.getZ()));
         BlockPos blockPos2 = new BlockPos(Math.max(pos1.getX(), pos2.getX()), Math.max(pos1.getY(), pos2.getY()), Math.max(pos1.getZ(), pos2.getZ()));
 
-        for(int x = blockPos1.getX(); x < blockPos2.getX(); x++) {
-            for(int y = blockPos1.getY(); y < blockPos2.getY(); y++) {
-                for(int z = blockPos1.getZ(); z < blockPos2.getZ(); z++) {
+        for (int x = blockPos1.getX(); x < blockPos2.getX(); x++) {
+            for (int y = blockPos1.getY(); y < blockPos2.getY(); y++) {
+                for (int z = blockPos1.getZ(); z < blockPos2.getZ(); z++) {
                     posList.add(new BlockPos(x, y, z));
                 }
+            }
+        }
+
+        return posList;
+    }
+
+    public static List<BlockPos> getSameBlocksFromPosRanged(World world, BlockPos pos, int range) {
+        Block b = world.getBlockState(pos).getBlock();
+        List<BlockPos> beginValues = getAllInBounds(pos.add(-range, -range, -range), pos.add(range, range, range));
+        List<BlockPos> posList = new ArrayList<>();
+
+        for (int x = 0; x < beginValues.size(); x++) {
+            BlockPos blockPos = beginValues.get(x);
+
+            if (world.getBlockState(blockPos).getBlock() == b) {
+                posList.add(blockPos);
             }
         }
 

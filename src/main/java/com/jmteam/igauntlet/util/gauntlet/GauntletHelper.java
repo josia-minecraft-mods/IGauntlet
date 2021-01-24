@@ -16,22 +16,19 @@ public class GauntletHelper {
     public static GemHelper.StoneType getActiveStone(ItemStack stack) {
         CompoundNBT nbt = stack.getTag();
 
-        if (nbt != null && nbt.contains(InfinityNBT.SELECTED_STONE)) {
-            return GemHelper.StoneType.valueOf(nbt.getString(InfinityNBT.SELECTED_STONE));
-        } else {
-            if (nbt == null) {
-                stack.setTag(new CompoundNBT());
-                stack.getTag().putString(InfinityNBT.SELECTED_STONE, GemHelper.StoneType.NONE.name());
-            }
+        if (nbt == null) {
+            CompoundNBT compoundNBT = new CompoundNBT();
+            compoundNBT.putString(InfinityNBT.SELECTED_STONE, GemHelper.StoneType.NONE.name());
+            stack.setTag(compoundNBT);
         }
 
-        return GemHelper.StoneType.NONE;
+        return GemHelper.StoneType.valueOf(nbt.getString(InfinityNBT.SELECTED_STONE));
     }
 
     public static boolean invalidStone(PlayerEntity player, ItemStack stack) {
 
-        if (getActiveStone(stack) == GemHelper.StoneType.NONE) {
-            if (!player.world.isRemote) {
+        if (!player.world.isRemote()) {
+            if (getActiveStone(stack) == GemHelper.StoneType.NONE) {
                 player.sendStatusMessage(new TranslationTextComponent("msg.gauntlet.nostone"), true);
                 return true;
             }
@@ -42,7 +39,7 @@ public class GauntletHelper {
 
     public static boolean filterSnap(LivingEntity entity, boolean inSnap) {
 
-        // global boolean value is used for checking if inside snap or not
+        // inSnap = During snap, to check if they should be removed (entity.removed = true;)
 
         if (entity instanceof PlayerEntity && inSnap) {
             return false;
@@ -62,6 +59,7 @@ public class GauntletHelper {
                 removeList.add(e);
             }
         }
+
         removeList.add(playerEntity);
         livingEntities.removeAll(removeList);
     }

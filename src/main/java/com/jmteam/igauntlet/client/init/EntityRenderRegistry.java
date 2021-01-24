@@ -11,7 +11,6 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public class EntityRenderRegistry {
 
-    @SuppressWarnings("unchecked")
     public static void registryEntityRenders() {
         IGauntlet.LOGGER.info("Registering Entity Renders");
 

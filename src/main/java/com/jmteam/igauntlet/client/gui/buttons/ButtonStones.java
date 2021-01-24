@@ -38,7 +38,7 @@ public class ButtonStones extends ExtendedButton {
                 buttonText = mc.fontRenderer.trimStringToWidth(ITextProperties.func_240652_a_(buttonText), width - 6 - ellipsisWidth) + "...";
 
 
-            this.drawCenteredString(mStack, mc.fontRenderer, buttonText, this.x + this.width / 2, this.y + (this.height - 8) / 2, color);
+            drawCenteredString(mStack, mc.fontRenderer, buttonText, this.x + this.width / 2, this.y + (this.height - 8) / 2, color);
         }
     }
 

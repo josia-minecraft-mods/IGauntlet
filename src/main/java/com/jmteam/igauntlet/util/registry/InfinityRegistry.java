@@ -2,14 +2,9 @@ package com.jmteam.igauntlet.util.registry;
 
 import com.jmteam.igauntlet.IGauntlet;
 import com.jmteam.igauntlet.common.init.*;
-import com.jmteam.igauntlet.common.item.InfinityItemBlock;
-import com.jmteam.igauntlet.util.helpers.ReflectionHelper;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -19,24 +14,41 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class InfinityRegistry {
 
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, IGauntlet.MODID);
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, IGauntlet.MODID);
-    public static final DeferredRegister<TileEntityType<?>> TILE_ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, IGauntlet.MODID);
-    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITIES, IGauntlet.MODID);
-    public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, IGauntlet.MODID);
+    // Initialize check
+    private static boolean initalized;
 
-    public static void register() {
-        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+    // Registers
+    public static final DeferredRegister<Block> BLOCK_REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCKS, IGauntlet.MODID);
+    public static final DeferredRegister<Item> ITEM_REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, IGauntlet.MODID);
+    public static final DeferredRegister<TileEntityType<?>> TILE_ENTITY_TYPE_REGISTRY = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, IGauntlet.MODID);
+    public static final DeferredRegister<EntityType<?>> ENTITY_TYPE_REGISTRY = DeferredRegister.create(ForgeRegistries.ENTITIES, IGauntlet.MODID);
+    public static final DeferredRegister<SoundEvent> SOUND_REGISTRY = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, IGauntlet.MODID);
 
-        InfinityBlocks.init(); // Either this or we initialize a with // new InfinityBlocks(); either way would work
-        InfinityEntities.init();
-        InfinitySounds.init();
-        InfinityTileEntities.init();
+    // Intialization
+    public static InfinityBlocks BLOCKS;
+    public static InfinityItems ITEMS;
+    public static InfinityTileEntities TILE_ENTITY_TYPES;
+    public static InfinityEntities ENTITY_TYPES;
+    public static InfinitySounds SOUNDS;
 
-        BLOCKS.register(bus);
-        ITEMS.register(bus);
-        ENTITY_TYPES.register(bus);
-        TILE_ENTITY_TYPES.register(bus);
-        SOUNDS.register(bus);
+    public static void register(IEventBus bus) {
+       if(!initalized) {
+
+           // Initialize
+           BLOCKS = new InfinityBlocks();
+           ITEMS = new InfinityItems();
+           TILE_ENTITY_TYPES = new InfinityTileEntities();
+           ENTITY_TYPES = new InfinityEntities();
+           SOUNDS = new InfinitySounds();
+
+           // Register
+           BLOCK_REGISTRY.register(bus);
+           ITEM_REGISTRY.register(bus);
+           ENTITY_TYPE_REGISTRY.register(bus);
+           TILE_ENTITY_TYPE_REGISTRY.register(bus);
+           SOUND_REGISTRY.register(bus);
+
+           initalized = true;
+       }
     }
 }

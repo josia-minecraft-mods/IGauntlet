@@ -6,8 +6,6 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 
 public class Graphics {
 
-    public static float RENDER_NUM = 0.0625f;
-
     public static void drawTexturedModalRect(int x, int y, int textureX, int textureY, int width, int height) {
         Tessellator tessellator = Tessellator.getInstance();
         BufferBuilder bufferbuilder = tessellator.getBuffer();

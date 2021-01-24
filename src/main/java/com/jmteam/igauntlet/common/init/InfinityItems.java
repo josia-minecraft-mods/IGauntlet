@@ -41,6 +41,6 @@ public class InfinityItems {
     //  public static RegistryObject<Item>  necklace = addItem(new ItemEyeOfAgamotto(), "eye_agamotto").setGroup(InfinityTabs.infinityTab);
 
     public static <T extends Item> RegistryObject<T> addItem(T item, String name) {
-        return InfinityRegistry.ITEMS.register(name, () -> item);
+        return InfinityRegistry.ITEM_REGISTRY.register(name, () -> item);
     }
 }

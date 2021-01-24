@@ -14,6 +14,7 @@ public class EntityHelper {
 
         return e;
     }
+
     public static Entity createEntityFromID(String id, World world) {
         return ForgeRegistries.ENTITIES.getValue(new ResourceLocation(id)).create(world);
     }

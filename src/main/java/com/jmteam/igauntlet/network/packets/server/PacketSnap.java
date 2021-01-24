@@ -8,6 +8,7 @@ import com.jmteam.igauntlet.util.gauntlet.GauntletHelper;
 import com.jmteam.igauntlet.util.gauntlet.GemHelper;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.particles.ParticleTypes;
@@ -56,7 +57,6 @@ public class PacketSnap {
                                 GauntletHelper.filterSnapList(player, entities);
                                 int snapped = 0;
 
-
                                 if (entities.size() > 1) {
                                     player.getServerWorld().playSound(null, player.getPosition(), InfinitySounds.SNAP.get(), SoundCategory.PLAYERS, 1,1);
 
@@ -72,8 +72,8 @@ public class PacketSnap {
                                             }
 
                                             entity.attackEntityFrom(InfinityDamageSources.SNAP, entity.getHealth());
-
                                             player.getServerWorld().spawnParticle(ParticleTypes.LARGE_SMOKE, entity.getPosX(), entity.getPosY() + 0.5, entity.getPosZ(), 50, 0.5, 0.5, 0.5, 0.1);
+
                                             GemHelper.createAshPile(world, entity.getPosition(), entity);
                                         }
                                     }

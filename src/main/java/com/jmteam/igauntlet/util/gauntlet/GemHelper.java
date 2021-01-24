@@ -23,7 +23,6 @@ public class GemHelper {
     public static void reviveAshPiles(PlayerEntity player, int range) {
         World world = player.world;
         List<BlockPos> blockPosObjects = WorldHelper.getAllInBounds(player.getPosition().add(-range, -range, -range), player.getPosition().add(range, range, range));
-
         boolean revivedAny = false;
 
         for (int i = 0; i < blockPosObjects.size(); i++) {
@@ -36,12 +35,12 @@ public class GemHelper {
                 if (te != null && te instanceof TileEntityAshPile) {
                     TileEntityAshPile ashPile = (TileEntityAshPile) te;
                     LivingEntity entity = ashPile.getEntity();
-                    revivedAny = true;
 
                     if (entity != null) {
                         entity.setHealth(entity.getMaxHealth());
                         world.addEntity(entity);
                         WorldHelper.setBlockState(world, Blocks.AIR.getDefaultState(), pos);
+                        revivedAny = true;
                     }
                 }
             }
@@ -76,24 +75,6 @@ public class GemHelper {
         return false;
     }
 
-    public static List<BlockPos> getAllBlockRangedFromPos(World world, BlockPos pos) {
-        Block b = world.getBlockState(pos).getBlock();
-        Object[] blockPosList = BlockPos.getAllInBox(pos.add(-20, -20, -20), pos.add(20, 20, 20)).toArray();
-        List<BlockPos> posList = new ArrayList<>();
-
-
-        for (Object o : blockPosList) {
-            if (o instanceof BlockPos) {
-                BlockPos blockPos = (BlockPos) o;
-                if (world.getBlockState(blockPos).getBlock() == b) {
-                    posList.add(blockPos.toImmutable());
-                }
-            }
-        }
-
-        return posList;
-    }
-
     public static void notSetupMessage(PlayerEntity player) {
         if (!player.world.isRemote) {
             player.sendStatusMessage(new TranslationTextComponent("msg.stone.notsetup"), true);
@@ -111,8 +92,7 @@ public class GemHelper {
 
         private GemBase gem;
 
-        StoneType() {
-        }
+        StoneType() {}
 
         StoneType(Supplier<GemBase> gem) {
             this.gem = gem.get();
