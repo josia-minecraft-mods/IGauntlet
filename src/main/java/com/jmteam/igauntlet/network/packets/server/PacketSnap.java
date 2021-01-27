@@ -68,7 +68,7 @@ public class PacketSnap {
 
                                             // Prevent setting Entities removed when they shouldn't be
                                             if (GauntletHelper.filterSnap(entity, true)) {
-                                                entity.removed = true;
+                                                entity.remove();
                                             }
 
                                             entity.attackEntityFrom(InfinityDamageSources.SNAP, entity.getHealth());
