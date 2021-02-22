@@ -12,7 +12,7 @@ The Latest Version of [Minecraft Forge 1.16.5](https://www.minecraftforge.net)
 
 ## Install
 
-Download the 1.15.2 version of the Mod from the source [Here](https://minecraft.curseforge.com/projects/igauntlet)
+Download the 1.16.5 version of the Mod from the source [Here](https://minecraft.curseforge.com/projects/igauntlet)
 
 Move the mod into the mod folder in your .minecraft folder
 
