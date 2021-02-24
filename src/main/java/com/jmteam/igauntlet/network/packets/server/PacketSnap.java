@@ -86,6 +86,7 @@ public class PacketSnap {
                                     capability.setSnapTimeout(System.currentTimeMillis());
                                     capability.sync();
 
+                                    // TODO Check if this works on server???
                                     player.sendStatusMessage(new StringTextComponent(I18n.format("msg.snapped.amount" + (snapped > 1 ? ".multiple" : "")).replaceAll("&a", String.valueOf(snapped))), true);
                                 } else {
                                     player.sendStatusMessage(new TranslationTextComponent("msg.snap.notenough"), true);
