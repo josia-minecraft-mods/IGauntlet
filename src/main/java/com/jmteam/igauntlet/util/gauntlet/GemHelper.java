@@ -11,6 +11,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
@@ -23,7 +24,7 @@ public class GemHelper {
     public static void reviveAshPiles(PlayerEntity player, int range) {
         World world = player.world;
         List<BlockPos> blockPosObjects = WorldHelper.getAllInBounds(player.getPosition().add(-range, -range, -range), player.getPosition().add(range, range, range));
-        boolean revivedAny = false;
+        int revivedCount = 0;
 
         for (int i = 0; i < blockPosObjects.size(); i++) {
             BlockPos pos = blockPosObjects.get(i);
@@ -40,15 +41,14 @@ public class GemHelper {
                         entity.setHealth(entity.getMaxHealth());
                         world.addEntity(entity);
                         WorldHelper.setBlockState(world, Blocks.AIR.getDefaultState(), pos);
-                        revivedAny = true;
+                        revivedCount++;
                     }
                 }
             }
         }
 
-        if (!revivedAny) {
-            player.sendStatusMessage(new TranslationTextComponent("msg.revive.notfound"), true);
-        }
+        if (revivedCount == 0) player.sendStatusMessage(new TranslationTextComponent("msg.revive.notfound"), true);
+        else player.sendStatusMessage(ITextComponent.getTextComponentOrEmpty(new TranslationTextComponent("msg.revive.succes").getString().replaceAll("&d", String.valueOf(revivedCount))), true);
     }
 
     public static boolean createAshPile(World world, BlockPos pos, LivingEntity entity) {

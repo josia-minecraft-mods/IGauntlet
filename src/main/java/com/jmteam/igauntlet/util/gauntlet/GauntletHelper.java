@@ -20,6 +20,7 @@ public class GauntletHelper {
             CompoundNBT compoundNBT = new CompoundNBT();
             compoundNBT.putString(InfinityNBT.SELECTED_STONE, GemHelper.StoneType.NONE.name());
             stack.setTag(compoundNBT);
+            nbt = stack.getTag();
         }
 
         return GemHelper.StoneType.valueOf(nbt.getString(InfinityNBT.SELECTED_STONE));
@@ -39,7 +40,7 @@ public class GauntletHelper {
 
     public static boolean filterSnap(LivingEntity entity, boolean inSnap) {
 
-        // inSnap = During snap, to check if they should be removed (entity.removed = true;)
+        // inSnap = During snap, to check if they should be removed ( entity.remove() )
 
         if (entity instanceof PlayerEntity && inSnap) {
             return false;

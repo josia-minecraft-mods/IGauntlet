@@ -46,7 +46,8 @@
   "msg.inventoryfull": "Your inventory is full!",
   "msg.stones.space.neardrift": "Don't hold the stone for too long!",
   "msg.stones.space.drifted": "You have drifted!",
-
+  "msg.revive.notfound": "There are no entities near to revive!",
+  "msg.revive.succes": "You revived &d entities!",
 
   "damagesource.igauntlet.laser": "%1$s got hit by a laser!",
   "damagesource.igauntlet.snap": "%1$s turned to ashes!",
