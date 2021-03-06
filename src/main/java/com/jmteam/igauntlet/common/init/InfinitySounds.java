@@ -11,8 +11,6 @@ import java.util.List;
 
 public class InfinitySounds {
 
-    public static void init() {}
-
     public static RegistryObject<SoundEvent> AWESOMEMIX = addSound("awesome_mix");
     public static RegistryObject<SoundEvent> SNAP = addSound("snap");
     public static RegistryObject<SoundEvent> GAUNTLET_HUM  = addSound("gauntlet_hum");

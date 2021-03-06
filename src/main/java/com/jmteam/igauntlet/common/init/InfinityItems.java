@@ -15,8 +15,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class InfinityItems {
 
-    public static void init() {}
-
     // Gauntlet + Stones
     public static RegistryObject<Item> INFINITY_GAUNTLET = addItem(new ItemInfinityGauntlet(), "infinity_gauntlet");
     public static RegistryObject<Item> MIND_STONE = addItem(new ItemMindStone(), "mind_stone");

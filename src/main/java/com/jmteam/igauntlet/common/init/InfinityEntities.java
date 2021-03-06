@@ -14,8 +14,6 @@ import java.util.List;
 
 public class InfinityEntities {
 
-    public static void init() {}
-
     public static RegistryObject<EntityType<EntityGauntlet>> GAUNTLET = create("gauntlet").entity(EntityGauntlet::new, EntityClassification.MONSTER).size(1, 1).build();
 
     public static EntityBuilder create(String name) {

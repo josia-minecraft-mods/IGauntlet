@@ -6,7 +6,7 @@ import net.minecraft.item.ItemGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemBase extends Item{
+public class ItemBase extends Item {
 
     public ItemBase(Properties properties) {
         super(properties);

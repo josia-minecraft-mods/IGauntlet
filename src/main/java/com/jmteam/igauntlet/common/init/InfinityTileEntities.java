@@ -14,8 +14,6 @@ import java.util.function.Supplier;
 
 public class InfinityTileEntities {
 
-    public static void init() {}
-
     public static final RegistryObject<TileEntityType<TileEntity>> ASH_PILE = addType("ash_pile", TileEntityAshPile::new, InfinityBlocks.ASH_PILE);
     public static final RegistryObject<TileEntityType<TileEntity>> QUICK_SAND = addType("quick_sand", TileEntityAshPile::new, InfinityBlocks.QUICK_SAND);
     public static final RegistryObject<TileEntityType<TileEntity>> TESSERACT = addType("tesseract", TileEntityAshPile::new, InfinityBlocks.TESSERACT);

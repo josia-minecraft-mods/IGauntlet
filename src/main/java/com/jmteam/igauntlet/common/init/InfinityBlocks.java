@@ -19,8 +19,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class InfinityBlocks {
 
-    public static void init() {}
-
     public static RegistryObject<Block> ASH_PILE = registerBlock(new BlockAshPile(Material.SAND), "ash_pile", InfinityGroups.INFINITY, true);
     public static RegistryObject<Block> URU_ORE = registerBlock(new BlockOre(Material.ROCK, InfinityItems.URU_INGOT, 1, 1), "uru_ore", InfinityGroups.INFINITY, true);
     public static RegistryObject<Block> TESSERACT = registerBlock(new BlockTesseract(), "tesseract", InfinityGroups.INFINITY, true);
