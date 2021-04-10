@@ -22,7 +22,7 @@ public class BlockManipulator extends InfinityBlock {
     public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
 
     public BlockManipulator(Material material) {
-        super(Properties.create(material).harvestLevel(0).hardnessAndResistance(15.0f).harvestTool(ToolType.PICKAXE).notSolid());
+        super(Properties.create(material).harvestLevel(0).hardnessAndResistance(15.0f).notSolid().harvestTool(ToolType.PICKAXE).notSolid());
     }
 
     public BlockState getStateForPlacement(BlockItemUseContext context) {

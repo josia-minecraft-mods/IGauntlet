@@ -19,6 +19,7 @@ import net.minecraft.util.SoundEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
@@ -51,8 +52,10 @@ public class IGauntlet {
         modEventBus.addListener(this::doClientStuff);
         bothSideSetup(modEventBus);
 
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGH, InfinityFeatures::setupOresGeneration);
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(new ServerEvents());
+
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, InfinityConfig.CLIENT_SPEC);
     }
 
