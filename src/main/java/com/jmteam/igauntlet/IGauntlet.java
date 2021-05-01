@@ -32,6 +32,7 @@ public class IGauntlet {
     public static final Logger LOGGER = LogManager.getLogger();
     public static final ServerProxy PROXY = DistExecutor.safeRunForDist(() -> ClientProxy::new, () -> ServerProxy::new);
     public static final String MODID = "igauntlet";
+    public static final String MOD_NAME = "IGauntlet";
 
     public IGauntlet() {
         INSTANCE = this;

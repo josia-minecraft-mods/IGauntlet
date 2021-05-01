@@ -24,7 +24,7 @@ public class ClientEventHandler {
 
         if (event.phase != TickEvent.Phase.END || player == null) return;
 
-        if (InfinityKeyBinds.SNAP.isPressed() && player.getHeldItem(Hand.MAIN_HAND).getItem() == InfinityItems.INFINITY_GAUNTLET.get()) {
+        if (InfinityKeyBinds.SNAP.shouldExecute() && player.getHeldItem(Hand.MAIN_HAND).getItem() == InfinityItems.INFINITY_GAUNTLET.get()) {
             if ((CapabilityInfinity.get(player)).canSnap()) {
                 NetworkHandler.sendServerPacket(new PacketSnap());
             }
