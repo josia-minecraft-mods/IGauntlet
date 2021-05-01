@@ -21,11 +21,11 @@ public class ButtonStones extends ExtendedButton {
     }
 
     @Override
-    public void renderButton(MatrixStack mStack, int mouseX, int mouseY, float partial) {
+    public void render(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks) {
         if (this.visible && text) {
             Minecraft mc = Minecraft.getInstance();
             this.isHovered = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
-            this.renderBg(mStack, mc, mouseX, mouseY);
+            this.renderBg(matrixStack, mc, mouseX, mouseY);
             int color = getFGColor();
 
             if (this.isHovered && this.packedFGColor == Widget.UNSET_FG_COLOR)
@@ -38,7 +38,7 @@ public class ButtonStones extends ExtendedButton {
                 buttonText = mc.fontRenderer.trimStringToWidth(ITextProperties.func_240652_a_(buttonText), width - 6 - ellipsisWidth) + "...";
 
 
-            drawCenteredString(mStack, mc.fontRenderer, buttonText, this.x + this.width / 2, this.y + (this.height - 8) / 2, color);
+            drawCenteredString(matrixStack, mc.fontRenderer, buttonText, this.x + this.width / 2, this.y + (this.height - 8) / 2, color);
         }
     }
 

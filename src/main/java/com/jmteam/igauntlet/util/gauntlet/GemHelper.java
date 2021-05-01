@@ -1,21 +1,18 @@
 package com.jmteam.igauntlet.util.gauntlet;
 
 import com.jmteam.igauntlet.common.init.InfinityBlocks;
+import com.jmteam.igauntlet.common.init.InfinityMessages;
 import com.jmteam.igauntlet.common.tileentity.TileEntityAshPile;
 import com.jmteam.igauntlet.util.gauntlet.gems.*;
 import com.jmteam.igauntlet.util.helpers.WorldHelper;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -47,8 +44,11 @@ public class GemHelper {
             }
         }
 
-        if (revivedCount == 0) player.sendStatusMessage(new TranslationTextComponent("msg.revive.notfound"), true);
-        else player.sendStatusMessage(ITextComponent.getTextComponentOrEmpty(new TranslationTextComponent("msg.revive.succes").getString().replaceAll("&d", String.valueOf(revivedCount))), true);
+        if (revivedCount == 0)
+            player.sendStatusMessage(InfinityMessages.getComponent(InfinityMessages.REVIVE_NOT_FOUND), true);
+        else {
+            player.sendStatusMessage(InfinityMessages.getComponent(revivedCount > 1 ? InfinityMessages.REVIVE_AMOUNT_MULTIPLE : InfinityMessages.REVIVE_AMOUNT, String.valueOf(revivedCount)), true);
+        }
     }
 
     public static boolean createAshPile(World world, BlockPos pos, LivingEntity entity) {
@@ -76,12 +76,13 @@ public class GemHelper {
     }
 
     public static void notSetupMessage(PlayerEntity player) {
-        if (!player.world.isRemote) {
-            player.sendStatusMessage(new TranslationTextComponent("msg.stone.notsetup"), true);
+        if (!player.world.isRemote()) {
+            player.sendStatusMessage(InfinityMessages.getComponent(InfinityMessages.STONE_NO_FUNCTION), true);
         }
     }
 
     public enum StoneType {
+
         NONE,
         MIND(GemMind::new),
         TIME(GemTime::new),
@@ -92,7 +93,8 @@ public class GemHelper {
 
         private GemBase gem;
 
-        StoneType() {}
+        StoneType() {
+        }
 
         StoneType(Supplier<GemBase> gem) {
             this.gem = gem.get();

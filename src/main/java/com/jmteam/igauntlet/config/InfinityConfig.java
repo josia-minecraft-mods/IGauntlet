@@ -18,8 +18,8 @@ public class InfinityConfig {
 
     static {
         final Pair<ClientConfig, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(ClientConfig::new);
-        CLIENT_SPEC = specPair.getRight();
         CLIENT = specPair.getLeft();
+        CLIENT_SPEC = specPair.getRight();
     }
 
     public static void bakeConfig() {

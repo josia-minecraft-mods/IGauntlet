@@ -1,8 +1,6 @@
 package com.jmteam.igauntlet.network.packets.client;
 
 import com.jmteam.igauntlet.common.capability.CapabilityInfinity;
-import com.jmteam.igauntlet.common.capability.InfinityCapProvider;
-import com.jmteam.igauntlet.network.packets.server.PacketSetStone;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
@@ -39,12 +37,13 @@ public class PacketSyncCapability {
     }
 
     public static class Handler {
+
         public static void handle(PacketSyncCapability packet, Supplier<NetworkEvent.Context> ctx) {
             ctx.get().enqueueWork(() -> {
                 Minecraft mc = Minecraft.getInstance();
                 PlayerEntity player = mc.world.getPlayerByUuid(packet.player);
 
-                if(player != null) {
+                if (player != null) {
                     CapabilityInfinity.get(player).deserializeNBT(packet.compound);
                 }
             });

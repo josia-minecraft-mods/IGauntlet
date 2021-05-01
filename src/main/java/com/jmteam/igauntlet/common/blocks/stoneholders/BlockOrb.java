@@ -12,7 +12,7 @@ import net.minecraft.world.IBlockReader;
 
 public class BlockOrb extends InfinityBlock {
 
-    public static final VoxelShape POWERORBAAB = VoxelShapes.create(0.1875, 0, 0.1875, 0.8125, 0.6875, 0.8125);
+    public static final VoxelShape POWERORBAAB = VoxelShapes.create(0.1875f, 0, 0.1875f, 0.8125f, 0.6875f, 0.8125f);
 
     public BlockOrb(Material material) {
         super(material);

@@ -2,9 +2,9 @@ package com.jmteam.igauntlet.util.helpers;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.gen.Heightmap;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,26 +18,7 @@ public class WorldHelper {
     }
 
     public static BlockPos getTopSolidOrLiquidBlock(World world, BlockPos pos) {
-        BlockPos finalPos = pos;
-        BlockPos pos1 = new BlockPos(pos.getX(), 256, pos.getZ());
-        BlockState state1 = world.getBlockState(pos1);
-
-        for (int y = 255; y > 0; y--) {
-            BlockPos temp = new BlockPos(pos.getX(), y, pos.getZ());
-            BlockState state = world.getBlockState(temp);
-            finalPos = temp;
-
-            if (state1.getBlock() == Blocks.AIR && world.getBlockState(pos1.up()).getBlock() == Blocks.AIR) {
-                if (state.getBlock() != Blocks.AIR) {
-                    break;
-                }
-            }
-
-            pos1 = temp;
-            state1 = world.getBlockState(temp);
-        }
-
-        return finalPos;
+        return world.getHeight(Heightmap.Type.WORLD_SURFACE, pos);
     }
 
     public static List<BlockPos> getAllInBounds(BlockPos pos1, BlockPos pos2) {

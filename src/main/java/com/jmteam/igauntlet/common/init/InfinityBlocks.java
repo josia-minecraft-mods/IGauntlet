@@ -19,18 +19,18 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class InfinityBlocks {
 
-    public static RegistryObject<Block> ASH_PILE = registerBlock(new BlockAshPile(Material.SAND), "ash_pile", InfinityGroups.INFINITY, true);
-    public static RegistryObject<Block> URU_ORE = registerBlock(new BlockOre(Material.ROCK, InfinityItems.URU_INGOT, 1, 1), "uru_ore", InfinityGroups.INFINITY, true);
-    public static RegistryObject<Block> TESSERACT = registerBlock(new BlockTesseract(), "tesseract", InfinityGroups.INFINITY, true);
-    public static RegistryObject<Block> DWARF_STONE = registerBlock(new InfinityBlock(Block.Properties.create(Material.ORGANIC)), "dwarf_stone", InfinityGroups.INFINITY, true);
-    public static RegistryObject<Block> DWARF_DIRT = registerBlock(new InfinityBlock(Block.Properties.create(Material.PLANTS).hardnessAndResistance(15).harvestTool(ToolType.SHOVEL).harvestLevel(1).sound(SoundType.WET_GRASS)), "dwarf_dirt", InfinityGroups.INFINITY, true);
-    public static RegistryObject<Block> DWARF_COBBLE = registerBlock(new InfinityBlock(Material.ORGANIC), "dwarf_cobble", InfinityGroups.INFINITY, true);
-    public static RegistryObject<Block> DWARF_WOOD = registerBlock(new InfinityBlock(Material.WOOD), "dwarf_wood", InfinityGroups.INFINITY, true);
-    public static RegistryObject<Block> FORGE = registerBlock(new BlockForge(Material.ANVIL), "forge", InfinityGroups.INFINITY, true);
-    public static RegistryObject<Block> MANIPULATOR = registerBlock(new BlockManipulator(Material.IRON), "manipulator", InfinityGroups.INFINITY, true);
-    public static RegistryObject<Block> QUICK_SAND = registerBlock(new BlockQuickSand(Material.SAND), "quick_sand", InfinityGroups.INFINITY, true);
-    public static RegistryObject<Block> POWER_ORB = registerBlock(new BlockOrb(Material.ROCK), "power_orb", InfinityGroups.INFINITY, true, 1);
-    public static RegistryObject<Block> AETHER = registerBlock(new BlockAether(Material.BARRIER), "aether", InfinityGroups.INFINITY, true, 1);
+    public static final RegistryObject<Block> ASH_PILE = registerBlock(new BlockAshPile(Material.SAND), "ash_pile", InfinityGroups.INFINITY, true);
+    public static final RegistryObject<Block> URU_ORE = registerBlock(new BlockOre(Material.ROCK, InfinityItems.URU_INGOT, 1, 1), "uru_ore", InfinityGroups.INFINITY, true);
+    public static final RegistryObject<Block> TESSERACT = registerBlock(new BlockTesseract(), "tesseract", InfinityGroups.INFINITY, true);
+    public static final RegistryObject<Block> DWARF_STONE = registerBlock(new InfinityBlock(Block.Properties.create(Material.ORGANIC)), "dwarf_stone", InfinityGroups.INFINITY, true);
+    public static final RegistryObject<Block> DWARF_DIRT = registerBlock(new InfinityBlock(Block.Properties.create(Material.PLANTS).hardnessAndResistance(15).harvestTool(ToolType.SHOVEL).harvestLevel(1).sound(SoundType.WET_GRASS)), "dwarf_dirt", InfinityGroups.INFINITY, true);
+    public static final RegistryObject<Block> DWARF_COBBLE = registerBlock(new InfinityBlock(Material.ORGANIC), "dwarf_cobble", InfinityGroups.INFINITY, true);
+    public static final RegistryObject<Block> DWARF_WOOD = registerBlock(new InfinityBlock(Material.WOOD), "dwarf_wood", InfinityGroups.INFINITY, true);
+    public static final RegistryObject<Block> FORGE = registerBlock(new BlockForge(Material.ANVIL), "forge", InfinityGroups.INFINITY, true);
+    public static final RegistryObject<Block> MANIPULATOR = registerBlock(new BlockManipulator(Material.IRON), "manipulator", InfinityGroups.INFINITY, true);
+    public static final RegistryObject<Block> QUICK_SAND = registerBlock(new BlockQuickSand(Material.SAND), "quick_sand", InfinityGroups.INFINITY, true);
+    public static final RegistryObject<Block> POWER_ORB = registerBlock(new BlockOrb(Material.ROCK), "power_orb", InfinityGroups.INFINITY, true, 1);
+    public static final RegistryObject<Block> AETHER = registerBlock(new BlockAether(Material.BARRIER), "aether", InfinityGroups.INFINITY, true, 1);
 
     public static <T extends Block> RegistryObject<T> registerBlock(T block, String name, ItemGroup group, boolean item, int amount) {
 

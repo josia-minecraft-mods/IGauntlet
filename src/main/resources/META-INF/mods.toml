@@ -1,29 +1,29 @@
-modLoader="javafml"
-loaderVersion="[35,)"
-license="All rights reserved"
+modLoader = "javafml"
+loaderVersion = "[35,)"
+license = "All rights reserved"
 
 [[mods]]
-modId="igauntlet"
-version="0.0.1"
-displayName="IGauntlet Mod"
-updateJSONURL="https://raw.githubusercontent.com/josia-minecraft-mods/IGauntlet/1.15/update.json"
-displayURL="https://discord.gg/pQkRKKN"
-logoFile="gauntlet.png"
-credits="JMTeam"
-authors="Josia50, rootheworld, UKMinecrafted, Ben1Ben1"
-description='''
+modId = "igauntlet"
+version = "0.0.1"
+displayName = "IGauntlet Mod"
+updateJSONURL = "https://raw.githubusercontent.com/josia-minecraft-mods/IGauntlet/1.15/update.json"
+displayURL = "https://discord.gg/pQkRKKN"
+logoFile = "gauntlet.png"
+credits = "JMTeam"
+authors = "Josia50, rootheworld, UKMinecrafted, Ben1Ben1"
+description = '''
 Control Reality, Space, Power, Time and Mind!
 '''
 [[dependencies.igauntlet]]
-    modId="forge"
-    mandatory=true
-    versionRange="[35,)"
-    ordering="NONE"
-    side="BOTH"
+modId = "forge"
+mandatory = true
+versionRange = "[28,)"
+ordering = "NONE"
+side = "BOTH"
 
 [[dependencies.igauntlet]]
-    modId="minecraft"
-    mandatory=true
-    versionRange="[1.16.4,1.17)"
-    ordering="NONE"
-    side="BOTH"
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.16.3, ]"
+ordering = "NONE"
+side = "BOTH"

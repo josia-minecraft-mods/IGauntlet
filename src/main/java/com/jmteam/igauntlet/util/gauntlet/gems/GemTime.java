@@ -22,7 +22,7 @@ public class GemTime extends GemBase {
     }
 
     @Override
-    public void handleItemAction(PlayerEntity player) {
-        super.handleItemAction(player);
+    public void handleItemHoldingAction(PlayerEntity player) {
+        super.handleItemHoldingAction(player);
     }
 }

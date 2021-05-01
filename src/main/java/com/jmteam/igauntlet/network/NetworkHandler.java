@@ -18,15 +18,11 @@ public class NetworkHandler {
 
     public static int id = 0;
     private static final String PROTOCOL_VERSION = Integer.toString(1);
-    private static final SimpleChannel INSTANCE = NetworkRegistry.ChannelBuilder
-            .named(new ResourceLocation(IGauntlet.MODID, "main_channel"))
-            .clientAcceptedVersions(PROTOCOL_VERSION::equals)
-            .serverAcceptedVersions(PROTOCOL_VERSION::equals)
-            .networkProtocolVersion(() -> PROTOCOL_VERSION)
-            .simpleChannel();
+    private static final SimpleChannel INSTANCE = NetworkRegistry.newSimpleChannel(new ResourceLocation(IGauntlet.MODID, "main_channel"), () -> PROTOCOL_VERSION, PROTOCOL_VERSION::equals, PROTOCOL_VERSION::equals);
 
     public static void register() {
-        IGauntlet.LOGGER.info("Registering Packets");
+        IGauntlet.LOGGER.info("Registering networking");
+
         INSTANCE.registerMessage(id++, PacketSetStone.class, PacketSetStone::encode, PacketSetStone::decode, PacketSetStone.Handler::handle);
         INSTANCE.registerMessage(id++, PacketSnap.class, PacketSnap::encode, PacketSnap::decode, PacketSnap.Handler::handle);
         INSTANCE.registerMessage(id++, PacketSyncCapability.class, PacketSyncCapability::encode, PacketSyncCapability::decode, PacketSyncCapability.Handler::handle); 

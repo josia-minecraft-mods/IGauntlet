@@ -17,9 +17,6 @@ public class InfinityEntities {
     public static RegistryObject<EntityType<EntityGauntlet>> GAUNTLET = create("gauntlet").entity(EntityGauntlet::new, EntityClassification.MONSTER).size(1, 1).build();
 
     public static EntityBuilder create(String name) {
-        EntityBuilder builder = EntityBuilder.create();
-        builder.setName(name);
-        builder.setId(new ResourceLocation(IGauntlet.MODID, name));
-        return builder;
+        return EntityBuilder.create(name);
     }
 }

@@ -1,5 +1,6 @@
 package com.jmteam.igauntlet.util.gauntlet.gems;
 
+import com.jmteam.igauntlet.common.init.InfinityMessages;
 import com.jmteam.igauntlet.util.helpers.WorldHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -27,7 +28,7 @@ public class GemSpace extends GemBase {
     }
 
     @Override
-    public void handleItemAction(PlayerEntity player) {
+    public void handleItemHoldingAction(PlayerEntity player) {
         // Drifting
         if (!player.world.isRemote) {
             World world = player.world;
@@ -37,9 +38,9 @@ public class GemSpace extends GemBase {
 
             // TODO Config Values
             BlockPos calculcatedPosition = new BlockPos(player.getPosX() + xR, player.getPosY(), player.getPosZ() + zR);
-            int y = WorldHelper.getTopSolidOrLiquidBlock(player.world, calculcatedPosition).getY() + 1;
+            int y = WorldHelper.getTopSolidOrLiquidBlock(player.getEntityWorld(), calculcatedPosition).getY() + 1;
             player.setPositionAndUpdate(calculcatedPosition.getX(), y, calculcatedPosition.getZ());
-            player.sendStatusMessage(new TranslationTextComponent("msg.stones.space.drifted"), true);
+            player.sendStatusMessage(InfinityMessages.getComponent(InfinityMessages.STONE_SPACE_DRIFTED), true);
         }
     }
 }

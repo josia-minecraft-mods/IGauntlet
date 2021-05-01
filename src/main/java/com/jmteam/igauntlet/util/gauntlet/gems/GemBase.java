@@ -27,7 +27,11 @@ public abstract class GemBase {
         GemHelper.notSetupMessage(player);
     }
 
-    public void handleItemAction(PlayerEntity player) {
+    public void handleItemHoldingAction(PlayerEntity player) {
         GemHelper.notSetupMessage(player);
+    }
+
+    public void handleItemTick(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected) {
+
     }
 }
