@@ -23,7 +23,7 @@ public class TileEntityQuickSand extends InfinityTileEntityBase implements ITick
         if (!placed) {
 
             // TODO Replace with a config value for max sand time
-            if (!world.isRemote && getWorld().getGameTime() % 20 == 0) {
+            if (!world.isRemote() && getWorld().getGameTime() % 20 == 0) {
                 if (timer >= 60)  {
                     world.setBlockState(pos, Blocks.SAND.getDefaultState());
                     timer = 0;

@@ -5,7 +5,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '4.1.+', changing: true
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
@@ -35,7 +35,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                examplemod {
+                igauntlet {
                     source sourceSets.main
                 }
             }
@@ -69,7 +69,7 @@ minecraft {
             args '--mod', 'igauntlet', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                examplemod {
+                igauntlet {
                     source sourceSets.main
                 }
             }
@@ -81,7 +81,7 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.4-35.1.28'
+    minecraft 'net.minecraftforge:forge:1.16.5-36.1.0'
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..

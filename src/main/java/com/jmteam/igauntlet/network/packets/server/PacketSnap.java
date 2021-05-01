@@ -3,18 +3,15 @@ package com.jmteam.igauntlet.network.packets.server;
 import com.jmteam.igauntlet.common.capability.CapabilityInfinity;
 import com.jmteam.igauntlet.common.capability.IInfinityCap;
 import com.jmteam.igauntlet.common.init.InfinityDamageSources;
+import com.jmteam.igauntlet.common.init.InfinityMessages;
 import com.jmteam.igauntlet.common.init.InfinitySounds;
 import com.jmteam.igauntlet.util.gauntlet.GauntletHelper;
 import com.jmteam.igauntlet.util.gauntlet.GemHelper;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.SoundCategory;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkEvent;
 
@@ -58,7 +55,7 @@ public class PacketSnap {
                                 int snapped = 0;
 
                                 if (entities.size() > 1) {
-                                    player.getServerWorld().playSound(null, player.getPosition(), InfinitySounds.SNAP.get(), SoundCategory.PLAYERS, 1,1);
+                                    player.getServerWorld().playSound(null, player.getPosition(), InfinitySounds.SNAP.get(), SoundCategory.PLAYERS, 1, 1);
 
                                     for (int x = 0; x < entities.size(); x++) {
                                         LivingEntity entity = entities.get(x);
@@ -79,20 +76,22 @@ public class PacketSnap {
                                     }
 
                                     // Infinity War (I don't feel so good) easter egg sound
-                                    if(world.rand.nextInt(15) == 5) {
-                                        player.getServerWorld().playSound(null, player.getPosition(), InfinitySounds.IDONTFEELGOOD.get(), SoundCategory.PLAYERS, 1,1);
+                                    if (world.rand.nextInt(15) == 5) {
+                                        player.getServerWorld().playSound(null, player.getPosition(), InfinitySounds.IDONTFEELGOOD.get(), SoundCategory.PLAYERS, 1, 1);
                                     }
 
                                     capability.setSnapTimeout(System.currentTimeMillis());
                                     capability.sync();
 
+
                                     // TODO Check if this works on server???
-                                    player.sendStatusMessage(new StringTextComponent(I18n.format("msg.snapped.amount" + (snapped > 1 ? ".multiple" : "")).replaceAll("&a", String.valueOf(snapped))), true);
+                                    player.sendStatusMessage(InfinityMessages.getComponent(snapped > 1 ? InfinityMessages.SNAP_AMOUNT_MULTIPLE : InfinityMessages.SNAP_AMOUNT, String.valueOf(snapped)), true);
                                 } else {
-                                    player.sendStatusMessage(new TranslationTextComponent("msg.snap.notenough"), true);
+                                    player.sendStatusMessage(InfinityMessages.getComponent(InfinityMessages.SNAP_NOT_ENOUGH), true);
                                 }
 
                                 break;
+
                             case REVIVE:
                                 // TODO add config value
                                 GemHelper.reviveAshPiles(player, 20);

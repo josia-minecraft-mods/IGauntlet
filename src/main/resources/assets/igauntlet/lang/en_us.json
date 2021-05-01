@@ -18,7 +18,6 @@
   "item.igauntlet.eye_agamotto": "Eye of Agamotto",
   "item.igauntlet.walkman": "Walkman",
   "item.igauntlet.record.awesome_mix.desc": "Awesome Mix",
-  "item.igauntlet.record.backinblack.desc": "Back In Black Vinyl",
 
   "block.igauntlet.ash_pile": "Ash Pile",
   "block.igauntlet.uru_ore": "Uru Ore",
@@ -37,17 +36,21 @@
 
   "itemGroup.infinity_tab": "IGauntlet Tab",
 
-  "msg.gauntlet.nostone": "No stone selected!",
-  "msg.stone.notsetup": "This stone has no function yet!",
-  "msg.snap.notenough": "Not enough entities near!",
-  "msg.revive.notfound": "Didn't find any Ash Piles to revive!",
-  "msg.snapped.amount": "You snapped &a entity!",
-  "msg.snapped.amount.multiple": "You snapped &a entities!",
-  "msg.inventoryfull": "Your inventory is full!",
-  "msg.stones.space.neardrift": "Don't hold the stone for too long!",
-  "msg.stones.space.drifted": "You have drifted!",
-  "msg.revive.notfound": "There are no entities near to revive!",
-  "msg.revive.succes": "You revived &d entities!",
+  "msg.gauntlet.no_stone": "No stone selected!",
+
+  "msg.stone.notset": "This stone has no function yet!",
+  "msg.stone.space.near_drift": "Don't hold the stone for too long!",
+  "msg.stone.space.drifted": "You have drifted!",
+
+  "msg.snap.not_enough": "Not enough entities near!",
+  "msg.snap.amount": "You snapped %1$s entity!",
+  "msg.snap.amount.multiple": "You snapped %1$s entities!",
+
+  "msg.revive.not_found": "Didn't find any Ash Piles to revive!",
+  "msg.revive.amount": "You revived %1$s entity!",
+  "msg.revive.amount.multiple": "You revived %1$s entities!",
+
+  "msg.inventory_full": "Your inventory is full!",
 
   "damagesource.igauntlet.laser": "%1$s got hit by a laser!",
   "damagesource.igauntlet.snap": "%1$s turned to ashes!",

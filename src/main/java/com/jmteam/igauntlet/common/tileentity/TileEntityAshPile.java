@@ -25,7 +25,7 @@ public class TileEntityAshPile extends InfinityTileEntityBase implements ITickab
     @Override
     public void tick() {
         // TODO Config for ash pile fade
-        if (!world.isRemote && getWorld().getGameTime() % 20 == 0) {
+        if (!world.isRemote() && getWorld().getGameTime() % 20 == 0) {
             if (timer >= 60)  {
                 WorldHelper.setBlockState(world, Blocks.AIR.getDefaultState(), pos);
                 timer = 0;

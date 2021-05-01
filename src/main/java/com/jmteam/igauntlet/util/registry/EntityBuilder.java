@@ -26,6 +26,10 @@ public class EntityBuilder {
         return new EntityBuilder();
     }
 
+    public static EntityBuilder create(String name) {
+        return create().setName(name).setId(new ResourceLocation(IGauntlet.MODID, name));
+    }
+
     public EntityBuilder setName(String name) {
         this.name = name;
         return this;
@@ -62,7 +66,7 @@ public class EntityBuilder {
 
     public <T extends Entity> RegistryObject<EntityType<T>> build() {
         if (factoryIn == null || classification == null) {
-            IGauntlet.LOGGER.warn("[Incorrect Builder]" + "Couldn't register entity :" + name);
+            IGauntlet.LOGGER.warn("[Incorrect Builder] " + "Couldn't register entity: " + name);
             return null;
         }
 

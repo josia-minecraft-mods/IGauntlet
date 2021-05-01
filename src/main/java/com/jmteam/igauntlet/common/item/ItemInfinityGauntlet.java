@@ -34,9 +34,9 @@ public class ItemInfinityGauntlet extends ItemBase {
         boolean main_hand = handIn == Hand.MAIN_HAND;
         ItemStack stack = playerIn.getHeldItem(handIn);
 
-        if (!main_hand && worldIn.isRemote) {
+        if (!main_hand && worldIn.isRemote()) {
             openStoneSelectionGUI();
-        } else if (!worldIn.isRemote && main_hand) {
+        } else if (!worldIn.isRemote() && main_hand) {
 
             if (GauntletHelper.invalidStone(playerIn, stack)) {
                 return ActionResult.resultFail(stack);
@@ -52,7 +52,7 @@ public class ItemInfinityGauntlet extends ItemBase {
     public ActionResultType onItemUse(ItemUseContext context) {
 
         Hand hand = context.getHand();
-        boolean main_hand = hand == Hand.MAIN_HAND;
+        boolean main_hand = (hand == Hand.MAIN_HAND);
         PlayerEntity playerIn = context.getPlayer();
         ItemStack stack = playerIn.getHeldItem(hand);
 

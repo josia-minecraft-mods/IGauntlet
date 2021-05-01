@@ -1,5 +1,6 @@
 package com.jmteam.igauntlet.util.gauntlet;
 
+import com.jmteam.igauntlet.common.init.InfinityMessages;
 import com.jmteam.igauntlet.common.init.InfinityNBT;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.ArmorStandEntity;
@@ -30,7 +31,7 @@ public class GauntletHelper {
 
         if (!player.world.isRemote()) {
             if (getActiveStone(stack) == GemHelper.StoneType.NONE) {
-                player.sendStatusMessage(new TranslationTextComponent("msg.gauntlet.nostone"), true);
+                player.sendStatusMessage(InfinityMessages.getComponent(InfinityMessages.STONE_NOT_SELECTED), true);
                 return true;
             }
         }

@@ -14,15 +14,15 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class InfinityRegistry {
 
-    // Initialize check
-    private static boolean initalized;
-
     // Registers
     public static final DeferredRegister<Block> BLOCK_REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCKS, IGauntlet.MODID);
     public static final DeferredRegister<Item> ITEM_REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, IGauntlet.MODID);
     public static final DeferredRegister<TileEntityType<?>> TILE_ENTITY_TYPE_REGISTRY = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, IGauntlet.MODID);
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPE_REGISTRY = DeferredRegister.create(ForgeRegistries.ENTITIES, IGauntlet.MODID);
     public static final DeferredRegister<SoundEvent> SOUND_REGISTRY = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, IGauntlet.MODID);
+
+    // Initialize check
+    private static boolean initalized;
 
     // Intialization
     public static InfinityBlocks BLOCKS;

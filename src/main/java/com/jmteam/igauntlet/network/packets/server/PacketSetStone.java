@@ -29,6 +29,7 @@ public class PacketSetStone {
     }
 
     public static class Handler {
+
         public static void handle(PacketSetStone packet, Supplier<NetworkEvent.Context> ctx) {
 
             ctx.get().enqueueWork(() -> {
@@ -39,11 +40,11 @@ public class PacketSetStone {
                     ItemStack stack = player.getHeldItem(Hand.OFF_HAND);
                     if (stack.getItem() == InfinityItems.INFINITY_GAUNTLET.get()) {
 
-                        if (stack.getTag() == null) stack.setTag(new CompoundNBT());
-
-                        if (stack.getTag() != null) {
-                            stack.getTag().putString(InfinityNBT.SELECTED_STONE, packet.type.name());
+                        if (stack.getTag() == null) {
+                            stack.setTag(new CompoundNBT());
                         }
+
+                        stack.getTag().putString(InfinityNBT.SELECTED_STONE, packet.type.name());
                     }
                 }
             });
