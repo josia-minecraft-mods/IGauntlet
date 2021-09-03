@@ -3,7 +3,7 @@ package com.jmteam.igauntlet;
 import com.jmteam.igauntlet.common.capability.CapabilityInfinity;
 import com.jmteam.igauntlet.common.capability.IInfinityCap;
 import com.jmteam.igauntlet.common.capability.InfinityCapStorage;
-import com.jmteam.igauntlet.common.events.ServerEvents;
+import com.jmteam.igauntlet.common.event.ServerEvents;
 import com.jmteam.igauntlet.common.init.InfinityFeatures;
 import com.jmteam.igauntlet.config.InfinityConfig;
 import com.jmteam.igauntlet.network.NetworkHandler;

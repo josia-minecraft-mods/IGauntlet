@@ -13,9 +13,9 @@ public class ItemTimeStone extends ItemStoneBase {
 
     @Override
     public void inventoryTick(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-        if (isSelected && worldIn != null && worldIn.getServer().getWorlds() != null) {
-            for (ServerWorld serverworld : worldIn.getServer().getWorlds()) {
-                serverworld.setDayTime(serverworld.getGameTime() + 10L);
+        if (isSelected && !worldIn.isClientSide() &&  worldIn.getServer().getAllLevels() != null) {
+            for (ServerWorld serverworld : worldIn.getServer().getAllLevels()) {
+                    serverworld.setDayTime(serverworld.getDayTime() + 50);
             }
         }
     }

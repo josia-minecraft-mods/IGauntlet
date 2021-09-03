@@ -14,12 +14,13 @@ public class BlockForge extends InfinityBlock {
         super(material);
     }
 
-    public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
-        if (!entityIn.isImmuneToFire() && entityIn instanceof LivingEntity && !EnchantmentHelper.hasFrostWalker((LivingEntity) entityIn)) {
-            entityIn.attackEntityFrom(DamageSource.HOT_FLOOR, 1.0F);
+    @Override
+    public void stepOn(World world, BlockPos blockPos, Entity entity) {
+        if (!entity.fireImmune() && entity instanceof LivingEntity && !EnchantmentHelper.hasFrostWalker((LivingEntity) entity)) {
+            entity.hurt(DamageSource.HOT_FLOOR, 1.0F);
         }
 
-        super.onEntityWalk(worldIn, pos, entityIn);
+        super.stepOn(world, blockPos, entity);
     }
 
 }

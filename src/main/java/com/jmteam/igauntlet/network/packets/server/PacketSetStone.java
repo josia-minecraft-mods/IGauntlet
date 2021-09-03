@@ -21,11 +21,11 @@ public class PacketSetStone {
     }
 
     public static void encode(PacketSetStone packet, PacketBuffer buf) {
-        buf.writeString(packet.type.name());
+        buf.writeUtf(packet.type.name());
     }
 
     public static PacketSetStone decode(PacketBuffer buf) {
-        return new PacketSetStone(StoneType.valueOf(buf.readString()));
+        return new PacketSetStone(StoneType.valueOf(buf.readUtf()));
     }
 
     public static class Handler {
@@ -37,7 +37,7 @@ public class PacketSetStone {
                 ServerPlayerEntity player = ctx.get().getSender();
 
                 if (player != null) {
-                    ItemStack stack = player.getHeldItem(Hand.OFF_HAND);
+                    ItemStack stack = player.getItemInHand(Hand.OFF_HAND);
                     if (stack.getItem() == InfinityItems.INFINITY_GAUNTLET.get()) {
 
                         if (stack.getTag() == null) {

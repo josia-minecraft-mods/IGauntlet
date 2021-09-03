@@ -33,7 +33,7 @@ public class NetworkHandler {
     }
 
     public static void sendTo(ServerPlayerEntity playerEntity, Object packet) {
-        INSTANCE.sendTo(packet, playerEntity.connection.netManager, NetworkDirection.PLAY_TO_CLIENT);
+        INSTANCE.sendTo(packet, playerEntity.connection.connection, NetworkDirection.PLAY_TO_CLIENT);
     }
 
     public static void sendServerPacket(Object packet) {

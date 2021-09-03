@@ -37,6 +37,6 @@ public class EntityHelper {
     }
 
     public static String getEntityID(Entity e) {
-        return e.getEntityString();
+        return e.getEncodeId();
     }
 }

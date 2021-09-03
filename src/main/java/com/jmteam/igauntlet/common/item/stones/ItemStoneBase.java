@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 public abstract class ItemStoneBase extends ItemBase {
 
     public ItemStoneBase() {
-        super(new Item.Properties().maxStackSize(1).group(InfinityGroups.INFINITY));
+        super(new Item.Properties().stacksTo(1).tab(InfinityGroups.INFINITY));
     }
 
     @Override

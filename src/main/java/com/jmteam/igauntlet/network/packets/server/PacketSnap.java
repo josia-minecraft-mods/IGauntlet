@@ -40,7 +40,7 @@ public class PacketSnap {
                 ServerPlayerEntity player = ctx.get().getSender();
 
                 if (player != null) {
-                    World world = player.getEntityWorld();
+                    World world = player.getLevel();
                     IInfinityCap capability = CapabilityInfinity.get(player);
                     SnapType type = player.isCrouching() ? SnapType.REVIVE : SnapType.SNAP;
 
@@ -50,17 +50,17 @@ public class PacketSnap {
 
                             case SNAP:
                                 // TODO add config value
-                                List<LivingEntity> entities = world.getEntitiesWithinAABB(LivingEntity.class, player.getBoundingBox().grow(20));
+                                List<LivingEntity> entities = world.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(20));
                                 GauntletHelper.filterSnapList(player, entities);
                                 int snapped = 0;
 
                                 if (entities.size() > 1) {
-                                    player.getServerWorld().playSound(null, player.getPosition(), InfinitySounds.SNAP.get(), SoundCategory.PLAYERS, 1, 1);
+                                    player.getLevel().playSound(null, player.blockPosition(), InfinitySounds.SNAP.get(), SoundCategory.PLAYERS, 1, 1);
 
                                     for (int x = 0; x < entities.size(); x++) {
                                         LivingEntity entity = entities.get(x);
 
-                                        if (!entity.isInvulnerable() && (x % 2 == 1 && x != 0) && entity.isAlive()) {
+                                        if (!entity.isInvulnerable() && x % 2 == 1 && entity.isAlive()) {
                                             snapped++;
 
                                             // Prevent setting Entities removed when they shouldn't be
@@ -68,26 +68,25 @@ public class PacketSnap {
                                                 entity.remove();
                                             }
 
-                                            entity.attackEntityFrom(InfinityDamageSources.SNAP, entity.getHealth());
-                                            player.getServerWorld().spawnParticle(ParticleTypes.LARGE_SMOKE, entity.getPosX(), entity.getPosY() + 0.5, entity.getPosZ(), 50, 0.5, 0.5, 0.5, 0.1);
+                                            entity.hurt(InfinityDamageSources.SNAP, entity.getHealth());
+                                            player.getLevel().addParticle(ParticleTypes.LARGE_SMOKE, entity.getX(), entity.getY() + 0.5D, entity.getZ(), 50D, 0.5D, 0.5D);
 
-                                            GemHelper.createAshPile(world, entity.getPosition(), entity);
+                                            GemHelper.createAshPile(world, entity.blockPosition(), entity);
                                         }
                                     }
 
                                     // Infinity War (I don't feel so good) easter egg sound
-                                    if (world.rand.nextInt(15) == 5) {
-                                        player.getServerWorld().playSound(null, player.getPosition(), InfinitySounds.IDONTFEELGOOD.get(), SoundCategory.PLAYERS, 1, 1);
+                                    if (world.getRandom().nextInt(15) == 5) {
+                                        player.getLevel().playSound(null, player.blockPosition(), InfinitySounds.IDONTFEELGOOD.get(), SoundCategory.PLAYERS, 1, 1);
                                     }
 
                                     capability.setSnapTimeout(System.currentTimeMillis());
                                     capability.sync();
 
-
                                     // TODO Check if this works on server???
-                                    player.sendStatusMessage(InfinityMessages.getComponent(snapped > 1 ? InfinityMessages.SNAP_AMOUNT_MULTIPLE : InfinityMessages.SNAP_AMOUNT, String.valueOf(snapped)), true);
+                                    player.displayClientMessage(InfinityMessages.getComponent(snapped > 1 ? InfinityMessages.SNAP_AMOUNT_MULTIPLE : InfinityMessages.SNAP_AMOUNT, String.valueOf(snapped)), true);
                                 } else {
-                                    player.sendStatusMessage(InfinityMessages.getComponent(InfinityMessages.SNAP_NOT_ENOUGH), true);
+                                    player.displayClientMessage(InfinityMessages.getComponent(InfinityMessages.SNAP_NOT_ENOUGH), true);
                                 }
 
                                 break;

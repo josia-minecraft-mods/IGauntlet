@@ -1,15 +1,12 @@
-package com.jmteam.igauntlet.common.events;
+package com.jmteam.igauntlet.common.event;
 
 import com.jmteam.igauntlet.common.entity.EntityGauntlet;
 import com.jmteam.igauntlet.common.init.InfinityItems;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.MathHelper;
-import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.LogicalSide;
-import net.minecraftforge.fml.common.Mod;
 
 
 public class ServerEvents {
@@ -19,15 +16,20 @@ public class ServerEvents {
         if (event.getEntity() instanceof ItemEntity) {
             ItemEntity itemEntity = (ItemEntity) event.getEntity();
 
+            System.out.println(itemEntity.getItem().getItem());
+
             // Spawn Gauntlet
             if (itemEntity.getItem().getItem() == InfinityItems.INFINITY_GAUNTLET.get()) {
+
+                System.out.println("a");
+
                 EntityGauntlet gauntlet = new EntityGauntlet(itemEntity.getItem(), event.getWorld());
-                PlayerEntity player = itemEntity.world.getServer().getPlayerList().getPlayerByUUID(itemEntity.getThrowerId());
+                PlayerEntity player = itemEntity.level.getServer().getPlayerList().getPlayer(itemEntity.getThrower());
 
                 if (player != null) {
-                    gauntlet.setMotion(itemEntity.getMotion());
-                    gauntlet.setPositionAndRotation(itemEntity.getPosX(), itemEntity.getPosY(), itemEntity.getPosZ(), MathHelper.floor((player.rotationYaw) + 180), 0);
-                    event.getWorld().addEntity(gauntlet);
+                    gauntlet.setDeltaMovement(itemEntity.getDeltaMovement());
+                    gauntlet.moveTo(itemEntity.getX(), itemEntity.getY(), itemEntity.getZ(), MathHelper.floor((player.yRot) + 180), 0);
+                    event.getWorld().addFreshEntity(gauntlet);
                     event.setCanceled(true);
                 }
             }

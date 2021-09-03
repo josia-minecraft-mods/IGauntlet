@@ -22,14 +22,14 @@ public class BlockOre extends InfinityBlock {
     public int difference;
 
     public BlockOre(Material material, Supplier<Item> itemSupplier, int amount, int difference) {
-        super(Block.Properties.create(material).harvestLevel(0).hardnessAndResistance(5.0f).harvestTool(ToolType.PICKAXE));
+        super(Block.Properties.of(material).harvestLevel(0).strength(5.0f).harvestTool(ToolType.PICKAXE));
         this.itemSupplier = itemSupplier;
         this.amount = amount;
         this.difference = difference;
     }
 
     // TODO Use loottable?
-    @Override
+  /*  @Override
     public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {
         super.onBlockHarvested(worldIn, pos, state, player);
         int quantity = amount + worldIn.rand.nextInt(difference);
@@ -38,4 +38,5 @@ public class BlockOre extends InfinityBlock {
             spawnAsEntity(worldIn, pos, new ItemStack(itemSupplier.get(), quantity));
         }
     }
+    */
 }

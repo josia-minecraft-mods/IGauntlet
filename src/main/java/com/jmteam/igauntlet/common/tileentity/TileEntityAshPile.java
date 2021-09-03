@@ -25,9 +25,9 @@ public class TileEntityAshPile extends InfinityTileEntityBase implements ITickab
     @Override
     public void tick() {
         // TODO Config for ash pile fade
-        if (!world.isRemote() && getWorld().getGameTime() % 20 == 0) {
+        if (!level.isClientSide() && level.getGameTime() % 20 == 0) {
             if (timer >= 60)  {
-                WorldHelper.setBlockState(world, Blocks.AIR.getDefaultState(), pos);
+                WorldHelper.setBlockState(level, Blocks.AIR.defaultBlockState(), worldPosition);
                 timer = 0;
             }
             timer++;
@@ -37,14 +37,14 @@ public class TileEntityAshPile extends InfinityTileEntityBase implements ITickab
     public void setEntity(LivingEntity entity) {
         CompoundNBT nbt = entity.serializeNBT();
         this.entity = nbt.toString();
-        markDirty();
+        setChanged();
     }
 
     public LivingEntity getEntity() {
         try {
             if (!entity.isEmpty()) {
-                CompoundNBT compoundNBT = JsonToNBT.getTagFromJson(this.entity);
-                return (LivingEntity) EntityHelper.createEntityFromNBT(compoundNBT, world);
+                CompoundNBT compoundNBT = JsonToNBT.parseTag(this.entity);
+                return (LivingEntity) EntityHelper.createEntityFromNBT(compoundNBT, level);
             }
         } catch (CommandSyntaxException e) {
             e.printStackTrace();
@@ -55,19 +55,21 @@ public class TileEntityAshPile extends InfinityTileEntityBase implements ITickab
 
     public void clearEntity() {
         entity = "";
-        markDirty();
+        setChanged();
     }
 
+
     @Override
-    public void read(BlockState state, CompoundNBT compound) {
-        super.read(state, compound);
+    public void load(BlockState state, CompoundNBT compound) {
+        super.load(state, compound);
+
         entity = compound.getString("entity_data");
         timer = compound.getInt(InfinityNBT.TIMER);
     }
 
     @Override
-    public CompoundNBT write(CompoundNBT compound) {
-        super.write(compound);
+    public CompoundNBT save(CompoundNBT compound) {
+        super.save(compound);
 
         compound.putString("entity_data", entity);
         compound.putInt(InfinityNBT.TIMER, timer);

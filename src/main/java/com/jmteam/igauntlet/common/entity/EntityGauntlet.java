@@ -2,6 +2,7 @@ package com.jmteam.igauntlet.common.entity;
 
 import com.jmteam.igauntlet.common.init.InfinityEntities;
 import com.jmteam.igauntlet.common.init.InfinityItems;
+import com.jmteam.igauntlet.common.init.InfinityMessages;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.MoverType;
@@ -12,7 +13,6 @@ import net.minecraft.network.IPacket;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
@@ -24,27 +24,23 @@ public class EntityGauntlet extends Entity {
         super(entityTypeIn, worldIn);
     }
 
+    @Override
+    protected void defineSynchedData() {
+
+    }
+
     public EntityGauntlet(ItemStack i, World worldIn) {
         super(InfinityEntities.GAUNTLET.get(), worldIn);
         stack = i;
     }
 
     @Override
-    public boolean canBeCollidedWith() {
-        return true;
-    }
-
-    public void recalculateSize() {
-        double d0 = this.getPosX();
-        double d1 = this.getPosY();
-        double d2 = this.getPosZ();
-        super.recalculateSize();
-        this.setPosition(d0, d1, d2);
-    }
-
-    @Override
-    protected void registerData() {
-
+    public void refreshDimensions() {
+        double d0 = this.getX();
+        double d1 = this.getY();
+        double d2 = this.getZ();
+        super.refreshDimensions();
+        this.moveTo(d0, d1, d2);
     }
 
     @Override
@@ -52,44 +48,62 @@ public class EntityGauntlet extends Entity {
         super.tick();
         //recalculateSize();
 
+
         if (!onGround) {
-            this.setMotion(new Vector3d(getMotion().x, -0.2f, getMotion().z));
-            this.move(MoverType.SELF, this.getMotion());
+            setDeltaMovement(getDeltaMovement().x, -0.2f, getDeltaMovement().z);
+            this.move(MoverType.SELF, this.getDeltaMovement());
         } else {
-            if (!world.isRemote) {
-                if (stack == null || stack.getItem() != InfinityItems.INFINITY_GAUNTLET.get()) onKillCommand();
+            if (!level.isClientSide()) {
+                if (stack == null || stack.getItem() != InfinityItems.INFINITY_GAUNTLET.get()) kill();
             }
         }
     }
 
     @Override
-    public ActionResultType applyPlayerInteraction(PlayerEntity player, Vector3d vec, Hand hand) {
-        boolean hasEmptySlot = player.inventory.getFirstEmptyStack() != -1;
-        if (!world.isRemote && hasEmptySlot && stack != null) {
-            player.inventory.addItemStackToInventory(stack);
-            onKillCommand();
-        } else if (!world.isRemote) {
-            if (!hasEmptySlot) player.sendStatusMessage(new TranslationTextComponent("msg.inventoryfull"), true);
-            if (stack == null) onKillCommand();
-        }
-
-        return super.applyPlayerInteraction(player, vec, hand);
+    protected void readAdditionalSaveData(CompoundNBT compoundNBT) {
+        stack = ItemStack.of(compoundNBT.getCompound("stack"));
     }
 
     @Override
-    protected void readAdditional(CompoundNBT compound) {
-        stack = ItemStack.read(compound.getCompound("stack"));
-    }
-
-    @Override
-    protected void writeAdditional(CompoundNBT compound) {
+    protected void addAdditionalSaveData(CompoundNBT compound) {
         CompoundNBT compoundNBT = new CompoundNBT();
-        stack.write(compoundNBT);
+        stack.save(compoundNBT);
         compound.put("stack", compoundNBT);
     }
 
     @Override
-    public IPacket<?> createSpawnPacket() {
+    public ActionResultType interactAt(PlayerEntity player, Vector3d vec, Hand hand) {
+        if (!level.isClientSide()) {
+
+            boolean hasEmptySlot = player.inventory.getFreeSlot() != -1;
+
+            if (hasEmptySlot && stack != null) {
+                player.inventory.add(stack.copy());
+                stack = null;
+                kill();
+            } else {
+                if (!hasEmptySlot) player.displayClientMessage(InfinityMessages.getComponent(InfinityMessages.INVENTORY_FULL), true);
+                if (stack == null) kill();
+            }
+        }
+
+        return super.interactAt(player, vec, hand);
+    }
+
+    @Override
+    public boolean canBeCollidedWith() {
+        return onGround;
+    }
+
+    @Override
+    public boolean isPickable() {
+        return true;
+    }
+
+    @Override
+    public IPacket<?> getAddEntityPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
+
+
 }

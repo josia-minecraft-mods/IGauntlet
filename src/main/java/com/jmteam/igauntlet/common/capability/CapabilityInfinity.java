@@ -5,13 +5,11 @@ import com.jmteam.igauntlet.network.NetworkHandler;
 import com.jmteam.igauntlet.network.packets.client.PacketSyncCapability;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.boss.dragon.phase.ScanningSittingPhase;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
@@ -38,8 +36,8 @@ public class CapabilityInfinity implements IInfinityCap {
 
     @Override
     public void sync() {
-        if (!player.world.isRemote) {
-            NetworkHandler.sendTo((ServerPlayerEntity) player, new PacketSyncCapability(player.getUniqueID(), serializeNBT()));
+        if (!player.level.isClientSide()) {
+            NetworkHandler.sendTo((ServerPlayerEntity) player, new PacketSyncCapability(player.getUUID(), serializeNBT()));
         }
     }
 
@@ -88,15 +86,13 @@ public class CapabilityInfinity implements IInfinityCap {
 
                IInfinityCap cap = get((PlayerEntity) entity);
 
-               if (cap != null) {
-                   cap.update();
-               }
+               cap.update();
            }
         }
 
         @SubscribeEvent
         public static void onPlayerClone(PlayerEvent.Clone event) {
-            Capability.IStorage storage = InfinityCapProvider.CAPABILITY.getStorage();
+            Capability.IStorage<IInfinityCap> storage = InfinityCapProvider.CAPABILITY.getStorage();
 
             IInfinityCap oldCap = get(event.getOriginal());
             IInfinityCap newCap = get(event.getPlayer());

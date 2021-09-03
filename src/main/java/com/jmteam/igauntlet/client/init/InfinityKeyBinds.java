@@ -25,7 +25,7 @@ public class InfinityKeyBinds {
         }
 
         public boolean shouldExecute() {
-            boolean pressed = isPressed() || isKeyDown(); // Is pressed?
+            boolean pressed = consumeClick() || isDown(); // Is pressed?
             boolean previousState = isAlreadyPressed; // Previous
             isAlreadyPressed = pressed; // Update pressed
             return pressed && !previousState; // Is pressed and wasn't last pressed?

@@ -29,9 +29,9 @@ public class GauntletHelper {
 
     public static boolean invalidStone(PlayerEntity player, ItemStack stack) {
 
-        if (!player.world.isRemote()) {
+        if (!player.level.isClientSide()) {
             if (getActiveStone(stack) == GemHelper.StoneType.NONE) {
-                player.sendStatusMessage(InfinityMessages.getComponent(InfinityMessages.STONE_NOT_SELECTED), true);
+                player.displayClientMessage(InfinityMessages.getComponent(InfinityMessages.STONE_NOT_SELECTED), true);
                 return true;
             }
         }

@@ -1,7 +1,7 @@
-package com.jmteam.igauntlet.client.gui;
+package com.jmteam.igauntlet.client.screen;
 
 import com.jmteam.igauntlet.IGauntlet;
-import com.jmteam.igauntlet.client.gui.buttons.ButtonStones;
+import com.jmteam.igauntlet.client.screen.buttons.ButtonStones;
 import com.jmteam.igauntlet.config.InfinityConfig;
 import com.jmteam.igauntlet.util.Graphics;
 import com.jmteam.igauntlet.util.gauntlet.GemHelper.StoneType;
@@ -11,7 +11,7 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TranslationTextComponent;
 
-public class GuiGauntlet extends Screen {
+public class StoneSelectionScreen extends Screen {
 
 
     static final int GUI_WIDTH = 256;
@@ -19,7 +19,7 @@ public class GuiGauntlet extends Screen {
 
     public static final ResourceLocation TEXTURE = new ResourceLocation(IGauntlet.MODID, "textures/gui/gui_gauntlet.png");
 
-    public GuiGauntlet() {
+    public StoneSelectionScreen() {
         super(new TranslationTextComponent("gui.stone_selection"));
     }
 
@@ -48,7 +48,7 @@ public class GuiGauntlet extends Screen {
     @Override
     public void render(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks) {
         renderBackground(matrixStack);
-        Minecraft.getInstance().getTextureManager().bindTexture(TEXTURE);
+        Minecraft.getInstance().getTextureManager().bind(TEXTURE);
         int x = (width - GUI_WIDTH) / 2;
         int y = (height - GUI_HEIGHT) / 2;
         Graphics.drawTexturedModalRect(x, y, 0, 0, GUI_WIDTH, GUI_HEIGHT);

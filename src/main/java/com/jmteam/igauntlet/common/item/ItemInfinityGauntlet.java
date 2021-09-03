@@ -1,6 +1,6 @@
 package com.jmteam.igauntlet.common.item;
 
-import com.jmteam.igauntlet.client.gui.GuiGauntlet;
+import com.jmteam.igauntlet.client.screen.StoneSelectionScreen;
 import com.jmteam.igauntlet.common.init.InfinityGroups;
 import com.jmteam.igauntlet.common.init.InfinityNBT;
 import com.jmteam.igauntlet.util.gauntlet.GauntletHelper;
@@ -26,39 +26,39 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class ItemInfinityGauntlet extends ItemBase {
 
     public ItemInfinityGauntlet() {
-        super(new Item.Properties().group(InfinityGroups.INFINITY));
+        super(new Item.Properties().tab(InfinityGroups.INFINITY).stacksTo(1));
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
-        boolean main_hand = handIn == Hand.MAIN_HAND;
-        ItemStack stack = playerIn.getHeldItem(handIn);
+    public ActionResult<ItemStack> use(World worldIn, PlayerEntity playerIn, Hand handIn) {
 
-        if (!main_hand && worldIn.isRemote()) {
+        boolean main_hand = handIn == Hand.MAIN_HAND;
+        ItemStack stack = playerIn.getItemInHand(handIn);
+
+        if (!main_hand && worldIn.isClientSide()) {
             openStoneSelectionGUI();
-        } else if (!worldIn.isRemote() && main_hand) {
+        } else if (!worldIn.isClientSide() && main_hand) {
 
             if (GauntletHelper.invalidStone(playerIn, stack)) {
-                return ActionResult.resultFail(stack);
+                return ActionResult.fail(stack);
             }
 
             GauntletHelper.getActiveStone(stack).getGem().handleRightClick(playerIn);
         }
 
-        return super.onItemRightClick(worldIn, playerIn, handIn);
+        return super.use(worldIn, playerIn, handIn);
     }
 
     @Override
-    public ActionResultType onItemUse(ItemUseContext context) {
-
+    public ActionResultType useOn(ItemUseContext context) {
         Hand hand = context.getHand();
         boolean main_hand = (hand == Hand.MAIN_HAND);
         PlayerEntity playerIn = context.getPlayer();
-        ItemStack stack = playerIn.getHeldItem(hand);
+        ItemStack stack = playerIn.getItemInHand(hand);
 
-        if (!main_hand && context.getWorld().isRemote()) {
+        if (!main_hand && context.getLevel().isClientSide()) {
             openStoneSelectionGUI();
-        } else if (!context.getWorld().isRemote() && main_hand) {
+        } else if (!context.getLevel().isClientSide() && main_hand) {
             if (GauntletHelper.invalidStone(playerIn, stack)) {
                 return ActionResultType.FAIL;
             }
@@ -66,12 +66,12 @@ public class ItemInfinityGauntlet extends ItemBase {
             GauntletHelper.getActiveStone(stack).getGem().handleUsedClick(context);
         }
 
-        return super.onItemUse(context);
+        return super.useOn(context);
     }
 
     @OnlyIn(Dist.CLIENT)
     public void openStoneSelectionGUI() {
-        Minecraft.getInstance().displayGuiScreen(new GuiGauntlet());
+        Minecraft.getInstance().setScreen(new StoneSelectionScreen());
     }
 
     @Override
@@ -85,7 +85,7 @@ public class ItemInfinityGauntlet extends ItemBase {
     }
 
     @Override
-    public ITextComponent getDisplayName(ItemStack stack) {
-        return new StringTextComponent(TextFormatting.GOLD + "" + TextFormatting.BOLD + I18n.format("item.igauntlet.infinity_gauntlet"));
+    public ITextComponent getName(ItemStack stack) {
+        return new StringTextComponent(TextFormatting.GOLD + "" + TextFormatting.BOLD + I18n.get("item.igauntlet.infinity_gauntlet"));
     }
 }
