@@ -23,9 +23,9 @@ public class TileEntityQuickSand extends InfinityTileEntityBase implements ITick
         if (!placed) {
 
             // TODO Replace with a config value for max sand time
-            if (!world.isRemote() && getWorld().getGameTime() % 20 == 0) {
+            if (!level.isClientSide() && level.getGameTime() % 20 == 0) {
                 if (timer >= 60)  {
-                    world.setBlockState(pos, Blocks.SAND.getDefaultState());
+                    level.setBlockAndUpdate(worldPosition, Blocks.SAND.defaultBlockState());
                     timer = 0;
                 }
                 timer++;
@@ -38,15 +38,15 @@ public class TileEntityQuickSand extends InfinityTileEntityBase implements ITick
     }
 
     @Override
-    public void read(BlockState state, CompoundNBT compound) {
-        super.read(state, compound);
+    public void load(BlockState state, CompoundNBT compound) {
+        super.load(state, compound);
         placed = compound.getBoolean("placed");
         timer = compound.getInt(InfinityNBT.TIMER);
     }
 
     @Override
-    public CompoundNBT write(CompoundNBT compound) {
-        super.write(compound);
+    public CompoundNBT save(CompoundNBT compound) {
+        super.save(compound);
         compound.putBoolean("placed", placed);
         compound.putInt(InfinityNBT.TIMER, timer);
 

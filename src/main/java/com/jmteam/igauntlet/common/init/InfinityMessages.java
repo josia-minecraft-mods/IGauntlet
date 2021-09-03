@@ -24,7 +24,7 @@ public class InfinityMessages {
         return "msg." + msg;
     }
 
-    public static TranslationTextComponent getComponent(String msg, String... args) {
+    public static TranslationTextComponent getComponent(String msg, Object... args) {
         return new TranslationTextComponent(msg, args);
     }
 }

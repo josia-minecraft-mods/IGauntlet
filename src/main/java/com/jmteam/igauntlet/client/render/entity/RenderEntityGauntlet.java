@@ -27,17 +27,17 @@ public class RenderEntityGauntlet extends EntityRenderer<EntityGauntlet> {
     public void render(EntityGauntlet entityIn, float entityYaw, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn) {
         super.render(entityIn, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
 
-        matrixStackIn.push();
-        matrixStackIn.rotate(new Quaternion(Vector3f.YP, 180 - entityYaw, true));
-        RenderHelper.enableStandardItemLighting();
+        matrixStackIn.pushPose();
+        matrixStackIn.mulPose(Vector3f.YP.rotationDegrees(180 - entityYaw));
+        RenderHelper.turnBackOn();
         matrixStackIn.translate(0, 0.5, 0);
-        Minecraft.getInstance().getItemRenderer().renderItem(new ItemStack(InfinityItems.INFINITY_GAUNTLET.get()), ItemCameraTransforms.TransformType.NONE, packedLightIn, packedLightIn, matrixStackIn, bufferIn);
-        RenderHelper.disableStandardItemLighting();
-        matrixStackIn.pop();
+        Minecraft.getInstance().getItemRenderer().renderStatic(new ItemStack(InfinityItems.INFINITY_GAUNTLET.get()), ItemCameraTransforms.TransformType.NONE, packedLightIn, packedLightIn, matrixStackIn, bufferIn);
+        RenderHelper.turnOff();
+        matrixStackIn.popPose();
     }
 
     @Override
-    public ResourceLocation getEntityTexture(EntityGauntlet entity) {
+    public ResourceLocation getTextureLocation(EntityGauntlet p_110775_1_) {
         return new ResourceLocation("");
     }
 }

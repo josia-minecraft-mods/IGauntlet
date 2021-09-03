@@ -11,6 +11,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
@@ -21,17 +22,19 @@ import javax.annotation.Nullable;
 
 public class BlockAshPile extends FallingBlock {
 
-    public static final VoxelShape DUST_SHAPE = VoxelShapes.create(0.296875, 0, 0.296875, 0.6900, 0.1875 / 2, 0.6900);
+    public static final VoxelShape DUST_SHAPE = VoxelShapes.create(new AxisAlignedBB(0.296875, 0, 0.296875, 0.6900, 0.1875 / 2, 0.6900));
 
     public BlockAshPile(Material material) {
-        super(Block.Properties.create(material).hardnessAndResistance(0.1f).sound(SoundType.SAND));
+        super(Block.Properties.of(material).strength(0.1f).sound(SoundType.SAND));
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         return DUST_SHAPE;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         return DUST_SHAPE;

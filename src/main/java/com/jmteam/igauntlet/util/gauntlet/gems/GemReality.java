@@ -22,15 +22,15 @@ public class GemReality extends GemBase {
     public void handleUsedClick(ItemUseContext context) {
 
         PlayerEntity player = context.getPlayer();
-        BlockPos pos = context.getPos();
-        World world = context.getWorld();
+        BlockPos pos = context.getClickedPos();
+        World world = context.getLevel();
 
         if (player.isCrouching()) {
-            Block b = player.world.getBlockState(pos).getBlock();
+            Block b = player.level.getBlockState(pos).getBlock();
 
             if (b instanceof SandBlock) {
                 for (BlockPos p : WorldHelper.getSameBlocksFromPosRanged(world, pos, 20)) {
-                    WorldHelper.setBlockState(world, InfinityBlocks.QUICK_SAND.get().getDefaultState(), p);
+                    WorldHelper.setBlockState(world, InfinityBlocks.QUICK_SAND.get().defaultBlockState(), p);
                 }
             }
         }

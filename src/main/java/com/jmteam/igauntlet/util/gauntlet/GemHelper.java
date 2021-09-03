@@ -19,8 +19,8 @@ import java.util.function.Supplier;
 public class GemHelper {
 
     public static void reviveAshPiles(PlayerEntity player, int range) {
-        World world = player.world;
-        List<BlockPos> blockPosObjects = WorldHelper.getAllInBounds(player.getPosition().add(-range, -range, -range), player.getPosition().add(range, range, range));
+        World world = player.level;
+        List<BlockPos> blockPosObjects = WorldHelper.getAllInBounds(player.blockPosition().offset(-range, -range, -range), player.blockPosition().offset(range, range, range));
         int revivedCount = 0;
 
         for (int i = 0; i < blockPosObjects.size(); i++) {
@@ -28,7 +28,7 @@ public class GemHelper {
             BlockState state = world.getBlockState(pos);
 
             if (state.getBlock() == InfinityBlocks.ASH_PILE.get()) {
-                TileEntity te = world.getTileEntity(pos);
+                TileEntity te = world.getBlockEntity(pos);
 
                 if (te != null && te instanceof TileEntityAshPile) {
                     TileEntityAshPile ashPile = (TileEntityAshPile) te;
@@ -36,8 +36,8 @@ public class GemHelper {
 
                     if (entity != null) {
                         entity.setHealth(entity.getMaxHealth());
-                        world.addEntity(entity);
-                        WorldHelper.setBlockState(world, Blocks.AIR.getDefaultState(), pos);
+                        world.addFreshEntity(entity);
+                        WorldHelper.setBlockState(world, Blocks.AIR.defaultBlockState(), pos);
                         revivedCount++;
                     }
                 }
@@ -45,9 +45,9 @@ public class GemHelper {
         }
 
         if (revivedCount == 0)
-            player.sendStatusMessage(InfinityMessages.getComponent(InfinityMessages.REVIVE_NOT_FOUND), true);
+            player.displayClientMessage(InfinityMessages.getComponent(InfinityMessages.REVIVE_NOT_FOUND), true);
         else {
-            player.sendStatusMessage(InfinityMessages.getComponent(revivedCount > 1 ? InfinityMessages.REVIVE_AMOUNT_MULTIPLE : InfinityMessages.REVIVE_AMOUNT, String.valueOf(revivedCount)), true);
+            player.displayClientMessage(InfinityMessages.getComponent(revivedCount > 1 ? InfinityMessages.REVIVE_AMOUNT_MULTIPLE : InfinityMessages.REVIVE_AMOUNT, String.valueOf(revivedCount)), true);
         }
     }
 
@@ -56,18 +56,18 @@ public class GemHelper {
             BlockPos placePos = pos;
 
             if (world.getBlockState(placePos).getBlock() != Blocks.AIR) {
-                if (world.getBlockState(pos.up()).getBlock() != Blocks.AIR) return false;
+                if (world.getBlockState(pos.above()).getBlock() != Blocks.AIR) return false;
 
-                placePos = pos.up();
+                placePos = pos.above();
             }
 
-            WorldHelper.setBlockState(world, InfinityBlocks.ASH_PILE.get().getDefaultState(), placePos);
-            TileEntity te = world.getTileEntity(placePos);
+            WorldHelper.setBlockState(world, InfinityBlocks.ASH_PILE.get().defaultBlockState(), placePos);
+            TileEntity te = world.getBlockEntity(placePos);
 
             if (te != null && te instanceof TileEntityAshPile) {
                 TileEntityAshPile ashPile = (TileEntityAshPile) te;
                 ashPile.setEntity(entity);
-                ashPile.markDirty();
+                ashPile.setChanged();
                 return true;
             }
         }
@@ -76,8 +76,8 @@ public class GemHelper {
     }
 
     public static void notSetupMessage(PlayerEntity player) {
-        if (!player.world.isRemote()) {
-            player.sendStatusMessage(InfinityMessages.getComponent(InfinityMessages.STONE_NO_FUNCTION), true);
+        if (!player.level.isClientSide()) {
+            player.displayClientMessage(InfinityMessages.getComponent(InfinityMessages.STONE_NO_FUNCTION), true);
         }
     }
 

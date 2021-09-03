@@ -30,17 +30,17 @@ public class GemSpace extends GemBase {
     @Override
     public void handleItemHoldingAction(PlayerEntity player) {
         // Drifting
-        if (!player.world.isRemote) {
-            World world = player.world;
-            Random r = world.rand;
+        if (!player.level.isClientSide()) {
+            World world = player.level;
+            Random r = world.getRandom();
             int xR = r.nextBoolean() ? r.nextInt(230) : -r.nextInt(230);
             int zR = r.nextBoolean() ? r.nextInt(230) : -r.nextInt(230);
 
             // TODO Config Values
-            BlockPos calculcatedPosition = new BlockPos(player.getPosX() + xR, player.getPosY(), player.getPosZ() + zR);
-            int y = WorldHelper.getTopSolidOrLiquidBlock(player.getEntityWorld(), calculcatedPosition).getY() + 1;
-            player.setPositionAndUpdate(calculcatedPosition.getX(), y, calculcatedPosition.getZ());
-            player.sendStatusMessage(InfinityMessages.getComponent(InfinityMessages.STONE_SPACE_DRIFTED), true);
+            BlockPos calculcatedPosition = new BlockPos(player.getX() + xR, player.getY(), player.getZ() + zR);
+            int y = WorldHelper.getTopSolidOrLiquidBlock(player.level, calculcatedPosition).getY() + 1;
+            player.moveTo(calculcatedPosition.getX(), y, calculcatedPosition.getZ());
+            player.displayClientMessage(InfinityMessages.getComponent(InfinityMessages.STONE_SPACE_DRIFTED), true);
         }
     }
 }

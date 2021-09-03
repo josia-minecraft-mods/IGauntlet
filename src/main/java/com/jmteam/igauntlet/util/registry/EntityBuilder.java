@@ -10,9 +10,8 @@ import net.minecraftforge.fml.RegistryObject;
 
 /**
  * Does Entity Creation but simplified
- * Made by Josia50
+ * @author Josia
  */
-
 public class EntityBuilder {
 
     private String name = "";
@@ -20,7 +19,6 @@ public class EntityBuilder {
     private EntityType.Builder<? extends Entity> builder;
     private EntityClassification classification = EntityClassification.AMBIENT;
     private EntityType.IFactory<?> factoryIn;
-    private Vector2f size;
 
     public static EntityBuilder create() {
         return new EntityBuilder();
@@ -44,7 +42,7 @@ public class EntityBuilder {
 
 
     public <T extends Entity> EntityBuilder create(EntityType.IFactory<T> factoryIn, EntityClassification classificationIn) {
-        this.builder = EntityType.Builder.create(factoryIn, classificationIn);
+        this.builder = EntityType.Builder.of(factoryIn, classificationIn);
         return this;
     }
 
@@ -59,8 +57,7 @@ public class EntityBuilder {
     }
 
     public EntityBuilder size(float width, float height) {
-        this.size = new Vector2f(width, height);
-        builder.size(width, height);
+        builder.sized(width, height);
         return this;
     }
 

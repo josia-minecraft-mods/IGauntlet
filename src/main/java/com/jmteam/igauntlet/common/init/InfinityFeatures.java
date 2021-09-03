@@ -14,15 +14,16 @@ public class InfinityFeatures {
 
     // Ore Gen
     public static void setupOresGeneration(BiomeLoadingEvent event) {
-        if(event.getCategory().equals(Biome.Category.THEEND) || event.getCategory().equals(Biome.Category.NETHER)) return;
+        if (event.getCategory().equals(Biome.Category.THEEND) || event.getCategory().equals(Biome.Category.NETHER))
+            return;
 
-        setupOre(event, OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD, InfinityBlocks.URU_ORE.get(), 4, 5, 60, 4);
+        setupOre(event, OreFeatureConfig.FillerBlockType.NATURAL_STONE, InfinityBlocks.URU_ORE.get(), 4, 5, 60, 4);
     }
 
     private static void setupOre(BiomeLoadingEvent event, RuleTest ruleTest, Block block, int veinSize, int minHeight, int maxHeight, int count) {
-        event.getGeneration().withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(
-                new OreFeatureConfig(ruleTest, block.getDefaultState(), veinSize))
-                .withPlacement(Placement.RANGE.configure(new TopSolidRangeConfig(minHeight, 0, maxHeight)))
-                .square().count(count));
+        event.getGeneration().addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.configured(
+                        new OreFeatureConfig(ruleTest, block.defaultBlockState(), veinSize))
+                .decorated(Placement.RANGE.configured(new TopSolidRangeConfig(minHeight, 0, maxHeight)))
+                .squared().count(count));
     }
 }

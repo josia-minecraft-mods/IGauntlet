@@ -19,26 +19,7 @@ import net.minecraftforge.common.ToolType;
 
 public class BlockManipulator extends InfinityBlock {
 
-    public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
-
     public BlockManipulator(Material material) {
-        super(Properties.create(material).harvestLevel(0).hardnessAndResistance(15.0f).notSolid().harvestTool(ToolType.PICKAXE).notSolid());
-    }
-
-    public BlockState getStateForPlacement(BlockItemUseContext context) {
-        return this.getDefaultState().with(FACING, context.getPlacementHorizontalFacing().rotateY());
-    }
-
-    public BlockState rotate(BlockState state, Rotation rot) {
-        return state.with(FACING, rot.rotate(state.get(FACING)));
-    }
-
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
-        builder.add(FACING);
-    }
-
-    @Override
-    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-       return VoxelShapes.create(0,0,0,1,1,1);
+        super(Properties.of(material).harvestLevel(0).strength(15.0f).noOcclusion().harvestTool(ToolType.PICKAXE));
     }
 }

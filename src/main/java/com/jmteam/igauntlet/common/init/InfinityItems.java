@@ -25,15 +25,15 @@ public class InfinityItems {
 
     // URU
     public static RegistryObject<Item> URU_INGOT = addItem(new ItemBase(), "uru_ingot");
-    public static RegistryObject<Item> URU_PICKAXE = addItem(new ItemPickaxe(ItemTier.DIAMOND, 4, 1, new Item.Properties().group(InfinityGroups.INFINITY)), "uru_pickaxe");
-    public static RegistryObject<Item> URU_SWORD = addItem(new ItemSword(ItemTier.DIAMOND, 4, 1, new Item.Properties().group(InfinityGroups.INFINITY)), "uru_sword");
-    public static RegistryObject<Item> URU_AXE = addItem(new ItemAxe(ItemTier.DIAMOND, 4, 1, new Item.Properties().group(InfinityGroups.INFINITY)), "uru_axe");
-    public static RegistryObject<Item> URU_SHOVEL = addItem(new ItemShovel(ItemTier.DIAMOND, 4, 1, new Item.Properties().group(InfinityGroups.INFINITY)), "uru_shovel");
-    public static RegistryObject<Item> URU_HOE = addItem(new ItemHoe(ItemTier.DIAMOND, 4, new Item.Properties().group(InfinityGroups.INFINITY)), "uru_hoe");
+    public static RegistryObject<Item> URU_PICKAXE = addItem(new ItemPickaxe(ItemTier.DIAMOND, 4, 1, new Item.Properties().tab(InfinityGroups.INFINITY)), "uru_pickaxe");
+    public static RegistryObject<Item> URU_SWORD = addItem(new ItemSword(ItemTier.DIAMOND, 4, 1, new Item.Properties().tab(InfinityGroups.INFINITY)), "uru_sword");
+    public static RegistryObject<Item> URU_AXE = addItem(new ItemAxe(ItemTier.DIAMOND, 4, 1, new Item.Properties().tab(InfinityGroups.INFINITY)), "uru_axe");
+    public static RegistryObject<Item> URU_SHOVEL = addItem(new ItemShovel(ItemTier.DIAMOND, 4, 1, new Item.Properties().tab(InfinityGroups.INFINITY)), "uru_shovel");
+    public static RegistryObject<Item> URU_HOE = addItem(new ItemHoe(ItemTier.DIAMOND, 4, new Item.Properties().tab(InfinityGroups.INFINITY)), "uru_hoe");
 
     // MISC
-    public static RegistryObject<Item> DWARF_HAMMER = addItem(new ItemPickaxe(ItemTier.DIAMOND, 4, 1, new Item.Properties().group(InfinityGroups.INFINITY)), "dwarf_hammer");
-    public static RegistryObject<Item> DWARF_SWORD = addItem(new ItemSword(ItemTier.DIAMOND, 4, 1, new Item.Properties().group(InfinityGroups.INFINITY)), "dwarf_sword");
+    public static RegistryObject<Item> DWARF_HAMMER = addItem(new ItemPickaxe(ItemTier.DIAMOND, 4, 1, new Item.Properties().tab(InfinityGroups.INFINITY)), "dwarf_hammer");
+    public static RegistryObject<Item> DWARF_SWORD = addItem(new ItemSword(ItemTier.DIAMOND, 4, 1, new Item.Properties().tab(InfinityGroups.INFINITY)), "dwarf_sword");
     public static RegistryObject<Item> MIXTAPE = addItem(new ItemDisc(InfinitySounds.AWESOMEMIX), "awesome_mix");
 
     //  public static RegistryObject<Item>  necklace = addItem(new ItemEyeOfAgamotto(), "eye_agamotto").setGroup(InfinityTabs.infinityTab);

@@ -9,25 +9,16 @@ import net.minecraft.util.text.TranslationTextComponent;
 public class ISource extends DamageSource {
 
     private final String message;
-    private final boolean blockable;
-
-    public ISource(String name, boolean blockable) {
-        super(name);
-        this.message = "damagesource.igauntlet." + name;
-        this.blockable = blockable;
-    }
 
     public ISource(String name) {
-        this(name, false);
+        super(name);
+        this.message = "damagesource.igauntlet." + name;
     }
 
     @Override
-    public ITextComponent getDeathMessage(LivingEntity entity) {
+    public ITextComponent getLocalizedDeathMessage(LivingEntity entity) {
         return new TranslationTextComponent(message, entity.getName());
     }
 
-    @Override
-    public boolean isUnblockable() {
-        return !blockable;
-    }
+
 }

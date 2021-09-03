@@ -30,13 +30,13 @@ public class ItemSpaceStone extends ItemStoneBase {
                     stack.setTag(compound);
                 }
 
-                if (!worldIn.isRemote() && worldIn.getGameTime() % 20 == 0) {
+                if (!worldIn.isClientSide() && worldIn.getGameTime() % 20 == 0) {
                     int counter = stack.getTag().getInt(InfinityNBT.TIMER);
 
                     // TODO Config
                     if (counter < 15) {
                         if (counter == 7) {
-                            playerEntity.sendStatusMessage(InfinityMessages.getComponent(InfinityMessages.STONE_SPACE_NEAR_DRIFT), true);
+                            playerEntity.displayClientMessage(InfinityMessages.getComponent(InfinityMessages.STONE_SPACE_NEAR_DRIFT), true);
                         }
 
                         stack.getTag().putInt(InfinityNBT.TIMER, counter + 1);

@@ -11,9 +11,7 @@ displayURL = "https://discord.gg/pQkRKKN"
 logoFile = "gauntlet.png"
 credits = "JMTeam"
 authors = "Josia50, rootheworld, UKMinecrafted, Ben1Ben1"
-description = '''
-Control Reality, Space, Power, Time and Mind!
-'''
+description = '''Control Reality, Space, Power, Time and Mind!'''
 [[dependencies.igauntlet]]
 modId = "forge"
 mandatory = true

@@ -15,6 +15,6 @@ import java.util.function.Supplier;
 public class ItemDisc extends MusicDiscItem {
 
     public ItemDisc(Supplier<SoundEvent> soundIn) {
-        super(2, soundIn, new Item.Properties().maxStackSize(1).group(InfinityGroups.INFINITY));
+        super(2, soundIn, new Item.Properties().stacksTo(1).tab(InfinityGroups.INFINITY));
     }
 }

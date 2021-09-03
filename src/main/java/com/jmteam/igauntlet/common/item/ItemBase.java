@@ -17,6 +17,6 @@ public class ItemBase extends Item {
     }
 
     public ItemBase(int maxSize) {
-        super(new Item.Properties().maxStackSize(maxSize));
+        super(new Item.Properties().stacksTo(maxSize));
     }
 }

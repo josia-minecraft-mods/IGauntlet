@@ -25,13 +25,13 @@ public class PacketSyncCapability {
     }
 
     public static void encode(PacketSyncCapability packet, PacketBuffer buffer) {
-        buffer.writeUniqueId(packet.player);
-        buffer.writeCompoundTag(packet.compound);
+        buffer.writeUUID(packet.player);
+        buffer.writeNbt(packet.compound);
     }
 
     public static PacketSyncCapability decode(PacketBuffer buffer) {
-        UUID uuid = buffer.readUniqueId();
-        CompoundNBT compound = buffer.readCompoundTag();
+        UUID uuid = buffer.readUUID();
+        CompoundNBT compound = buffer.readNbt();
 
         return new PacketSyncCapability(uuid, compound);
     }
@@ -41,12 +41,13 @@ public class PacketSyncCapability {
         public static void handle(PacketSyncCapability packet, Supplier<NetworkEvent.Context> ctx) {
             ctx.get().enqueueWork(() -> {
                 Minecraft mc = Minecraft.getInstance();
-                PlayerEntity player = mc.world.getPlayerByUuid(packet.player);
+                PlayerEntity player = mc.level.getPlayerByUUID(packet.player);
 
                 if (player != null) {
                     CapabilityInfinity.get(player).deserializeNBT(packet.compound);
                 }
             });
+
             ctx.get().setPacketHandled(true);
         }
     }

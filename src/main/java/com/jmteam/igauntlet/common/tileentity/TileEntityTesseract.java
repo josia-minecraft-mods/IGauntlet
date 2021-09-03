@@ -30,8 +30,8 @@ public class TileEntityTesseract extends InfinityTileEntityBase {
         if (has_stone) {
 
             has_stone = false;
-            ItemEntity itemEntity = new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 0.2f, pos.getZ() + 0.5, new ItemStack(InfinityItems.SPACE_STONE.get(), 1));
-            world.addEntity(itemEntity);
+            ItemEntity itemEntity = new ItemEntity(level, worldPosition.getX() + 0.5, worldPosition.getY() + 0.2f, worldPosition.getZ() + 0.5, new ItemStack(InfinityItems.SPACE_STONE.get(), 1));
+            level.addFreshEntity(itemEntity);
         }
     }
 
@@ -44,14 +44,14 @@ public class TileEntityTesseract extends InfinityTileEntityBase {
     }
 
     @Override
-    public void read(BlockState state, CompoundNBT compound) {
-        super.read(state, compound);
+    public void load(BlockState state, CompoundNBT compound) {
+        super.load(state, compound);
         has_stone = compound.getBoolean(InfinityNBT.HAS_STONE);
     }
 
     @Override
-    public CompoundNBT write(CompoundNBT compound) {
-        super.write(compound);
+    public CompoundNBT save(CompoundNBT compound) {
+        super.save(compound);
         compound.putBoolean(InfinityNBT.HAS_STONE, has_stone);
 
         return compound;

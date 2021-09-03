@@ -13,12 +13,12 @@ public class WorldHelper {
 
     public static void setBlockState(World world, BlockState state, BlockPos pos) {
         BlockState old = world.getBlockState(pos);
-        world.setBlockState(pos, state);
-        world.notifyBlockUpdate(pos, old, world.getBlockState(pos), 2);
+        world.setBlockAndUpdate(pos, state);
+        world.sendBlockUpdated(pos, old, world.getBlockState(pos), 2);
     }
 
     public static BlockPos getTopSolidOrLiquidBlock(World world, BlockPos pos) {
-        return world.getHeight(Heightmap.Type.WORLD_SURFACE, pos);
+        return world.getHeightmapPos(Heightmap.Type.WORLD_SURFACE, pos);
     }
 
     public static List<BlockPos> getAllInBounds(BlockPos pos1, BlockPos pos2) {
@@ -39,7 +39,7 @@ public class WorldHelper {
 
     public static List<BlockPos> getSameBlocksFromPosRanged(World world, BlockPos pos, int range) {
         Block b = world.getBlockState(pos).getBlock();
-        List<BlockPos> beginValues = getAllInBounds(pos.add(-range, -range, -range), pos.add(range, range, range));
+        List<BlockPos> beginValues = getAllInBounds(pos.offset(-range, -range, -range), pos.offset(range, range, range));
         List<BlockPos> posList = new ArrayList<>();
 
         for (int x = 0; x < beginValues.size(); x++) {

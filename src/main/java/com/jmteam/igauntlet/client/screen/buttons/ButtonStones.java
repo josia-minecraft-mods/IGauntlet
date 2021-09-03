@@ -1,4 +1,4 @@
-package com.jmteam.igauntlet.client.gui.buttons;
+package com.jmteam.igauntlet.client.screen.buttons;
 
 import com.jmteam.igauntlet.network.NetworkHandler;
 import com.jmteam.igauntlet.network.packets.server.PacketSetStone;
@@ -32,20 +32,20 @@ public class ButtonStones extends ExtendedButton {
                 color = 0xFFFFA0; // Slightly Yellow
 
             String buttonText = this.getMessage().getString();
-            int strWidth = mc.fontRenderer.getStringWidth(buttonText);
-            int ellipsisWidth = mc.fontRenderer.getStringWidth("...");
+            int strWidth = mc.font.width(buttonText);
+            int ellipsisWidth = mc.font.width("...");
             if (strWidth > width - 6 && strWidth > ellipsisWidth)
-                buttonText = mc.fontRenderer.trimStringToWidth(ITextProperties.func_240652_a_(buttonText), width - 6 - ellipsisWidth) + "...";
+                buttonText = mc.font.substrByWidth(ITextProperties.of(buttonText), width - 6 - ellipsisWidth) + "...";
 
 
-            drawCenteredString(matrixStack, mc.fontRenderer, buttonText, this.x + this.width / 2, this.y + (this.height - 8) / 2, color);
+            drawCenteredString(matrixStack, mc.font, buttonText, this.x + this.width / 2, this.y + (this.height - 8) / 2, color);
         }
     }
 
     @Override
     public void onPress() {
         NetworkHandler.sendServerPacket(new PacketSetStone(type));
-        Minecraft.getInstance().displayGuiScreen(null);
+        Minecraft.getInstance().setScreen(null);
     }
 
 }
